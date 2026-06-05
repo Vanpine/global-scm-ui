@@ -25,19 +25,21 @@
       <a href="products.html">产品功能</a>
       <a href="solutions.html">解决方案</a>
       <a href="why-us.html">为什么选我们</a>
-      <a href="intel.html">实事新闻</a>
+      <a href="intel.html">供应链新闻台</a>
     </nav>
-    <div class="nav-right"><button class="lang-toggle" id="lang-toggle" aria-label="切换语言 / Switch language"><span>🌐</span><span id="lang-current">EN</span></button><a class="nav-cta" href="contact.html">申请加入</a></div>
+    <div class="nav-right"><button class="lang-toggle" id="lang-toggle" aria-label="切换语言 / Switch language"><span><svg class="icon-svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></span><span id="lang-current">EN</span></button><a class="nav-cta" href="contact.html">申请加入</a></div>
     <button class="nav-toggle" aria-label="菜单"><span></span><span></span><span></span></button>
   </div>
 </header>
 
-<!-- ===== 页面标题 ===== -->
-<section class="page-hero">
-  <div class="container">
-    <div class="eyebrow">WHY GLOBAL SCM</div>
-    <h1>还在用 Excel 管供应链？<br><span class="gradient-text">采购、库存、物流的隐性成本，正在被放大</span></h1>
-    <p>不画大饼，不看口号。下面把两种模式的关键指标摊开来看——差距一目了然。</p>
+<!-- ===== Hero：全屏图片背景 ===== -->
+<section class="hero" style="min-height:100vh; height:100vh;">
+  <img class="hero-video" src="https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=1920&q=90" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;pointer-events:none;">
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <h1>为什么选择<span>我们</span></h1>
+    <p class="lead">两种模式，关键指标摊开来看</p>
+    <p class="hero-sub"><span><svg class="icon-svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg> 数据驱动</span><span><svg class="icon-svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/><line x1="20" y1="9" x2="23" y2="9"/><line x1="20" y1="14" x2="23" y2="14"/><line x1="1" y1="9" x2="4" y2="9"/><line x1="1" y1="14" x2="4" y2="14"/></svg> AI 赋能</span><span><svg class="icon-svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 17 13.5 8.5 8.5 13.5 2 7"/><polyline points="16 17 22 17 22 11"/></svg> 持续降本</span></p>
   </div>
 </section>
 
@@ -110,7 +112,6 @@
             <div class="chat-bubble user">SKU-8892 库存不多了，什么时候该补货？</div>
             <div class="chat-bubble ai">在手 42 件，在途 200 件（ETA 6/8）。近 30 天日均消耗 15 件，动态安全库存 60 件。<br><b>⚠️ 存在约 8 天断货窗口</b>，建议立即紧急补货 200 件，或从杭州仓调拨 120 件（成本更低）。</div>
           </div>
-          <a class="text-link" href="products.html">了解我们的 AI 模型 →</a>
         </div>
       </div>
 
@@ -129,7 +130,6 @@
             <div class="chat-bubble user">美西长滩港是不是有罢工？会影响我哪些货？</div>
             <div class="chat-bubble ai">已确认长滩港自 5/26 起罢工。您受影响在途运单共 <b>12 票</b>：3 票已到港待卸（滞港费 ~$1,200/天），5 票 3 天内到达。<br>🟡 建议 5 票申请改港至奥克兰，规避滞港风险。要我生成改港申请草稿吗？</div>
           </div>
-          <a class="text-link" href="solutions.html">查看控制塔实战 →</a>
         </div>
       </div>
 
@@ -148,7 +148,23 @@
             <div class="chat-bubble ai"><b>检测到供应商 A 交期持续恶化</b>（28 → 31 → 35 天）。<br>📋 方案 A：切换备选供应商 X，成本 +8%，交期不变<br>📋 方案 B：部分空运补货，成本 +15%，缩短 20 天<br>🟢 推荐方案 A。要我帮您执行 PO 变更并通知双方吗？</div>
             <div class="chat-bubble user">执行方案 A。</div>
           </div>
-          <a class="text-link" href="pain-points.html">探索决策智能 →</a>
+        </div>
+      </div>
+
+      <!-- Execute -->
+      <div class="tl-item">
+        <div class="tl-card">
+          <div class="tl-head">
+            <span class="tl-num">04</span>
+            <div>
+              <div class="eyebrow">EXECUTE · 执行</div>
+              <h3>一键下发，全链路自动执行</h3>
+            </div>
+          </div>
+          <p>决策一旦确认，PO 变更、运单改港、库存调拨自动下发至对应系统，无需跨部门邮件沟通。执行结果实时回传，若偏差超出阈值自动触发二次预警。</p>
+          <div class="chat-card">
+            <div class="chat-bubble ai">✅ PO-7742 已切换至供应商 X，新交期 6/18。<br>✅ 供应商 A 已收到暂停通知。<br>✅ 杭州仓调拨单已生成，预计 6/8 到达。<br>📊 所有变更已同步至控制塔，异常偏差超过 5% 会自动提醒。</div>
+          </div>
         </div>
       </div>
     </div>
@@ -160,23 +176,45 @@
   <div class="container">
     <div class="text-center reveal" style="margin-bottom:56px;">
       <div class="eyebrow">OUR DIFFERENCE</div>
-      <h2 class="section-title">我们与同类产品的不同</h2>
+      <h2 class="section-title">六个维度，<span class="gradient-text">做出区别</span></h2>
+      <p class="section-sub">不是功能清单的比拼，而是底层架构和产品理念的差异。</p>
     </div>
     <div class="grid grid-3">
       <div class="card reveal">
-        <div class="icon">🌐</div>
+        <div class="icon"><svg class="icon-svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>
         <h3>内置全球情报感知</h3>
-        <p>多数同类系统只做流程数字化与被动记录；我们增加了一层情报感知：政策、关税、台风、罢工等会自动关联到您的具体货物并提前预警，而非事后才发现。</p>
+        <div class="sub-cn">Global Intelligence Layer</div>
+        <p>不只是流程数字化，更在流程之上叠加一层实时情报：政策、关税、台风、罢工自动关联到具体货物，提前预警而非事后补救。</p>
       </div>
       <div class="card reveal">
-        <div class="icon">🔗</div>
-        <h3>真正打通，不是拼接</h3>
-        <p>采购 / WMS / TMS / 订单 / 关务共用统一主数据，一个 SKU 在所有模块 ID 一致。从 PO 号到 POD 全链路一键追溯，秒级定位问题环节。</p>
+        <div class="icon"><svg class="icon-svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg></div>
+        <h3>统一数据底座</h3>
+        <div class="sub-cn">Unified Data Foundation</div>
+        <p>采购、仓储、物流、订单、关务共用同一套主数据，一个 SKU 全链路 ID 一致。从 PO 到 POD，一键追溯、秒级定位。</p>
       </div>
       <div class="card reveal">
-        <div class="icon">📈</div>
+        <div class="icon"><svg class="icon-svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg></div>
         <h3>可量化的目标</h3>
-        <p>不做空泛承诺，而是给出可量化目标：采购准时率提升至 93%、库存周转降至 55 天、异常响应缩短到小时级。先验证、再扩展，可演示、可试用。</p>
+        <div class="sub-cn">Measurable Outcomes</div>
+        <p>不做空泛承诺：采购准时率 ≥ 93%、库存周转 ≤ 55 天、异常响应 ≤ 4 小时。先验证、再扩展，可演示、可试用。</p>
+      </div>
+      <div class="card reveal">
+        <div class="icon"><svg class="icon-svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/><line x1="20" y1="9" x2="23" y2="9"/><line x1="20" y1="14" x2="23" y2="14"/><line x1="1" y1="9" x2="4" y2="9"/><line x1="1" y1="14" x2="4" y2="14"/></svg></div>
+        <h3>AI 贯穿全链路</h3>
+        <div class="sub-cn">AI Everywhere</div>
+        <p>AI 不独立打包，长在每个决策节点上。下 PO 自动比价、库存低了自动预警、航线断了自动推荐备选——无需手动触发。</p>
+      </div>
+      <div class="card reveal">
+        <div class="icon"><svg class="icon-svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+        <h3>弹性供应网络</h3>
+        <div class="sub-cn">Resilient Network</div>
+        <p>多源采购 + 多枢纽物流 + 弹性路由。单点断供数小时内重组链路，不把鸡蛋放在一个篮子里。</p>
+      </div>
+      <div class="card reveal">
+        <div class="icon"><svg class="icon-svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
+        <h3>快速落地验证</h3>
+        <div class="sub-cn">Rapid Deployment</div>
+        <p>模块化设计，先从一个场景切入，数周内看到效果再扩展。不是动辄 12 个月的笨重部署。</p>
       </div>
     </div>
   </div>
@@ -193,8 +231,8 @@
         <div class="footer-social">
           <a href="#" aria-label="LinkedIn">in</a>
           <a href="#" aria-label="X">𝕏</a>
-          <a href="mailto:hello@globalscm.com" aria-label="Email">✉</a>
-          <a href="#" aria-label="Website">🌐</a>
+          <a href="mailto:hello@globalscm.com" aria-label="Email"><svg class="icon-svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 4l-10 8L2 4"/></svg></a>
+          <a href="#" aria-label="Website"><svg class="icon-svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></a>
         </div>
       </div>
       <div>
@@ -221,7 +259,7 @@
         <ul>
           <li><a href="why-us.html">为什么选我们</a></li>
           <li><a href="pain-points.html">痛点与方案</a></li>
-          <li><a href="intel.html">实事新闻</a></li>
+          <li><a href="intel.html">供应链新闻台</a></li>
           <li><a href="contact.html">联系我们</a></li>
         </ul>
       </div>

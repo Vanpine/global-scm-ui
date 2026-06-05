@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(xxd -l 3600 \"c:/Users/Administrator/Desktop/Global SCM/蓝图/官网/pain-points.html\")"
+    ]
+  }
+}
