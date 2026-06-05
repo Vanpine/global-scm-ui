@@ -125,100 +125,7 @@
     reset();
   }
 
-  /* ---------- 6. Hero 动态供应链网络背景 ---------- */
-  function initHeroNetwork() {
-    var canvas = document.getElementById('heroCanvas');
-    if (!canvas || !canvas.getContext) return;
-    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-
-    var ctx = canvas.getContext('2d');
-    var dpr = Math.min(window.devicePixelRatio || 1, 2);
-    var W = 0, H = 0, nodes = [], raf = null;
-    var mouse = { x: null, y: null };
-    var hero = canvas.closest('.hero') || canvas;
-
-    function build() {
-      var rect = canvas.getBoundingClientRect();
-      W = rect.width; H = rect.height;
-      canvas.width = Math.round(W * dpr);
-      canvas.height = Math.round(H * dpr);
-      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-      var count = Math.max(48, Math.min(150, Math.floor((W * H) / 11000)));
-      nodes = [];
-      for (var i = 0; i < count; i++) {
-        nodes.push({
-          x: Math.random() * W, y: Math.random() * H,
-          vx: (Math.random() - 0.5) * 0.32, vy: (Math.random() - 0.5) * 0.32,
-          r: Math.random() * 1.6 + 0.8
-        });
-      }
-    }
-
-    function frame() {
-      ctx.clearRect(0, 0, W, H);
-      var i, j;
-      for (i = 0; i < nodes.length; i++) {
-        var n = nodes[i];
-        n.x += n.vx; n.y += n.vy;
-        if (n.x < 0 || n.x > W) n.vx *= -1;
-        if (n.y < 0 || n.y > H) n.vy *= -1;
-      }
-      for (i = 0; i < nodes.length; i++) {
-        for (j = i + 1; j < nodes.length; j++) {
-          var a = nodes[i], b = nodes[j];
-          var dx = a.x - b.x, dy = a.y - b.y;
-          var d = Math.sqrt(dx * dx + dy * dy);
-          if (d < 175) {
-            ctx.strokeStyle = 'rgba(46,151,255,' + (1 - d / 175) * 0.55 + ')';
-            ctx.lineWidth = 0.7;
-            ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke();
-          }
-        }
-        if (mouse.x != null) {
-          var mdx = nodes[i].x - mouse.x, mdy = nodes[i].y - mouse.y;
-          var md = Math.sqrt(mdx * mdx + mdy * mdy);
-          if (md < 180) {
-            ctx.strokeStyle = 'rgba(94,92,230,' + (1 - md / 180) * 0.6 + ')';
-            ctx.lineWidth = 0.9;
-            ctx.beginPath(); ctx.moveTo(nodes[i].x, nodes[i].y); ctx.lineTo(mouse.x, mouse.y); ctx.stroke();
-          }
-        }
-      }
-      for (i = 0; i < nodes.length; i++) {
-        var p = nodes[i];
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-        ctx.fillStyle = 'rgba(125,182,255,0.9)';
-        ctx.fill();
-      }
-      raf = requestAnimationFrame(frame);
-    }
-
-    function start() { if (!raf) frame(); }
-    function stop() { if (raf) { cancelAnimationFrame(raf); raf = null; } }
-
-    build();
-    start();
-
-    var rt;
-    window.addEventListener('resize', function () {
-      clearTimeout(rt);
-      rt = setTimeout(function () { stop(); build(); start(); }, 200);
-    });
-    window.addEventListener('mousemove', function (e) {
-      var rect = canvas.getBoundingClientRect();
-      if (e.clientX >= rect.left && e.clientX <= rect.right && e.clientY >= rect.top && e.clientY <= rect.bottom) {
-        mouse.x = e.clientX - rect.left; mouse.y = e.clientY - rect.top;
-      } else { mouse.x = null; mouse.y = null; }
-    });
-    if ('IntersectionObserver' in window) {
-      new IntersectionObserver(function (entries) {
-        entries.forEach(function (en) { if (en.isIntersecting) start(); else stop(); });
-      }, { threshold: 0 }).observe(canvas);
-    }
-  }
-
-  /* ---------- 7. 简易表单提交反馈 ---------- */
+  /* ---------- 6. 简易表单提交反馈 ---------- */
   function initForm() {
     var form = document.querySelector('#contact-form');
     if (!form) return;
@@ -233,7 +140,7 @@
     });
   }
 
-  /* ---------- 8. 新闻卡片点赞 ---------- */
+  /* ---------- 7. 新闻卡片点赞 ---------- */
   function initNewsInteract() {
     var cards = document.querySelectorAll('.news-card[data-href]');
     if (!cards.length) return;
@@ -284,7 +191,7 @@
     });
   }
 
-  /* ---------- 9. 文章详情页：阅读量 + 点赞 ---------- */
+  /* ---------- 8. 文章详情页：阅读量 + 点赞 ---------- */
   function initArticleStats() {
     var statsBar = document.querySelector('.article-stats');
     if (!statsBar) return;
@@ -335,7 +242,7 @@
     });
   }
 
-  /* ---------- 10. 订阅表单反馈（纯前端，无网络） ---------- */
+  /* ---------- 9. 订阅表单反馈（纯前端，无网络） ---------- */
   function initNewsletter() {
     var form = document.querySelector('#newsletterForm');
     if (!form) return;
@@ -356,7 +263,6 @@
     initReveal();
     initCounters();
     initCarousel();
-    initHeroNetwork();
     initForm();
     initNewsletter();
     initNewsInteract();

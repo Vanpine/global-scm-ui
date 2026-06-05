@@ -54,14 +54,16 @@
 
 <!-- ===== Hero ===== -->
 <section class="hero">
-  <canvas class="hero-canvas" id="heroCanvas"></canvas>
-  <div class="glow"></div>
-  <div class="hero-content container">
+  <video class="hero-video" autoplay muted loop playsinline id="heroVideo">
+    <source src="assets/hero-bg-combined.mp4" type="video/mp4">
+  </video>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
     <h1>全球供应链<span class="gradient-text">大平台</span></h1>
     <p class="lead">关税一夜突变、航线突然中断、核心供应商断供——你的供应链需要比风险跑得更快。用 AI 实时可视、预测与自动化，让供应链在不确定中依然稳健运转。</p>
     <div class="hero-actions">
-      <a class="btn btn-primary btn-lg" href="contact.html">申请加入 →</a>
-      <a class="btn btn-white btn-lg" href="products.html">了解产品 →</a>
+      <a class="btn btn-hero-primary btn-lg" href="contact.html">申请加入 →</a>
+      <a class="btn btn-hero-ghost btn-lg" href="products.html">了解产品 →</a>
     </div>
   </div>
 </section>
