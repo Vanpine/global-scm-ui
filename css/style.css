@@ -219,8 +219,8 @@ ul { list-style: none; }
 
 /* 大标题 */
 .hero h1 {
-  font-size: clamp(40px, 5.5vw, 68px);
-  font-weight: 800; line-height: 1.1; letter-spacing: 0.04em;
+  font-size: clamp(48px, 6.5vw, 80px);
+  font-weight: 800; line-height: 1.1; letter-spacing: 0.08em;
   margin-bottom: 20px;
   text-shadow: 0 2px 40px rgba(0,0,0,0.5), 0 0 80px rgba(0,113,227,0.12);
 }
@@ -419,27 +419,67 @@ ul { list-style: none; }
 .bg-black .card .icon { background: rgba(108,178,255,0.14); }
 .bg-black .card .tags span { background: rgba(255,255,255,0.08); color: #c9ced8; }
 
-/* ---------- 供应链多重危机（图片卡 + 渐变叠加） ---------- */
-.crisis-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
-.crisis-card {
-  position: relative; min-height: 340px; border-radius: 20px; overflow: hidden;
-  display: flex; align-items: flex-end; background: #0a0d16;
-  border: 1px solid var(--card-border); box-shadow: var(--card-shadow);
-  transition: transform 0.35s var(--ease), box-shadow 0.35s var(--ease);
+/* ---------- 供应链多重危机（全宽图文分离卡） ---------- */
+.crisis-featured {
+  display: flex; flex-direction: column; gap: 80px;
+  margin: 0 calc(-50vw + 50% + 40px);
+  width: calc(100vw - 80px);
 }
-.crisis-card:hover { transform: translateY(-6px); box-shadow: var(--card-shadow-hover); }
-.crisis-card img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; transition: transform 0.6s var(--ease); }
-.crisis-card:hover img { transform: scale(1.06); }
-.crisis-card::after {
-  content: ""; position: absolute; inset: 0; z-index: 1;
-  background: linear-gradient(180deg, rgba(6,12,30,0.05) 0%, rgba(6,12,30,0.42) 42%, rgba(6,12,30,0.92) 100%);
+.crisis-card-wide {
+  display: flex; align-items: stretch; gap: 24px;
 }
-.crisis-card .cc-body { position: relative; z-index: 2; padding: 26px 24px; color: #fff; width: 100%; }
-.crisis-card h3 { font-size: 19px; font-weight: 700; letter-spacing: -0.01em; margin-bottom: 12px; color: #fff; }
-.crisis-card ul { display: flex; flex-direction: column; gap: 7px; }
-.crisis-card li { font-size: 13.5px; color: #dfe4ec; line-height: 1.45; display: flex; gap: 8px; align-items: flex-start; }
-.crisis-card li::before { content: "✦"; color: #6cb2ff; flex: 0 0 auto; }
-.crisis-bridge { text-align: center; max-width: 780px; margin: 48px auto 0; }
+.crisis-card-wide:nth-child(even) { flex-direction: row-reverse; }
+/* 图片 — 独立圆角卡片 */
+.crisis-card-wide .ccw-img {
+  flex: 0 0 48%; position: relative; min-height: 380px;
+  border-radius: 28px; overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+}
+.crisis-card-wide .ccw-img img {
+  width: 100%; height: 100%; object-fit: cover; display: block;
+  transition: transform 0.7s var(--ease);
+}
+.crisis-card-wide .ccw-img:hover img { transform: scale(1.06); }
+/* 文字 — 与背景融为一体，无边框无阴影 */
+.crisis-card-wide .ccw-body {
+  flex: 1; display: flex; flex-direction: column; justify-content: flex-start;
+  padding: 72px 60px 72px; color: var(--text-primary);
+  background: transparent; border-radius: 0;
+  border: none;
+  box-shadow: none;
+}
+/* 分类标签 — 左线强调 */
+.crisis-card-wide .ccw-tag {
+  display: inline-flex; align-items: center; gap: 10px; align-self: flex-start;
+  font-size: 13px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--brand-blue); margin-bottom: 20px;
+  padding: 0; border-radius: 0;
+  background: none; border: none;
+}
+.crisis-card-wide .ccw-tag::before {
+  content: ""; width: 24px; height: 3px; border-radius: 2px;
+  background: var(--brand-gradient); flex: 0 0 auto;
+}
+.crisis-card-wide .ccw-body h3 {
+  font-size: 40px; font-weight: 700; letter-spacing: 0.05em;
+  margin-bottom: 20px; color: var(--text-primary); line-height: 1.12;
+}
+.crisis-card-wide .ccw-desc {
+  font-size: 18px; color: var(--text-secondary); line-height: 1.8;
+  margin-bottom: 28px; max-width: 540px;
+}
+.crisis-card-wide .ccw-body ul {
+  display: flex; flex-direction: column; gap: 14px; list-style: none;
+}
+.crisis-card-wide .ccw-body li {
+  font-size: 17px; color: var(--text-secondary); line-height: 1.65;
+  display: flex; gap: 10px; align-items: flex-start;
+}
+.crisis-card-wide .ccw-body li::before {
+  content: ""; flex: 0 0 auto; width: 5px; height: 5px; border-radius: 50%;
+  background: var(--brand-blue); margin-top: 8px;
+}
+.crisis-bridge { text-align: center; max-width: 780px; margin: 80px auto 0; }
 .crisis-bridge p { font-size: 20px; line-height: 1.6; color: var(--text-secondary); }
 .crisis-bridge p b { color: var(--brand-blue); font-weight: 600; }
 .bridge-arrow { display: block; margin-top: 16px; font-size: 26px; color: var(--brand-blue); animation: bridgeBounce 1.8s ease-in-out infinite; }
@@ -994,7 +1034,13 @@ ul { list-style: none; }
   .news-grid { grid-template-columns: repeat(2, 1fr); }
   .news-featured { grid-template-columns: 1fr 1fr; }
   .article-hero h1 { font-size: 38px; }
-  .crisis-grid { grid-template-columns: repeat(2, 1fr); }
+  .crisis-featured { margin: 0 16px; width: calc(100% - 32px); gap: 24px; }
+  .crisis-card-wide { flex-direction: column; gap: 16px; }
+  .crisis-card-wide:nth-child(even) { flex-direction: column; }
+  .crisis-card-wide .ccw-img { flex: 0 0 auto; min-height: 260px; border-radius: 20px; }
+  .crisis-card-wide .ccw-body { padding: 28px 22px 28px; border-radius: 20px; }
+  .crisis-card-wide .ccw-body h3 { font-size: 26px; }
+  .crisis-card-wide .ccw-desc { font-size: 15px; }
 }
 
 @media (max-width: 768px) {
@@ -1021,7 +1067,13 @@ ul { list-style: none; }
   .section-title { font-size: 30px; }
   .section-sub { font-size: 17px; }
   .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
-  .crisis-grid { grid-template-columns: 1fr; }
+  .crisis-featured { margin: 0 12px; width: calc(100% - 24px); gap: 20px; }
+  .crisis-card-wide { flex-direction: column; gap: 12px; }
+  .crisis-card-wide:nth-child(even) { flex-direction: column; }
+  .crisis-card-wide .ccw-img { flex: 0 0 auto; min-height: 220px; border-radius: 18px; }
+  .crisis-card-wide .ccw-body { padding: 18px 18px 22px; border-radius: 18px; }
+  .crisis-card-wide .ccw-body h3 { font-size: 22px; }
+  .crisis-card-wide .ccw-desc { font-size: 14px; }
   .stats-grid { grid-template-columns: repeat(2,1fr); gap: 36px 20px; }
   .compare-wrap { grid-template-columns: 1fr; }
   .savings-grid { grid-template-columns: repeat(2,1fr); }
