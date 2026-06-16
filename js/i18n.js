@@ -1193,7 +1193,658 @@
     "Global SCM（全球供应链大平台）是 Clement &amp; Associates（陈玮伦合伙人事务所）旗下品牌。": "Global SCM is a brand of Clement &amp; Associates.",
     "用 AI 把地方优势产业、特色原料与闲置产能精准对接全球需求，形成单点突破、多点支撑的网络，对冲断链风险、增强产业韧性。": "AI matches local industries, materials and idle capacity with global demand — a single-point breakthrough, multi-point support network that hedges disruption and strengthens resilience.",
     "让企业实现降本、增效、抗风险": "Helping Enterprises Cut Cost, Boost Efficiency, Resist Risk",
-    "供应链管理 AI 控制台实时监测全球气象、地缘政治、关税、贸易政策与物流，让企业在不确定时代保持灵活与韧性。": "A Supply Chain AI Console monitors global weather, geopolitics, tariffs, trade policy and logistics in real time — keeping enterprises agile and resilient in uncertain times."
+    "供应链管理 AI 控制台实时监测全球气象、地缘政治、关税、贸易政策与物流，让企业在不确定时代保持灵活与韧性。": "A Supply Chain AI Console monitors global weather, geopolitics, tariffs, trade policy and logistics in real time — keeping enterprises agile and resilient in uncertain times.",
+
+    /* ---------- 首页更新：轮播 ---------- */
+    "AI 双向撮合，供需不再靠碰运气": "AI Two-Way Matching — Supply Meets Demand, Without Luck",
+    "采购商发布需求，供应商展示产能——AI 自动匹配并附评分依据，双方在同一个平台上互相发现。": "Buyers post needs, suppliers showcase capacity — AI auto-matches with scoring, so both sides discover each other on one platform.",
+    "合作之前，AI 先帮你查清底细": "Before You Commit, AI Vets Them First",
+    "制裁筛查、股权穿透、诉讼排查、验厂认证——数分钟的自动化尽调，替代数天的手工翻查。": "Sanctions screening, ownership tracing, litigation checks, factory audits — minutes of automated due diligence replacing days of manual digging.",
+    "不等出事再想辙，AI 提前帮你找退路": "AI Finds Your Exit Before Trouble Finds You",
+    "全球信息源24h扫描，关税变动、地区冲突、供应商异常自动关联到你的业务，推送替代方案。": "24/7 global scanning — tariff shifts, regional conflicts, supplier anomalies auto-linked to your operations, with alternatives pushed to you.",
+    "每一次决策，都有数据撑腰": "Every Decision, Backed by Data",
+    "选谁合作、备谁应急、何时该换——AI 量化建议替代拍脑袋，知识沉淀在平台而非个人脑中。": "Who to partner with, who to keep as backup, when to switch — AI-quantified recommendations replace gut calls, with knowledge stored in the platform, not in someone's head.",
+
+    /* ---------- 首页更新：数据条 ---------- */
+    "供需匹配精准度（目标）": "Supply-Demand Match Accuracy (Target)",
+    "尽调报告生成（目标）": "Due Diligence Report (Target)",
+    "断供风险预警（目标）": "Supply Disruption Alert (Target)",
+    "全球供需资源池": "Global Supply-Demand Network",
+
+    /* ---------- 首页更新：桥接 ---------- */
+    "面对这些挑战，我们换了一个思路": "Facing These Challenges, We Took a Different Approach",
+    "不是头痛医头，而是用 AI 把寻源匹配 · 尽调审查 · 风险预警 · 持续监控串成一条完整链路。": "Not patching symptoms — AI weaves sourcing, due diligence, risk alerts, and continuous monitoring into one complete chain.",
+
+    /* ---------- 首页更新：核心理念 ---------- */
+    "让全球供需，没有断链之忧": "Global Supply-Demand, Free From Disruption",
+    "用 AI 把地方优势产业与闲置产能，精准对接全球采购需求，形成多点支撑的韧性网络。": "AI precisely matches local industries and idle capacity with global procurement demand — building a resilient, multi-node network.",
+    "赋能地方产业，对接全球采购需求": "Empowering Local Industry to Meet Global Demand",
+    "用 AI 把地方优势产能、特色原料与闲置资源精准匹配全球买家，让供应商被看见、让采购商找对人。": "AI matches local capacity, specialty materials, and idle resources with global buyers — making suppliers visible and helping buyers find the right partner.",
+    "让每笔决策都有数据支撑": "Every Decision, Grounded in Data",
+    "AI 实时监测全球政策、关税、地缘与供应商动态，量化评估替代拍脑袋，让企业在不确定中保持主动。": "AI monitors global policy, tariffs, geopolitics, and supplier dynamics in real time — quantified assessments replace gut instinct, keeping you proactive in uncertainty.",
+
+    /* ---------- 首页更新：AI赋能 ---------- */
+    "AI 不是口号，是长在每一个决策节点上": "AI Isn't a Buzzword — It Lives at Every Decision Point",
+    "寻源匹配、尽调审查、风险预警、绩效监控——AI 在背后持续运转。": "Sourcing, due diligence, risk alerts, performance monitoring — AI runs continuously behind the scenes.",
+    "AI 供需匹配": "AI Supply-Demand Matching",
+    "寻源 · 推荐 · 评分": "Search · Recommend · Score",
+    "采购商说需求、供应商晒产能，AI 双向匹配并附评分依据，让筛选从\"翻黄页\"变成\"看报告\"。": "Buyers state needs, suppliers show capacity — AI matches both ways with scoring, turning search from flipping a phonebook into reading a report.",
+    "AI 自动尽调": "AI Auto Due Diligence",
+    "筛查 · 穿透 · 报告": "Screen · Trace · Report",
+    "制裁名单比对、多层股权穿透、诉讼排查一键完成，数分钟出报告，替代数天手工翻查。": "Sanctions screening, multi-layer ownership tracing, litigation checks — one click, report in minutes, replacing days of manual work.",
+    "AI 持续风控": "AI Continuous Risk Control",
+    "监控 · 预警 · 备选": "Monitor · Alert · Backup",
+    "全球信息源24h扫描，供应商异常、政策突变自动关联到你的业务，预警的同时推送替代方案。": "24/7 global scanning — supplier anomalies and policy shifts auto-linked to your business, with alternatives pushed alongside every alert.",
+
+    /* ---------- 首页更新：风险地图 ---------- */
+    "GLOBAL RISK MAP · 全球风险地图": "GLOBAL RISK MAP",
+    "影响你供应商的外部事件，一个屏幕看清": "Every External Event Affecting Your Suppliers, on One Screen",
+    "实时监测地缘冲突、政策变化、港口状态与极端天气，高危区域自动高亮，关联到你的供应商网络。": "Continuously monitors geopolitical conflict, policy shifts, port status, and extreme weather — high-risk zones auto-highlighted and linked to your supplier network.",
+
+    /* ---------- 首页更新：按钮 ---------- */
+    "查看 AI 双边匹配的完整对比 →": "See the Full AI Two-Way Matching Comparison →",
+
+    /* ---------- 首页更新：标签 ---------- */
+    "双边匹配": "Two-Way Match",
+    "产能变现": "Capacity to Revenue",
+    "全球触达": "Global Reach",
+    "数据驱动": "Data-Driven",
+    "持续监控": "Continuous Monitoring",
+    "量化决策": "Quantified Decisions",
+    "全球供应链要闻": "Global Supply Chain Headlines",
+    "查看全部要闻 →": "See All Headlines →",
+
+    /* ---------- Footer（全站更新） ---------- */
+    "平台能力": "Platform",
+    "智能撮合": "Smart Matching",
+    "安全采购": "Secure Procurement",
+    "可信交付": "Trusted Delivery",
+    "全局风控": "Global Risk Control",
+    "数据智脑": "Data Brain",
+    "全球寻源": "Global Sourcing",
+    "供应商尽调": "Supplier Due Diligence",
+    "多源备份防断供": "Multi-Source Backup",
+    "供需网络撮合": "Supply-Demand Network",
+
+    /* ========== 产品功能页 products ========== */
+    /* Hero */
+    "五大能力": "Five Capabilities",
+    "一条链": "One Chain",
+    "AI贯穿每个环节，越用越聪明": "AI Runs Through Every Link — the More You Use It, the Smarter It Gets",
+
+    /* 五大能力总览 */
+    "五大核心能力，": "Five Core Capabilities, ",
+    "AI贯穿每个环节": "AI Runs Through Every Link",
+    "从寻源到签收，从风控到决策——前一环的输出是后一环的输入，越用越聪明。": "From sourcing to receipt, from risk control to decision-making — each link's output feeds the next. The more you use it, the smarter it gets.",
+    "找对人": "Find the Right Partner",
+    "查清底": "Know Who You're Dealing With",
+    "送到位": "Deliver With Confidence",
+    "防住险": "Stay Ahead of Risk",
+    "越用越聪明": "Gets Smarter Every Day",
+
+    /* 能力标签 */
+    "SMART MATCHING": "SMART MATCHING",
+    "Secure Procurement": "Secure Procurement",
+    "Trusted Delivery": "Trusted Delivery",
+    "Global Risk Control": "Global Risk Control",
+    "Data Brain": "Data Brain",
+
+    /* 智能撮合 */
+    "智能撮合": "Smart Matching",
+    "AI读懂你的需求，从全球供应商池里精准匹配最合适的那一家。不只比价格，还综合看实力、资质、口碑与交付能力，每次推荐都告诉你\"为什么是他\"。": "AI understands your needs and precisely matches you with the best fit from a global supplier pool — beyond price, it evaluates capability, certifications, reputation, and delivery track record, with every recommendation explaining why.",
+    "智能读懂需求": "AI-Powered Requirements Analysis",
+    "自动识别规格、数量、交期和预算，无需填写复杂表单。": "Auto-identifies specs, quantities, deadlines, and budgets — no complex forms required.",
+    "全方位精准匹配": "Multi-Dimensional Precision Matching",
+    "综合实力、资质、出口经验、交付能力等AI多维评分。": "AI multi-dimensional scoring across capability, certifications, export experience, and delivery performance.",
+    "买卖双向推荐": "Two-Way Buyer-Supplier Recommendations",
+    "系统推荐Top供应商，同时主动推送适配买家。": "Recommends top suppliers while proactively pushing matching opportunities to qualified buyers.",
+    "匹配透明可查": "Transparent Matching With Full Audit Trail",
+    "每次推荐都附带完整评分依据，选择不再靠感觉。": "Every recommendation includes complete scoring rationale — decisions backed by data, not gut feeling.",
+
+    /* 智能撮合 Dashboard */
+    "SMART MATCHING ENGINE": "SMART MATCHING ENGINE",
+    "匹配满意度": "Match Satisfaction",
+    "AI读懂需求，从全球供应商池精准匹配": "AI reads your needs, precisely matching from a global supplier pool",
+    "需求解析": "Requirements Analysis",
+    "多维评分": "Multi-Dimensional Scoring",
+    "推荐精准": "Recommendation Accuracy",
+    "透明度": "Transparency",
+    "秒级响应": "Response in Seconds",
+    "全球资源池": "Global Supplier Pool",
+    "精准推荐": "Precision Matching",
+    "双向匹配": "Two-Way Matching",
+    "买卖互推": "Mutual Discovery",
+    "基于知识图谱 + 多维评分模型，每次推荐都附带完整评分依据，选择不迷茫，决策更透明。": "Powered by a knowledge graph + multi-dimensional scoring model — every recommendation comes with full rationale, so you choose with clarity and confidence.",
+
+    /* 安全采购 */
+    "安全采购": "Secure Procurement",
+    "合作前把对方查个底朝天——验厂认证 + 背景尽调 + AI合同审查 + 全程留痕，不让一笔问题交易溜过去。": "Leave no stone unturned before partnering — factory audits, background checks, AI contract review, and full traceability, so no questionable deal slips through.",
+    "供应商严选认证": "Rigorous Supplier Certification",
+    "入驻先验厂（实地或远程），核查产能、设备、劳工条件、环保合规，通过后授金牌/银牌/铜牌认证。": "Onboarding starts with a factory audit (on-site or remote) — capacity, equipment, labor conditions, environmental compliance verified; Gold/Silver/Bronze certification awarded upon passing.",
+    "尽职调查": "Due Diligence",
+    "对接OFAC/UN/欧盟制裁名单，穿透股权挖出实控人，排查诉讼纠纷和失信记录，一键生成尽调报告。": "Connected to OFAC/UN/EU sanctions lists, traces ultimate beneficial owners through multi-layer equity structures, checks litigation and dishonesty records — one-click due diligence reports.",
+    "合同风险智能审查": "AI-Powered Contract Risk Review",
+    "内置跨境合同模板，AI自动审查条款漏洞和隐藏风险，帮你避开\"不平等条约\"。": "Built-in cross-border contract templates with AI auto-review of loopholes and hidden risks — helping you avoid unfair terms.",
+    "全程留痕有据可查": "Full Traceability, Always Auditable",
+    "每一步操作自动记录、全程可追溯，采购决策有理有据，轻松应对ISO认证和ESG审计。": "Every action auto-logged and fully traceable — procurement decisions are evidence-based, making ISO certification and ESG audits effortless.",
+
+    /* 安全采购 Dashboard */
+    "SECURE PROCUREMENT": "SECURE PROCUREMENT",
+    "三级认证": "Three-Tier Certification",
+    "通过多维度严苛审核，确保供应商安全合规": "Multi-dimensional rigorous audits ensure supplier safety and compliance",
+    "验厂通过率": "Factory Audit Pass Rate",
+    "制裁名单筛查": "Sanctions List Screening",
+    "合同风险识别": "Contract Risk Detection",
+    "尽调报告生成": "Due Diligence Report",
+    "对接 OFAC / UN / 欧盟制裁名单，穿透股权挖出实控人，一键生成尽调报告。": "Connected to OFAC/UN/EU sanctions lists, traces ultimate beneficial owners, one-click due diligence reports.",
+
+    /* 可信交付 */
+    "可信交付": "Trusted Delivery",
+    "从工厂发货到客户签收，货在哪、还要多久、会不会延误——一个页面看得清清楚楚，出问题前系统就帮你找好备选方案。": "From factory dispatch to customer receipt — where's the cargo, how long until it arrives, will it be delayed? All on one screen, with backup options ready before anything goes wrong.",
+    "物流方案智能推荐": "Smart Logistics Recommendation",
+    "综合成本、速度和风险，自动帮你算出海运、中欧班列还是空运最划算，不再纠结\"怎么运\"。": "Weighing cost, speed, and risk to auto-calculate whether ocean, China-Europe rail, or air freight makes the most sense — no more agonizing over shipping choices.",
+    "货物全程实时追踪": "Real-Time Cargo Tracking",
+    "从工厂到签收，货在哪、到哪了、还要多久，一个页面看清，不用打电话一个个问货代。": "From factory to delivery — where it is, where it's going, how long it'll take — all on one screen, no need to call forwarders one by one.",
+    "清关预审": "Customs Pre-Clearance Review",
+    "货还没到港，AI先帮你核对报关资料有没有问题，发现漏洞提前改，避免货物压在港口白白多花滞港费。": "Before cargo reaches port, AI reviews your customs documents for issues — catch gaps early and avoid costly port detention fees.",
+    "异常主动预警": "Proactive Exception Alerts",
+    "港口堵了、船晚点了、关税变了——系统第一时间通知你，还附上备选方案，不让你干等。": "Port congested, vessel delayed, tariff changed — the system notifies you instantly with backup plans, so you're never left waiting.",
+
+    /* 可信交付 Dashboard */
+    "TRUSTED DELIVERY": "TRUSTED DELIVERY",
+    "准时交付率": "On-Time Delivery Rate",
+    "从工厂到签收，全程可视可控": "Full Visibility and Control from Factory to Delivery",
+    "发货及时率": "On-Time Shipment",
+    "运输可视化": "Transport Visibility",
+    "清关通过率": "Customs Clearance Rate",
+    "签收准时率": "On-Time Receipt",
+    "综合成本、速度和风险，自动算出最优路线。异常第一时间通知，附备选方案。": "Weighing cost, speed, and risk to auto-calculate the optimal route. Instant alerts with backup options for every exception.",
+    "准时率": "On-Time Rate",
+    "全球覆盖": "Global Coverage",
+    "多式联运": "Multimodal Transport",
+    "实时预警": "Real-Time Alerts",
+
+    /* 全局风控 */
+    "全局风控": "Global Risk Control",
+    "AI 24小时盯住全球1000多个信息源——关税变了、航线出事了、地区局势不稳——不等出事再想辙，系统提前告诉你怎么应对。": "AI monitors 1,000+ global information sources 24/7 — tariff changes, lane disruptions, regional instability — the system tells you how to respond before anything goes wrong.",
+    "交易异常实时拦截": "Real-Time Transaction Anomaly Blocking",
+    "每笔订单AI实时扫描——金额突然翻倍、下单频率反常、关联账号串通，一发现不对劲立刻预警或冻结。": "Every order scanned by AI in real time — sudden amount spikes, abnormal ordering frequency, linked-account collusion — flagged or frozen the moment something looks off.",
+    "全球风险实时监控": "Global Risk Real-Time Monitoring",
+    "1000+数据源24h监控——关税政策、制裁名单、气象灾害、港口状态，三个等级打分，风险一目了然。": "1,000+ data sources, 24/7 — tariff policy, sanctions lists, weather events, port status — three-level scoring makes risk instantly visible.",
+    "供应链抗压演练": "Supply Chain Stress Testing",
+    "假设\"某国突然被制裁\"或\"某港口突然关闭\"，提前推演你的供应链哪些环节会断、断在哪，提前告诉你备选方案。": "Suppose a country is suddenly sanctioned or a port suddenly closes — simulate where your chain would break and how, with backup plans ready in advance.",
+    "合作伙伴风险画像": "Partner Risk Profiling",
+    "对每个供应商、物流商建立动态风险画像，综合财务状况、履约记录、地缘政治等多维度评分，合作前就能看清对方底牌。": "Dynamic risk profiles for every supplier and logistics provider — financial health, fulfillment history, geopolitical exposure — so you see their hand before you play yours.",
+
+    /* 全局风控 Dashboard */
+    "GLOBAL RISK CONTROL": "GLOBAL RISK CONTROL",
+    "数据源接入": "Data Sources Connected",
+    "24h 盯住全球，不等出事再想辙": "Watching the world 24/7 — plan ahead, not after the fact",
+    "异常交易识别": "Anomaly Detection",
+    "全球风险监控": "Global Risk Monitoring",
+    "预警响应速度": "Alert Response Speed",
+    "断链推演准确": "Disruption Simulation Accuracy",
+    "AI 24h 盯住全球信息源，三级打分预警，提前推演断链场景给出备选方案。": "AI watches global sources 24/7, scores risks on three levels, and simulates disruption scenarios with backup plans.",
+
+    /* 数据智脑 */
+    "数据智脑": "Data Brain",
+    "前面四个模块的成果全浓缩到一个屏幕——采购省了多少、谁准时率高、避开了哪些风险。不只告诉你了\"发生了什么\"，直接告诉你\"该做什么\"。": "Results from the previous four modules, all on one screen — how much you saved, who's delivering on time, what risks you avoided. It doesn't just tell you what happened — it tells you what to do next.",
+    "经营驾驶舱": "Executive Cockpit",
+    "采购降本、供应商绩效、交付准时率、风险规避——所有关键指标一块屏幕看完，不用各处翻。": "Cost savings, supplier performance, on-time delivery, risk avoidance — all key metrics on one screen, no digging around.",
+    "行业情报报告": "Industry Intelligence Reports",
+    "基于平台海量交易数据（已脱敏），定期输出品类价格走势、采购热区、产能趋势——帮你看别人看不到的趋势。": "Based on aggregated, anonymized platform transaction data — category price trends, procurement hotspots, capacity forecasts — helping you spot trends others miss.",
+    "AI决策建议": "AI Decision Recommendations",
+    "不只告诉你\"发生了什么\"，直接告诉你\"该做什么\"——\"这个原材料未来30天有70%概率涨价，建议现在就锁价\"。": "Doesn't just tell you what happened — tells you what to do: \"This material has a 70% probability of a price increase in the next 30 days — recommend locking in pricing now.\"",
+    "越用越聪明": "Gets Smarter Every Day",
+    "每笔交易、每次交付都在训练模型——你的采购偏好、供应商圈子、风险底线，AI越记越清，这是后来者追不上的护城河。": "Every transaction, every delivery trains the model — your procurement preferences, supplier network, risk thresholds. The AI remembers better each time — a moat no latecomer can cross.",
+
+    /* 数据智脑 Dashboard */
+    "DATA BRAIN": "DATA BRAIN",
+    "预测准确率": "Forecast Accuracy",
+    "不只告诉你发生了什么，直接告诉你该做什么": "Doesn't just tell you what happened — tells you what to do",
+    "经营看板覆盖": "Dashboard Coverage",
+    "价格预测准确": "Price Forecast Accuracy",
+    "决策建议采纳": "Decision Adoption Rate",
+    "模型进化速度": "Model Improvement Rate",
+    "不只告诉你\"发生了什么\"，直接告诉你\"该做什么\"——让数据直接变成行动。": "Won't just tell you what happened — tells you what to do. Turn data directly into action.",
+    "驾驶舱": "Dashboard",
+    "一屏概览": "One-Screen View",
+    "情报": "Intel",
+    "定期报告": "Periodic Reports",
+    "建议": "Recommendations",
+    "行动指南": "Action Guide",
+    "进化": "Evolution",
+    "越用越准": "Sharper Every Day",
+
+    /* AI 技术引擎 */
+    "AI ENGINE · 技术引擎": "AI ENGINE",
+    "五大能力背后，": "Behind All Five Capabilities, ",
+    "五套AI在同时运转": "Five AI Engines Run Simultaneously",
+    "每一项核心能力的底层，都有对应的AI技术引擎支撑——它们不是独立的模型，而是相互联动的智能体系。": "Each core capability is powered by a dedicated AI engine — not siloed models, but an interconnected intelligent system.",
+    "NLP解析": "NLP Engine",
+    "读懂采购需求描述，自动解析合同条款、提取关键规格参数": "Understands procurement descriptions, auto-parses contract terms, and extracts key specifications.",
+    "知识图谱": "Knowledge Graph",
+    "供应商、品类、资质、交易记录织成关系网，匹配不再靠关键词": "Weaves suppliers, categories, certifications, and transactions into a relationship graph — matching beyond keywords.",
+    "实时计算引擎": "Real-Time Compute Engine",
+    "接入船公司、港口、海关实时数据，秒级计算最优路线": "Connected to carrier, port, and customs data in real time — optimal route calculation in seconds.",
+    "预测引擎": "Prediction Engine",
+    "价格走势预测、风险概率计算、交付时效预估——事先告诉你可能性": "Price trend forecasting, risk probability calculation, delivery ETA prediction — telling you what's likely before it happens.",
+    "持续学习": "Continuous Learning",
+    "每笔交易、每次履约都在训练模型，用得越多算得越准": "Every transaction, every fulfillment trains the model — the more you use it, the sharper it gets.",
+
+    /* CTA */
+    "THE BOTTOM LINE": "THE BOTTOM LINE",
+    "降本": "Cut Cost",
+    "增效": "Boost Efficiency",
+    "在不确定时代，帮企业拥有一张可预测、可管理、可持续的全球供应链网络。": "In an era of uncertainty, we give enterprises a predictable, manageable, and sustainable global supply chain network.",
+    "查看平台能力 →": "Explore Platform →",
+
+    /* 杂项标签 */
+    "供应商数据库": "Supplier Database",
+    "AI匹配引擎": "AI Matching Engine",
+    "制裁筛查": "Sanctions Screening",
+    "尽调报告": "Due Diligence Report",
+    "韧性建设": "Resilience Building",
+    "实时预警": "Real-Time Alerts",
+    "预案推送": "Plan Push",
+    "动态监控": "Dynamic Monitoring",
+    "双边网络": "Two-Sided Network",
+    "50万+": "500K+",
+    "200+ 港口": "200+ Ports",
+    "海陆空铁": "Sea, Land, Air, Rail",
+    "秒级通知": "Instant Notification",
+    "高/中/低": "High / Medium / Low",
+    "提前预案": "Advance Planning",
+
+    /* ========== 解决方案页 solutions ========== */
+    /* Hero */
+    "供需双方": "Supply Meets Demand",
+    "AI驱动": "AI-Driven",
+    "一个平台，供需两边都受益": "One Platform, Both Sides Win",
+    "全球寻源": "Global Sourcing",
+    "多源备份": "Multi-Source Backup",
+    "实时风控": "Real-Time Risk Control",
+    "绩效监控": "Performance Monitoring",
+
+    /* 六大场景 */
+    "SIX SCENARIOS · 六大场景": "SIX SCENARIOS",
+    "供需双方的": "Six Critical Nodes of ",
+    "六个关键节点": "Supply-Demand Management",
+    "每个节点对应一个真实业务场景，AI在背后提供分析和建议，让每一步都有据可依。": "Each node maps to a real business scenario, with AI providing analysis and recommendations behind every decision.",
+
+    /* 场景1：全球寻源 */
+    "不是没有选择，是需要更有效的方式做筛选": "It's Not a Lack of Options — It's the Need for a Smarter Way to Filter",
+    "全球供应商数量庞大，但信息分散、标准不一。平台聚合多源数据，根据你的采购需求自动匹配候选人，从产能规模、资质认证、出口经验、交付记录等维度综合评估，让筛选过程从\"翻黄页\"变成\"看报告\"。": "The global supplier landscape is vast but fragmented with inconsistent standards. The platform aggregates multi-source data, auto-matches candidates to your procurement needs, and evaluates across capacity, certifications, export experience, and delivery history — turning search from flipping a phonebook into reading a report.",
+    "采购需求语义解析，自动提取关键规格与约束条件": "Semantic parsing of procurement needs — auto-extracts key specs and constraints",
+    "多维度交叉评估，而非单一价格排序": "Multi-dimensional cross-evaluation, not just price ranking",
+    "每项推荐均附评分明细，了解推荐背后的逻辑": "Every recommendation comes with detailed scoring — understand the logic behind each match",
+    "全球供应商库": "Global Supplier Database",
+    "多维评估": "Multi-Dimensional Evaluation",
+
+    /* 场景2：供应商尽调 */
+    "合作前的了解越充分，合作后的意外越少": "The Better You Know Them Beforehand, the Fewer Surprises After",
+    "跨境合作的复杂性在于信息不对称——对方的资质、关联方、合规记录并不透明。平台引入验厂认证、制裁名单自动比对、多层股权穿透等工具，将原本数天的尽调工作压缩到几分钟，帮助双方在信息对等的基础上建立合作。": "Cross-border complexity lies in information asymmetry — qualifications, affiliates, and compliance records are opaque. The platform brings factory audit certifications, auto sanctions screening, multi-layer ownership tracing, and more, compressing days of due diligence into minutes for informed, balanced partnerships.",
+    "实地或远程验厂，核查产能、设备与劳工条件": "On-site or remote factory audits — verify capacity, equipment, and labor conditions",
+    "对接国际制裁名单，自动标记潜在合规风险": "Connected to international sanctions lists — auto-flags potential compliance risks",
+    "股权结构追溯，了解谁在背后运营这家企业": "Ownership tracing — know who really runs the business",
+    "股权穿透": "Ownership Tracing",
+
+    /* 场景3：多源备份 */
+    "多源备份": "Multi-Source Backup",
+    "为关键品类多留一条路，是成本也是保障": "Having a Backup for Critical Categories Costs Less Than Not Having One",
+    "外部环境变化时，单一供应来源的脆弱性会被放大。平台分析你的供应商集中度，识别哪些品类过度依赖个别来源，并基于同品类、同资质、不同区域的原则推荐替代选项。同时支持断链情景推演，帮助你提前评估影响范围、准备应对方案。": "When external conditions shift, single-source fragility is amplified. The platform analyzes your supplier concentration, identifies over-reliant categories, and recommends alternatives by matching category, qualification, and region. Disruption scenario simulation helps you assess impact and prepare response plans in advance.",
+    "供应集中度分析，定位采购结构中的薄弱环节": "Supplier concentration analysis — pinpoint weak links in your procurement structure",
+    "跨区域替代推荐，平衡成本与风险": "Cross-region alternative recommendations — balancing cost and risk",
+    "断链情景模拟，预判影响并提前规划备用路径": "Disruption scenario simulation — pre-assess impact and plan backup routes",
+    "供应韧性": "Supply Resilience",
+
+    /* 场景4：实时风控 */
+    "让外部变化在影响你之前，先被系统捕捉到": "Let the System Catch External Changes Before They Catch You",
+    "关税调整、航线中断、地区局势变化——这些事件不会提前通知你。平台接入全球信息源持续扫描与供应链相关的变化，按影响程度分级标记，并将预警与你的供应商网络关联起来：哪些订单可能受影响、有哪些替代方案，一目了然。": "Tariff adjustments, lane disruptions, regional instability — these events won't give you advance notice. The platform continuously scans global sources for supply-chain-relevant changes, grades impact levels, and links alerts to your supplier network — showing exactly which orders are affected and what alternatives exist.",
+    "覆盖关税政策、制裁更新、气象灾害、地缘动态": "Covers tariff policy, sanctions updates, weather events, and geopolitical dynamics",
+    "三级影响评估，不同等级触发不同响应流程": "Three-level impact assessment — different levels trigger different response workflows",
+    "预警与订单链路关联，直接呈现受影响范围": "Alerts linked to your order chain — immediately see the scope of impact",
+    "影响分析": "Impact Analysis",
+
+    /* 场景5：绩效监控 */
+    "合作关系需要持续关注，而不是一年评估一次": "Partnerships Need Ongoing Attention, Not an Annual Review",
+    "供应商的表现不是静态的——产能会波动、交期会漂移、质量会起伏。平台为每家供应商建立动态绩效档案，跟踪交付准时率、质量一致性、响应速度、价格稳定性等维度，发现趋势性变化时主动提示，让管理动作跑在问题前面。": "Supplier performance isn't static — capacity fluctuates, lead times drift, quality varies. The platform builds dynamic performance profiles for every supplier, tracking on-time delivery, quality consistency, responsiveness, and price stability, with proactive alerts when trends shift — keeping management ahead of problems.",
+    "四维动态画像：交付 · 质量 · 响应 · 价格": "Four-dimensional dynamic profile: Delivery · Quality · Response · Price",
+    "趋势监测替代节点抽查，捕捉渐进式变化": "Trend monitoring instead of spot checks — catches gradual shifts",
+    "异常指标自动关联改善建议，推动持续优化": "Anomaly metrics auto-linked to improvement suggestions for continuous optimization",
+    "持续评估": "Continuous Evaluation",
+
+    /* 场景6：供需网络 */
+    "供需网络": "Supply-Demand Network",
+    "让供需双方在同一个平台上彼此发现": "Let Supply and Demand Discover Each Other on One Platform",
+    "供应商在平台上展示资质与产能，采购商发布需求后由系统自动匹配。匹配过程透明——不仅推荐\"谁合适\"，也展示\"为什么合适\"。随着交易数据的积累，平台的匹配精度持续提升，双方在合作前就能看到对方的信用记录与过往评价。": "Suppliers showcase qualifications and capacity; buyers post needs and the system auto-matches. The matching is transparent — not just recommending who fits, but showing why. As transaction data accumulates, matching precision continuously improves, and both sides can see credit history and past reviews before committing.",
+    "供应商在平台沉淀资质、产能与履约记录": "Suppliers build a track record of qualifications, capacity, and fulfillment",
+    "采购需求发布后自动匹配，推荐附带评估依据": "Auto-matched to procurement needs once posted, with evaluation rationale",
+    "信用体系随交易积累，降低首次合作的信任成本": "Credit system builds with every transaction — lowering trust costs for first-time collaboration",
+
+    /* 我们的观点 */
+    "关于供需关系，": "About Supply-Demand Relationships, ",
+    "我们有四个基本判断": "We Have Four Core Beliefs",
+    "这些判断来自跨境供应链的一线实践，未必每条都符合直觉。": "These beliefs come from front-line cross-border supply chain practice — not all of them follow conventional wisdom.",
+    "过度集中是隐形成本": "Over-Concentration Is a Hidden Cost",
+    "把鸡蛋放在一个篮子里，议价权也在那个篮子里。为核心品类培育备选来源，不是为了明天就换，而是让供应商知道——你有选择。": "Putting all your eggs in one basket puts the bargaining power there too. Cultivating backup sources for critical categories isn't about switching tomorrow — it's about letting suppliers know you have options.",
+    "准入不是终点，是起点": "Onboarding Is a Starting Point, Not the Finish Line",
+    "供应商的状况在持续变化——去年通过验厂的，今年未必。制裁名单每月更新，实控人可能已经变更。定期复查不是成本，是风险在累积之前被看见的前提。": "Supplier conditions change continuously — last year's factory audit pass means nothing this year. Sanctions lists update monthly; beneficial owners may have changed. Periodic review isn't a cost — it's the prerequisite for catching risk before it accumulates.",
+    "压价是最贵的降本方式": "Price-Squeezing Is the Most Expensive Way to Cut Costs",
+    "一味压价换来的低成本很难持久——供应商会在你看不见的地方找回来。真正的降本来自稳定关系带来的信息透明、需求协同和风险共担。": "Low costs squeezed from suppliers rarely last — they'll recoup where you can't see. Real cost savings come from the transparency, demand coordination, and risk-sharing that stable relationships bring.",
+    "时间积累的，后来者追不上": "What Time Builds, Latecomers Can't Catch",
+    "每笔交易、每次履约、每条风险预警都在训练平台对你的供应链的理解。采购偏好、品类网络、风控模型——这些不是靠资本或技术能一夜搭建的，只有时间能沉淀。": "Every transaction, every fulfillment, every risk alert trains the platform's understanding of your supply chain. Procurement preferences, category networks, risk models — these can't be built overnight with capital or technology. Only time can deposit them.",
+
+    /* 目标成效 */
+    "TARGET OUTCOMES · 目标成效": "TARGET OUTCOMES",
+    "典型场景下的改善方向": "Target Improvements in Typical Scenarios",
+    "以下为基于平台能力的目标改善示意，用于了解各场景可能的提升方向。": "Illustrative target improvements based on platform capabilities, to help you understand the potential uplift in each scenario.",
+    "供需匹配精准度": "Supply-Demand Match Accuracy",
+    "用多维评估模型替代人工筛选，推荐准确率随使用持续提升。": "Multi-dimensional evaluation replaces manual screening — accuracy continuously improves with usage.",
+    "场景 · 全球寻源": "Scenario · Global Sourcing",
+    "尽调报告生成时间": "Due Diligence Report Time",
+    "制裁筛查、股权穿透、诉讼排查一键完成，效率大幅提升。": "Sanctions screening, ownership tracing, and litigation checks in one click — massive efficiency gain.",
+    "场景 · 供应商尽调": "Scenario · Supplier Due Diligence",
+    "断供风险预警响应": "Supply Disruption Alert Response",
+    "全球信息源持续扫描，高风险事件快速推送并关联受影响订单。": "Continuous global scanning — high-risk events pushed rapidly and linked to affected orders.",
+    "场景 · 实时风控": "Scenario · Real-Time Risk",
+    "供应商绩效可视化率": "Performance Visibility Rate",
+    "从分散记录到统一画像，所有供应商状态在一个视图中呈现。": "From scattered records to unified profiles — all supplier status presented in one view.",
+    "场景 · 绩效监控": "Scenario · Performance Monitoring",
+
+    /* CTA */
+    "看看这些场景": "See the Platform Capabilities ",
+    "背后的平台能力": "Behind These Scenarios",
+    "每个场景背后，都有对应的平台能力和AI引擎在支撑。": "Behind each scenario are the corresponding platform capabilities and AI engine powering them.",
+    "了解行业痛点 →": "Explore Pain Points →",
+
+    /* 时间/量词单位 */
+    "分钟": "min",
+    "天": "days",
+    "小时": "hours",
+    "秒": "s",
+    "家": "",
+    "＜3分钟": "< 3 min",
+    "＜5分钟": "< 5 min",
+    "3–5天 → ＜3分钟": "3–5 days → < 3 min",
+    "＜3 分钟": "< 3 min",
+    "＜5 分钟": "< 5 min",
+    "3–5 天": "3–5 days",
+
+    /* ========== 痛点与方案 pain-points ========== */
+    /* Hero */
+    "全球生意": "Global Business, ",
+    "八道坎": "Eight Hurdles",
+    "买卖双方，各有各的痛": "Both Sides Have Their Pain",
+    "寻源": "Sourcing",
+    "尽调": "Due Diligence",
+    "备份": "Backup",
+    "风控": "Risk Control",
+
+    /* 速览卡片 */
+    "SOUND FAMILIAR? · 你是否也遇到": "SOUND FAMILIAR?",
+    "这些困扰，每天都在发生": "These Struggles Happen Every Day",
+    "四个最常见的供应链痛点，完整拆解见下方。": "Four of the most common supply chain pain points — the full eight are broken down below.",
+    "供需错配": "Supply-Demand Gap",
+    "有好供应商缺订单，有好渠道缺货源——双方互相找不到。": "Great suppliers lack orders, great channels lack supply — the two sides simply can't find each other.",
+    "单点依赖": "Single-Point Dependency",
+    "核心供应商只有一个，一出问题整条链跟着停。": "One core supplier — when they go down, your entire chain stops.",
+    "合规盲区": "Compliance Blind Spots",
+    "供应商触碰了制裁红线，你可能是最后一个知道的。": "When a supplier crosses a sanctions red line, you might be the last to know.",
+    "经验决策": "Gut-Feel Decisions",
+    "选谁、给多少单、何时该换——全靠采购负责人的直觉。": "Who to pick, how much to order, when to switch — all riding on one buyer's intuition.",
+
+    /* 八大痛点区 */
+    "8 PAIN POINTS · 八大痛点": "8 PAIN POINTS",
+    "买卖双方的": "Eight Hurdles for ",
+    "供应商有供应商的难，采购商有采购商的痛——平台要解决的是两边的问题。": "Suppliers have their struggles, buyers have their pains — the platform solves problems on both sides.",
+
+    /* 痛点1 */
+    "供需双方互相找不到": "Supply and Demand Can't Find Each Other",
+    "产业带有产能缺渠道，海外买家有需求找不到可靠供应商。靠展会、电邮、中间人撮合，效率低、信息失真，每多一层中间商成本就叠一层。": "Industrial clusters have capacity but no channels; overseas buyers have demand but can't find reliable suppliers. Trade shows, emails, and middlemen are slow and distort information — each intermediary layer adds cost.",
+    "解决路径": "Solution Path",
+    "聚合全球供应商与采购需求，AI 双向匹配并附评分依据": "Aggregate global suppliers and procurement demand — AI two-way matching with scoring rationale",
+    "供应商在平台沉淀资质与履约记录，采购商可在线查阅": "Suppliers build credential and fulfillment track records on the platform; buyers can review them online",
+    "匹配过程透明——不仅推荐\"谁合适\"，也展示\"为什么合适\"": "Transparent matching — not just recommending who fits, but showing why",
+
+    /* 痛点2 */
+    "核心供应商只有一个，抗风险能力弱": "One Core Supplier, Fragile Risk Resistance",
+    "关键品类高度依赖单一来源——工厂出问题、地区局势变化、政策突然转向，任何一个都可能导致断供。而你手里的备选方案，可能为零。": "Critical categories heavily dependent on a single source — factory issues, regional shifts, policy pivots — any one of them can cut supply. And your backup plan may not exist.",
+    "识别采购集中度风险，定位哪些品类过度依赖单一来源": "Identify procurement concentration risk — pinpoint which categories over-rely on single sources",
+    "推荐同品类、同资质、不同区域的替代供应商": "Recommend alternative suppliers with same category, same qualifications, different regions",
+    "断链情景推演，提前预判影响范围并准备应对方案": "Disruption scenario simulation — pre-assess impact scope and prepare response plans",
+
+    /* 痛点3 */
+    "供应商背景不透明，合作如同开盲盒": "Opaque Supplier Backgrounds — Partnering Like Opening a Mystery Box",
+    "制裁名单、股权结构、诉讼纠纷、实控人信息——这些在国际合作中至关重要，却分散在不同系统中，手工排查耗时且极易遗漏。": "Sanctions lists, ownership structures, litigation records, beneficial owner info — all critical for international partnerships, yet scattered across systems; manual checks are slow and error-prone.",
+    "对接国际制裁名单自动比对，实时标记合规风险": "Auto-check against international sanctions lists — flag compliance risks in real time",
+    "多层股权穿透追溯实控人，了解谁在背后运营": "Multi-layer ownership tracing — know who really runs the business",
+    "验厂认证 + 诉讼排查 + 失信记录，一键生成尽调报告": "Factory audit + litigation check + dishonesty records — one-click due diligence report",
+
+    /* 痛点4 */
+    "供应商合规状况在变，而你的信息停在去年": "Supplier Compliance Is Changing — Your Information Is Stuck in Last Year",
+    "制裁名单每月更新，供应商的财务状况可能在恶化，实控人结构可能已经变更。一次性的入驻审查，管不了持续变化的现实。": "Sanctions lists update monthly; a supplier's financials may be deteriorating; beneficial ownership may have changed. One-time onboarding checks can't keep up with a constantly shifting reality.",
+    "建立持续监控机制，合规与财务变化自动追踪": "Build continuous monitoring — auto-track compliance and financial changes",
+    "关键指标异常时主动预警，不等问题暴露再响应": "Proactive alerts on key metric anomalies — respond before the problem surfaces",
+    "定期复查自动提醒，让风险管理嵌入日常流程": "Auto-reminders for periodic reviews — embed risk management into daily workflows",
+
+    /* 痛点5 — 供应商视角 */
+    "有产能有资质，但找不到优质采购商": "Capacity and Credentials, but No Quality Buyers in Sight",
+    "工厂设备齐全、产能充裕、认证齐全，但海外订单就是进不来。靠展会获客成本高、靠中间商利润被抽走、靠老客户增长有限。产能闲置就是在烧钱。": "Factory is well-equipped with ample capacity and full certifications, but overseas orders just won't come. Trade shows are expensive, middlemen take your margin, and existing clients offer limited growth. Idle capacity is burning money.",
+    "在平台沉淀资质、产能与履约记录，采购商可在线验证": "Build credential, capacity, and fulfillment records on the platform — verified by buyers online",
+    "AI 主动推送匹配的采购需求，而非被动等客户上门": "AI proactively pushes matching procurement needs — no more waiting for customers to find you",
+    "交易越多、评价越高，在平台上的信用排名越靠前": "The more you trade, the higher you rank — credit ranking improves with every transaction",
+
+    /* 痛点6 */
+    "供应商表现缺乏持续跟踪": "Supplier Performance Lacks Continuous Tracking",
+    "对供应商的评估往往停留在\"年度打分\"——中间的质量波动、交期漂移、响应变慢不知不觉，等到发现时损失已经造成。散落在邮件和 Excel 里的记录，拼不出完整画像。": "Supplier evaluation often stops at annual scoring — quality swings, lead-time drift, and slowing response go unnoticed in between. By the time you spot the problem, the damage is done. Scattered email and Excel records can't form a complete picture.",
+    "为每家供应商建立动态绩效档案，交付/质量/响应/价格四维跟踪": "Build dynamic performance profiles for every supplier — four-dimensional tracking of delivery, quality, response, and price",
+    "趋势监测替代节点抽查，捕捉渐进式变化而非事后补救": "Trend monitoring replaces spot checks — catching gradual changes before they need fixing",
+    "异常指标自动关联改善建议，推动持续优化": "Anomaly metrics auto-linked to improvement suggestions for continuous optimization",
+
+    /* 痛点7 — 供应商视角 */
+    "资质齐全，但采购商看不到、也验不了": "Fully Qualified, but Buyers Can't See or Verify It",
+    "工厂通过了ISO、拿到了行业认证、有稳定的出口记录——但这些信息散落在证书扫描件和邮件往来里。采购商无法快速验证，只能靠\"感觉\"判断，优质供应商反而被淹没在同质化竞争中。": "The factory has ISO, industry certifications, and a solid export track record — but this information is scattered across scanned certificates and email threads. Buyers can't quickly verify, so they rely on gut feeling. Quality suppliers get drowned in a sea of look-alikes.",
+    "认证、验厂报告、出口记录在线可查，采购商自助验证": "Certifications, audit reports, and export records available online — buyers self-verify",
+    "平台信用体系为优质供应商背书，降低双方信任成本": "Platform credit system endorses quality suppliers — lowering trust costs for both sides",
+    "数字化的资质档案比一叠纸质证书更有说服力": "A digital credential profile is more persuasive than a stack of paper certificates",
+
+    /* 痛点8 — 双边 */
+    "买卖双方都靠直觉做判断，而不是靠数据": "Both Sides Rely on Gut Feeling, Not Data",
+    "采购商选供应商拍脑袋，供应商评估客户信用也凭感觉。双方都在猜——猜对方是否靠谱、猜价格是否合理、猜这次合作会不会出问题。一次不好的经历，就要用很长时间重建信任。": "Buyers pick suppliers on instinct; suppliers evaluate buyer credit on feeling. Both sides are guessing — is the other reliable? Is the price fair? Will this deal go wrong? One bad experience takes a long time to rebuild trust.",
+    "采购商侧：AI 基于历史数据量化评估供应商，决策有据可依": "Buyer side: AI quantifies supplier evaluation based on historical data — decisions backed by evidence",
+    "供应商侧：平台呈现采购商信用与交易记录，接单前心中有数": "Supplier side: platform displays buyer credit and transaction history — know before you commit",
+    "双方的知识都沉淀在平台，不随人员变动而流失": "Both sides' knowledge is deposited in the platform — it doesn't walk out the door when people do",
+
+    /* 大脑闭环 */
+    "HOW WE SOLVE THEM": "HOW WE SOLVE THEM",
+    "八个痛点，": "Eight Pain Points, ",
+    "同一个解决逻辑": "One Solution Logic",
+    "不是八个独立的功能模块，而是同一套AI体系在不同场景下的运转。": "Not eight independent feature modules — the same AI system operating across different scenarios.",
+    "感知": "Sense",
+    "接入全球数据源，实时追踪供应商动态、政策变化与履约信号。": "Connected to global data sources, tracking supplier dynamics, policy changes, and fulfillment signals in real time.",
+    "分析": "Analyze",
+    "多维度计算：供应商评分、风险概率、集中度与断链影响范围。": "Multi-dimensional computation: supplier scoring, risk probability, concentration analysis, and disruption impact assessment.",
+    "决策": "Decide",
+    "选谁合作、备谁应急、预警谁、换掉谁——量化建议，一目了然。": "Who to partner with, who to keep as backup, who to flag, who to replace — quantified recommendations at a glance.",
+    "沉淀": "Learn",
+    "每次决策结果回馈模型，供应商关系越管越聪明，后来者追不上。": "Every decision result feeds back into the model — supplier relationships grow smarter with every interaction, creating a moat no latecomer can cross.",
+    "感知 → 分析 → 决策 → 沉淀 → 感知，每一次循环都在让模型更懂你的供应链": "Sense → Analyze → Decide → Learn → Sense — every cycle makes the model understand your supply chain better.",
+
+    /* ========== 为什么选我们 why-us ========== */
+    /* Hero */
+    "双边匹配": "Two-Way Matching",
+    "找得到、查得清、盯得住": "Find, Verify, Monitor — AI Does All Three",
+    "AI匹配": "AI Matching",
+    "自动尽调": "Auto Due Diligence",
+    "断链预警": "Disruption Alerts",
+
+    /* 对比表 */
+    "传统模式": "Traditional Model",
+    "AI 双边匹配": "AI Two-Way Matching",
+    "供需匹配": "Supply-Demand Match",
+    "展会、人脉、中间商，双方互相找不到": "Trade shows, connections, middlemen — both sides miss each other",
+    "AI双向推荐，供需双方在同一个池子里互找": "AI two-way recommendation — both sides find each other in one pool",
+    "供应商寻源": "Supplier Sourcing",
+    "双方被动等，谁也找不到谁": "Both sides passively waiting — no one finds anyone",
+    "AI 全球匹配，秒级推荐 + 评分依据": "AI global matching — instant recommendations with scoring",
+    "手工翻查多个系统，3-5天": "Manual checks across multiple systems, 3-5 days",
+    "自动筛查比对，＜3分钟出报告": "Auto screening and comparison — report in < 3 min",
+    "事后发现，损失已造成": "Discovered after the fact — damage already done",
+    "实时监控，事前推送": "Real-time monitoring, proactive alerts",
+    "入驻审一次，后续无人盯": "One-time onboarding check, then nobody watches",
+    "持续追踪，变化即时知晓": "Continuous tracking — changes known instantly",
+    "年度打分，中间靠感觉": "Annual scoring — gut feeling in between",
+    "动态画像，异常主动提示": "Dynamic profiles, proactive anomaly alerts",
+    "凭经验，拍脑袋": "Gut instinct, guesswork",
+    "AI量化建议，人做最终确认": "AI-quantified recommendations, human makes the final call",
+
+    /* 平台成效 */
+    "📊 平台目标成效": "📊 Platform Target Outcomes",
+    "85%→95%": "85%→95%",
+    "供应商匹配精准度": "Supplier Match Accuracy",
+    "＜3 分钟": "< 3 min",
+    "尽调报告生成": "Due Diligence Report",
+    "＜5 分钟": "< 5 min",
+    "断供风险预警": "Supply Disruption Alert",
+    "50万+": "500K+",
+    "双边供需池": "Two-Sided Supply-Demand Pool",
+    "* 以上为基于平台能力的目标测算，实际效果因企业与品类而异。": "* Estimates based on platform capability targets; actual results vary by business and category.",
+
+    /* 四个决策场景 */
+    "HOW IT WORKS": "HOW IT WORKS",
+    "采购商和供应商，": "For Buyers and Suppliers, ",
+    "AI 各帮一边": "AI Helps Each Side",
+    "同一套 AI 引擎，采购商用左边的能力，供应商用右边的——两边都在一个平台上。": "One AI engine — buyers use the left side, suppliers use the right — both on the same platform.",
+
+    /* 场景1 */
+    "MATCH · 匹配": "MATCH · Match",
+    "你需要供应商，不是搜索结果的堆砌": "You Need a Supplier, Not a Pile of Search Results",
+    "说出需求——品类、规格、交期——AI从全球供应商池筛选排序，每条推荐附评分依据。": "State your needs — category, specs, deadline — AI filters and ranks from the global supplier pool, with scoring rationale on every recommendation.",
+    "我需要一款能月供 5000 件的不锈钢阀门，出口到德国，要有 CE 认证。": "I need stainless steel valves, 5,000/month, for export to Germany, CE certified.",
+    "在全球供应商库中找到 <b>7 家</b> 匹配，综合产能、资质、出口经验与交付记录评分，推荐 Top 3：<br>🥇 浙江 X 阀门（CE 认证 · 月产能 8000 件 · 出口德国 3 年 · 准时率 97%）<br>🥈 江苏 Y 阀门（CE+API 双认证 · 月产能 12000 件 · 首次合作评估中）<br>🥉 温州 Z 阀门（CE 认证 · 月产能 6000 件 · 价格最优）<br>需要我生成这三家的对比尽调报告吗？": "Found <b>7</b> matches in the global supplier database. Scored across capacity, certifications, export experience, and delivery history. Top 3:<br>🥇 Zhejiang X Valve (CE · 8K/mo capacity · 3yr export to Germany · 97% on-time)<br>🥈 Jiangsu Y Valve (CE+API · 12K/mo capacity · under evaluation)<br>🥉 Wenzhou Z Valve (CE · 6K/mo capacity · best price)<br>Shall I generate comparative due diligence reports for these three?",
+
+    /* 场景2 */
+    "DISCOVER · 获客": "DISCOVER · Find Customers",
+    "供应商端：AI 主动帮你找客户": "Supplier Side: AI Proactively Finds You Customers",
+    "供应商沉淀资质与产能后，AI反向匹配合适的采购需求，主动推送商机，不让产能白白闲置。": "Once suppliers build credentials and capacity profiles, AI reverse-matches procurement needs and proactively pushes opportunities — no idle capacity left behind.",
+    "📬 <b>本周匹配到 3 条适配采购需求</b>，已按匹配度排序：<br><br>🥇 德国某工业品牌 — 不锈钢阀门 5000 件/月 · CE 认证 · 目标价 €12–15<br>（匹配度 94%：你的产能、认证、出口经验完全对口）<br><br>🥈 荷兰某经销商 — 黄铜阀门 2000 件/月 · 无认证要求<br>（匹配度 82%：品类对口，建议提供 CE 认证增加竞争力）<br><br>需要我帮你准备这两家的报价方案吗？": "📬 <b>3 matching procurement needs found this week</b>, sorted by match score:<br><br>🥇 German industrial brand — SS valves 5K/mo · CE required · target €12–15<br>(Match 94%: your capacity, certs, and export experience align perfectly)<br><br>🥈 Dutch distributor — brass valves 2K/mo · no cert requirement<br>(Match 82%: category match; suggest offering CE cert for competitive edge)<br><br>Shall I prepare quotation packages for both?",
+    "给第一家准备报价，附上我们的CE证书和验厂报告。": "Prepare a quote for the first one, include our CE cert and factory audit report.",
+
+    /* 场景3 */
+    "ALERT · 预警": "ALERT · Alert",
+    "出事之前，系统已经帮你找好退路": "Before Trouble Hits, the System Has Your Exit Ready",
+    "全球信息源持续扫描，将外部事件关联到你的供应商网络，标出受影响范围，推送替代方案。": "Continuous global scanning links external events to your supplier network, marks the impact scope, and pushes alternatives.",
+    "<b>⚠️ 预警：供应商 Y 所在区域发生洪灾</b>，工厂已停工，预计影响交期 3–6 周。<br>受影响 PO：PO-8892（2000 件阀门，原定 6/20 交货）<br><br>📋 建议方案：切换至备选供应商 X（同品类 · CE 认证 · 浙江 · 交期不变 · 成本 +8%）<br>📋 备选方案：等待恢复 + 部分空运补货（成本 +15%，缩短 10 天）<br>🟢 推荐切换至 X。要我执行切换吗？": "<b>⚠️ Alert: Flooding in Supplier Y's region</b> — factory halted, estimated 3–6 week delay.<br>Affected PO: PO-8892 (2,000 valves, originally due 6/20)<br><br>📋 Recommended: switch to backup Supplier X (same category · CE · Zhejiang · same lead time · +8% cost)<br>📋 Alternative: wait + partial air freight (+15% cost, saves 10 days)<br>🟢 Recommend switching to X. Execute the switch?",
+    "执行切换，通知双方。": "Execute the switch, notify both parties.",
+
+    /* 场景4 */
+    "MONITOR · 持续": "MONITOR · Monitor",
+    "供应商不是审一次就完了": "A Supplier Isn't Vetted Once and Forgotten",
+    "交付、质量、响应、价格四维动态追踪，趋势变化主动提示，不等年度评估才发现。": "Four-dimensional dynamic tracking — delivery, quality, response, price — with proactive trend alerts, so you're not waiting for the annual review to spot problems.",
+    "📊 <b>供应商 Y 绩效趋势提醒</b>（近 6 个月）：<br>交付准时率：97% → 94% → <b>89% ⚠️</b><br>质量合格率：99% → 98% → 97%（正常波动）<br>响应速度：24h → 28h → <b>36h ⚠️</b><br><br>📋 交付与响应两项指标呈下滑趋势，建议安排一次履约回顾会议。需要我整理一份详细的绩效报告并发送给供应商吗？": "📊 <b>Supplier Y Performance Trend Alert</b> (last 6 months):<br>On-Time Delivery: 97% → 94% → <b>89% ⚠️</b><br>Quality Rate: 99% → 98% → 97% (normal variance)<br>Response Time: 24h → 28h → <b>36h ⚠️</b><br><br>📋 Delivery and response metrics show a declining trend — recommend scheduling a performance review. Shall I prepare a detailed report and send it to the supplier?",
+    "整理报告，安排下周回顾。": "Prepare the report, schedule a review for next week.",
+
+    /* 六大优势 */
+    "OUR DIFFERENCE": "OUR DIFFERENCE",
+    "不是功能更多，": "Not More Features — ",
+    "是思路不同": "A Different Approach",
+    "传统软件帮你记录，我们帮你匹配和判断。区别在底层逻辑，不在功能清单。": "Traditional software records for you; we match and decide for you. The difference is in the underlying logic, not the feature list.",
+    "实时情报层": "Real-Time Intelligence Layer",
+    "Global Intelligence": "Global Intelligence",
+    "不是事后看新闻，而是政策、制裁、关税、地区事件实时关联到你的供应商网络，在受影响之前做出反应。": "Not reading news after the fact — policy, sanctions, tariffs, and regional events are linked to your supplier network in real time, so you react before being impacted.",
+    "统一数据底座": "Unified Data Foundation",
+    "Unified Data Foundation": "Unified Data Foundation",
+    "采购、合同、尽调、绩效、风控统一关联，供应商全貌一个视图呈现。": "Procurement, contracts, due diligence, performance, risk control — all linked; a complete supplier view in one screen.",
+    "可量化可验证": "Quantifiable & Verifiable",
+    "Measurable Outcomes": "Measurable Outcomes",
+    "每个目标都有明确数字。先从一个场景切入验证，见效再扩展。": "Every target has a clear number. Start with one scenario to validate, then scale once you see results.",
+    "AI 贯穿每个决策节点": "AI at Every Decision Point",
+    "寻源、尽调、预警、监控——AI长在每个决策节点上，不是独立的功能模块。": "Sourcing, due diligence, alerts, monitoring — AI lives at every decision point, not as a standalone feature module.",
+    "弹性供应网络": "Resilient Supply Network",
+    "Resilient Network": "Resilient Network",
+    "关键品类备好多源选择，断链情景提前推演，出问题数小时内切换备选。": "Multi-source options ready for critical categories, disruption scenarios simulated in advance, switch to backup within hours.",
+    "模块化快速落地": "Modular Rapid Deployment",
+    "Rapid Deployment": "Rapid Deployment",
+    "从一个场景切入，数周见效再扩展，不需要一次性全部上线。": "Start with one scenario, see results in weeks, then expand — no need for a big-bang rollout.",
+
+    /* tl-card <b> 独立文本节点 */
+    "⚠️ 预警：供应商 Y 所在区域发生洪灾": "⚠️ Alert: Flooding in Supplier Y's Region",
+    "89% ⚠️": "89% ⚠️",
+    "36h ⚠️": "36h ⚠️",
+    "7 家": "7",
+    "供应商 Y 绩效趋势提醒": "Supplier Y Performance Trend Alert",
+    "本周匹配到 3 条适配采购需求": "3 Matching Procurement Needs Found This Week",
+
+    /* tl-card 气泡碎片 — <b> 和 <br> 拆出的独立文字节点 */
+    "在全球供应商库中找到 ": "Found ",
+    " 匹配，综合产能、资质、出口经验与交付记录评分，推荐 Top 3：": " matching suppliers in the global database. Scored on capacity, certifications, export experience, and delivery history. Top 3:",
+    "🥇 浙江 X 阀门（CE 认证 · 月产能 8000 件 · 出口德国 3 年 · 准时率 97%）": "🥇 Zhejiang X Valve (CE · 8K/mo · 3yr Germany export · 97% on-time)",
+    "🥈 江苏 Y 阀门（CE+API 双认证 · 月产能 12000 件 · 首次合作评估中）": "🥈 Jiangsu Y Valve (CE+API · 12K/mo · under initial evaluation)",
+    "🥉 温州 Z 阀门（CE 认证 · 月产能 6000 件 · 价格最优）": "🥉 Wenzhou Z Valve (CE · 6K/mo · best price)",
+    "需要我生成这三家的对比尽调报告吗？": "Shall I generate comparative due diligence reports for all three?",
+    "📬 ": "📬 ",
+    "，已按匹配度排序：": ", sorted by match score:",
+    "🥇 德国某工业品牌 — 不锈钢阀门 5000 件/月 · CE 认证 · 目标价 €12–15": "🥇 German Industrial Brand — SS valves 5K/mo · CE required · target €12–15",
+    "（匹配度 94%：你的产能、认证、出口经验完全对口）": " (Match 94%: your capacity, certs, and export experience align perfectly)",
+    "🥈 荷兰某经销商 — 黄铜阀门 2000 件/月 · 无认证要求": "🥈 Dutch Distributor — brass valves 2K/mo · no cert required",
+    "（匹配度 82%：品类对口，建议提供 CE 认证增加竞争力）": " (Match 82%: category match; suggest CE cert for competitive edge)",
+    "需要我帮你准备这两家的报价方案吗？": "Shall I prepare quotation packages for both?",
+    "，工厂已停工，预计影响交期 3–6 周。": " — factory halted, est. 3–6 week delay.",
+    "受影响 PO：PO-8892（2000 件阀门，原定 6/20 交货）": "Affected PO: PO-8892 (2,000 valves, due 6/20)",
+    "📋 建议方案：切换至备选供应商 X（同品类 · CE 认证 · 浙江 · 交期不变 · 成本 +8%）": "📋 Recommended: switch to backup Supplier X (same category · CE · Zhejiang · same lead time · +8% cost)",
+    "📋 备选方案：等待恢复 + 部分空运补货（成本 +15%，缩短 10 天）": "📋 Alternative: wait + partial air freight (+15% cost, saves 10 days)",
+    "🟢 推荐切换至 X。要我执行切换吗？": "🟢 Recommend switching to X. Execute the switch?",
+    "📊 ": "📊 ",
+    "（近 6 个月）：": " (last 6 months):",
+    "交付准时率：97% → 94% → ": "On-Time Delivery: 97% → 94% → ",
+    "质量合格率：99% → 98% → 97%（正常波动）": "Quality Rate: 99% → 98% → 97% (normal variance)",
+    "响应速度：24h → 28h → ": "Response Time: 24h → 28h → ",
+    "📋 交付与响应两项指标呈下滑趋势，建议安排一次履约回顾会议。需要我整理一份详细的绩效报告并发送给供应商吗？": "📋 Delivery and response metrics show a declining trend — recommend scheduling a performance review. Shall I prepare a detailed report?",
+    "，附上我们的CE证书和验厂报告。": ", include our CE cert and factory audit report.",
+
+    /* ---------- 首页：桥接段 ---------- */
+    "THE ANSWER · 我们的答案": "THE ANSWER · Our Answer",
+    "面对这些挑战，": "Facing These Challenges, ",
+    "我们换了一个思路": "We Took a Different Approach",
+    "不是头痛医头，而是用 AI 把": "Not patching symptoms — AI weaves ",
+    "寻源匹配 · 尽调审查 · 风险预警 · 持续监控": "Sourcing · Due Diligence · Risk Alerts · Continuous Monitoring",
+    "串成一条完整链路。": " into one complete chain.",
+
+    /* ---------- 首页：核心理念 ---------- */
+    "让全球供需，": "Global Supply-Demand, ",
+    "没有断链之忧": "Free From Disruption",
+    "赋能地方产业，对接全球采购需求": "Empowering Local Industry to Meet Global Demand",
+    "用 AI 把地方优势产能、特色原料与闲置资源精准匹配全球买家，让供应商被看见、让采购商找对人。": "AI matches local capacity, specialty materials, and idle resources with global buyers — making suppliers visible and helping buyers find the right partner.",
+    "让每笔决策都有数据支撑": "Every Decision, Grounded in Data",
+    "AI 实时监测全球政策、关税、地缘与供应商动态，量化评估替代拍脑袋，让企业在不确定中保持主动。": "AI monitors global policy, tariffs, geopolitics, and supplier dynamics in real time — quantified assessments replace gut instinct, keeping you proactive in uncertainty.",
+
+    /* ---------- 首页：AI赋能 ---------- */
+    "AI 不是口号，": "AI Isn't a Buzzword — ",
+    "是长在每一个决策节点上": "It Lives at Every Decision Point",
+    "AI 供需匹配": "AI Supply-Demand Matching",
+    "寻源 · 推荐 · 评分": "Search · Recommend · Score",
+    "采购商说需求、供应商晒产能，AI 双向匹配并附评分依据，让筛选从\"翻黄页\"变成\"看报告\"。": "Buyers state needs, suppliers show capacity — AI matches both ways with scoring, turning search from flipping a phonebook into reading a report.",
+    "AI 自动尽调": "AI Auto Due Diligence",
+    "筛查 · 穿透 · 报告": "Screen · Trace · Report",
+    "制裁名单比对、多层股权穿透、诉讼排查一键完成，数分钟出报告，替代数天手工翻查。": "Sanctions screening, multi-layer ownership tracing, litigation checks — one click, report in minutes, replacing days of manual work.",
+    "AI 持续风控": "AI Continuous Risk Control",
+    "监控 · 预警 · 备选": "Monitor · Alert · Backup",
+    "全球信息源24h扫描，供应商异常、政策突变自动关联到你的业务，预警的同时推送替代方案。": "24/7 global scanning — supplier anomalies and policy shifts auto-linked to your business, with alternatives pushed alongside every alert.",
+
+    /* ---------- 首页：风险地图 ---------- */
+    "影响你供应商的外部事件，一个屏幕看清": "Every External Event Affecting Your Suppliers, on One Screen",
+    "实时监测地缘冲突、政策变化、港口状态与极端天气，高危区域自动高亮，关联到你的供应商网络。": "Continuously monitors geopolitical conflict, policy shifts, port status, and extreme weather — high-risk zones auto-highlighted and linked to your supplier network.",
+
+    /* ---------- 首页：理念卡片标签 ---------- */
+    "双边匹配": "Two-Way Match",
+    "产能变现": "Capacity to Revenue",
+    "全球触达": "Global Reach",
+
+    /* ---------- 首页：危机卡片描述（已更新为匹配六卡，此处保留以备恢复） ---------- */
+    "赋能地方资源 · 连接全球市场": "Empowering Local Resources · Connecting Global Markets",
+    "降本增效": "Cost & Efficiency",
+    "AI 赋能": "AI Empowerment"
 
   };
 
