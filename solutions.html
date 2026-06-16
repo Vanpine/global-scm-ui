@@ -5,14 +5,135 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>解决方案 · 全球供应链大平台</title>
 <link rel="icon" type="image/png" href="assets/logo-icon.png">
-<meta name="description" content="Global SCM 按场景提供解决方案：跨境采购、海外仓运营、一件代发、分销供销网络，以及客户真实成效案例。">
+<meta name="description" content="Global SCM 供需双边场景方案：全球寻源、供应商尽调、多源备份、实时风控、绩效监控、供需网络——AI驱动供需匹配全链路。">
 <meta property="og:title" content="解决方案 · 全球供应链大平台">
-<meta property="og:description" content="按场景而生的供应链解决方案：跨境采购、海外仓运营、一件代发/直邮、分销供销网络，以及三种成长阶段的适配组合。">
+<meta property="og:description" content="六大场景覆盖供需双边全链路：全球寻源、供应商尽调、多源备份、实时风控、绩效监控、供需网络——AI驱动每一步。">
 <meta property="og:image" content="https://www.globalscm.com/assets/og-solutions.png">
 <meta property="og:url" content="https://www.globalscm.com/solutions.html">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Global SCM">
 <link rel="stylesheet" href="css/style.css">
+<style>
+/* ===== 方案页版心放宽 ===== */
+.solutions-section .container {
+  max-width: 1440px;
+}
+.solutions-featured {
+  margin: 0;
+  width: 100%;
+  gap: 120px;
+}
+
+/* ===== 交替图文卡片 — 放大增强 ===== */
+.solution-card-wide {
+  gap: 0;
+}
+.solution-card-wide .scw-img {
+  flex: 0 0 52%; min-height: 480px;
+  border-radius: 32px;
+  box-shadow: 0 12px 48px rgba(0,0,0,0.12);
+}
+.solution-card-wide .scw-img:hover img {
+  transform: scale(1.06);
+}
+.solution-card-wide .scw-body {
+  padding: 56px 64px;
+}
+.solution-card-wide .scw-body h3 {
+  font-size: 32px; margin-bottom: 28px; line-height: 1.3;
+}
+.solution-card-wide .scw-desc {
+  font-size: 16px; line-height: 2.0; margin-bottom: 36px; max-width: 520px;
+}
+.solution-card-wide .scw-body ul {
+  gap: 18px;
+}
+.solution-card-wide .scw-body li {
+  font-size: 15px; line-height: 1.8;
+}
+.solution-card-wide .scw-body .tags {
+  margin-top: 24px;
+}
+
+@media (max-width:1024px) {
+  .solutions-featured { gap: 64px; }
+  .solution-card-wide { gap: 0; flex-direction: column; }
+  .solution-card-wide:nth-child(even) { flex-direction: column; }
+  .solution-card-wide .scw-img { flex: 0 0 auto; min-height: 300px; border-radius: 24px; }
+  .solution-card-wide .scw-body { padding: 36px 32px; }
+  .solution-card-wide .scw-body h3 { font-size: 26px; }
+}
+@media (max-width:768px) {
+  .solutions-featured { gap: 48px; }
+  .solution-card-wide .scw-img { min-height: 240px; border-radius: 20px; }
+  .solution-card-wide .scw-body { padding: 28px 20px; }
+  .solution-card-wide .scw-body h3 { font-size: 22px; }
+  .solution-card-wide .scw-desc { font-size: 15px; }
+}
+
+/* ===== 方案页视觉增强 ===== */
+
+/* ---- 场景标签 (scw-tag) 覆盖 style.css ---- */
+.solution-card-wide .scw-tag {
+  display:inline-flex; align-items:center; gap:7px;
+  font-size:13px; font-weight:700; letter-spacing:0.06em;
+  padding:6px 16px; border-radius:999px;
+  margin-bottom:18px;
+  background:#F8FAFC; color:#64748B;
+  border:1px solid rgba(0,0,0,0.06);
+  transition:all 0.25s ease;
+}
+.solution-card-wide .scw-tag::before {
+  content:""; width:7px; height:7px; border-radius:50%;
+  flex:0 0 auto; opacity:0.8;
+}
+/* 六色变体 */
+.scw-tag-sourcing::before  { background:#2563EB; }
+.scw-tag-dd::before        { background:#C9973A; }
+.scw-tag-resilience::before{ background:#FF9500; }
+.scw-tag-risk::before      { background:#FF3B30; }
+.scw-tag-perf::before      { background:#5E5CE6; }
+.scw-tag-network::before   { background:#4F46E5; }
+
+/* ---- 能力标签 (cap-tag) ---- */
+.cap-tag {
+  display:inline-flex; align-items:center; gap:4px;
+  padding:6px 14px; border-radius:999px;
+  font-size:12px; font-weight:600;
+  letter-spacing:0.03em;
+  transition:all 0.2s ease;
+  cursor:default;
+}
+.cap-tag:hover { transform:translateY(-1px); }
+
+.cap-tag--blue   { background:#EFF6FF; color:#2563EB; border:1px solid rgba(37,99,235,0.15); }
+.cap-tag--gold   { background:#FFFBF0; color:#B8860B; border:1px solid rgba(196,154,72,0.18); }
+.cap-tag--orange { background:#FFFBF5; color:#C2410C; border:1px solid rgba(234,88,12,0.15); }
+.cap-tag--red    { background:#FFFBFB; color:#DC2626; border:1px solid rgba(220,38,38,0.12); }
+.cap-tag--purple { background:#FDFAFF; color:#6D28D9; border:1px solid rgba(109,40,217,0.12); }
+.cap-tag--ghost  { background:#F8FAFC; color:#64748B; border:1px solid rgba(0,0,0,0.06); }
+
+/* 标签组 */
+.scw-body .tags {
+  display:flex; flex-wrap:wrap; gap:10px; margin-top:16px;
+}
+
+/* 成效卡片数值色 */
+.outcome-blue   { color:#2563EB; }
+.outcome-gold   { color:#C9973A; }
+.outcome-red    { color:#FF3B30; }
+.outcome-purple { color:#5E5CE6; }
+
+/* 观点卡片图标底 */
+.persp-icon-amber { background:#FFF3E0; color:#FF9500; }
+.persp-icon-blue  { background:#EFF6FF; color:#2563EB; }
+.persp-icon-green { background:#ECFDF5; color:#10B981; }
+.persp-icon-purple{ background:#F0EDFF; color:#5E5CE6; }
+
+@media (max-width:768px) {
+  .grid-4 { grid-template-columns:repeat(2, 1fr) !important; }
+}
+</style>
 </head>
 <body>
 
@@ -37,204 +158,213 @@
   <img class="hero-video" src="https://images.unsplash.com/photo-1587293852726-70cdb56c2866?auto=format&fit=crop&w=1920&q=85" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;pointer-events:none;">
   <div class="hero-overlay"></div>
   <div class="hero-content">
-    <h1>按场景<span>精准匹配</span></h1>
-    <p class="lead">每个企业的供应链都不一样，方案也不该一样</p>
-    <p class="hero-sub"><span><svg class="icon-svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg> 跨境采购</span><span><svg class="icon-svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8l-7 5V8l-7 5V4l-6 4v12z"/></svg> 海外仓</span><span><svg class="icon-svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 16 12 14 15 10 15 8 12 2 12"/><path d="M5.45 5.11L2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"/></svg> 一件代发</span><span><svg class="icon-svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg> 分销网络</span></p>
+    <h1>供需双方<span>AI驱动</span></h1>
+    <p class="lead">一个平台，供需两边都受益</p>
+    <p class="hero-sub"><span><svg class="icon-svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#6CB2FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg> 全球寻源</span><span><svg class="icon-svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#34C759" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> 供应商尽调</span><span><svg class="icon-svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#FF9500" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 4 1 10 7 10"/><polyline points="23 20 23 14 17 14"/><path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10m22 4l-4.64 4.36A9 9 0 0 1 3.51 15"/></svg> 多源备份</span><span><svg class="icon-svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#FF3B30" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/></svg> 实时风控</span><span><svg class="icon-svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#A78BFA" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg> 绩效监控</span></p>
   </div>
 </section>
 
-<!-- ===== 四大场景 ===== -->
-<section class="section" style="padding-bottom:64px;">
+<!-- ===== 六大场景 ===== -->
+<section class="section solutions-section" style="padding-bottom:64px;">
   <div class="container">
-    <div class="text-center reveal" style="margin-bottom:140px;">
-      <div class="eyebrow">FOUR SCENARIOS · 四大场景</div>
-      <h2 class="section-title">按你的业务场景，<span class="gradient-text">找到对应方案</span></h2>
-      <p class="section-sub">不做大一统推荐，每个场景都有具体的落地路径。</p>
+    <div class="text-center reveal" style="margin-bottom:100px;">
+      <div class="eyebrow">SIX SCENARIOS · 六大场景</div>
+      <h2 class="section-title">供需双方的<span class="gradient-text">六个关键节点</span></h2>
+      <p class="section-sub">每个节点对应一个真实业务场景，AI在背后提供分析和建议，让每一步都有据可依。</p>
     </div>
     <div class="solutions-featured">
-      <article class="solution-card-wide reveal" id="procure">
-        <div class="scw-img">
-          <img src="https://images.unsplash.com/photo-1494412574643-ff11b0a5c1c3?auto=format&fit=crop&w=1400&q=85" alt="" loading="lazy" onerror="this.style.display='none'">
-        </div>
-        <div class="scw-body">
-          <span class="scw-tag tag-procure">跨境采购</span>
-          <h3>从寻源到 PO 签发，全程在系统里跑</h3>
-          <p class="scw-desc">不是找不到供应商，是不知道哪个靠谱、不确定关税会怎么变。多源比价 + 关税沙盘推演 + 自动跟单，PO 周期从 3–5 天缩至 1 天内。</p>
-          <ul><li>多源寻源，自动追踪供应商准时率与质量</li><li>关税 TCO 沙盘推演，报价背后费用全透明</li><li>快反补货，需求信号直达采购决策</li></ul>
-        </div>
-      </article>
-      <article class="solution-card-wide reveal" id="overseas">
-        <div class="scw-img">
-          <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1400&q=85" alt="" loading="lazy" onerror="this.style.display='none'">
-        </div>
-        <div class="scw-body">
-          <span class="scw-tag tag-overseas">海外仓</span>
-          <h3>多仓库存一盘棋，AI 告诉你该放哪、补多少</h3>
-          <p class="scw-desc">国内仓、海外仓、FBA、保税仓统一库存视图，AI 动态分配水位。放多了压资金，放少了断货——找到最优平衡点。</p>
-          <ul><li>多仓网络统一视图，库存水位一目了然</li><li>FBA 智能补货建议，避免断货与冗余</li><li>头程尾程全链路追踪，异常提前告警</li></ul>
-        </div>
-      </article>
-      <article class="solution-card-wide reveal" id="dropship">
-        <div class="scw-img">
-          <img src="https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?auto=format&fit=crop&w=1400&q=85" alt="" loading="lazy" onerror="this.style.display='none'">
-        </div>
-        <div class="scw-body">
-          <span class="scw-tag tag-dropship">一件代发</span>
-          <h3>零仓储测出爆款，跑通了再备货</h3>
-          <p class="scw-desc">新品测款、长尾 SKU、小批量试水——不是所有货都值得先囤到海外。包裹从国内仓直发消费者，自动匹配最优申报模式，试错成本降到最低。</p>
-          <ul><li>小包直邮，自动匹配 9610/9710/9810 模式</li><li>全程轨迹追踪，消费者端透明可见</li><li>测款数据回传，指导备货决策</li></ul>
-        </div>
-      </article>
-      <article class="solution-card-wide reveal" id="distribution">
-        <div class="scw-img">
-          <img src="https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1400&q=85" alt="" loading="lazy" onerror="this.style.display='none'">
-        </div>
-        <div class="scw-body">
-          <span class="scw-tag tag-distribution">分销网络</span>
-          <h3>供销双方智能撮合，自动分账不扯皮</h3>
-          <p class="scw-desc">有好货的缺渠道，有渠道的缺好货。供销商上架分销池，分销商零库存选品，订单完成自动按比分账，一个人管 100+ 分销商不费力。</p>
-          <ul><li>双边撮合，供需智能匹配</li><li>订单完成自动分账，告别手工对账</li><li>分销等级 + 窜货监控，渠道秩序可控</li></ul>
-        </div>
-      </article>
-    </div>
-  </div>
-</section>
 
-<!-- ===== 四种履约通道 ===== -->
-<section class="section bg-gray">
-  <div class="container">
-    <div class="text-center reveal" style="margin-bottom:56px;">
-      <div class="eyebrow">FULFILLMENT</div>
-      <h2 class="section-title">四种履约通道，<span class="gradient-text">OMS 自动匹配最优</span></h2>
-      <p class="section-sub">系统根据库存位置、渠道 SLA、物流成本与目的国，自动匹配最优通道。</p>
-    </div>
-    <div class="grid grid-4">
-      <div class="card reveal">
-        <div class="icon"><span class="letter-badge">A</span></div><h3>FBA 履约</h3><div class="sub-cn">Amazon Fulfillment</div>
-        <p>商品存 Amazon FBA 仓，全托管拣货配送。适合 Prime 标商品，平台做库存视图与补货决策。</p>
-      </div>
-      <div class="card reveal">
-        <div class="icon"><span class="letter-badge">B</span></div><h3>第三方海外仓</h3><div class="sub-cn">3PL Warehouse</div>
-        <p>多平台统一库存发货，商家自管尾程。平台负责运单创建、比价、轨迹追踪与 POD 回传。</p>
-      </div>
-      <div class="card reveal">
-        <div class="icon"><span class="letter-badge">C</span></div><h3>直邮 FBS/FBM</h3><div class="sub-cn">Direct Mail</div>
-        <p>国内仓直发国际快递至海外消费者。适合小件、低频、长尾 SKU 与测试期新品。</p>
-      </div>
-      <div class="card reveal">
-        <div class="icon"><span class="letter-badge">D</span></div><h3>保税备货</h3><div class="sub-cn">Bonded Warehouse</div>
-        <p>批量入境内保税仓，下单后清关发货。1–3 天妥投，单件物流成本比直邮低 30–40%。</p>
-      </div>
-    </div>
-  </div>
-</section>
+      <!-- 场景1：全球寻源 -->
+      <article class="solution-card-wide reveal" id="sourcing">
+        <div class="scw-img">
+          <img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?auto=format&fit=crop&w=1400&q=85" alt="" loading="lazy" onerror="this.style.display='none'">
+        </div>
+        <div class="scw-body">
+          <span class="scw-tag scw-tag-sourcing">全球寻源</span>
+          <h3>不是没有选择，是需要更有效的方式做筛选</h3>
+          <p class="scw-desc">全球供应商数量庞大，但信息分散、标准不一。平台聚合多源数据，根据你的采购需求自动匹配候选人，从产能规模、资质认证、出口经验、交付记录等维度综合评估，让筛选过程从"翻黄页"变成"看报告"。</p>
+          <ul>
+            <li>采购需求语义解析，自动提取关键规格与约束条件</li>
+            <li>多维度交叉评估，而非单一价格排序</li>
+            <li>每项推荐均附评分明细，了解推荐背后的逻辑</li>
+          </ul>
+          <div class="tags" style="margin-top:16px;"><span class="cap-tag cap-tag--blue">智能撮合</span><span class="cap-tag cap-tag--ghost">全球供应商库</span><span class="cap-tag cap-tag--ghost">多维评估</span></div>
+        </div>
+      </article>
 
-<!-- ===== 选型指南：对号入座 ===== -->
-<section class="section">
-  <div class="container">
-    <div class="text-center reveal" style="margin-bottom:56px;">
-      <div class="eyebrow">HOW TO CHOOSE</div>
-      <h2 class="section-title">按成长阶段，选择适配组合</h2>
-      <p class="section-sub">没有放之四海皆准的方案。结合跨境企业的出口实践，我们把履约选型归纳为三个成长阶段（单量数字仅供参考）。</p>
-    </div>
-    <div class="grid grid-3">
-      <div class="card reveal">
-        <div class="icon"><svg class="icon-svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17h10"/><path d="M12 17v4"/><path d="M12 7a5 5 0 0 0-5 5c0 3 2 5 5 7 3-2 5-4 5-7a5 5 0 0 0-5-5z"/><path d="M8 8c1-2 3-4 4-4s3 2 4 4"/></svg></div><h3>初创试水期</h3>
-        <div class="sub-cn">月单量 &lt; 2,000 · SKU 多而散</div>
-        <p>国内仓直邮 + 少量 FBA 试款，用最小成本测出真实需求，再决定加码方向。</p>
-        <div class="tags"><span>直邮为主</span><span>小批量试款</span><span>需求验证</span></div>
-      </div>
-      <div class="card reveal">
-        <div class="icon"><svg class="icon-svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="M12 15l-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg></div><h3>增长扩张期</h3>
-        <div class="sub-cn">月单量 2,000–20,000 · 爆款显现</div>
-        <p>FBA 保 Prime 时效 + 海外仓压成本，双仓并行，AI 需求预测驱动补货节奏。</p>
-        <div class="tags"><span>FBA + 海外仓</span><span>智能补货</span><span>防断货积压</span></div>
-      </div>
-      <div class="card reveal">
-        <div class="icon"><svg class="icon-svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3l4 8 5-5 5 15H2L8 3z"/></svg></div><h3>成熟规模期</h3>
-        <div class="sub-cn">月单量 &gt; 20,000 · 多区域多渠道</div>
-        <p>多国区域仓 + 多源供应 + 弹性路由，构建韧性网络，控制塔做全局最优决策。</p>
-        <div class="tags"><span>区域仓网络</span><span>多源采购</span><span>控制塔</span></div>
-      </div>
-    </div>
-    <div class="import-card reveal" style="margin-top:24px;">
-      <div class="icon"><svg class="icon-svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg></div>
-      <div>
-        <div class="eyebrow">IMPORT · 进口方向</div>
-        <h3>做进口？优先「保税备货」</h3>
-        <p>若你把海外品牌货卖给中国消费者，建议「保税仓批量备货 + 清单核放、汇总申报」：批量海运入境内保税仓，下单后单件清关发货，1–3 天极速妥投、单件物流成本比直邮低 30–40%，适合奶粉、美妆、母婴等高复购品类；小众长尾则用 9610 直邮测款。</p>
-        <div class="tags"><span>保税仓备货</span><span>清单核放</span><span>9610 直邮测款</span></div>
-      </div>
+      <!-- 场景2：供应商尽调 -->
+      <article class="solution-card-wide reveal" id="dd">
+        <div class="scw-img">
+          <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=1400&q=85" alt="" loading="lazy" onerror="this.style.display='none'">
+        </div>
+        <div class="scw-body">
+          <span class="scw-tag scw-tag-dd">供应商尽调</span>
+          <h3>合作前的了解越充分，合作后的意外越少</h3>
+          <p class="scw-desc">跨境合作的复杂性在于信息不对称——对方的资质、关联方、合规记录并不透明。平台引入验厂认证、制裁名单自动比对、多层股权穿透等工具，将原本数天的尽调工作压缩到几分钟，帮助双方在信息对等的基础上建立合作。</p>
+          <ul>
+            <li>实地或远程验厂，核查产能、设备与劳工条件</li>
+            <li>对接国际制裁名单，自动标记潜在合规风险</li>
+            <li>股权结构追溯，了解谁在背后运营这家企业</li>
+          </ul>
+          <div class="tags" style="margin-top:16px;"><span class="cap-tag cap-tag--gold">安全采购</span><span class="cap-tag cap-tag--ghost">制裁筛查</span><span class="cap-tag cap-tag--ghost">股权穿透</span></div>
+        </div>
+      </article>
+
+      <!-- 场景3：多源备份 -->
+      <article class="solution-card-wide reveal" id="resilience">
+        <div class="scw-img">
+          <img src="https://images.unsplash.com/photo-1616401784845-180882ba9ba8?auto=format&fit=crop&w=1400&q=85" alt="" loading="lazy" onerror="this.style.display='none'">
+        </div>
+        <div class="scw-body">
+          <span class="scw-tag scw-tag-resilience">多源备份</span>
+          <h3>为关键品类多留一条路，是成本也是保障</h3>
+          <p class="scw-desc">外部环境变化时，单一供应来源的脆弱性会被放大。平台分析你的供应商集中度，识别哪些品类过度依赖个别来源，并基于同品类、同资质、不同区域的原则推荐替代选项。同时支持断链情景推演，帮助你提前评估影响范围、准备应对方案。</p>
+          <ul>
+            <li>供应集中度分析，定位采购结构中的薄弱环节</li>
+            <li>跨区域替代推荐，平衡成本与风险</li>
+            <li>断链情景模拟，预判影响并提前规划备用路径</li>
+          </ul>
+          <div class="tags" style="margin-top:16px;"><span class="cap-tag cap-tag--orange">智能撮合</span><span class="cap-tag cap-tag--red">全局风控</span><span class="cap-tag cap-tag--ghost">供应韧性</span></div>
+        </div>
+      </article>
+
+      <!-- 场景4：实时风控预警 -->
+      <article class="solution-card-wide reveal" id="risk-alert">
+        <div class="scw-img">
+          <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1400&q=85" alt="" loading="lazy" onerror="this.style.display='none'">
+        </div>
+        <div class="scw-body">
+          <span class="scw-tag scw-tag-risk">实时风控</span>
+          <h3>让外部变化在影响你之前，先被系统捕捉到</h3>
+          <p class="scw-desc">关税调整、航线中断、地区局势变化——这些事件不会提前通知你。平台接入全球信息源持续扫描与供应链相关的变化，按影响程度分级标记，并将预警与你的供应商网络关联起来：哪些订单可能受影响、有哪些替代方案，一目了然。</p>
+          <ul>
+            <li>覆盖关税政策、制裁更新、气象灾害、地缘动态</li>
+            <li>三级影响评估，不同等级触发不同响应流程</li>
+            <li>预警与订单链路关联，直接呈现受影响范围</li>
+          </ul>
+          <div class="tags" style="margin-top:16px;"><span class="cap-tag cap-tag--red">全局风控</span><span class="cap-tag cap-tag--ghost">实时预警</span><span class="cap-tag cap-tag--ghost">影响分析</span></div>
+        </div>
+      </article>
+
+      <!-- 场景5：绩效监控 -->
+      <article class="solution-card-wide reveal" id="perf">
+        <div class="scw-img">
+          <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1400&q=85" alt="" loading="lazy" onerror="this.style.display='none'">
+        </div>
+        <div class="scw-body">
+          <span class="scw-tag scw-tag-perf">绩效监控</span>
+          <h3>合作关系需要持续关注，而不是一年评估一次</h3>
+          <p class="scw-desc">供应商的表现不是静态的——产能会波动、交期会漂移、质量会起伏。平台为每家供应商建立动态绩效档案，跟踪交付准时率、质量一致性、响应速度、价格稳定性等维度，发现趋势性变化时主动提示，让管理动作跑在问题前面。</p>
+          <ul>
+            <li>四维动态画像：交付 · 质量 · 响应 · 价格</li>
+            <li>趋势监测替代节点抽查，捕捉渐进式变化</li>
+            <li>异常指标自动关联改善建议，推动持续优化</li>
+          </ul>
+          <div class="tags" style="margin-top:16px;"><span class="cap-tag cap-tag--purple">数据智脑</span><span class="cap-tag cap-tag--orange">可信交付</span><span class="cap-tag cap-tag--ghost">持续评估</span></div>
+        </div>
+      </article>
+
+      <!-- 场景6：供需网络 -->
+      <article class="solution-card-wide reveal" id="network">
+        <div class="scw-img">
+          <img src="https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1400&q=85" alt="" loading="lazy" onerror="this.style.display='none'">
+        </div>
+        <div class="scw-body">
+          <span class="scw-tag scw-tag-network">供需网络</span>
+          <h3>让供需双方在同一个平台上彼此发现</h3>
+          <p class="scw-desc">供应商在平台上展示资质与产能，采购商发布需求后由系统自动匹配。匹配过程透明——不仅推荐"谁合适"，也展示"为什么合适"。随着交易数据的积累，平台的匹配精度持续提升，双方在合作前就能看到对方的信用记录与过往评价。</p>
+          <ul>
+            <li>供应商在平台沉淀资质、产能与履约记录</li>
+            <li>采购需求发布后自动匹配，推荐附带评估依据</li>
+            <li>信用体系随交易积累，降低首次合作的信任成本</li>
+          </ul>
+          <div class="tags" style="margin-top:16px;"><span class="cap-tag cap-tag--blue">智能撮合</span><span class="cap-tag cap-tag--purple">数据智脑</span><span class="cap-tag cap-tag--ghost">双边网络</span></div>
+        </div>
+      </article>
+
     </div>
   </div>
 </section>
 
 <!-- ===== 我们的供应链观点 ===== -->
-<section class="section bg-black">
+<section class="section" style="background:#F8FAFC;">
   <div class="container">
     <div class="text-center reveal" style="margin-bottom:56px;">
       <div class="eyebrow">OUR PERSPECTIVE</div>
-      <h2 class="section-title">关于跨境供应链的几点观点</h2>
-      <p class="section-sub">并非每条"行业常识"都成立。以下是我们结合实践，对几个常见问题的看法。</p>
+      <h2 class="section-title">关于供需关系，<span class="gradient-text">我们有四个基本判断</span></h2>
+      <p class="section-sub">这些判断来自跨境供应链的一线实践，未必每条都符合直觉。</p>
     </div>
     <div class="grid grid-2">
       <div class="card reveal">
-        <div class="icon"><svg class="icon-svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div><h3>不建议过度依赖 FBA</h3>
-        <p>FBA 时效有优势，但平台规则、仓储费与封号风险都不在自己手中。把核心库存放在自有 / 海外仓，用 FBA 承接 Prime 流量，主动权更可控。</p>
+        <div class="icon" style="background:#FFF3E0; color:#FF9500;"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/></svg></div>
+        <h3>过度集中是隐形成本</h3>
+        <p>把鸡蛋放在一个篮子里，议价权也在那个篮子里。为核心品类培育备选来源，不是为了明天就换，而是让供应商知道——你有选择。</p>
       </div>
       <div class="card reveal">
-        <div class="icon"><svg class="icon-svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><path d="M3 6l3 14h12l3-14"/><line x1="12" y1="6" x2="12" y2="20"/><circle cx="7" cy="15" r="3"/><circle cx="17" cy="15" r="3"/></svg></div><h3>库存不是越少越好</h3>
-        <p>盲目压库存，是用断货换"账面好看"。真正该优化的是「服务水平 vs 持有成本」的平衡点——这正是动态安全库存模型存在的意义。</p>
+        <div class="icon" style="background:#EFF6FF; color:#2563EB;"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>
+        <h3>准入不是终点，是起点</h3>
+        <p>供应商的状况在持续变化——去年通过验厂的，今年未必。制裁名单每月更新，实控人可能已经变更。定期复查不是成本，是风险在累积之前被看见的前提。</p>
       </div>
       <div class="card reveal">
-        <div class="icon"><svg class="icon-svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11.5 6.5 7 2 2 22l7.5-2.5L22 13.5 17.5 10z"/><path d="M2 22l5-5"/><path d="M2 22l9-3"/></svg></div><h3>直邮的价值常被低估</h3>
-        <p>不少人把直邮当低端备选，其实它是低成本的试款方式：零仓储、上架快、下架快。新品先用直邮验证，跑通后再海运备货，可有效降低试错成本。</p>
+        <div class="icon" style="background:#ECFDF5; color:#10B981;"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/></svg></div>
+        <h3>压价是最贵的降本方式</h3>
+        <p>一味压价换来的低成本很难持久——供应商会在你看不见的地方找回来。真正的降本来自稳定关系带来的信息透明、需求协同和风险共担。</p>
       </div>
       <div class="card reveal">
-        <div class="icon"><svg class="icon-svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><h3>韧性正变得和效率一样重要</h3>
-        <p>过去十年供应链追求极致效率，但一次断链就可能让全盘受损。后疫情时代，能否在扰动中快速重组，正变得和效率同样关键。</p>
+        <div class="icon" style="background:#F0EDFF; color:#5E5CE6;"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
+        <h3>时间积累的，后来者追不上</h3>
+        <p>每笔交易、每次履约、每条风险预警都在训练平台对你的供应链的理解。采购偏好、品类网络、风控模型——这些不是靠资本或技术能一夜搭建的，只有时间能沉淀。</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ===== 客户成效案例 ===== -->
+<!-- ===== 目标成效 ===== -->
 <section class="section">
   <div class="container">
     <div class="text-center reveal" style="margin-bottom:56px;">
       <div class="eyebrow">TARGET OUTCOMES · 目标成效</div>
-      <h2 class="section-title">典型场景下的目标成效</h2>
-      <p class="section-sub">以下为典型业务场景的目标改善示意，帮助你预估价值，非特定客户真实数据。</p>
+      <h2 class="section-title">典型场景下的改善方向</h2>
+      <p class="section-sub">以下为基于平台能力的目标改善示意，用于了解各场景可能的提升方向。</p>
     </div>
-    <div class="grid grid-3">
+    <div class="grid grid-4" style="grid-template-columns:repeat(4, 1fr);">
       <div class="card reveal">
-        <h3 style="color:var(--brand-blue);font-size:26px;">70% → 93%</h3>
-        <div class="sub-cn">采购准时交付率</div>
-        <p>通过多源采购 + AI 需求预测，缓解单一供应商依赖问题。</p>
-        <p style="color:var(--text-tertiary);margin-top:10px;">典型场景 · 跨境品牌商</p>
+        <h3 style="color:#2563EB;font-size:26px;">85% → 95%</h3>
+        <div class="sub-cn">供需匹配精准度</div>
+        <p>用多维评估模型替代人工筛选，推荐准确率随使用持续提升。</p>
+        <p style="color:var(--text-tertiary);margin-top:10px;">场景 · 全球寻源</p>
       </div>
       <div class="card reveal">
-        <h3 style="color:var(--brand-blue);font-size:26px;">90 → 55 天</h3>
-        <div class="sub-cn">库存周转天数</div>
-        <p>智能补货 + 动态安全库存策略，降低呆滞库存占比。</p>
-        <p style="color:var(--text-tertiary);margin-top:10px;">典型场景 · 海外仓运营商</p>
+        <h3 style="color:#C9973A;font-size:26px;">3–5天 → ＜3分钟</h3>
+        <div class="sub-cn">尽调报告生成时间</div>
+        <p>制裁筛查、股权穿透、诉讼排查一键完成，效率大幅提升。</p>
+        <p style="color:var(--text-tertiary);margin-top:10px;">场景 · 供应商尽调</p>
       </div>
       <div class="card reveal">
-        <h3 style="color:var(--brand-blue);font-size:26px;">2–5 天 → 4 小时</h3>
-        <div class="sub-cn">异常事件响应时间</div>
-        <p>实时轨迹追踪 + 自动异常预警，从被动应对到主动管控。</p>
-        <p style="color:var(--text-tertiary);margin-top:10px;">典型场景 · 跨境物流商</p>
+        <h3 style="color:#FF3B30;font-size:26px;">＜5分钟</h3>
+        <div class="sub-cn">断供风险预警响应</div>
+        <p>全球信息源持续扫描，高风险事件快速推送并关联受影响订单。</p>
+        <p style="color:var(--text-tertiary);margin-top:10px;">场景 · 实时风控</p>
+      </div>
+      <div class="card reveal">
+        <h3 style="color:#5E5CE6;font-size:26px;">60% → 98%</h3>
+        <div class="sub-cn">供应商绩效可视化率</div>
+        <p>从分散记录到统一画像，所有供应商状态在一个视图中呈现。</p>
+        <p style="color:var(--text-tertiary);margin-top:10px;">场景 · 绩效监控</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ===== CTA：引导到痛点 ===== -->
-<section class="section">
+<!-- ===== CTA ===== -->
+<section class="section" style="background:#F8FAFC;">
   <div class="container text-center reveal">
-    <h2 class="section-title">想了解这些场景<span class="gradient-text">背后的行业挑战？</span></h2>
-    <p class="section-sub" style="margin-bottom:24px;">每个业务场景背后，都是地缘、政策、供需等宏观挑战在驱动。看清全局，方案才落得住。</p>
-    <a class="btn btn-ghost btn-lg" href="pain-points.html">查看八大痛点与对策 →</a>
+    <h2 class="section-title">看看这些场景<span class="gradient-text">背后的平台能力</span></h2>
+    <p class="section-sub" style="margin-bottom:32px;">每个场景背后，都有对应的平台能力和AI引擎在支撑。</p>
+    <div style="display:flex; gap:16px; justify-content:center; flex-wrap:wrap;">
+      <a class="btn btn-primary btn-lg" href="products.html">查看平台能力 →</a>
+      <a class="btn btn-ghost btn-lg" href="pain-points.html">了解行业痛点 →</a>
+    </div>
   </div>
 </section>
 
@@ -256,20 +386,20 @@
       <div>
         <h5>解决方案</h5>
         <ul>
-          <li><a href="solutions.html#procure">跨境采购</a></li>
-          <li><a href="solutions.html#overseas">海外仓运营</a></li>
-          <li><a href="solutions.html#dropship">一件代发 / 直邮</a></li>
-          <li><a href="solutions.html#distribution">分销供销网络</a></li>
+          <li><a href="solutions.html#sourcing">全球寻源</a></li>
+          <li><a href="solutions.html#dd">供应商尽调</a></li>
+          <li><a href="solutions.html#resilience">多源备份防断供</a></li>
+          <li><a href="solutions.html#network">供需网络撮合</a></li>
         </ul>
       </div>
       <div>
-        <h5>产品模块</h5>
+        <h5>平台能力</h5>
         <ul>
-          <li><a href="products.html#supplier">供应商管理</a></li>
-          <li><a href="products.html#procurement">智能采购</a></li>
-          <li><a href="products.html#wms">WMS / OMS</a></li>
-          <li><a href="products.html#tms">全球物流 TMS</a></li>
-          <li><a href="products.html#customs">跨境关务</a></li>
+          <li><a href="products.html#matching">智能撮合</a></li>
+          <li><a href="products.html#procurement">安全采购</a></li>
+          <li><a href="products.html#delivery">可信交付</a></li>
+          <li><a href="products.html#risk">全局风控</a></li>
+          <li><a href="products.html#brain">数据智脑</a></li>
         </ul>
       </div>
       <div>

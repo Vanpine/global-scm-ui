@@ -13,6 +13,900 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Global SCM">
 <link rel="stylesheet" href="css/style.css">
+<style>
+/* ============================================================
+   平台能力页 — 独立样式（基于官网 Apple-Style 设计系统）
+   ============================================================ */
+:root {
+  --bg-white: #ffffff;
+  --bg-gray: #f5f5f7;
+  --brand-blue: #0071e3;
+  --brand-blue-hover: #0077ed;
+  --brand-gradient: linear-gradient(135deg, #0071e3 0%, #5e5ce6 100%);
+  --text-primary: #1d1d1f;
+  --text-secondary: #86868b;
+  --text-tertiary: #6e6e73;
+  --card-border: #e5e5e7;
+  --card-shadow: 0 4px 20px rgba(0,0,0,0.04);
+  --card-shadow-hover: 0 18px 50px rgba(0,0,0,0.10);
+  --green: #34c759;
+  --red: #ff3b30;
+  --orange: #ff9500;
+  --gold: #c9973a;
+  --maxw: 1360px;
+  --ease: cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; -webkit-text-size-adjust:100%; }
+
+body {
+  font-family: "Inter", "SF Pro Display", -apple-system, BlinkMacSystemFont,
+    "PingFang SC", "Microsoft YaHei", sans-serif;
+  color: var(--text-primary);
+  background: var(--bg-white);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.5;
+}
+
+a { color:inherit; text-decoration:none; }
+img { display:block; max-width:100%; }
+ul { list-style:none; }
+
+/* ---------- 布局 ---------- */
+.container { max-width:var(--maxw); margin:0 auto; padding:0 32px; }
+.section { padding:120px 0; }
+.section-sm { padding:80px 0; }
+.bg-gray { background:var(--bg-gray); }
+.bg-dark {
+  background: radial-gradient(ellipse at 50% -10%, #16203a 0%, #0a0d16 55%, #05070d 100%);
+  color: #f5f5f7;
+}
+.text-center { text-align:center; }
+
+.eyebrow {
+  font-size:13px; font-weight:600; letter-spacing:0.06em;
+  text-transform:uppercase; color:var(--brand-blue); margin-bottom:14px;
+}
+.bg-dark .eyebrow { color:#2997ff; }
+
+.section-title {
+  font-size:48px; font-weight:700; line-height:1.12;
+  letter-spacing:-0.015em; margin-bottom:18px;
+}
+.section-sub {
+  font-size:21px; font-weight:400; line-height:1.45;
+  color:var(--text-secondary); max-width:680px; margin:0 auto;
+}
+.bg-dark .section-sub { color:#c2c8d4; }
+
+.gradient-text {
+  background: var(--brand-gradient);
+  -webkit-background-clip:text; background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+
+/* ---------- 按钮 ---------- */
+.btn {
+  display:inline-flex; align-items:center; gap:8px;
+  font-size:17px; font-weight:500; line-height:1;
+  padding:14px 28px; border-radius:980px; border:none;
+  cursor:pointer; transition:all 0.3s var(--ease); white-space:nowrap;
+}
+.btn-primary { background:var(--brand-blue); color:#fff; }
+.btn-primary:hover { background:var(--brand-blue-hover); transform:translateY(-1px); }
+.btn-ghost { background:transparent; color:var(--brand-blue); border:1px solid rgba(0,113,227,0.4); }
+.btn-ghost:hover { background:rgba(0,113,227,0.06); }
+.btn-lg { font-size:18px; padding:16px 34px; }
+
+/* ---------- 网格 ---------- */
+.grid-2 { display:grid; grid-template-columns:repeat(2, 1fr); gap:24px; }
+.grid-3 { display:grid; grid-template-columns:repeat(3, 1fr); gap:24px; }
+.grid-5 { display:grid; grid-template-columns:repeat(5, 1fr); gap:20px; }
+
+/* ---------- 卡片 ---------- */
+.card {
+  background:var(--bg-white); border:1px solid var(--card-border);
+  border-radius:20px; padding:36px 30px;
+  box-shadow:var(--card-shadow); transition:all 0.4s var(--ease);
+  position:relative; overflow:hidden;
+}
+.card:hover { transform:translateY(-6px); box-shadow:var(--card-shadow-hover); }
+.card .icon {
+  width:48px; height:48px; border-radius:12px; display:flex;
+  align-items:center; justify-content:center; margin-bottom:20px;
+  background:#f0f4ff;
+}
+.card .icon svg { width:26px; height:26px; color:var(--brand-blue); }
+.card h3 { font-size:22px; font-weight:600; margin-bottom:6px; letter-spacing:-0.01em; }
+.card .sub-cn { font-size:14px; color:var(--text-secondary); margin-bottom:14px; }
+.card p { font-size:16px; color:var(--text-secondary); line-height:1.55; }
+.card .tags { display:flex; flex-wrap:wrap; gap:6px; margin-top:18px; }
+.card .tags span {
+  font-size:11.5px; color:var(--text-tertiary); background:var(--bg-gray);
+  padding:4px 8px; border-radius:7px; white-space:nowrap;
+}
+
+/* ---------- Hero ---------- */
+.hero {
+  position:relative; min-height:100vh; display:flex;
+  align-items:center; justify-content:center;
+  color:#fff; overflow:hidden; padding:0;
+  background: radial-gradient(ellipse at 50% -10%, #16203a 0%, #0a0d16 55%, #05070d 100%);
+}
+.hero::before {
+  content:''; position:absolute; inset:0;
+  background:
+    radial-gradient(ellipse 70% 50% at 50% 30%, rgba(0,113,227,0.06) 0%, transparent 70%),
+    radial-gradient(ellipse 40% 40% at 80% 60%, rgba(94,92,230,0.04) 0%, transparent 70%);
+  pointer-events:none;
+}
+.hero-content {
+  position:relative; z-index:3; text-align:center;
+  max-width:860px; margin:0 auto; padding:0 32px;
+  animation: heroFadeIn 1.2s cubic-bezier(0.22, 0.61, 0.36, 1) both;
+}
+@keyframes heroFadeIn {
+  from { opacity:0; transform:translateY(40px); }
+  to   { opacity:1; transform:translateY(0); }
+}
+
+.hero-badge {
+  display:inline-flex; align-items:center; gap:10px; margin-bottom:28px;
+  padding:8px 20px; border-radius:980px; font-size:12.5px; font-weight:600;
+  letter-spacing:0.08em;
+  background:rgba(255,255,255,0.06);
+  border:1px solid rgba(255,255,255,0.18);
+  backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px);
+  color:#c8d6f0;
+}
+.hero-badge .dot {
+  width:7px; height:7px; border-radius:50%;
+  background:var(--green);
+  box-shadow:0 0 8px rgba(52,199,89,0.8);
+  animation:dotPulse 2.2s ease-in-out infinite;
+}
+@keyframes dotPulse {
+  0%,100% { box-shadow:0 0 8px rgba(52,199,89,0.8), 0 0 0 0 rgba(52,199,89,0.4); }
+  50%    { box-shadow:0 0 14px rgba(52,199,89,1), 0 0 0 10px rgba(52,199,89,0); }
+}
+
+.hero h1 {
+  font-size:clamp(42px, 5.5vw, 72px); font-weight:800; line-height:1.12;
+  letter-spacing:-0.02em; margin-bottom:20px;
+  text-shadow:0 2px 40px rgba(0,0,0,0.5);
+}
+.hero h1 span { background:var(--brand-gradient); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; }
+.hero p.lead {
+  font-size:clamp(18px, 2vw, 26px); font-weight:500; line-height:1.5;
+  color:rgba(255,255,255,0.85); max-width:640px; margin:0 auto 22px;
+}
+.hero-sub {
+  display:flex; gap:28px; justify-content:center; flex-wrap:wrap;
+  font-size:14px; color:rgba(255,255,255,0.65); margin-bottom:40px;
+}
+.hero-sub span { display:inline-flex; align-items:center; gap:6px; }
+.hero-actions { display:flex; gap:18px; justify-content:center; flex-wrap:wrap; }
+
+.btn-hero-primary {
+  position:relative; background:var(--brand-gradient); color:#fff; font-weight:600;
+  padding:16px 36px; font-size:18px; border-radius:980px; border:none;
+  box-shadow:0 0 0 1px rgba(108,178,255,0.4), 0 4px 24px rgba(0,113,227,0.5), 0 0 60px rgba(94,92,230,0.25);
+  transition:all 0.35s var(--ease); letter-spacing:0.02em; cursor:pointer;
+}
+.btn-hero-primary:hover {
+  transform:translateY(-3px);
+  box-shadow:0 0 0 2px rgba(108,178,255,0.8), 0 8px 36px rgba(0,113,227,0.7), 0 0 90px rgba(94,92,230,0.45);
+}
+.btn-hero-ghost {
+  position:relative; background:rgba(255,255,255,0.06); color:#fff; font-weight:500;
+  padding:16px 36px; font-size:18px; border-radius:980px;
+  border:1px solid rgba(255,255,255,0.22); cursor:pointer;
+  backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px);
+  box-shadow:0 4px 20px rgba(0,0,0,0.15); transition:all 0.35s var(--ease); letter-spacing:0.02em;
+}
+.btn-hero-ghost:hover {
+  background:rgba(255,255,255,0.14); border-color:rgba(255,255,255,0.5);
+  box-shadow:0 0 0 1px rgba(255,255,255,0.3), 0 4px 30px rgba(0,113,227,0.3);
+  transform:translateY(-3px);
+}
+
+/* ---------- 管道流程总览 ---------- */
+.pipeline {
+  display:flex; align-items:flex-start; justify-content:center;
+  gap:0; position:relative; flex-wrap:wrap; padding:0 20px;
+}
+.pipeline-track {
+  position:absolute; top:40px; left:calc(10% + 40px); right:calc(10% + 40px);
+  height:2px; background:linear-gradient(90deg, #0071e3, #34c759, #ff9500, #ff3b30, #5e5ce6);
+  border-radius:1px; z-index:0;
+}
+.pipeline-item {
+  display:flex; flex-direction:column; align-items:center;
+  padding:0 24px; position:relative; z-index:1; width:180px;
+  transition:transform 0.3s var(--ease);
+}
+.pipeline-item:hover { transform:translateY(-4px); }
+.pl-node {
+  width:80px; height:80px; border-radius:50%; background:var(--bg-white);
+  border:3px solid var(--accent); display:flex; align-items:center; justify-content:center;
+  position:relative; margin-bottom:18px;
+  box-shadow:0 0 0 10px rgba(0,113,227,0.05);
+  transition:box-shadow 0.3s var(--ease);
+}
+.pipeline-item:hover .pl-node { box-shadow:0 0 0 20px rgba(0,113,227,0.08); }
+.pl-num {
+  position:absolute; top:-12px; right:-8px;
+  width:24px; height:24px; border-radius:50%;
+  background:var(--accent); color:#fff; font-size:11px; font-weight:700;
+  display:flex; align-items:center; justify-content:center;
+}
+.pl-node svg { color:var(--accent); }
+.pl-body { text-align:center; }
+.pl-title { font-size:16px; font-weight:700; margin-bottom:4px; }
+.pl-sub { font-size:13px; color:var(--text-secondary); }
+
+/* ---------- 能力详解区块 ---------- */
+.capability-detail {
+  display:grid; grid-template-columns:1fr 1fr; gap:120px;
+  align-items:center; padding:100px 0;
+}
+.capability-detail.reverse { direction:rtl; }
+.capability-detail.reverse > * { direction:ltr; }
+
+.cap-detail-num {
+  font-size:140px; font-weight:900; line-height:1;
+  background:var(--brand-gradient);
+  -webkit-background-clip:text; background-clip:text;
+  -webkit-text-fill-color:transparent;
+  opacity:0.10; margin-bottom:-44px; margin-left:-6px;
+  user-select:none; pointer-events:none;
+}
+.cap-detail-label {
+  font-size:12px; font-weight:700; letter-spacing:0.12em;
+  text-transform:uppercase; color:var(--brand-blue); margin-bottom:12px;
+}
+.cap-detail-text h2 {
+  font-size:40px; font-weight:700; letter-spacing:-0.02em; margin-bottom:20px;
+  line-height:1.2;
+}
+.cap-detail-text .lead-p {
+  font-size:17px; color:var(--text-secondary); line-height:1.8; margin-bottom:40px;
+}
+.cap-feature-list { display:flex; flex-direction:column; gap:20px; }
+.cap-feature {
+  display:flex; gap:20px; align-items:flex-start;
+  padding:24px; border:1px solid #E5E7EB; border-radius:24px;
+  background:#fff; transition:all 0.35s ease;
+}
+.cap-feature:first-child { padding-top:24px; }
+.cap-feature:last-child { border-bottom:1px solid #E5E7EB; padding-bottom:24px; }
+.cap-feature:hover { transform:translateY(-8px); border-color:#2563EB; box-shadow:0 20px 50px rgba(37,99,235,0.10); }
+.cap-feature .feat-icon {
+  width:56px; height:56px; border-radius:16px; display:flex;
+  align-items:center; justify-content:center; flex-shrink:0;
+}
+.cap-feature .feat-icon svg { width:26px; height:26px; }
+.cap-feature .feat-body h4 { font-size:20px; font-weight:700; color:#111827; margin-bottom:4px; }
+.cap-feature .feat-body p { font-size:16px; color:#6B7280; line-height:1.5; }
+
+.cap-visual {
+  display:flex; align-items:stretch; justify-content:center;
+}
+.cap-visual-card {
+  width:100%; max-width:680px;
+  border-radius:36px; padding:48px;
+  background:rgba(255,255,255,0.85);
+  backdrop-filter:blur(40px); -webkit-backdrop-filter:blur(40px);
+  border:1px solid rgba(37,99,235,0.15);
+  box-shadow:0 40px 100px rgba(15,23,42,0.08);
+  position:relative; overflow:hidden;
+  display:flex; flex-direction:column; justify-content:center;
+  transition:all 0.35s ease;
+}
+.cap-visual-card:hover {
+  transform:translateY(-8px);
+  border-color:rgba(37,99,235,0.4);
+  box-shadow:0 50px 120px rgba(15,23,42,0.14);
+}
+.cap-visual-card::before {
+  content:''; position:absolute; top:0; left:0; right:0; height:1px;
+  background:linear-gradient(90deg, transparent, rgba(37,99,235,0.3), rgba(94,92,230,0.3), transparent);
+  z-index:1;
+}
+.cap-visual-card::after {
+  content:''; position:absolute; inset:0;
+  background:radial-gradient(ellipse 60% 40% at 30% 20%, rgba(37,99,235,0.04) 0%, transparent 60%);
+  pointer-events:none;
+}
+.cap-visual-card .vc-badge {
+  display:inline-block; padding:8px 20px; border-radius:999px;
+  font-size:13px; font-weight:700; letter-spacing:0.08em;
+  background:#EFF6FF; color:#2563EB; margin-bottom:48px; position:relative; z-index:1;
+}
+.cap-visual-card .vc-metric {
+  display:flex; align-items:baseline; gap:10px; margin-bottom:36px;
+  position:relative; z-index:1;
+}
+.cap-visual-card .vc-metric .val {
+  font-size:64px; font-weight:800; line-height:1;
+  background:linear-gradient(135deg, #2563EB 0%, #5E5CE6 100%);
+  -webkit-background-clip:text; background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+.cap-visual-card .vc-metric .unit {
+  font-size:18px; font-weight:600; color:#6B7280;
+}
+.cap-visual-card .vc-bars { display:flex; flex-direction:column; gap:18px; margin-bottom:36px; position:relative; z-index:1; }
+.cap-visual-card .vc-bar-item { display:flex; align-items:center; gap:14px; }
+.cap-visual-card .vc-bar-item .bar-label { width:88px; font-size:14px; font-weight:500; color:#374151; flex-shrink:0; }
+.cap-visual-card .vc-bar-item .bar-track { flex:1; height:6px; border-radius:3px; background:#E5E7EB; overflow:hidden; }
+.cap-visual-card .vc-bar-item .bar-fill { height:100%; border-radius:3px; background:linear-gradient(90deg, #2563EB, #5E5CE6); }
+.cap-visual-card .vc-note {
+  font-size:14px; color:#6B7280; line-height:1.7;
+  padding-top:24px; border-top:1px solid #E5E7EB;
+  position:relative; z-index:1;
+}
+
+/* ---------- 安全采购新卡片 — 信任合规特色 ---------- */
+.cap-visual-card--new {
+  background:linear-gradient(160deg, #FFFDF7 0%, #FFFFFF 40%, #F8FFF8 100%);
+  border:1px solid rgba(196,154,72,0.15);
+  padding:56px 48px;
+}
+.cap-visual-card--new::before,
+.cap-visual-card--new::after { display:none; }
+/* 背景装饰 — 暖金色调 */
+.cap-visual-card--new .sc-bg-decor {
+  background:#FFF7E6; opacity:0.55;
+}
+/* 徽章 — 金绿渐变 */
+.cap-visual-card--new .sc-badge {
+  background:linear-gradient(135deg, #C9973A, #D4A84B); color:#fff;
+}
+/* 标题强调色 */
+.cap-visual-card--new .sc-title { color:#1E293B; }
+.cap-visual-card--new .sc-title-sub { color:#94A3B8; }
+/* 仪表盘 — 绿色环 */
+.cap-visual-card--new .sc-gauge-svg circle:first-child { stroke:#F0FDF4; }
+.cap-visual-card--new .sc-gauge-svg circle:last-child { stroke:url(#secGaugeGrad); }
+.cap-visual-card--new .sc-gauge-check { background:#C9973A; }
+/* 进度条 — 绿色渐变 */
+.cap-visual-card--new .sc-metric-fill { background:linear-gradient(90deg, #10B981, #34D399); }
+/* 徽章区保持网格，加金色边框 */
+.cap-visual-card--new .sc-badges {
+  display:grid; grid-template-columns:repeat(4,1fr); gap:10px; margin-bottom:28px;
+}
+.cap-visual-card--new .sc-badge-item {
+  background:linear-gradient(135deg, #FFFDF7, #FFFBEB);
+  border:1px solid rgba(196,154,72,0.12);
+  padding:12px 8px; border-radius:12px; text-align:center;
+}
+.cap-visual-card--new .sc-badge-item-lbl { color:#947A3F; }
+/* 底部说明 — 绿色左边框 */
+.cap-visual-card--new .sc-note {
+  text-align:left; padding:16px 20px;
+  background:linear-gradient(135deg, #F8FFF8, #ECFDF5);
+  border-radius:16px; border-left:3px solid #10B981;
+  color:#4B5563; font-size:13px;
+}
+.sc-bg-decor {
+  position:absolute; top:-120px; left:-120px;
+  width:320px; height:320px;
+  background:#EFF6FF; border-radius:50%; filter:blur(80px); opacity:0.45;
+  pointer-events:none;
+}
+.relative { position:relative; }
+.z-10 { z-index:10; }
+.sc-header { display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:40px; gap:28px; }
+.sc-badge {
+  display:inline-flex; align-items:center; gap:4px;
+  padding:5px 14px; background:#EFF6FF; color:#2563EB;
+  font-size:12px; font-weight:700; border-radius:999px;
+  letter-spacing:0.08em; margin-bottom:14px;
+}
+.sc-title { font-size:42px; font-weight:800; color:#1E293B; margin-bottom:6px; line-height:1.15; }
+.sc-title-sub { font-size:20px; font-weight:400; color:#94A3B8; }
+.sc-subtitle { font-size:14px; color:#64748B; }
+.sc-gauge-wrap { display:flex; flex-direction:column; align-items:center; flex-shrink:0; }
+.sc-gauge { position:relative; width:140px; height:140px; }
+.sc-gauge-svg { width:100%; height:100%; }
+.sc-gauge-center {
+  position:absolute; inset:0; display:flex; flex-direction:column;
+  align-items:center; justify-content:center;
+}
+.sc-gauge-val { font-size:34px; font-weight:800; color:#1E293B; line-height:1; }
+.sc-gauge-lbl { font-size:10px; color:#94A3B8; font-weight:500; }
+.sc-gauge-check {
+  position:absolute; bottom:4px; right:4px;
+  width:24px; height:24px; border-radius:50%;
+  background:#10B981; border:3px solid #fff;
+  display:flex; align-items:center; justify-content:center;
+}
+.sc-metrics { display:flex; flex-direction:column; gap:14px; margin-bottom:36px; }
+.sc-metric { display:flex; gap:16px; align-items:center; padding:6px 0; }
+.sc-metric-icon {
+  width:44px; height:44px; border-radius:12px; display:flex;
+  align-items:center; justify-content:center; flex-shrink:0;
+}
+.sc-metric-body { flex:1; }
+.sc-metric-head { display:flex; justify-content:space-between; margin-bottom:8px; font-size:15px; font-weight:500; color:#334155; }
+.sc-metric-head span:last-child { font-weight:700; color:#1E293B; }
+.sc-metric-bar { height:8px; background:#F1F5F9; border-radius:999px; overflow:hidden; }
+.sc-metric-fill { height:100%; border-radius:999px; background:#2563EB; }
+.sc-badges { display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin-bottom:28px; }
+.sc-badge-item { background:#F8FAFC; padding:12px 8px; border-radius:12px; text-align:center; }
+.sc-badge-item-top { display:flex; align-items:center; justify-content:center; gap:4px; margin-bottom:6px; font-size:11px; font-weight:700; color:#1E293B; }
+.sc-badge-item-lbl { font-size:10px; color:#94A3B8; display:block; }
+.sc-note { font-size:13px; color:#94A3B8; text-align:center; line-height:1.7; }
+
+/* ---------- 智能撮合 — 新设计 ---------- */
+.section-match { padding:120px 0; overflow:hidden; background:radial-gradient(circle at 80% 20%, rgba(37,99,235,0.08), transparent 40%); }
+.section-match .container { max-width:var(--maxw); }
+.match-layout { display:grid; grid-template-columns:1fr 1fr; gap:120px; align-items:center; }
+
+.match-watermark {
+  font-size:140px; font-weight:900; line-height:1;
+  color:#2563EB; opacity:0.10; margin-bottom:-44px; margin-left:-6px;
+  user-select:none; pointer-events:none;
+}
+.match-label {
+  font-size:12px; font-weight:700; letter-spacing:0.12em;
+  color:#2563EB; text-transform:uppercase; margin-bottom:12px;
+}
+.match-title {
+  font-size:40px; font-weight:700; line-height:1.2; letter-spacing:-0.02em;
+  color:#111827; margin-bottom:20px;
+}
+.match-highlight { color:#2563EB; }
+.match-desc {
+  font-size:17px; font-weight:400; color:#6B7280; line-height:1.8; margin-bottom:40px;
+}
+
+.match-cards { display:flex; flex-direction:column; gap:20px; }
+.match-card {
+  display:flex; gap:20px; align-items:flex-start;
+  padding:24px; border:1px solid #E5E7EB; border-radius:24px;
+  background:#fff; transition:all 0.35s ease;
+}
+.match-card:hover { transform:translateY(-8px); border-color:#2563EB; box-shadow:0 20px 50px rgba(37,99,235,0.10); }
+.match-card-icon {
+  width:56px; height:56px; border-radius:16px; background:#EFF6FF;
+  display:flex; align-items:center; justify-content:center; flex-shrink:0;
+}
+.match-card-icon svg { width:26px; height:26px; }
+.match-card-body h4 { font-size:20px; font-weight:700; color:#111827; margin-bottom:4px; }
+.match-card-body p { font-size:16px; color:#6B7280; line-height:1.5; }
+
+/* 右侧 Dashboard */
+.match-right { display:flex; align-items:center; padding-top:60px; }
+.dashboard-card {
+  width:100%; max-width:680px;
+  border-radius:36px; padding:48px;
+  background:rgba(255,255,255,0.9);
+  backdrop-filter:blur(40px); -webkit-backdrop-filter:blur(40px);
+  border:1px solid rgba(37,99,235,0.15);
+  box-shadow:0 40px 100px rgba(15,23,42,0.08);
+  position:relative; overflow:hidden;
+  transition:all 0.35s ease;
+}
+.dashboard-card:hover {
+  transform:translateY(-8px);
+  border-color:rgba(37,99,235,0.4);
+  box-shadow:0 50px 120px rgba(15,23,42,0.14);
+}
+.db-badge {
+  display:inline-block; padding:8px 20px; border-radius:999px;
+  font-size:13px; font-weight:700; letter-spacing:0.08em;
+  background:#EFF6FF; color:#2563EB; margin-bottom:48px;
+}
+
+.db-metric-row {
+  display:flex; align-items:center; justify-content:space-between; gap:32px;
+  margin-bottom:48px;
+}
+.db-metric-val {
+  font-size:96px; font-weight:900; line-height:1; color:#2563EB;
+}
+.db-metric-lbl { font-size:28px; color:#6B7280; margin-top:8px; }
+
+.db-circle {
+  width:160px; height:160px; border-radius:50%; flex-shrink:0;
+  background:conic-gradient(#2563EB 0deg, #60A5FA 352deg, #E5E7EB 352deg);
+  display:flex; align-items:center; justify-content:center;
+  position:relative;
+}
+.db-circle-inner {
+  width:120px; height:120px; border-radius:50%; background:#fff;
+  display:flex; align-items:center; justify-content:center;
+  font-size:32px; font-weight:800; color:#2563EB; position:absolute;
+}
+
+.db-score-list { display:flex; flex-direction:column; gap:24px; margin-bottom:40px; }
+.db-score-item { }
+.db-score-head { display:flex; justify-content:space-between; margin-bottom:8px; font-size:15px; font-weight:500; color:#374151; }
+.db-score-head span:last-child { color:#2563EB; font-weight:600; }
+.db-score-bar { height:8px; background:#E5E7EB; border-radius:999px; overflow:hidden; }
+.db-score-fill { height:100%; border-radius:999px; background:linear-gradient(90deg, #2563EB, #60A5FA); }
+
+.db-ai-tip {
+  padding:24px; background:#F8FAFC; border-radius:24px;
+  font-size:16px; color:#6B7280; line-height:1.7; margin-bottom:40px;
+}
+
+.db-stats {
+  display:grid; grid-template-columns:repeat(4, 1fr); gap:20px;
+  border:1px solid #E5E7EB; border-radius:24px; padding:32px 24px;
+}
+.db-stat { text-align:center; }
+.db-stat-num { font-size:28px; font-weight:700; color:#2563EB; margin-bottom:6px; }
+.db-stat-lbl { font-size:13px; color:#6B7280; }
+
+/* ===== 可信交付卡片 — 橙色物流风 ===== */
+#delivery .cap-visual-card {
+  background:linear-gradient(160deg, #FFFBF5 0%, #FFFFFF 40%, #FFF8F0 100%);
+  border:1px solid rgba(255,149,0,0.15); padding:56px 48px;
+}
+#delivery .cap-visual-card::before,
+#delivery .cap-visual-card::after { display:none; }
+#delivery .sc-bg-decor { background:#FFF3E0; opacity:0.55; }
+#delivery .sc-badge { background:linear-gradient(135deg, #FF9500, #FFB340); color:#fff; }
+#delivery .sc-gauge-svg circle:first-child { stroke:#FFF8F0; }
+#delivery .sc-gauge-svg circle:last-child { stroke:url(#delGaugeGrad); }
+#delivery .sc-gauge-check { background:#FF9500; }
+#delivery .sc-metric-fill { background:linear-gradient(90deg, #FF9500, #FFB340); }
+#delivery .sc-badges { display:grid; grid-template-columns:repeat(4,1fr); gap:10px; margin-bottom:28px; }
+#delivery .sc-badge-item { background:linear-gradient(135deg, #FFFBF5, #FFF3E0); border:1px solid rgba(255,149,0,0.12); padding:12px 8px; border-radius:12px; text-align:center; }
+#delivery .sc-badge-item-lbl { color:#B8740A; }
+#delivery .sc-note { text-align:left; padding:16px 20px; background:linear-gradient(135deg, #FFFBF5, #FFF3E0); border-radius:16px; border-left:3px solid #FF9500; color:#4B5563; font-size:13px; }
+
+/* ===== 全局风控卡片 — 红色预警风 ===== */
+#risk .cap-visual-card {
+  background:linear-gradient(160deg, #FFFBFB 0%, #FFFFFF 40%, #FFF5F5 100%);
+  border:1px solid rgba(255,59,48,0.12); padding:56px 48px;
+}
+#risk .cap-visual-card::before,
+#risk .cap-visual-card::after { display:none; }
+#risk .sc-bg-decor { background:#FFEBEB; opacity:0.50; }
+#risk .sc-badge { background:linear-gradient(135deg, #FF3B30, #FF6259); color:#fff; }
+#risk .sc-gauge-svg circle:first-child { stroke:#FFF5F5; }
+#risk .sc-gauge-svg circle:last-child { stroke:url(#riskGaugeGrad); }
+#risk .sc-gauge-check { background:#FF3B30; }
+#risk .sc-metric-fill { background:linear-gradient(90deg, #FF3B30, #FF6259); }
+#risk .sc-badges { display:grid; grid-template-columns:repeat(4,1fr); gap:10px; margin-bottom:28px; }
+#risk .sc-badge-item { background:linear-gradient(135deg, #FFFBFB, #FFEBEB); border:1px solid rgba(255,59,48,0.10); padding:12px 8px; border-radius:12px; text-align:center; }
+#risk .sc-badge-item-lbl { color:#C0392B; }
+#risk .sc-note { text-align:left; padding:16px 20px; background:linear-gradient(135deg, #FFFBFB, #FFF5F5); border-radius:16px; border-left:3px solid #FF3B30; color:#4B5563; font-size:13px; }
+
+/* ===== 数据智脑卡片 — 紫色智能风 ===== */
+#brain .cap-visual-card {
+  background:linear-gradient(160deg, #FDFAFF 0%, #FFFFFF 40%, #F8F5FF 100%);
+  border:1px solid rgba(94,92,230,0.12); padding:56px 48px;
+}
+#brain .cap-visual-card::before,
+#brain .cap-visual-card::after { display:none; }
+#brain .sc-bg-decor { background:#F0EDFF; opacity:0.50; }
+#brain .sc-badge { background:linear-gradient(135deg, #5E5CE6, #7C7AEE); color:#fff; }
+#brain .sc-gauge-svg circle:first-child { stroke:#F8F5FF; }
+#brain .sc-gauge-svg circle:last-child { stroke:url(#brainGaugeGrad); }
+#brain .sc-gauge-check { background:#5E5CE6; }
+#brain .sc-metric-fill { background:linear-gradient(90deg, #5E5CE6, #A78BFA); }
+#brain .sc-badges { display:grid; grid-template-columns:repeat(4,1fr); gap:10px; margin-bottom:28px; }
+#brain .sc-badge-item { background:linear-gradient(135deg, #FDFAFF, #F0EDFF); border:1px solid rgba(94,92,230,0.10); padding:12px 8px; border-radius:12px; text-align:center; }
+#brain .sc-badge-item-lbl { color:#6D28D9; }
+#brain .sc-note { text-align:left; padding:16px 20px; background:linear-gradient(135deg, #FDFAFF, #F8F5FF); border-radius:16px; border-left:3px solid #5E5CE6; color:#4B5563; font-size:13px; }
+
+/* ===== 左侧功能卡片 — 分模块主题色 ===== */
+#procurement .cap-feature:hover { border-color:#C9973A; box-shadow:0 20px 50px rgba(196,154,72,0.12); }
+#procurement .cap-detail-label { color:#C9973A; }
+#procurement .gradient-text { background:linear-gradient(135deg, #C9973A, #10B981); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; }
+#procurement .cap-detail-num { background:linear-gradient(135deg, #C9973A, #10B981); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; }
+
+#delivery .cap-feature:hover { border-color:#FF9500; box-shadow:0 20px 50px rgba(255,149,0,0.12); }
+#delivery .cap-detail-label { color:#FF9500; }
+#delivery .gradient-text { background:linear-gradient(135deg, #FF9500, #FFB340); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; }
+#delivery .cap-detail-num { background:linear-gradient(135deg, #FF9500, #FFB340); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; }
+
+#risk .cap-feature:hover { border-color:#FF3B30; box-shadow:0 20px 50px rgba(255,59,48,0.10); }
+#risk .cap-detail-label { color:#FF3B30; }
+#risk .gradient-text { background:linear-gradient(135deg, #FF3B30, #FF6259); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; }
+#risk .cap-detail-num { background:linear-gradient(135deg, #FF3B30, #FF6259); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; }
+
+#brain .cap-feature:hover { border-color:#5E5CE6; box-shadow:0 20px 50px rgba(94,92,230,0.12); }
+#brain .cap-detail-label { color:#5E5CE6; }
+#brain .gradient-text { background:linear-gradient(135deg, #5E5CE6, #A78BFA); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; }
+#brain .cap-detail-num { background:linear-gradient(135deg, #5E5CE6, #A78BFA); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; }
+
+/* 智能撮合 — 左侧 match-card 保持蓝色 */
+#matching .match-card:hover { border-color:#2563EB; box-shadow:0 20px 50px rgba(37,99,235,0.10); }
+
+/* 智能撮合新卡片 — 匹配引擎特色 */
+.dashboard-card--new {
+  background:linear-gradient(160deg, #F8FAFF 0%, #FFFFFF 40%, #F0F7FF 100%);
+  border:1px solid rgba(37,99,235,0.12);
+  backdrop-filter:none; -webkit-backdrop-filter:none;
+  padding:56px 48px;
+}
+.dashboard-card--new .db-badge,
+.dashboard-card--new .db-metric-row,
+.dashboard-card--new .db-score-list,
+.dashboard-card--new .db-ai-tip { display:none; }
+/* 背景装饰改为蓝色调 */
+.dashboard-card--new .sc-bg-decor {
+  background:#DBEAFE; opacity:0.55;
+}
+/* 徽章改为蓝色系 */
+.dashboard-card--new .sc-badge {
+  background:linear-gradient(135deg, #2563EB, #3B82F6); color:#fff;
+}
+/* 仪表盘环改为渐变蓝 */
+.dashboard-card--new .sc-gauge-svg circle:first-child { stroke:#EFF6FF; }
+.dashboard-card--new .sc-gauge-svg circle:last-child { stroke:url(#gaugeGrad); }
+/* 进度条渐变 */
+.dashboard-card--new .sc-metric-fill { background:linear-gradient(90deg, #2563EB, #60A5FA); }
+/* 徽章区改为横向胶囊标签 */
+.dashboard-card--new .sc-badges {
+  display:flex; flex-wrap:nowrap; gap:8px;
+}
+.dashboard-card--new .sc-badge-item {
+  flex:1 1 0; min-width:0;
+  background:transparent; padding:8px 6px; border-radius:999px;
+  border:1px solid #DBEAFE;
+  display:flex; flex-direction:column; align-items:center; gap:2px;
+}
+.dashboard-card--new .sc-badge-item-top {
+  margin-bottom:0; font-size:11px; gap:4px; white-space:nowrap;
+}
+.dashboard-card--new .sc-badge-item-top span:first-child { font-size:14px; }
+.dashboard-card--new .sc-badge-item-lbl {
+  font-size:10px; color:#6B7280; white-space:nowrap;
+}
+/* 底部说明加蓝色左边框 */
+.dashboard-card--new .sc-note {
+  text-align:left; padding:16px 20px;
+  background:linear-gradient(135deg, #F8FAFF, #EFF6FF);
+  border-radius:16px; border-left:3px solid #2563EB;
+  color:#4B5563; font-size:13px;
+}
+
+/* ---------- AI 技术层 ---------- */
+.ai-engine-section {
+  position:relative; overflow:hidden;
+  background:
+    radial-gradient(circle at 50% 0%, rgba(0,64,133,0.04) 0%, transparent 70%),
+    linear-gradient(rgba(0,0,0,0.015) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,0,0,0.015) 1px, transparent 1px);
+  background-size: 100% 100%, 40px 40px, 40px 40px;
+}
+.ai-engine-section::before {
+  content:''; position:absolute; top:100px; left:50%; transform:translateX(-50%);
+  width:1200px; height:600px;
+  border:1px solid rgba(0,113,227,0.04);
+  border-radius:50% / 100% 100% 0 0;
+  pointer-events:none; z-index:0;
+}
+.tech-grid {
+  display:grid; grid-template-columns:repeat(5, 1fr); gap:24px;
+  position:relative; z-index:1;
+}
+.tech-item {
+  text-align:center; padding:44px 28px 36px;
+  background:rgba(255,255,255,0.75);
+  backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px);
+  border:1px solid rgba(0,0,0,0.06); border-radius:20px;
+  box-shadow:0 4px 24px rgba(0,0,0,0.03);
+  transition:all 0.35s ease;
+  display:flex; flex-direction:column; align-items:center;
+}
+.tech-item:hover { transform:translateY(-10px); box-shadow:0 24px 60px rgba(0,0,0,0.06); }
+.tech-item .tech-icon {
+  width:64px; height:64px; border-radius:50%; margin-bottom:20px;
+  display:flex; align-items:center; justify-content:center;
+  box-shadow:inset 0 1px 3px rgba(255,255,255,0.5);
+}
+.tech-item .tech-icon svg { width:30px; height:30px; }
+.tech-item .tech-num { font-size:13px; font-weight:700; margin-bottom:4px; }
+.tech-item .tech-name { font-size:20px; font-weight:700; margin-bottom:8px; color:#111827; }
+.tech-item .tech-desc { font-size:14px; color:var(--text-secondary); line-height:1.6; }
+/* 各引擎编号颜色 */
+.tech-item:nth-child(1) .tech-num { color:#0071e3; }
+.tech-item:nth-child(2) .tech-num { color:#34c759; }
+.tech-item:nth-child(3) .tech-num { color:#FF9500; }
+.tech-item:nth-child(4) .tech-num { color:#FF3B30; }
+.tech-item:nth-child(5) .tech-num { color:#5E5CE6; }
+
+
+/* ---------- Footer ---------- */
+/* footer 样式由 css/style.css 统一管理 */
+
+/* ===== Dashboard 可视化差异化组件 ===== */
+
+/* --- 安全采购：三级认证分层展示 --- */
+.sc-tier-display {
+  display:flex; flex-direction:column; gap:10px; min-width:170px;
+}
+.sc-tier-row {
+  display:flex; align-items:center; gap:10px;
+  padding:10px 14px; border-radius:10px;
+  font-size:13px; font-weight:600;
+  transition:transform 0.25s ease;
+}
+.sc-tier-row:hover { transform:translateX(4px); }
+.sc-tier-row .tier-icon {
+  width:28px; height:28px; border-radius:50%;
+  display:flex; align-items:center; justify-content:center;
+  font-size:14px; flex-shrink:0;
+}
+.sc-tier-row .tier-info { flex:1; min-width:0; }
+.sc-tier-row .tier-name { font-size:13px; font-weight:600; color:#1E293B; margin-bottom:3px; }
+.sc-tier-row .tier-bar {
+  height:4px; border-radius:2px; background:#F1F5F9; overflow:hidden;
+}
+.sc-tier-row .tier-bar-fill { height:100%; border-radius:2px; }
+.sc-tier-row .tier-count { font-size:15px; font-weight:800; color:#1E293B; white-space:nowrap; }
+
+/* --- 可信交付：里程碑追踪 --- */
+.sc-milestone {
+  display:flex; align-items:flex-start; gap:0;
+  min-width:210px; position:relative; padding:8px 0;
+}
+.sc-ms-step {
+  display:flex; flex-direction:column; align-items:center; gap:8px;
+  flex:1; position:relative;
+}
+.sc-ms-step .ms-dot {
+  width:16px; height:16px; border-radius:50%; position:relative; z-index:1;
+  display:flex; align-items:center; justify-content:center;
+  border:3px solid;
+  transition:transform 0.25s ease;
+}
+.sc-ms-step:hover .ms-dot { transform:scale(1.3); }
+.sc-ms-step .ms-line {
+  position:absolute; top:8px; left:50%; width:100%; height:2px;
+  z-index:0;
+}
+.sc-ms-step:last-child .ms-line { display:none; }
+.sc-ms-step .ms-label { font-size:11px; color:#64748B; white-space:nowrap; font-weight:500; }
+.sc-ms-step .ms-pct { font-size:12px; font-weight:700; white-space:nowrap; }
+
+/* --- 全局风控：雷达波纹 --- */
+.sc-radar {
+  position:relative; width:130px; height:130px;
+  display:flex; align-items:center; justify-content:center;
+}
+.sc-radar-ring {
+  position:absolute; border-radius:50%; border:2px solid;
+  animation:radarPulse 2.8s ease-in-out infinite;
+}
+.sc-radar-ring:nth-child(1) { animation-delay:0s; }
+.sc-radar-ring:nth-child(2) { animation-delay:0.7s; }
+.sc-radar-ring:nth-child(3) { animation-delay:1.4s; }
+@keyframes radarPulse {
+  0%,100% { transform:scale(1); opacity:0.7; }
+  50%     { transform:scale(1.08); opacity:1; }
+}
+.sc-radar-core {
+  width:28px; height:28px; border-radius:50%;
+  display:flex; align-items:center; justify-content:center;
+  position:relative; z-index:2;
+  box-shadow:0 0 20px rgba(255,59,48,0.4);
+  animation:coreGlow 2s ease-in-out infinite;
+}
+@keyframes coreGlow {
+  0%,100% { box-shadow:0 0 20px rgba(255,59,48,0.4); }
+  50%     { box-shadow:0 0 35px rgba(255,59,48,0.7); }
+}
+.sc-radar-core svg { width:12px; height:12px; color:#fff; }
+
+/* --- 数据智脑：趋势柱状图 --- */
+.sc-trend {
+  display:flex; align-items:flex-end; gap:14px;
+  height:120px; min-width:150px; padding:0 6px;
+}
+.sc-trend-item {
+  display:flex; flex-direction:column; align-items:center; gap:8px;
+  flex:1;
+}
+.sc-trend-bar {
+  width:100%; max-width:32px; border-radius:8px 8px 0 0;
+  transition:height 0.6s cubic-bezier(0.25,0.1,0.25,1), opacity 0.4s;
+  position:relative; cursor:pointer;
+}
+.sc-trend-bar:hover { opacity:0.8; }
+.sc-trend-val {
+  font-size:11px; font-weight:700; color:#1E293B; white-space:nowrap;
+}
+.sc-trend-lbl {
+  font-size:10px; color:#94A3B8; white-space:nowrap; font-weight:500;
+}
+
+/* ---------- 响应式 ---------- */
+@media (max-width:1024px) {
+  .match-layout { grid-template-columns:1fr; gap:48px; }
+  .match-title { font-size:34px; }
+  .match-watermark { font-size:100px; margin-bottom:-34px; }
+  .dashboard-card { padding:40px 32px; }
+  .db-metric-row { justify-content:flex-start; }
+  .db-metric-val { font-size:72px; }
+  .db-metric-lbl { font-size:22px; }
+  .db-circle { width:140px; height:140px; }
+  .db-circle-inner { width:104px; height:104px; font-size:26px; }
+  .db-stats { grid-template-columns:repeat(2, 1fr); }
+  .capability-detail { grid-template-columns:1fr; gap:48px; }
+  .capability-detail .cap-visual { order:-1; }
+  .capability-detail.reverse .cap-visual { order:-1; }
+  .tech-grid { grid-template-columns:repeat(3, 1fr); gap:20px; }
+  .tech-item { padding:36px 24px; }
+  .tech-item .tech-icon { width:56px; height:56px; }
+  .tech-item .tech-icon svg { width:26px; height:26px; }
+  .tech-item .tech-name { font-size:18px; }
+  .tech-item .tech-desc { font-size:13px; }
+  .grid-5 { grid-template-columns:repeat(3, 1fr); }
+  .section-title { font-size:36px; }
+  .pipeline-item { width:140px; padding:0 14px; }
+}
+@media (max-width:768px) {
+  .match-title { font-size:30px; }
+  .match-desc { font-size:15px; }
+  .match-card { padding:18px; }
+  .match-card-icon { width:48px; height:48px; border-radius:14px; }
+  .match-card-icon svg { width:22px; height:22px; }
+  .match-card-body h4 { font-size:17px; }
+  .match-card-body p { font-size:14px; }
+  .cap-feature { padding:18px; }
+  .cap-feature .feat-icon { width:48px; height:48px; border-radius:14px; }
+  .cap-feature .feat-icon svg { width:22px; height:22px; }
+  .cap-feature .feat-body h4 { font-size:17px; }
+  .cap-feature .feat-body p { font-size:15px; }
+  .dashboard-card { padding:32px 24px; border-radius:28px; }
+  .db-metric-val { font-size:56px; }
+  .db-metric-lbl { font-size:18px; }
+  .db-circle { width:120px; height:120px; }
+  .db-circle-inner { width:88px; height:88px; font-size:22px; }
+  .db-stats { grid-template-columns:repeat(2, 1fr); padding:24px 16px; }
+  .db-stat-num { font-size:22px; }
+  .grid-2, .grid-3, .grid-5 { grid-template-columns:1fr; }
+  .tech-grid { grid-template-columns:1fr 1fr; gap:16px; }
+  .tech-item { padding:32px 24px; }
+  .tech-item .tech-icon { width:52px; height:52px; }
+  .tech-item .tech-icon svg { width:24px; height:24px; }
+  .tech-item .tech-name { font-size:17px; }
+  .section { padding:80px 0; }
+  .section-title { font-size:30px; }
+  .hero h1 { font-size:34px; }
+  .pipeline { gap:8px; }
+  .pipeline-item { width:120px; padding:0 8px; }
+  .pl-node { width:60px; height:60px; }
+  .pl-node svg { width:22px; height:22px; }
+  .pl-title { font-size:14px; }
+  .sc-header { flex-direction:column; align-items:flex-start; }
+  .sc-title { font-size:30px; }
+  .sc-gauge { width:110px; height:110px; }
+  .sc-gauge-val { font-size:26px; }
+  .sc-badges { grid-template-columns:repeat(2,1fr); }
+  .cap-visual-card--new,
+  .dashboard-card--new { padding:32px 24px; }
+  .dashboard-card--new .sc-badges { gap:8px; }
+  .dashboard-card--new .sc-badge-item { padding:6px 14px; }
+  .dashboard-card--new .sc-badge-item-top { font-size:11px; }
+}
+@media (max-width:480px) {
+  .match-title { font-size:28px; }
+  .db-metric-row { flex-direction:column; align-items:flex-start; gap:20px; }
+  .db-circle { width:100px; height:100px; }
+  .db-circle-inner { width:72px; height:72px; font-size:20px; }
+  .db-stats { grid-template-columns:repeat(2, 1fr); }
+  .tech-grid { grid-template-columns:1fr; gap:14px; }
+  .tech-item { padding:28px 24px; }
+  .tech-item .tech-icon { width:48px; height:48px; }
+  .tech-item .tech-icon svg { width:22px; height:22px; }
+  .pipeline { flex-direction:column; align-items:center; gap:20px; }
+  .pipeline-track { display:none; }
+  .pipeline-item { flex-direction:row; width:auto; gap:16px; }
+  .pl-node { margin-bottom:0; }
+}
+</style>
 </head>
 <body>
 
@@ -37,167 +931,936 @@
   <img class="hero-video" src="https://images.unsplash.com/photo-1606964212858-c215029db704?auto=format&fit=crop&w=1920&q=85" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;pointer-events:none;">
   <div class="hero-overlay"></div>
   <div class="hero-content">
-    <h1>六大模块<span>协同运转</span></h1>
-    <p class="lead">从供应商到终端客户，全链路数字化</p>
-    <p class="hero-sub"><span><svg class="icon-svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg> 采购</span><span><svg class="icon-svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8l-7 5V8l-7 5V4l-6 4v12z"/></svg> 仓储</span><span><svg class="icon-svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg> 物流</span><span><svg class="icon-svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg> 关务</span></p>
+    <h1>五大能力<span style="background:none; -webkit-text-fill-color:#fff;">一条链</span></h1>
+    <p class="lead">AI贯穿每个环节，越用越聪明</p>
+    <p class="hero-sub"><span><svg class="icon-svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#6CB2FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg> 智能撮合</span><span><svg class="icon-svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#34C759" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> 安全采购</span><span><svg class="icon-svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#FF9500" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg> 可信交付</span><span><svg class="icon-svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#FF3B30" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg> 全局风控</span><span><svg class="icon-svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#A78BFA" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg> 数据智脑</span></p>
   </div>
 </section>
-
-<!-- ===== 链路痛点透视 ===== -->
-<section class="section">
-  <div class="container">
-    <div class="text-center reveal" style="margin-bottom:48px;">
-      <div class="eyebrow">WHERE IT HURTS · 链路透视</div>
-      <h2 class="section-title">一趟货从采购到签收，<span class="gradient-text">至少过这几关</span></h2>
-      <p class="section-sub">一张图看清：一趟货从采购到签收，需要经过哪些关键节点。</p>
-    </div>
-    <div class="flow reveal">
-      <div class="flow-node">
-        <div class="ic"><svg class="icon-svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div><h4>找供应商</h4>
-        <ul><li>靠不靠谱？</li><li>会不会突然断供？</li><li>比别人贵了多少？</li></ul>
-      </div>
-      <div class="flow-arrow">→</div>
-      <div class="flow-node">
-        <div class="ic"><svg class="icon-svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1"/></svg></div><h4>下采购单</h4>
-        <ul><li>什么时候该补货？</li><li>补多少才不压库存？</li><li>报价太多怎么比？</li></ul>
-      </div>
-      <div class="flow-arrow">→</div>
-      <div class="flow-node">
-        <div class="ic"><svg class="icon-svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg></div><h4>管仓储</h4>
-        <ul><li>压多了还是压少了？</li><li>拣货老是出错？</li><li>效期过了才发现？</li></ul>
-      </div>
-      <div class="flow-arrow">→</div>
-      <div class="flow-node">
-        <div class="ic"><svg class="icon-svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/><line x1="8" y1="7" x2="16" y2="7"/><line x1="8" y1="11" x2="16" y2="11"/><line x1="8" y1="15" x2="12" y2="15"/></svg></div><h4>管订单</h4>
-        <ul><li>订单从哪发最省？</li><li>超时了谁负责？</li><li>退货怎么处理？</li></ul>
-      </div>
-      <div class="flow-arrow">→</div>
-      <div class="flow-node">
-        <div class="ic"><svg class="icon-svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></div><h4>追物流</h4>
-        <ul><li>货现在到哪了？</li><li>会不会延误？</li><li>延误了怎么办？</li></ul>
-      </div>
-      <div class="flow-arrow">→</div>
-      <div class="flow-node">
-        <div class="ic"><svg class="icon-svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg></div><h4>报清关</h4>
-        <ul><li>HS 归对了吗？</li><li>关税多交了？</li><li>单证被退过吗？</li></ul>
-      </div>
-    </div>
-    <div class="crisis-bridge reveal" style="margin-top:32px;">
-      <p>下面这六个模块，一一对应上面<b>每个环节</b>。</p>
-      <span class="bridge-arrow">↓</span>
-    </div>
-  </div>
-</section>
-
-<!-- ===== 六大模块详解 ===== -->
+<!-- ===== 五大能力总览 ===== -->
 <section class="section bg-gray">
   <div class="container">
-    <div class="text-center reveal" style="margin-bottom:56px;">
-      <div class="eyebrow">SIX MODULES</div>
-      <h2 class="section-title">每个模块，对应一个关键环节</h2>
-      <p class="section-sub">六个模块，一一对应供应链的六个关键节点。</p>
+    <div class="text-center" style="margin-bottom:56px;">
+      <div class="eyebrow">FIVE CAPABILITIES</div>
+      <h2 class="section-title">五大核心能力，<span class="gradient-text">AI贯穿每个环节</span></h2>
+      <p class="section-sub">从寻源到签收，从风控到决策——前一环的输出是后一环的输入，越用越聪明。</p>
     </div>
-    <div class="grid grid-3">
-      <div class="card reveal" id="supplier">
-        <div class="icon"><svg class="icon-svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8l-7 5V8l-7 5V4l-6 4v12z"/></svg></div><h3>供应商管理</h3><div class="sub-cn">Supplier Management</div>
-        <p>不在出问题后救火，而在出问题前预警。自动追踪每个供应商的准时率、质量合格率、价格趋势，恶化前提醒你切换备选。</p>
-        <div class="tags"><span>准时率追踪</span><span>质量监控</span><span>价格预警</span><span>多源备选</span></div>
+    <div class="pipeline">
+      <div class="pipeline-track"></div>
+      <div class="pipeline-item">
+        <div class="pl-node" style="--accent:#0071e3">
+          <span class="pl-num">01</span>
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        </div>
+        <div class="pl-body">
+          <div class="pl-title">智能撮合</div>
+          <div class="pl-sub">找对人</div>
+        </div>
       </div>
-      <div class="card reveal" id="procurement">
-        <div class="icon"><svg class="icon-svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1"/></svg></div><h3>智能采购</h3><div class="sub-cn">Procurement</div>
-        <p>不再凭感觉判断"该补货了"。AI 预测需求 + TCO 全链路比价 + 自动跟单，PO 周期从 3–5 天缩至 1 天内。</p>
-        <div class="tags"><span>AI 需求预测</span><span>TCO 比价</span><span>PO 自动化</span><span>交期预警</span></div>
+      <div class="pipeline-item">
+        <div class="pl-node" style="--accent:#34c759">
+          <span class="pl-num">02</span>
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <div class="pl-body">
+          <div class="pl-title">安全采购</div>
+          <div class="pl-sub">查清底</div>
+        </div>
       </div>
-      <div class="card reveal" id="wms">
-        <div class="icon"><svg class="icon-svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg></div><h3>仓储管理 WMS</h3><div class="sub-cn">Warehouse</div>
-        <p>库存不是越少越好——断货的代价远大于仓储费。动态安全库存模型帮你找到最优水位，周转天数从 90 天降至 55 天。</p>
-        <div class="tags"><span>动态安全库存</span><span>波次拣货</span><span>效期管理</span><span>FBA 对接</span></div>
+      <div class="pipeline-item">
+        <div class="pl-node" style="--accent:#ff9500">
+          <span class="pl-num">03</span>
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+        </div>
+        <div class="pl-body">
+          <div class="pl-title">可信交付</div>
+          <div class="pl-sub">送到位</div>
+        </div>
       </div>
-      <div class="card reveal" id="oms">
-        <div class="icon"><svg class="icon-svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/><line x1="8" y1="7" x2="16" y2="7"/><line x1="8" y1="11" x2="16" y2="11"/><line x1="8" y1="15" x2="12" y2="15"/></svg></div><h3>订单履约 OMS</h3><div class="sub-cn">Order Management</div>
-        <p>订单进来，系统自动选最省最快的方式发出。多渠道接单、智能拆合、SLA 超时预警——不用每天盯屏幕。</p>
-        <div class="tags"><span>多渠道接单</span><span>智能路由</span><span>自动拆合</span><span>SLA 预警</span></div>
+      <div class="pipeline-item">
+        <div class="pl-node" style="--accent:#ff3b30">
+          <span class="pl-num">04</span>
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        </div>
+        <div class="pl-body">
+          <div class="pl-title">全局风控</div>
+          <div class="pl-sub">防住险</div>
+        </div>
       </div>
-      <div class="card reveal" id="tms">
-        <div class="icon"><svg class="icon-svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></div><h3>全球物流 TMS</h3><div class="sub-cn">Transportation</div>
-        <p>货到哪里了、会不会延误——不用打电话问货代。实时轨迹追踪 + ETA 预测 + 异常自动告警，出问题前就知道。</p>
-        <div class="tags"><span>实时追踪</span><span>ETA 预测</span><span>多式联运</span><span>异常告警</span></div>
-      </div>
-      <div class="card reveal" id="customs">
-        <div class="icon"><svg class="icon-svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg></div><h3>跨境关务</h3><div class="sub-cn">Customs</div>
-        <p>关税多交了不知道，HS 归错被罚款。AI 自动归类 + 关税优化 + 合规风控，报关差错率从 5–10% 压至 2% 以下。</p>
-        <div class="tags"><span>HS 智能归类</span><span>关税优化</span><span>单证 AI 审核</span><span>合规预警</span></div>
+      <div class="pipeline-item">
+        <div class="pl-node" style="--accent:#5e5ce6">
+          <span class="pl-num">05</span>
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+        </div>
+        <div class="pl-body">
+          <div class="pl-title">数据智脑</div>
+          <div class="pl-sub">越用越聪明</div>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ===== 增值模块：分销 + 报表 ===== -->
-<section class="section">
+<!-- ===== 能力一：智能撮合 ===== -->
+<section class="section section-match" id="matching">
   <div class="container">
-    <div class="text-center reveal" style="margin-bottom:56px;">
-      <div class="eyebrow">BEYOND THE CORE · 增值模块</div>
-      <h2 class="section-title">供应链跑通了，<span class="gradient-text">把货卖好、把账算清</span></h2>
-      <p class="section-sub">六大模块管好货的流转，下面这两个帮你把货卖出去、把账算明白。</p>
-    </div>
-    <div class="grid grid-2">
-      <div class="card reveal">
-        <div class="icon"><svg class="icon-svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg></div><h3>分销与供销商</h3><div class="sub-cn">Distribution Network</div>
-        <p>有好货缺渠道，有渠道缺好货——供销双方还在靠微信对接、手工对账，分账扯皮每周都在发生。品牌方上架分销池，经销商零库存选品，订单完成自动分账。一个人管 100+ 分销商不费力，窜货实时监控。</p>
-        <div class="tags"><span>供销入驻</span><span>分销选品</span><span>自动分账</span><span>窜货监控</span></div>
+    <div class="match-layout">
+
+      <!-- 左侧 -->
+      <div class="match-left">
+        <div class="match-watermark">01</div>
+        <div class="match-label">SMART MATCHING</div>
+        <h2 class="match-title">智能撮合</h2>
+        <p class="match-desc">
+          AI读懂你的需求，从全球供应商池里精准匹配最合适的那一家。不只比价格，还综合看实力、资质、口碑与交付能力，每次推荐都告诉你"为什么是他"。
+        </p>
+
+        <div class="match-cards">
+          <div class="match-card">
+            <div class="match-card-icon" style="background:linear-gradient(135deg, #EFF6FF, #DBEAFE);">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#2563EB" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+            </div>
+            <div class="match-card-body"><h4>智能读懂需求</h4><p>自动识别规格、数量、交期和预算，无需填写复杂表单。</p></div>
+          </div>
+          <div class="match-card">
+            <div class="match-card-icon" style="background:linear-gradient(135deg, #EFF6FF, #DBEAFE);">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#2563EB" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+            </div>
+            <div class="match-card-body"><h4>全方位精准匹配</h4><p>综合实力、资质、出口经验、交付能力等AI多维评分。</p></div>
+          </div>
+          <div class="match-card">
+            <div class="match-card-icon" style="background:linear-gradient(135deg, #FFF7ED, #FFEDD5);">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#F97316" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            </div>
+            <div class="match-card-body"><h4>买卖双向推荐</h4><p>系统推荐Top供应商，同时主动推送适配买家。</p></div>
+          </div>
+          <div class="match-card">
+            <div class="match-card-icon" style="background:linear-gradient(135deg, #ECFDF5, #D1FAE5);">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg>
+            </div>
+            <div class="match-card-body"><h4>匹配透明可查</h4><p>每次推荐都附带完整评分依据，选择不再靠感觉。</p></div>
+          </div>
+        </div>
       </div>
-      <div class="card reveal">
-        <div class="icon"><svg class="icon-svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></div><h3>数据统计与报表中心</h3><div class="sub-cn">Analytics</div>
-        <p>数据散在采购、仓储、物流各系统，想看经营全貌得等各部门拉 Excel——等报表出来，问题可能已经发生了三天。所有数据汇成一块实时看板，直接打字问"哪个 SKU 毛利在降？"，AI 自动定位原因。不等报表，不用开会。</p>
-        <div class="tags"><span>实时看板</span><span>自然语言问数</span><span>成本归集</span><span>预警中心</span></div>
+
+      <!-- 右侧 Dashboard -->
+      <div class="match-right">
+        <div class="dashboard-card dashboard-card--new">
+          <div class="sc-bg-decor"></div>
+          <div class="relative z-10">
+            <!-- 头部 -->
+            <div class="sc-header">
+              <div>
+                <span class="sc-badge">SMART MATCHING ENGINE</span>
+                <h2 class="sc-title">98% <span class="sc-title-sub">匹配满意度</span></h2>
+                <p class="sc-subtitle">AI读懂需求，从全球供应商池精准匹配</p>
+              </div>
+              <!-- 满意度仪表盘 -->
+              <div class="sc-gauge-wrap">
+                <div class="sc-gauge">
+                  <svg class="sc-gauge-svg" viewBox="0 0 120 120">
+                    <defs>
+                      <linearGradient id="gaugeGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" stop-color="#2563EB"/>
+                        <stop offset="100%" stop-color="#60A5FA"/>
+                      </linearGradient>
+                    </defs>
+                    <circle cx="60" cy="60" r="50" fill="none" stroke="#EEF2FF" stroke-width="10"/>
+                    <circle cx="60" cy="60" r="50" fill="none" stroke="url(#gaugeGrad)" stroke-width="10" stroke-linecap="round"
+                      stroke-dasharray="314" stroke-dashoffset="6.28" transform="rotate(-90 60 60)"/>
+                  </svg>
+                  <div class="sc-gauge-center">
+                    <span class="sc-gauge-val">98%</span>
+                    <span class="sc-gauge-lbl">Satisfaction</span>
+                  </div>
+                  <div class="sc-gauge-check">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- 评分指标 -->
+            <div class="sc-metrics">
+              <div class="sc-metric">
+                <div class="sc-metric-icon" style="background:#EFF6FF; color:#2563EB;">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                </div>
+                <div class="sc-metric-body">
+                  <div class="sc-metric-head"><span>需求解析</span><span>98分</span></div>
+                  <div class="sc-metric-bar"><div class="sc-metric-fill" style="width:98%"></div></div>
+                </div>
+              </div>
+              <div class="sc-metric">
+                <div class="sc-metric-icon" style="background:#EFF6FF; color:#2563EB;">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+                </div>
+                <div class="sc-metric-body">
+                  <div class="sc-metric-head"><span>多维评分</span><span>96分</span></div>
+                  <div class="sc-metric-bar"><div class="sc-metric-fill" style="width:96%"></div></div>
+                </div>
+              </div>
+              <div class="sc-metric">
+                <div class="sc-metric-icon" style="background:#FFF7ED; color:#F97316;">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg>
+                </div>
+                <div class="sc-metric-body">
+                  <div class="sc-metric-head"><span>推荐精准</span><span>95分</span></div>
+                  <div class="sc-metric-bar"><div class="sc-metric-fill" style="width:95%"></div></div>
+                </div>
+              </div>
+              <div class="sc-metric">
+                <div class="sc-metric-icon" style="background:#ECFDF5; color:#10B981;">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg>
+                </div>
+                <div class="sc-metric-body">
+                  <div class="sc-metric-head"><span>透明度</span><span>97分</span></div>
+                  <div class="sc-metric-bar"><div class="sc-metric-fill" style="width:97%"></div></div>
+                </div>
+              </div>
+            </div>
+            <!-- 能力标签 -->
+            <div class="sc-badges">
+              <div class="sc-badge-item">
+                <div class="sc-badge-item-top">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#2563EB" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                  <span>秒级响应</span>
+                </div>
+                <span class="sc-badge-item-lbl">&lt; 3秒</span>
+              </div>
+              <div class="sc-badge-item">
+                <div class="sc-badge-item-top">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#2563EB" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                  <span>全球资源池</span>
+                </div>
+                <span class="sc-badge-item-lbl">50万+</span>
+              </div>
+              <div class="sc-badge-item">
+                <div class="sc-badge-item-top">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#F97316" stroke-width="2"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg>
+                  <span>精准推荐</span>
+                </div>
+                <span class="sc-badge-item-lbl">95%+</span>
+              </div>
+              <div class="sc-badge-item">
+                <div class="sc-badge-item-top">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2"><polyline points="1 4 1 10 7 10"/><polyline points="23 20 23 14 17 14"/><path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10m22 4l-4.64 4.36A9 9 0 0 1 3.51 15"/></svg>
+                  <span>双向匹配</span>
+                </div>
+                <span class="sc-badge-item-lbl">买卖互推</span>
+              </div>
+            </div>
+            <p class="sc-note"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2563EB" stroke-width="2" style="vertical-align:-3px; margin-right:4px;"><path d="M12 2a10 10 0 1 0 10 10H12V2z"/><path d="M12 2a10 10 0 0 1 10 10h-10V2z"/></svg>基于知识图谱 + 多维评分模型，每次推荐都附带完整评分依据，选择不迷茫，决策更透明。</p>
+          </div>
+        </div>
       </div>
+
     </div>
   </div>
 </section>
 
-<!-- ===== AI 赋能体系 ===== -->
-<section class="section bg-gray">
+<!-- ===== 能力二：安全采购 ===== -->
+<section class="section" id="procurement">
   <div class="container">
-    <div class="text-center reveal" style="margin-bottom:56px;">
-      <div class="eyebrow">AI EVERYWHERE</div>
-      <h2 class="section-title">六个模块，<span class="gradient-text">六套 AI 在背后跑</span></h2>
-      <p class="section-sub" style="letter-spacing:0.06em; line-height:1.8;">下 PO 自动比价，库存低了自动预警，航线断了自动推荐备选——AI 长在每个决策节点上。</p>
-    </div>
-    <div class="grid grid-3">
-      <div class="card reveal">
-        <div class="icon"><svg class="icon-svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/><line x1="20" y1="9" x2="23" y2="9"/><line x1="20" y1="14" x2="23" y2="14"/><line x1="1" y1="9" x2="4" y2="9"/><line x1="1" y1="14" x2="4" y2="14"/></svg></div><h3>AI Copilot</h3><div class="sub-cn">Natural Language · Business Data</div>
-        <p>直接对接业务数据库，用自然语言提问。问"美西港罢工会影响我哪些货"，秒级给出受影响清单与建议。</p>
+    <div class="capability-detail reverse">
+      <div class="cap-detail-text">
+        <div class="cap-detail-num">02</div>
+        <div class="cap-detail-label">Secure Procurement</div>
+        <h2>安全采购</h2>
+        <p class="lead-p">合作前把对方查个底朝天——验厂认证 + 背景尽调 + AI合同审查 + 全程留痕，不让一笔问题交易溜过去。</p>
+        <div class="cap-feature-list">
+          <div class="cap-feature">
+            <div class="feat-icon" style="background:linear-gradient(135deg, #FFF7E0, #FFF1C1);">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#C9973A" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            </div>
+            <div class="feat-body">
+              <h4>供应商严选认证</h4>
+              <p>入驻先验厂（实地或远程），核查产能、设备、劳工条件、环保合规，通过后授金牌/银牌/铜牌认证。</p>
+            </div>
+          </div>
+          <div class="cap-feature">
+            <div class="feat-icon" style="background:linear-gradient(135deg, #E8F5FF, #D6ECFF);">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#0071e3" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+            </div>
+            <div class="feat-body">
+              <h4>尽职调查</h4>
+              <p>对接OFAC/UN/欧盟制裁名单，穿透股权挖出实控人，排查诉讼纠纷和失信记录，一键生成尽调报告。</p>
+            </div>
+          </div>
+          <div class="cap-feature">
+            <div class="feat-icon" style="background:linear-gradient(135deg, #FFF0E8, #FFE4D6);">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#FF6B35" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+            </div>
+            <div class="feat-body">
+              <h4>合同风险智能审查</h4>
+              <p>内置跨境合同模板，AI自动审查条款漏洞和隐藏风险，帮你避开"不平等条约"。</p>
+            </div>
+          </div>
+          <div class="cap-feature">
+            <div class="feat-icon" style="background:linear-gradient(135deg, #E8F8EE, #D2F2DE);">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#34C759" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+            </div>
+            <div class="feat-body">
+              <h4>全程留痕有据可查</h4>
+              <p>每一步操作自动记录、全程可追溯，采购决策有理有据，轻松应对ISO认证和ESG审计。</p>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="card reveal">
-        <div class="icon"><svg class="icon-svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg></div><h3>需求预测引擎</h3><div class="sub-cn">12+ Dimensions · Weekly Rolling</div>
-        <p>融合历史销量、搜索热度、季节因子、竞品价格等维度，按 SKU×区域×周滚动预测，跑在库存消耗前面。</p>
-      </div>
-      <div class="card reveal">
-        <div class="icon"><svg class="icon-svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div><h3>风险识别引擎</h3><div class="sub-cn">Trend Tracking · Early Signal</div>
-        <p>持续追踪交期、质量、价格的微小波动趋势，在恶化成事故前发出信号——不等固定阈值报警，提前替你察觉。</p>
-      </div>
-      <div class="card reveal">
-        <div class="icon"><svg class="icon-svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div><h3>TCO 优化引擎</h3><div class="sub-cn">Total Cost · Multi-Route Compare</div>
-        <p>报价看单价，AI 算全局——关税、运费、仓储、资金占用一起算。同一批货不同路线成本可差 15%，系统帮你定位。</p>
-      </div>
-      <div class="card reveal">
-        <div class="icon"><svg class="icon-svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div><h3>排程仿真引擎</h3><div class="sub-cn">What-If Simulation · 12-Week Preview</div>
-        <p>输入促销计划、航线变化、供应商交期，系统跑完仿真告诉你瓶颈在哪。提前 12 周预演，留足调整时间。</p>
-      </div>
-      <div class="card reveal">
-        <div class="icon"><svg class="icon-svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg></div><h3>决策推荐卡片</h3><div class="sub-cn">Multi-Option · Impact Analysis</div>
-        <p>每次报警附带 2–3 个可行方案，每个方案的花费、耗时、副作用一目了然——你只需选择，不用开会讨论。</p>
+      <div class="cap-visual">
+        <div class="cap-visual-card cap-visual-card--new">
+          <!-- 背景装饰 -->
+          <div class="sc-bg-decor"></div>
+          <div class="relative z-10">
+            <!-- 头部 -->
+            <div class="sc-header">
+              <div>
+                <span class="sc-badge">SECURE PROCUREMENT</span>
+                <h2 class="sc-title">金银铜 <span class="sc-title-sub">三级认证</span></h2>
+                <p class="sc-subtitle">通过多维度严苛审核，确保供应商安全合规</p>
+              </div>
+              <!-- 三级认证分层展示 -->
+              <div class="sc-tier-display">
+                <div class="sc-tier-row" style="background:linear-gradient(135deg, #FFFDF7, #FFF7E6);">
+                  <div class="tier-icon" style="background:linear-gradient(135deg, #F5D03A, #E5B820); color:#fff;">🥇</div>
+                  <div class="tier-info">
+                    <div class="tier-name">金牌认证</div>
+                    <div class="tier-bar"><div class="tier-bar-fill" style="width:100%; background:linear-gradient(90deg, #F5D03A, #E5B820);"></div></div>
+                  </div>
+                  <div class="tier-count">238<span style="font-size:11px;font-weight:400;color:#94A3B8;"> 家</span></div>
+                </div>
+                <div class="sc-tier-row" style="background:linear-gradient(135deg, #F8FAFC, #F1F5F9);">
+                  <div class="tier-icon" style="background:linear-gradient(135deg, #94A3B8, #B0BEC5); color:#fff;">🥈</div>
+                  <div class="tier-info">
+                    <div class="tier-name">银牌认证</div>
+                    <div class="tier-bar"><div class="tier-bar-fill" style="width:70%; background:linear-gradient(90deg, #94A3B8, #B0BEC5);"></div></div>
+                  </div>
+                  <div class="tier-count">512<span style="font-size:11px;font-weight:400;color:#94A3B8;"> 家</span></div>
+                </div>
+                <div class="sc-tier-row" style="background:linear-gradient(135deg, #FFFBF5, #FFF3E0);">
+                  <div class="tier-icon" style="background:linear-gradient(135deg, #CD7F32, #B87333); color:#fff;">🥉</div>
+                  <div class="tier-info">
+                    <div class="tier-name">铜牌认证</div>
+                    <div class="tier-bar"><div class="tier-bar-fill" style="width:40%; background:linear-gradient(90deg, #CD7F32, #B87333);"></div></div>
+                  </div>
+                  <div class="tier-count">1,024<span style="font-size:11px;font-weight:400;color:#94A3B8;"> 家</span></div>
+                </div>
+              </div>
+            </div>
+            <!-- 认证维度指标 -->
+            <div class="sc-metrics">
+              <div class="sc-metric">
+                <div class="sc-metric-icon" style="background:#FFF7E6; color:#C9973A;">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/></svg>
+                </div>
+                <div class="sc-metric-body">
+                  <div class="sc-metric-head"><span>验厂通过率</span><span>82%</span></div>
+                  <div class="sc-metric-bar"><div class="sc-metric-fill" style="width:82%"></div></div>
+                </div>
+              </div>
+              <div class="sc-metric">
+                <div class="sc-metric-icon" style="background:#ECFDF5; color:#10B981;">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+                <div class="sc-metric-body">
+                  <div class="sc-metric-head"><span>制裁名单筛查</span><span>99.7%</span></div>
+                  <div class="sc-metric-bar"><div class="sc-metric-fill" style="width:99%"></div></div>
+                </div>
+              </div>
+              <div class="sc-metric">
+                <div class="sc-metric-icon" style="background:#FFF1F0; color:#E8553D;">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                </div>
+                <div class="sc-metric-body">
+                  <div class="sc-metric-head"><span>合同风险识别</span><span>91%</span></div>
+                  <div class="sc-metric-bar"><div class="sc-metric-fill" style="width:91%"></div></div>
+                </div>
+              </div>
+              <div class="sc-metric">
+                <div class="sc-metric-icon" style="background:#ECFDF5; color:#10B981;">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+                <div class="sc-metric-body">
+                  <div class="sc-metric-head"><span>尽调报告生成</span><span>＜3分钟</span></div>
+                  <div class="sc-metric-bar"><div class="sc-metric-fill" style="width:100%"></div></div>
+                </div>
+              </div>
+            </div>
+            <!-- 合规徽章 -->
+            <div class="sc-badges">
+              <div class="sc-badge-item">
+                <div class="sc-badge-item-top">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C9973A" stroke-width="2"><path d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  <span>OFAC</span>
+                  <svg width="10" height="10" viewBox="0 0 20 20" fill="#10B981"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                </div>
+                <span class="sc-badge-item-lbl">Checked</span>
+              </div>
+              <div class="sc-badge-item">
+                <div class="sc-badge-item-top">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C9973A" stroke-width="2"><path d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  <span>Contract</span>
+                </div>
+                <span class="sc-badge-item-lbl">Verified <span style="color:#10B981;">✔</span></span>
+              </div>
+              <div class="sc-badge-item">
+                <div class="sc-badge-item-top">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2"><path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  <span>ESG</span>
+                  <svg width="10" height="10" viewBox="0 0 20 20" fill="#10B981"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                </div>
+                <span class="sc-badge-item-lbl">Compliant</span>
+              </div>
+              <div class="sc-badge-item">
+                <div class="sc-badge-item-top">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C9973A" stroke-width="2"><path d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 00-2 2zm10-10V7a4 4 0 00-8 0v4h8z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  <span>Data</span>
+                  <svg width="10" height="10" viewBox="0 0 20 20" fill="#10B981"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                </div>
+                <span class="sc-badge-item-lbl">Protected</span>
+              </div>
+            </div>
+            <p class="sc-note"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C9973A" stroke-width="2" style="vertical-align:-3px; margin-right:4px;"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>对接 OFAC / UN / 欧盟制裁名单，穿透股权挖出实控人，一键生成尽调报告。</p>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ===== CTA：引导到解决方案 ===== -->
-<section class="section bg-gray">
-  <div class="container text-center reveal">
-    <h2 class="section-title">想看这些模块<span class="gradient-text">怎么组合到你的业务场景？</span></h2>
-    <p class="section-sub" style="margin-bottom:24px;">每个企业的供应链都不一样，去解决方案页查看不同场景的搭配方式。</p>
-    <a class="btn btn-primary btn-lg" href="solutions.html">查看解决方案 →</a>
+<!-- ===== 能力三：可信交付 ===== -->
+<section class="section" id="delivery">
+  <div class="container">
+    <div class="capability-detail">
+      <div class="cap-detail-text">
+        <div class="cap-detail-num">03</div>
+        <div class="cap-detail-label">Trusted Delivery</div>
+        <h2>可信交付</h2>
+        <p class="lead-p">从工厂发货到客户签收，货在哪、还要多久、会不会延误——一个页面看得清清楚楚，出问题前系统就帮你找好备选方案。</p>
+        <div class="cap-feature-list">
+          <div class="cap-feature">
+            <div class="feat-icon" style="background:linear-gradient(135deg, #FFF3E0, #FFE8CC);">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#FF9500" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+            </div>
+            <div class="feat-body">
+              <h4>物流方案智能推荐</h4>
+              <p>综合成本、速度和风险，自动帮你算出海运、中欧班列还是空运最划算，不再纠结"怎么运"。</p>
+            </div>
+          </div>
+          <div class="cap-feature">
+            <div class="feat-icon" style="background:linear-gradient(135deg, #FFF3E0, #FFE8CC);">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#FF9500" stroke-width="2"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg>
+            </div>
+            <div class="feat-body">
+              <h4>货物全程实时追踪</h4>
+              <p>从工厂到签收，货在哪、到哪了、还要多久，一个页面看清，不用打电话一个个问货代。</p>
+            </div>
+          </div>
+          <div class="cap-feature">
+            <div class="feat-icon" style="background:linear-gradient(135deg, #FFF3E0, #FFE8CC);">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#FF9500" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="12" y1="17" x2="12" y2="21"/><line x1="8" y1="21" x2="16" y2="21"/><path d="M20 7l-8 5-8-5"/></svg>
+            </div>
+            <div class="feat-body">
+              <h4>清关预审</h4>
+              <p>货还没到港，AI先帮你核对报关资料有没有问题，发现漏洞提前改，避免货物压在港口白白多花滞港费。</p>
+            </div>
+          </div>
+          <div class="cap-feature">
+            <div class="feat-icon" style="background:linear-gradient(135deg, #FFF3E0, #FFE8CC);">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#FF9500" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+            </div>
+            <div class="feat-body">
+              <h4>异常主动预警</h4>
+              <p>港口堵了、船晚点了、关税变了——系统第一时间通知你，还附上备选方案，不让你干等。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="cap-visual">
+        <div class="cap-visual-card">
+          <div class="sc-bg-decor"></div>
+          <div class="relative z-10">
+            <div class="sc-header">
+              <div>
+                <span class="sc-badge">TRUSTED DELIVERY</span>
+                <h2 class="sc-title">99% <span class="sc-title-sub">准时交付率</span></h2>
+                <p class="sc-subtitle">从工厂到签收，全程可视可控</p>
+              </div>
+              <!-- 交付里程碑追踪 -->
+              <div class="sc-milestone">
+                <div class="sc-ms-step">
+                  <div class="ms-line" style="background:linear-gradient(90deg, #10B981, #10B981);"></div>
+                  <div class="ms-dot" style="background:#10B981; border-color:#10B981; box-shadow:0 0 12px rgba(16,185,129,0.3);">
+                    <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="4"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </div>
+                  <span class="ms-label">发货</span>
+                  <span class="ms-pct" style="color:#10B981;">99%</span>
+                </div>
+                <div class="sc-ms-step">
+                  <div class="ms-line" style="background:linear-gradient(90deg, #10B981, #FF9500);"></div>
+                  <div class="ms-dot" style="background:#10B981; border-color:#10B981; box-shadow:0 0 12px rgba(16,185,129,0.3);">
+                    <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="4"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </div>
+                  <span class="ms-label">运输</span>
+                  <span class="ms-pct" style="color:#10B981;">97%</span>
+                </div>
+                <div class="sc-ms-step">
+                  <div class="ms-line" style="background:linear-gradient(90deg, #FF9500, #E5E7EB);"></div>
+                  <div class="ms-dot" style="background:#FF9500; border-color:#FF9500; box-shadow:0 0 10px rgba(255,149,0,0.25); animation:pulse 2s infinite;">
+                  </div>
+                  <span class="ms-label">清关</span>
+                  <span class="ms-pct" style="color:#FF9500;">94%</span>
+                </div>
+                <div class="sc-ms-step">
+                  <div class="ms-dot" style="background:#F1F5F9; border-color:#E5E7EB;">
+                  </div>
+                  <span class="ms-label">签收</span>
+                  <span class="ms-pct" style="color:#94A3B8;">--</span>
+                </div>
+              </div>
+              <style>@keyframes pulse{0%,100%{box-shadow:0 0 10px rgba(255,149,0,0.25);}50%{box-shadow:0 0 20px rgba(255,149,0,0.5);}}</style>
+            </div>
+            <div class="sc-metrics">
+              <div class="sc-metric">
+                <div class="sc-metric-icon" style="background:#FFF3E0; color:#FF9500;">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="12" y1="17" x2="12" y2="21"/><line x1="8" y1="21" x2="16" y2="21"/><path d="M20 7l-8 5-8-5"/></svg>
+                </div>
+                <div class="sc-metric-body">
+                  <div class="sc-metric-head"><span>发货及时率</span><span>99%</span></div>
+                  <div class="sc-metric-bar"><div class="sc-metric-fill" style="width:99%"></div></div>
+                </div>
+              </div>
+              <div class="sc-metric">
+                <div class="sc-metric-icon" style="background:#FFF3E0; color:#FF9500;">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg>
+                </div>
+                <div class="sc-metric-body">
+                  <div class="sc-metric-head"><span>运输可视化</span><span>97%</span></div>
+                  <div class="sc-metric-bar"><div class="sc-metric-fill" style="width:97%"></div></div>
+                </div>
+              </div>
+              <div class="sc-metric">
+                <div class="sc-metric-icon" style="background:#FFF3E0; color:#FF9500;">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+                </div>
+                <div class="sc-metric-body">
+                  <div class="sc-metric-head"><span>清关通过率</span><span>94%</span></div>
+                  <div class="sc-metric-bar"><div class="sc-metric-fill" style="width:94%"></div></div>
+                </div>
+              </div>
+              <div class="sc-metric">
+                <div class="sc-metric-icon" style="background:#FFF3E0; color:#FF9500;">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+                </div>
+                <div class="sc-metric-body">
+                  <div class="sc-metric-head"><span>签收准时率</span><span>99%</span></div>
+                  <div class="sc-metric-bar"><div class="sc-metric-fill" style="width:99%"></div></div>
+                </div>
+              </div>
+            </div>
+            <div class="sc-badges">
+              <div class="sc-badge-item">
+                <div class="sc-badge-item-top">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FF9500" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                  <span>准时率</span>
+                </div>
+                <span class="sc-badge-item-lbl">99%+</span>
+              </div>
+              <div class="sc-badge-item">
+                <div class="sc-badge-item-top">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FF9500" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                  <span>全球覆盖</span>
+                </div>
+                <span class="sc-badge-item-lbl">200+ 港口</span>
+              </div>
+              <div class="sc-badge-item">
+                <div class="sc-badge-item-top">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FF9500" stroke-width="2"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+                  <span>多式联运</span>
+                </div>
+                <span class="sc-badge-item-lbl">海陆空铁</span>
+              </div>
+              <div class="sc-badge-item">
+                <div class="sc-badge-item-top">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FF9500" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+                  <span>实时预警</span>
+                </div>
+                <span class="sc-badge-item-lbl">秒级通知</span>
+              </div>
+            </div>
+            <p class="sc-note"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FF9500" stroke-width="2" style="vertical-align:-3px; margin-right:4px;"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/></svg>综合成本、速度和风险，自动算出最优路线。异常第一时间通知，附备选方案。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 能力四：全局风控 ===== -->
+<section class="section" id="risk">
+  <div class="container">
+    <div class="capability-detail reverse">
+      <div class="cap-detail-text">
+        <div class="cap-detail-num">04</div>
+        <div class="cap-detail-label">Global Risk Control</div>
+        <h2>全局风控</h2>
+        <p class="lead-p">AI 24小时盯住全球1000多个信息源——关税变了、航线出事了、地区局势不稳——不等出事再想辙，系统提前告诉你怎么应对。</p>
+        <div class="cap-feature-list">
+          <div class="cap-feature">
+            <div class="feat-icon" style="background:linear-gradient(135deg, #FFEBEB, #FFD6D6);">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#FF3B30" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+            </div>
+            <div class="feat-body">
+              <h4>交易异常实时拦截</h4>
+              <p>每笔订单AI实时扫描——金额突然翻倍、下单频率反常、关联账号串通，一发现不对劲立刻预警或冻结。</p>
+            </div>
+          </div>
+          <div class="cap-feature">
+            <div class="feat-icon" style="background:linear-gradient(135deg, #FFEBEB, #FFD6D6);">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#FF3B30" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+            </div>
+            <div class="feat-body">
+              <h4>全球风险实时监控</h4>
+              <p>1000+数据源24h监控——关税政策、制裁名单、气象灾害、港口状态，三个等级打分，风险一目了然。</p>
+            </div>
+          </div>
+          <div class="cap-feature">
+            <div class="feat-icon" style="background:linear-gradient(135deg, #FFEBEB, #FFD6D6);">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#FF3B30" stroke-width="2"><polyline points="22 17 13.5 8.5 8.5 13.5 2 7"/><polyline points="16 17 22 17 22 11"/></svg>
+            </div>
+            <div class="feat-body">
+              <h4>供应链抗压演练</h4>
+              <p>假设"某国突然被制裁"或"某港口突然关闭"，提前推演你的供应链哪些环节会断、断在哪，提前告诉你备选方案。</p>
+            </div>
+          </div>
+          <div class="cap-feature">
+            <div class="feat-icon" style="background:linear-gradient(135deg, #FFEBEB, #FFD6D6);">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#FF3B30" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            </div>
+            <div class="feat-body">
+              <h4>合作伙伴风险画像</h4>
+              <p>对每个供应商、物流商建立动态风险画像，综合财务状况、履约记录、地缘政治等多维度评分，合作前就能看清对方底牌。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="cap-visual">
+        <div class="cap-visual-card">
+          <div class="sc-bg-decor"></div>
+          <div class="relative z-10">
+            <div class="sc-header">
+              <div>
+                <span class="sc-badge">GLOBAL RISK CONTROL</span>
+                <h2 class="sc-title">1000+ <span class="sc-title-sub">数据源接入</span></h2>
+                <p class="sc-subtitle">24h 盯住全球，不等出事再想辙</p>
+              </div>
+              <!-- 风险雷达波纹 -->
+              <div class="sc-radar">
+                <div class="sc-radar-ring" style="width:50px; height:50px; border-color:rgba(255,59,48,0.2); background:rgba(255,59,48,0.03);"></div>
+                <div class="sc-radar-ring" style="width:86px; height:86px; border-color:rgba(255,59,48,0.25); background:rgba(255,59,48,0.02);"></div>
+                <div class="sc-radar-ring" style="width:122px; height:122px; border-color:rgba(255,59,48,0.3); background:rgba(255,59,48,0.01);"></div>
+                <div class="sc-radar-core" style="background:linear-gradient(135deg, #FF3B30, #FF6259);">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/></svg>
+                </div>
+              </div>
+            </div>
+            <div class="sc-metrics">
+              <div class="sc-metric">
+                <div class="sc-metric-icon" style="background:#FFEBEB; color:#FF3B30;">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+                </div>
+                <div class="sc-metric-body">
+                  <div class="sc-metric-head"><span>异常交易识别</span><span>97%</span></div>
+                  <div class="sc-metric-bar"><div class="sc-metric-fill" style="width:97%"></div></div>
+                </div>
+              </div>
+              <div class="sc-metric">
+                <div class="sc-metric-icon" style="background:#FFEBEB; color:#FF3B30;">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                </div>
+                <div class="sc-metric-body">
+                  <div class="sc-metric-head"><span>全球风险监控</span><span>94%</span></div>
+                  <div class="sc-metric-bar"><div class="sc-metric-fill" style="width:94%"></div></div>
+                </div>
+              </div>
+              <div class="sc-metric">
+                <div class="sc-metric-icon" style="background:#FFEBEB; color:#FF3B30;">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+                </div>
+                <div class="sc-metric-body">
+                  <div class="sc-metric-head"><span>预警响应速度</span><span>＜5分钟</span></div>
+                  <div class="sc-metric-bar"><div class="sc-metric-fill" style="width:94%"></div></div>
+                </div>
+              </div>
+              <div class="sc-metric">
+                <div class="sc-metric-icon" style="background:#FFEBEB; color:#FF3B30;">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+                </div>
+                <div class="sc-metric-body">
+                  <div class="sc-metric-head"><span>断链推演准确</span><span>88%</span></div>
+                  <div class="sc-metric-bar"><div class="sc-metric-fill" style="width:88%"></div></div>
+                </div>
+              </div>
+            </div>
+            <div class="sc-badges">
+              <div class="sc-badge-item">
+                <div class="sc-badge-item-top">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FF3B30" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                  <span>实时预警</span>
+                </div>
+                <span class="sc-badge-item-lbl">&lt; 5分钟</span>
+              </div>
+              <div class="sc-badge-item">
+                <div class="sc-badge-item-top">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FF3B30" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                  <span>全球监控</span>
+                </div>
+                <span class="sc-badge-item-lbl">1000+源</span>
+              </div>
+              <div class="sc-badge-item">
+                <div class="sc-badge-item-top">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FF3B30" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                  <span>三级打分</span>
+                </div>
+                <span class="sc-badge-item-lbl">高/中/低</span>
+              </div>
+              <div class="sc-badge-item">
+                <div class="sc-badge-item-top">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FF3B30" stroke-width="2"><polyline points="22 17 13.5 8.5 8.5 13.5 2 7"/><polyline points="16 17 22 17 22 11"/></svg>
+                  <span>断链推演</span>
+                </div>
+                <span class="sc-badge-item-lbl">提前预案</span>
+              </div>
+            </div>
+            <p class="sc-note"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FF3B30" stroke-width="2" style="vertical-align:-3px; margin-right:4px;"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/></svg>AI 24h 盯住全球信息源，三级打分预警，提前推演断链场景给出备选方案。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 能力五：数据智脑 ===== -->
+<section class="section" id="brain">
+  <div class="container">
+    <div class="capability-detail">
+      <div class="cap-detail-text">
+        <div class="cap-detail-num">05</div>
+        <div class="cap-detail-label">Data Brain</div>
+        <h2>数据智脑</h2>
+        <p class="lead-p">前面四个模块的成果全浓缩到一个屏幕——采购省了多少、谁准时率高、避开了哪些风险。不只告诉你了"发生了什么"，直接告诉你"该做什么"。</p>
+        <div class="cap-feature-list">
+          <div class="cap-feature">
+            <div class="feat-icon" style="background:linear-gradient(135deg, #F0EDFF, #E4DFFC);">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#5E5CE6" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/><line x1="20" y1="9" x2="23" y2="9"/><line x1="20" y1="14" x2="23" y2="14"/></svg>
+            </div>
+            <div class="feat-body">
+              <h4>经营驾驶舱</h4>
+              <p>采购降本、供应商绩效、交付准时率、风险规避——所有关键指标一块屏幕看完，不用各处翻。</p>
+            </div>
+          </div>
+          <div class="cap-feature">
+            <div class="feat-icon" style="background:linear-gradient(135deg, #F0EDFF, #E4DFFC);">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#5E5CE6" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+            </div>
+            <div class="feat-body">
+              <h4>行业情报报告</h4>
+              <p>基于平台海量交易数据（已脱敏），定期输出品类价格走势、采购热区、产能趋势——帮你看别人看不到的趋势。</p>
+            </div>
+          </div>
+          <div class="cap-feature">
+            <div class="feat-icon" style="background:linear-gradient(135deg, #F0EDFF, #E4DFFC);">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#5E5CE6" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+            </div>
+            <div class="feat-body">
+              <h4>AI决策建议</h4>
+              <p>不只告诉你"发生了什么"，直接告诉你"该做什么"——"这个原材料未来30天有70%概率涨价，建议现在就锁价"。</p>
+            </div>
+          </div>
+          <div class="cap-feature">
+            <div class="feat-icon" style="background:linear-gradient(135deg, #F0EDFF, #E4DFFC);">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#5E5CE6" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+            </div>
+            <div class="feat-body">
+              <h4>越用越聪明</h4>
+              <p>每笔交易、每次交付都在训练模型——你的采购偏好、供应商圈子、风险底线，AI越记越清，这是后来者追不上的护城河。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="cap-visual">
+        <div class="cap-visual-card">
+          <div class="sc-bg-decor"></div>
+          <div class="relative z-10">
+            <div class="sc-header">
+              <div>
+                <span class="sc-badge">DATA BRAIN</span>
+                <h2 class="sc-title">70%+ <span class="sc-title-sub">预测准确率</span></h2>
+                <p class="sc-subtitle">不只告诉你发生了什么，直接告诉你该做什么</p>
+              </div>
+              <!-- 趋势柱状图：越用越聪明 -->
+              <div class="sc-trend">
+                <div class="sc-trend-item">
+                  <span class="sc-trend-val">72%</span>
+                  <div class="sc-trend-bar" style="height:64px; background:linear-gradient(180deg, #C4B5FD, #A78BFA);"></div>
+                  <span class="sc-trend-lbl">Q1</span>
+                </div>
+                <div class="sc-trend-item">
+                  <span class="sc-trend-val">79%</span>
+                  <div class="sc-trend-bar" style="height:78px; background:linear-gradient(180deg, #A78BFA, #8B7CF6);"></div>
+                  <span class="sc-trend-lbl">Q2</span>
+                </div>
+                <div class="sc-trend-item">
+                  <span class="sc-trend-val">85%</span>
+                  <div class="sc-trend-bar" style="height:92px; background:linear-gradient(180deg, #8B7CF6, #7C3AED);"></div>
+                  <span class="sc-trend-lbl">Q3</span>
+                </div>
+                <div class="sc-trend-item">
+                  <span class="sc-trend-val">92%</span>
+                  <div class="sc-trend-bar" style="height:106px; background:linear-gradient(180deg, #7C3AED, #5E5CE6);"></div>
+                  <span class="sc-trend-lbl">Q4</span>
+                </div>
+              </div>
+            </div>
+            <div class="sc-metrics">
+              <div class="sc-metric">
+                <div class="sc-metric-icon" style="background:#F0EDFF; color:#5E5CE6;">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/></svg>
+                </div>
+                <div class="sc-metric-body">
+                  <div class="sc-metric-head"><span>经营看板覆盖</span><span>96%</span></div>
+                  <div class="sc-metric-bar"><div class="sc-metric-fill" style="width:96%"></div></div>
+                </div>
+              </div>
+              <div class="sc-metric">
+                <div class="sc-metric-icon" style="background:#F0EDFF; color:#5E5CE6;">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+                </div>
+                <div class="sc-metric-body">
+                  <div class="sc-metric-head"><span>价格预测准确</span><span>89%</span></div>
+                  <div class="sc-metric-bar"><div class="sc-metric-fill" style="width:89%"></div></div>
+                </div>
+              </div>
+              <div class="sc-metric">
+                <div class="sc-metric-icon" style="background:#F0EDFF; color:#5E5CE6;">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+                </div>
+                <div class="sc-metric-body">
+                  <div class="sc-metric-head"><span>决策建议采纳</span><span>83%</span></div>
+                  <div class="sc-metric-bar"><div class="sc-metric-fill" style="width:83%"></div></div>
+                </div>
+              </div>
+              <div class="sc-metric">
+                <div class="sc-metric-icon" style="background:#F0EDFF; color:#5E5CE6;">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                </div>
+                <div class="sc-metric-body">
+                  <div class="sc-metric-head"><span>模型进化速度</span><span>+12%/季</span></div>
+                  <div class="sc-metric-bar"><div class="sc-metric-fill" style="width:85%"></div></div>
+                </div>
+              </div>
+            </div>
+            <div class="sc-badges">
+              <div class="sc-badge-item">
+                <div class="sc-badge-item-top">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#5E5CE6" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="2"/></svg>
+                  <span>驾驶舱</span>
+                </div>
+                <span class="sc-badge-item-lbl">一屏概览</span>
+              </div>
+              <div class="sc-badge-item">
+                <div class="sc-badge-item-top">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#5E5CE6" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+                  <span>情报</span>
+                </div>
+                <span class="sc-badge-item-lbl">定期报告</span>
+              </div>
+              <div class="sc-badge-item">
+                <div class="sc-badge-item-top">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#5E5CE6" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+                  <span>建议</span>
+                </div>
+                <span class="sc-badge-item-lbl">行动指南</span>
+              </div>
+              <div class="sc-badge-item">
+                <div class="sc-badge-item-top">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#5E5CE6" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                  <span>进化</span>
+                </div>
+                <span class="sc-badge-item-lbl">越用越准</span>
+              </div>
+            </div>
+            <p class="sc-note"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#5E5CE6" stroke-width="2" style="vertical-align:-3px; margin-right:4px;"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>不只告诉你"发生了什么"，直接告诉你"该做什么"——让数据直接变成行动。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== AI 技术引擎 ===== -->
+<section class="section ai-engine-section" id="ai-engine">
+  <div class="container">
+    <div class="text-center" style="margin-bottom:56px;">
+      <div class="eyebrow">AI ENGINE · 技术引擎</div>
+      <h2 class="section-title">五大能力背后，<span class="gradient-text">五套AI在同时运转</span></h2>
+      <p class="section-sub">每一项核心能力的底层，都有对应的AI技术引擎支撑——它们不是独立的模型，而是相互联动的智能体系。</p>
+    </div>
+    <div class="tech-grid">
+      <!-- NLP解析 -->
+      <div class="tech-item">
+        <div class="tech-icon" style="background:linear-gradient(135deg, #E0F2FE, #BAE6FD);">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#0284C7" stroke-width="2"><path d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="tech-num">01</div>
+        <h3 class="tech-name">NLP解析</h3>
+        <p class="tech-desc">读懂采购需求描述，自动解析合同条款、提取关键规格参数</p>
+      </div>
+      <!-- 知识图谱 -->
+      <div class="tech-item">
+        <div class="tech-icon" style="background:linear-gradient(135deg, #DCFCE7, #BBF7D0);">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#16A34A" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        </div>
+        <div class="tech-num">02</div>
+        <h3 class="tech-name">知识图谱</h3>
+        <p class="tech-desc">供应商、品类、资质、交易记录织成关系网，匹配不再靠关键词</p>
+      </div>
+      <!-- 实时计算引擎 -->
+      <div class="tech-item">
+        <div class="tech-icon" style="background:linear-gradient(135deg, #FFEDD5, #FED7AA);">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#EA580C" stroke-width="2"><path d="M13 10V3L4 14h7v7l9-11h-7z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="tech-num">03</div>
+        <h3 class="tech-name">实时计算引擎</h3>
+        <p class="tech-desc">接入船公司、港口、海关实时数据，秒级计算最优路线</p>
+      </div>
+      <!-- 预测引擎 -->
+      <div class="tech-item">
+        <div class="tech-icon" style="background:linear-gradient(135deg, #FEE2E2, #FECACA);">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#DC2626" stroke-width="2"><path d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="tech-num">04</div>
+        <h3 class="tech-name">预测引擎</h3>
+        <p class="tech-desc">价格走势预测、风险概率计算、交付时效预估——事先告诉你可能性</p>
+      </div>
+      <!-- 持续学习 -->
+      <div class="tech-item">
+        <div class="tech-icon" style="background:linear-gradient(135deg, #F3E8FF, #E9D5FF);">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#7C3AED" stroke-width="2"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="tech-num">05</div>
+        <h3 class="tech-name">持续学习</h3>
+        <p class="tech-desc">每笔交易、每次履约都在训练模型，用得越多算得越准</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ===== CTA ===== -->
+<section class="section-sm text-center" style="padding:100px 0 120px;">
+  <div class="container">
+    <p style="font-size:14px; font-weight:600; letter-spacing:0.1em; color:#94A3B8; text-transform:uppercase; margin-bottom:16px;">THE BOTTOM LINE</p>
+    <h2 style="font-size:44px; font-weight:800; letter-spacing:-0.02em; line-height:1.2; margin-bottom:20px;">降本<span style="color:#CBD5E1; font-weight:300;"> · </span>增效<span style="color:#CBD5E1; font-weight:300;"> · </span><span class="gradient-text">抗风险</span></h2>
+    <p style="font-size:19px; color:#6B7280; max-width:560px; margin:0 auto; line-height:1.8;">在不确定时代，帮企业拥有一张可预测、可管理、可持续的全球供应链网络。</p>
   </div>
 </section>
 
@@ -226,13 +1889,13 @@
         </ul>
       </div>
       <div>
-        <h5>产品模块</h5>
+        <h5>平台能力</h5>
         <ul>
-          <li><a href="products.html#supplier">供应商管理</a></li>
-          <li><a href="products.html#procurement">智能采购</a></li>
-          <li><a href="products.html#wms">WMS / OMS</a></li>
-          <li><a href="products.html#tms">全球物流 TMS</a></li>
-          <li><a href="products.html#customs">跨境关务</a></li>
+          <li><a href="products.html#matching">智能撮合</a></li>
+          <li><a href="products.html#procurement">安全采购</a></li>
+          <li><a href="products.html#delivery">可信交付</a></li>
+          <li><a href="products.html#risk">全局风控</a></li>
+          <li><a href="products.html#brain">数据智脑</a></li>
         </ul>
       </div>
       <div>

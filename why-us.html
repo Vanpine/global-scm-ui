@@ -5,14 +5,20 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>为什么选我们 · 全球供应链大平台</title>
 <link rel="icon" type="image/png" href="assets/logo-icon.png">
-<meta name="description" content="传统 SCM vs AI 驱动 SCM 全面对比，库存成本 -32%、物流成本 -25%、人工工时 -60%，AI Copilot 让供应链决策更聪明。">
+<meta name="description" content="传统供应商管理 vs AI 驱动的供应商管理全面对比：寻源效率、尽调速度、风险预警、绩效监控——AI 在每个决策节点给出量化建议。">
 <meta property="og:title" content="为什么选我们 · 全球供应链大平台">
-<meta property="og:description" content="传统 SCM vs AI 驱动 SCM 全面对比，库存成本 -32%、物流成本 -25%、人工工时 -60%，AI Copilot 让供应链决策更聪明。">
+<meta property="og:description" content="传统供应商管理 vs AI 驱动的供应商管理全面对比：寻源效率、尽调速度、风险预警、绩效监控——AI 在每个决策节点给出量化建议。">
 <meta property="og:image" content="https://www.globalscm.com/assets/og-why-us.png">
 <meta property="og:url" content="https://www.globalscm.com/why-us.html">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Global SCM">
 <link rel="stylesheet" href="css/style.css">
+<style>
+  .compare-row { padding:13px 0; }
+  .tl-card p { line-height:1.8; }
+  .chat-bubble { line-height:1.7; }
+  .card p { line-height:1.8; }
+</style>
 </head>
 <body>
 
@@ -37,9 +43,9 @@
   <img class="hero-video" src="https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=1920&q=90" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;pointer-events:none;">
   <div class="hero-overlay"></div>
   <div class="hero-content">
-    <h1>为什么选择<span>我们</span></h1>
-    <p class="lead">两种模式，关键指标摊开来看</p>
-    <p class="hero-sub"><span><svg class="icon-svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg> 数据驱动</span><span><svg class="icon-svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/><line x1="20" y1="9" x2="23" y2="9"/><line x1="20" y1="14" x2="23" y2="14"/><line x1="1" y1="9" x2="4" y2="9"/><line x1="1" y1="14" x2="4" y2="14"/></svg> AI 赋能</span><span><svg class="icon-svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 17 13.5 8.5 8.5 13.5 2 7"/><polyline points="16 17 22 17 22 11"/></svg> 持续降本</span></p>
+    <h1>AI驱动<span>双边匹配</span></h1>
+    <p class="lead">找得到、查得清、盯得住</p>
+    <p class="hero-sub"><span><svg class="icon-svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#6CB2FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg> AI匹配</span><span><svg class="icon-svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#34C759" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> 自动尽调</span><span><svg class="icon-svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#FF9500" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 4 1 10 7 10"/><polyline points="23 20 23 14 17 14"/><path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10m22 4l-4.64 4.36A9 9 0 0 1 3.51 15"/></svg> 断链预警</span></p>
   </div>
 </section>
 
@@ -48,122 +54,119 @@
   <div class="container">
     <div class="compare-wrap">
       <div class="compare-col compare-old reveal">
-        <h3>经验驱动模式</h3>
-        <div class="compare-row"><div class="metric">采购计划准确率</div><div class="value">60–70%（人工估算）</div></div>
-        <div class="compare-row"><div class="metric">PO 处理周期</div><div class="value">3–5 天（邮件 / Excel）</div></div>
-        <div class="compare-row"><div class="metric">库存周转天数</div><div class="value">90–120 天</div></div>
-        <div class="compare-row"><div class="metric">异常响应时间</div><div class="value">2–5 天（人工发现）</div></div>
-        <div class="compare-row"><div class="metric">报关差错率</div><div class="value">5–10%</div></div>
-        <div class="compare-row"><div class="metric">端到端可视性</div><div class="value">多系统拼凑，耗时数天</div></div>
-        <div class="compare-row"><div class="metric">决策方式</div><div class="value">Excel + 经验直觉</div></div>
+        <h3>传统模式</h3>
+        <div class="compare-row"><div class="metric">供需匹配</div><div class="value">展会、人脉、中间商，双方互相找不到</div></div>
+        <div class="compare-row"><div class="metric">供应商寻源</div><div class="value">双方被动等，谁也找不到谁</div></div>
+        <div class="compare-row"><div class="metric">尽职调查</div><div class="value">手工翻查多个系统，3-5天</div></div>
+        <div class="compare-row"><div class="metric">风险预警</div><div class="value">事后发现，损失已造成</div></div>
+        <div class="compare-row"><div class="metric">合规监控</div><div class="value">入驻审一次，后续无人盯</div></div>
+        <div class="compare-row"><div class="metric">绩效评估</div><div class="value">年度打分，中间靠感觉</div></div>
+        <div class="compare-row"><div class="metric">决策方式</div><div class="value">凭经验，拍脑袋</div></div>
       </div>
       <div class="compare-col compare-new reveal">
-        <h3>AI 数据驱动模式</h3>
-        <div class="compare-row"><div class="metric">采购计划准确率</div><div class="value">≥ 90%（AI 预测驱动）</div></div>
-        <div class="compare-row"><div class="metric">PO 处理周期</div><div class="value">≤ 1 天（系统协同）</div></div>
-        <div class="compare-row"><div class="metric">库存周转天数</div><div class="value">≤ 55 天</div></div>
-        <div class="compare-row"><div class="metric">异常响应时间</div><div class="value">≤ 4 小时（自动预警）</div></div>
-        <div class="compare-row"><div class="metric">报关差错率</div><div class="value">≤ 2%（AI 辅助归类）</div></div>
-        <div class="compare-row"><div class="metric">端到端可视性</div><div class="value">秒级控制塔，一图掌控</div></div>
-        <div class="compare-row"><div class="metric">决策方式</div><div class="value">AI 数据驱动 + 量化推演</div></div>
+        <h3>AI 双边匹配</h3>
+        <div class="compare-row"><div class="metric">供需匹配</div><div class="value">AI双向推荐，供需双方在同一个池子里互找</div></div>
+        <div class="compare-row"><div class="metric">供应商寻源</div><div class="value">AI 全球匹配，秒级推荐 + 评分依据</div></div>
+        <div class="compare-row"><div class="metric">尽职调查</div><div class="value">自动筛查比对，＜3分钟出报告</div></div>
+        <div class="compare-row"><div class="metric">风险预警</div><div class="value">实时监控，事前推送</div></div>
+        <div class="compare-row"><div class="metric">合规监控</div><div class="value">持续追踪，变化即时知晓</div></div>
+        <div class="compare-row"><div class="metric">绩效评估</div><div class="value">动态画像，异常主动提示</div></div>
+        <div class="compare-row"><div class="metric">决策方式</div><div class="value">AI量化建议，人做最终确认</div></div>
       </div>
     </div>
 
-    <!-- 降本增效 -->
+    <!-- 平台成效 -->
     <div class="savings reveal">
-      <h4>💰 降本增效 · 平台目标</h4>
+      <h4>📊 平台目标成效</h4>
       <div class="savings-grid">
-        <div class="savings-item"><div class="big">-32%</div><div class="lbl">库存成本</div></div>
-        <div class="savings-item"><div class="big">-25%</div><div class="lbl">物流成本</div></div>
-        <div class="savings-item"><div class="big">-45%</div><div class="lbl">关务罚款</div></div>
-        <div class="savings-item"><div class="big">-60%</div><div class="lbl">人工工时</div></div>
+        <div class="savings-item"><div class="big">85%→95%</div><div class="lbl">供应商匹配精准度</div></div>
+        <div class="savings-item"><div class="big">＜3 分钟</div><div class="lbl">尽调报告生成</div></div>
+        <div class="savings-item"><div class="big">＜5 分钟</div><div class="lbl">断供风险预警</div></div>
+        <div class="savings-item"><div class="big">50万+</div><div class="lbl">双边供需池</div></div>
       </div>
-      <p style="text-align:center;font-size:13px;color:var(--text-tertiary);margin-top:22px;">* 以上为基于平台设计目标的测算，实际效果因企业与品类而异。</p>
+      <p style="text-align:center;font-size:13px;color:var(--text-tertiary);margin-top:22px;">* 以上为基于平台能力的目标测算，实际效果因企业与品类而异。</p>
     </div>
   </div>
 </section>
 
-<!-- ===== AI Copilot 展示 ===== -->
+<!-- ===== 四个决策场景 ===== -->
 <section class="section bg-black">
   <div class="container">
     <div class="text-center reveal" style="margin-bottom:48px;">
-      <div class="eyebrow">AI COPILOT</div>
-      <h2 class="section-title">认识您的供应链大脑</h2>
-      <p class="section-sub">预测需求、响应中断、做出更聪明的决策 —— 全部通过一个 7×24 在线的 AI Copilot。</p>
-    </div>
-
-    <div class="product-shot reveal" style="margin-bottom:64px;">
-      <img src="assets/dashboard.png" alt="Global SCM 控制塔 Dashboard 实时预览">
+      <div class="eyebrow">HOW IT WORKS</div>
+      <h2 class="section-title">采购商和供应商，<span class="gradient-text">AI 各帮一边</span></h2>
+      <p class="section-sub">同一套 AI 引擎，采购商用左边的能力，供应商用右边的——两边都在一个平台上。</p>
     </div>
 
     <div class="timeline reveal">
-      <!-- Predict -->
+      <!-- 寻源匹配 -->
       <div class="tl-item">
         <div class="tl-card">
           <div class="tl-head">
-            <span class="tl-num">01</span>
+            <span class="tl-num" style="background:#2563EB;">01</span>
             <div>
-              <div class="eyebrow">PREDICT · 预测</div>
-              <h3>90%+ 准确率的需求预测</h3>
+              <div class="eyebrow">MATCH · 匹配</div>
+              <h3>你需要供应商，不是搜索结果的堆砌</h3>
             </div>
           </div>
-          <p>融合历史销量、搜索热度、季节因子、竞品价格等 12+ 维度数据，按 SKU × 区域 × 周粒度滚动输出，告别拍脑袋备货。</p>
+          <p>说出需求——品类、规格、交期——AI从全球供应商池筛选排序，每条推荐附评分依据。</p>
           <div class="chat-card">
-            <div class="chat-bubble user">SKU-8892 库存不多了，什么时候该补货？</div>
-            <div class="chat-bubble ai">在手 42 件，在途 200 件（ETA 6/8）。近 30 天日均消耗 15 件，动态安全库存 60 件。<br><b>⚠️ 存在约 8 天断货窗口</b>，建议立即紧急补货 200 件，或从杭州仓调拨 120 件（成本更低）。</div>
+            <div class="chat-bubble user">我需要一款能月供 5000 件的不锈钢阀门，出口到德国，要有 CE 认证。</div>
+            <div class="chat-bubble ai">在全球供应商库中找到 <b>7 家</b> 匹配，综合产能、资质、出口经验与交付记录评分，推荐 Top 3：<br>🥇 浙江 X 阀门（CE 认证 · 月产能 8000 件 · 出口德国 3 年 · 准时率 97%）<br>🥈 江苏 Y 阀门（CE+API 双认证 · 月产能 12000 件 · 首次合作评估中）<br>🥉 温州 Z 阀门（CE 认证 · 月产能 6000 件 · 价格最优）<br>需要我生成这三家的对比尽调报告吗？</div>
           </div>
         </div>
       </div>
 
-      <!-- Respond -->
+      <!-- 供应商获客 -->
       <div class="tl-item">
         <div class="tl-card">
           <div class="tl-head">
-            <span class="tl-num">02</span>
+            <span class="tl-num" style="background:#10B981;">02</span>
             <div>
-              <div class="eyebrow">RESPOND · 响应</div>
-              <h3>从数天，到数小时</h3>
+              <div class="eyebrow">DISCOVER · 获客</div>
+              <h3>供应商端：AI 主动帮你找客户</h3>
             </div>
           </div>
-          <p>台风路径 ∩ 您的在途柜子 → 自动匹配受影响运单 → 推送替代方案 → 一键切换。异常响应从传统 2–5 天缩短到 4 小时以内。</p>
+          <p>供应商沉淀资质与产能后，AI反向匹配合适的采购需求，主动推送商机，不让产能白白闲置。</p>
           <div class="chat-card">
-            <div class="chat-bubble user">美西长滩港是不是有罢工？会影响我哪些货？</div>
-            <div class="chat-bubble ai">已确认长滩港自 5/26 起罢工。您受影响在途运单共 <b>12 票</b>：3 票已到港待卸（滞港费 ~$1,200/天），5 票 3 天内到达。<br>🟡 建议 5 票申请改港至奥克兰，规避滞港风险。要我生成改港申请草稿吗？</div>
+            <div class="chat-bubble ai">📬 <b>本周匹配到 3 条适配采购需求</b>，已按匹配度排序：<br><br>🥇 德国某工业品牌 — 不锈钢阀门 5000 件/月 · CE 认证 · 目标价 €12–15<br>（匹配度 94%：你的产能、认证、出口经验完全对口）<br><br>🥈 荷兰某经销商 — 黄铜阀门 2000 件/月 · 无认证要求<br>（匹配度 82%：品类对口，建议提供 CE 认证增加竞争力）<br><br>需要我帮你准备这两家的报价方案吗？</div>
+            <div class="chat-bubble user">给第一家准备报价，附上我们的CE证书和验厂报告。</div>
           </div>
         </div>
       </div>
 
-      <!-- Decide -->
+      <!-- 断链预警 -->
       <div class="tl-item">
         <div class="tl-card">
           <div class="tl-head">
-            <span class="tl-num">03</span>
+            <span class="tl-num" style="background:#FF9500;">03</span>
             <div>
-              <div class="eyebrow">DECIDE · 决策</div>
-              <h3>不只是预警，更是可执行的选择</h3>
+              <div class="eyebrow">ALERT · 预警</div>
+              <h3>出事之前，系统已经帮你找好退路</h3>
             </div>
           </div>
-          <p>系统不仅报警，更给出 2–3 个推荐方案及量化影响：方案 A 切换备选供应商 +8% 成本；方案 B 空运补货 +15% 成本但缩短 20 天 —— 您只需要选择。</p>
+          <p>全球信息源持续扫描，将外部事件关联到你的供应商网络，标出受影响范围，推送替代方案。</p>
           <div class="chat-card">
-            <div class="chat-bubble ai"><b>检测到供应商 A 交期持续恶化</b>（28 → 31 → 35 天）。<br>📋 方案 A：切换备选供应商 X，成本 +8%，交期不变<br>📋 方案 B：部分空运补货，成本 +15%，缩短 20 天<br>🟢 推荐方案 A。要我帮您执行 PO 变更并通知双方吗？</div>
-            <div class="chat-bubble user">执行方案 A。</div>
+            <div class="chat-bubble ai"><b>⚠️ 预警：供应商 Y 所在区域发生洪灾</b>，工厂已停工，预计影响交期 3–6 周。<br>受影响 PO：PO-8892（2000 件阀门，原定 6/20 交货）<br><br>📋 建议方案：切换至备选供应商 X（同品类 · CE 认证 · 浙江 · 交期不变 · 成本 +8%）<br>📋 备选方案：等待恢复 + 部分空运补货（成本 +15%，缩短 10 天）<br>🟢 推荐切换至 X。要我执行切换吗？</div>
+            <div class="chat-bubble user">执行切换，通知双方。</div>
           </div>
         </div>
       </div>
 
-      <!-- Execute -->
+      <!-- 绩效持续 -->
       <div class="tl-item">
         <div class="tl-card">
           <div class="tl-head">
-            <span class="tl-num">04</span>
+            <span class="tl-num" style="background:#5E5CE6;">04</span>
             <div>
-              <div class="eyebrow">EXECUTE · 执行</div>
-              <h3>一键下发，全链路自动执行</h3>
+              <div class="eyebrow">MONITOR · 持续</div>
+              <h3>供应商不是审一次就完了</h3>
             </div>
           </div>
-          <p>决策一旦确认，PO 变更、运单改港、库存调拨自动下发至对应系统，无需跨部门邮件沟通。执行结果实时回传，若偏差超出阈值自动触发二次预警。</p>
+          <p>交付、质量、响应、价格四维动态追踪，趋势变化主动提示，不等年度评估才发现。</p>
           <div class="chat-card">
-            <div class="chat-bubble ai">✅ PO-7742 已切换至供应商 X，新交期 6/18。<br>✅ 供应商 A 已收到暂停通知。<br>✅ 杭州仓调拨单已生成，预计 6/8 到达。<br>📊 所有变更已同步至控制塔，异常偏差超过 5% 会自动提醒。</div>
+            <div class="chat-bubble ai">📊 <b>供应商 Y 绩效趋势提醒</b>（近 6 个月）：<br>交付准时率：97% → 94% → <b>89% ⚠️</b><br>质量合格率：99% → 98% → 97%（正常波动）<br>响应速度：24h → 28h → <b>36h ⚠️</b><br><br>📋 交付与响应两项指标呈下滑趋势，建议安排一次履约回顾会议。需要我整理一份详细的绩效报告并发送给供应商吗？</div>
+            <div class="chat-bubble user">整理报告，安排下周回顾。</div>
           </div>
         </div>
       </div>
@@ -176,45 +179,45 @@
   <div class="container">
     <div class="text-center reveal" style="margin-bottom:56px;">
       <div class="eyebrow">OUR DIFFERENCE</div>
-      <h2 class="section-title">六个维度，<span class="gradient-text">做出区别</span></h2>
-      <p class="section-sub">不是功能清单的比拼，而是底层架构和产品理念的差异。</p>
+      <h2 class="section-title">不是功能更多，<span class="gradient-text">是思路不同</span></h2>
+      <p class="section-sub">传统软件帮你记录，我们帮你匹配和判断。区别在底层逻辑，不在功能清单。</p>
     </div>
     <div class="grid grid-3">
       <div class="card reveal">
         <div class="icon"><svg class="icon-svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>
-        <h3>内置全球情报感知</h3>
-        <div class="sub-cn">Global Intelligence Layer</div>
-        <p>不只是流程数字化，更在流程之上叠加一层实时情报：政策、关税、台风、罢工自动关联到具体货物，提前预警而非事后补救。</p>
+        <h3>实时情报层</h3>
+        <div class="sub-cn">Global Intelligence</div>
+        <p>政策、制裁、关税、地区事件实时关联到你的供应商网络，在受影响之前做出反应。</p>
       </div>
       <div class="card reveal">
         <div class="icon"><svg class="icon-svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg></div>
         <h3>统一数据底座</h3>
         <div class="sub-cn">Unified Data Foundation</div>
-        <p>采购、仓储、物流、订单、关务共用同一套主数据，一个 SKU 全链路 ID 一致。从 PO 到 POD，一键追溯、秒级定位。</p>
+        <p>采购、合同、尽调、绩效、风控统一关联，供应商全貌一个视图呈现。</p>
       </div>
       <div class="card reveal">
         <div class="icon"><svg class="icon-svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg></div>
-        <h3>可量化的目标</h3>
+        <h3>可量化可验证</h3>
         <div class="sub-cn">Measurable Outcomes</div>
-        <p>不做空泛承诺：采购准时率 ≥ 93%、库存周转 ≤ 55 天、异常响应 ≤ 4 小时。先验证、再扩展，可演示、可试用。</p>
+        <p>每个目标都有明确数字。先从一个场景切入验证，见效再扩展。</p>
       </div>
       <div class="card reveal">
         <div class="icon"><svg class="icon-svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/><line x1="20" y1="9" x2="23" y2="9"/><line x1="20" y1="14" x2="23" y2="14"/><line x1="1" y1="9" x2="4" y2="9"/><line x1="1" y1="14" x2="4" y2="14"/></svg></div>
-        <h3>AI 贯穿全链路</h3>
-        <div class="sub-cn">AI Everywhere</div>
-        <p>AI 不独立打包，长在每个决策节点上。下 PO 自动比价、库存低了自动预警、航线断了自动推荐备选——无需手动触发。</p>
+        <h3>AI 贯穿每个决策节点</h3>
+        <div class="sub-cn">AI at Every Decision Point</div>
+        <p>寻源、尽调、预警、监控——AI长在每个决策节点上，不是独立的功能模块。</p>
       </div>
       <div class="card reveal">
         <div class="icon"><svg class="icon-svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
         <h3>弹性供应网络</h3>
         <div class="sub-cn">Resilient Network</div>
-        <p>多源采购 + 多枢纽物流 + 弹性路由。单点断供数小时内重组链路，不把鸡蛋放在一个篮子里。</p>
+        <p>关键品类备好多源选择，断链情景提前推演，出问题数小时内切换备选。</p>
       </div>
       <div class="card reveal">
         <div class="icon"><svg class="icon-svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
-        <h3>快速落地验证</h3>
+        <h3>模块化快速落地</h3>
         <div class="sub-cn">Rapid Deployment</div>
-        <p>模块化设计，先从一个场景切入，数周内看到效果再扩展。不是动辄 12 个月的笨重部署。</p>
+        <p>从一个场景切入，数周见效再扩展，不需要一次性全部上线。</p>
       </div>
     </div>
   </div>
@@ -238,20 +241,20 @@
       <div>
         <h5>解决方案</h5>
         <ul>
-          <li><a href="solutions.html#procure">跨境采购</a></li>
-          <li><a href="solutions.html#overseas">海外仓运营</a></li>
-          <li><a href="solutions.html#dropship">一件代发 / 直邮</a></li>
-          <li><a href="solutions.html#distribution">分销供销网络</a></li>
+          <li><a href="solutions.html#sourcing">全球寻源</a></li>
+          <li><a href="solutions.html#dd">供应商尽调</a></li>
+          <li><a href="solutions.html#resilience">多源备份防断供</a></li>
+          <li><a href="solutions.html#network">供需网络撮合</a></li>
         </ul>
       </div>
       <div>
-        <h5>产品模块</h5>
+        <h5>平台能力</h5>
         <ul>
-          <li><a href="products.html#supplier">供应商管理</a></li>
-          <li><a href="products.html#procurement">智能采购</a></li>
-          <li><a href="products.html#wms">WMS / OMS</a></li>
-          <li><a href="products.html#tms">全球物流 TMS</a></li>
-          <li><a href="products.html#customs">跨境关务</a></li>
+          <li><a href="products.html#matching">智能撮合</a></li>
+          <li><a href="products.html#procurement">安全采购</a></li>
+          <li><a href="products.html#delivery">可信交付</a></li>
+          <li><a href="products.html#risk">全局风控</a></li>
+          <li><a href="products.html#brain">数据智脑</a></li>
         </ul>
       </div>
       <div>
