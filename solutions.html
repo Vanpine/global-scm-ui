@@ -5,9 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>解决方案 · 全球供应链大平台</title>
 <link rel="icon" type="image/png" href="assets/logo-icon.png">
-<meta name="description" content="Global SCM 供需双边场景方案：全球寻源、供应商尽调、多源备份、实时风控、绩效监控、供需网络——AI驱动供需匹配全链路。">
+<meta name="description" content="Global SCM 供需双边场景方案：全球寻源、供应商尽调、多源备份、实时风控、绩效监控、可信交付——AI驱动供需匹配全链路。">
 <meta property="og:title" content="解决方案 · 全球供应链大平台">
-<meta property="og:description" content="六大场景覆盖供需双边全链路：全球寻源、供应商尽调、多源备份、实时风控、绩效监控、供需网络——AI驱动每一步。">
+<meta property="og:description" content="五大场景覆盖供需双边全链路：全球寻源、供应商尽调、多源备份、可信交付、绩效监控——AI驱动每一步。">
 <meta property="og:image" content="https://www.globalscm.com/assets/og-solutions.png">
 <meta property="og:url" content="https://www.globalscm.com/solutions.html">
 <meta property="og:type" content="website">
@@ -19,61 +19,173 @@
   max-width: 1440px;
 }
 .solutions-featured {
-  gap: 80px;
+  gap: 34px;
 }
 
-/* ===== 交替图文卡片 — 与首页危机卡统一风格 ===== */
+/* ===== 六大场景图文卡 · 升级版 ===== */
 .solution-card-wide {
-  gap: 24px;
+  position: relative;
+  gap: 32px;
+  padding: 24px;
+  border-radius: 32px;
+  background:
+    radial-gradient(circle at top right, rgba(37,99,235,0.08), transparent 30%),
+    linear-gradient(180deg, rgba(255,255,255,0.96), rgba(248,250,252,0.96));
+  border: 1px solid rgba(15,23,42,0.06);
+  box-shadow: 0 18px 60px rgba(15,23,42,0.08);
+  overflow: hidden;
+  transition: transform 0.35s var(--ease), box-shadow 0.35s var(--ease), border-color 0.35s var(--ease);
+}
+.solution-card-wide:hover {
+  transform: translateY(-4px);
+  border-color: rgba(37,99,235,0.12);
+  box-shadow: 0 28px 80px rgba(15,23,42,0.12);
 }
 .solution-card-wide .scw-img {
-  flex: 0 0 48%; min-height: 380px;
+  flex: 0 0 46%;
+  position: relative;
+  min-height: 420px;
   border-radius: 28px;
-  box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+  overflow: hidden;
+  box-shadow: 0 16px 40px rgba(15,23,42,0.14);
+}
+.solution-card-wide .scw-img::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(15,23,42,0.06) 0%, rgba(15,23,42,0.12) 48%, rgba(15,23,42,0.72) 100%);
+  pointer-events: none;
 }
 .solution-card-wide .scw-img:hover img {
   transform: scale(1.06);
 }
+.scw-img-badge {
+  position: absolute;
+  left: 18px;
+  top: 18px;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.12);
+  border: 1px solid rgba(255,255,255,0.18);
+  backdrop-filter: blur(12px);
+  color: #fff;
+}
+.scw-num {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  background: rgba(255,255,255,0.18);
+}
+.scw-img-label {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
 .solution-card-wide .scw-body {
-  padding: 72px 60px; justify-content: flex-start;
+  padding: 34px 30px 34px 6px;
+  justify-content: center;
 }
 .solution-card-wide .scw-body h3 {
-  font-size: 40px; letter-spacing: 0.05em; margin-bottom: 20px; line-height: 1.12;
+  font-size: 34px;
+  letter-spacing: -0.02em;
+  margin-bottom: 18px;
+  line-height: 1.14;
 }
 .solution-card-wide .scw-desc {
-  font-size: 18px; line-height: 1.8; margin-bottom: 28px; max-width: 540px;
+  font-size: 16px;
+  line-height: 1.82;
+  margin-bottom: 20px;
+  max-width: 560px;
+}
+.scw-proof {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 22px;
+}
+.scw-proof span {
+  display: inline-flex;
+  align-items: center;
+  min-height: 36px;
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.88);
+  border: 1px solid rgba(15,23,42,0.08);
+  box-shadow: 0 8px 22px rgba(15,23,42,0.06);
+  font-size: 13px;
+  font-weight: 700;
+  color: #0f172a;
 }
 .solution-card-wide .scw-body ul {
-  gap: 14px;
+  gap: 12px;
 }
 .solution-card-wide .scw-body li {
-  font-size: 17px; line-height: 1.65; align-items: center;
+  padding: 12px 14px;
+  border-radius: 16px;
+  background: rgba(255,255,255,0.72);
+  border: 1px solid rgba(15,23,42,0.06);
+  box-shadow: 0 8px 22px rgba(15,23,42,0.04);
+  font-size: 15px;
+  line-height: 1.65;
+  align-items: flex-start;
 }
 .solution-card-wide .scw-body li::before {
-  content: ""; flex: 0 0 auto; width: 5px; height: 5px; border-radius: 50%;
-  background: var(--brand-blue);
-  color: transparent; font-weight: normal; font-size: 0;
+  content: "✓";
+  flex: 0 0 auto;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  margin-top: 2px;
+  background: rgba(52,199,89,0.12);
+  color: #16A34A;
+  font-weight: 800;
+  font-size: 12px;
 }
 .solution-card-wide .scw-body .tags {
-  margin-top: 24px;
+  margin-top: 22px;
 }
 
 @media (max-width:1024px) {
-  .solutions-featured { gap: 64px; }
+  .solutions-featured { gap: 24px; }
   .solution-card-wide { flex-direction: column; }
   .solution-card-wide:nth-child(even) { flex-direction: column; }
-  .solution-card-wide .scw-img { flex: 0 0 auto; min-height: 260px; border-radius: 20px; }
-  .solution-card-wide .scw-body { padding: 28px 22px; }
-  .solution-card-wide .scw-body h3 { font-size: 26px; }
+  .solution-card-wide .scw-img { flex: 0 0 auto; min-height: 300px; border-radius: 22px; }
+  .solution-card-wide .scw-body { padding: 8px 4px 0; }
+  .solution-card-wide .scw-body h3 { font-size: 28px; }
   .solution-card-wide .scw-desc { font-size: 15px; }
 }
 @media (max-width:768px) {
-  .solutions-featured { gap: 48px; }
+  .solutions-featured { gap: 18px; }
+  .solution-card-wide { padding: 16px; border-radius: 22px; gap: 18px; }
   .solution-card-wide .scw-img { min-height: 220px; border-radius: 18px; }
-  .solution-card-wide .scw-body { padding: 18px 18px 22px; }
+  .scw-img-badge { left: 14px; top: 14px; padding: 8px 10px; gap: 8px; }
+  .scw-num { width: 26px; height: 26px; font-size: 11px; }
+  .scw-img-label { font-size: 11px; }
+  .solution-card-wide .scw-body { padding: 0; }
   .solution-card-wide .scw-body h3 { font-size: 22px; }
   .solution-card-wide .scw-desc { font-size: 14px; }
+  .solution-card-wide .scw-body li { font-size: 14px; padding: 11px 12px; }
 }
+
+.scw-link {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 15px; font-weight: 600; color: var(--brand-blue);
+  margin-top: 8px; text-decoration: none;
+  transition: gap 0.25s ease;
+}
+.scw-link:hover { gap: 10px; }
 
 /* ---- 场景标签 — 左线风格（对齐首页） ---- */
 .solution-card-wide .scw-tag {
@@ -94,6 +206,7 @@
 .scw-tag-risk                  { color: #FF3B30; } .scw-tag-risk::before      { background: #FF3B30; }
 .scw-tag-perf                  { color: #5E5CE6; } .scw-tag-perf::before      { background: #5E5CE6; }
 .scw-tag-network               { color: #4F46E5; } .scw-tag-network::before   { background: #4F46E5; }
+.scw-tag-delivery              { color: #FF9500; } .scw-tag-delivery::before  { background: #FF9500; }
 
 /* ---- 能力标签 (cap-tag) ---- */
 .cap-tag {
@@ -121,11 +234,56 @@
 /* 成效卡片数值色 */
 .outcome-blue   { color:#2563EB; }
 .outcome-gold   { color:#C9973A; }
+.outcome-orange { color:#FF9500; }
 .outcome-red    { color:#FF3B30; }
 .outcome-purple { color:#5E5CE6; }
+.outcome-indigo { color:#4F46E5; }
+
+/* ===== 场景成效带 ===== */
+.outcome-board {
+  background: linear-gradient(180deg, #ffffff, #f7faff);
+  border: 1px solid rgba(37,99,235,0.08);
+  border-radius: 28px;
+  padding: 34px;
+  box-shadow: 0 18px 60px rgba(15,23,42,0.06);
+}
+.outcome-grid {
+  display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px;
+}
+.outcome-card {
+  background: var(--bg-white);
+  border: 1px solid var(--card-border);
+  border-radius: 20px;
+  padding: 36px 30px;
+  box-shadow: var(--card-shadow);
+  transition: all 0.4s var(--ease);
+}
+.outcome-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--card-shadow-hover);
+}
+.outcome-value {
+  font-size: 36px; font-weight: 700; letter-spacing: -0.03em; line-height: 1.1;
+  color: var(--brand-blue); margin-bottom: 8px;
+}
+.outcome-label {
+  font-size: 17px; font-weight: 600; color: var(--text-primary); margin-bottom: 10px;
+}
+.outcome-desc {
+  font-size: 15px; line-height: 1.6; color: var(--text-secondary); margin-bottom: 16px;
+}
+.outcome-note {
+  font-size: 12.5px; color: var(--text-tertiary);
+  padding-top: 12px; border-top: 1px solid rgba(0,0,0,0.06);
+}
+.outcome-footnote {
+  margin-top: 24px; font-size: 12.5px; color: var(--text-tertiary); text-align: center;
+}
 
 @media (max-width:768px) {
-  .grid-4 { grid-template-columns:repeat(2, 1fr) !important; }
+  .outcome-grid { grid-template-columns: 1fr; }
+  .outcome-card { padding: 28px 24px; }
+  .outcome-value { font-size: 30px; }
 }
 </style>
 </head>
@@ -137,8 +295,8 @@
     <a class="nav-logo" href="index.html"><img class="logo-img" src="assets/logo.png" alt="Global Supply Chain"></a>
     <nav class="nav-links">
       <a href="index.html">首页</a>
-      <a href="products.html">产品功能</a>
       <a href="solutions.html">解决方案</a>
+      <a href="products.html">产品功能</a>
       <a href="why-us.html">为什么选我们</a>
       <a href="intel.html">供应链新闻台</a>
     </nav>
@@ -152,9 +310,9 @@
   <img class="hero-video" src="https://images.unsplash.com/photo-1587293852726-70cdb56c2866?auto=format&fit=crop&w=1920&q=85" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;pointer-events:none;">
   <div class="hero-overlay"></div>
   <div class="hero-content">
-    <h1>供需双方<span>AI驱动</span></h1>
-    <p class="lead">一个平台，供需两边都受益</p>
-    <p class="hero-sub"><span><svg class="icon-svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg> 全球寻源</span><span><svg class="icon-svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> 供应商尽调</span><span><svg class="icon-svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 4 1 10 7 10"/><polyline points="23 20 23 14 17 14"/><path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10m22 4l-4.64 4.36A9 9 0 0 1 3.51 15"/></svg> 多源备份</span><span><svg class="icon-svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/></svg> 实时风控</span><span><svg class="icon-svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg> 绩效监控</span></p>
+    <h1>从问题<span>到解法</span></h1>
+    <p class="lead">五个场景，各有一条清晰的解决路径</p>
+    <p class="hero-sub"><span><svg class="icon-svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg> 全球寻源</span><span><svg class="icon-svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> 供应商尽调</span><span><svg class="icon-svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 4 1 10 7 10"/><polyline points="23 20 23 14 17 14"/><path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10m22 4l-4.64 4.36A9 9 0 0 1 3.51 15"/></svg> 多源备份</span><span><svg class="icon-svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg> 可信交付</span><span><svg class="icon-svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg> 绩效监控</span></p>
   </div>
 </section>
 
@@ -162,9 +320,9 @@
 <section class="section solutions-section" style="padding-bottom:64px;">
   <div class="container">
     <div class="text-center reveal" style="margin-bottom:100px;">
-      <div class="eyebrow">SIX SCENARIOS · 六大场景</div>
-      <h2 class="section-title">供需双方的<span class="gradient-text">六个关键节点</span></h2>
-      <p class="section-sub">每个节点对应一个真实业务场景，AI在背后提供分析和建议，让每一步都有据可依。</p>
+      <div class="eyebrow">FIVE SCENARIOS · 五大场景</div>
+      <h2 class="section-title">五个场景，<span class="gradient-text">五条路径</span></h2>
+      <p class="section-sub">点击进入对应的产品能力，了解 AI 在每个节点如何运转。</p>
     </div>
     <div class="solutions-featured">
 
@@ -172,17 +330,13 @@
       <article class="solution-card-wide reveal" id="sourcing">
         <div class="scw-img">
           <img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?auto=format&fit=crop&w=1400&q=85" alt="" loading="lazy" onerror="this.style.display='none'">
+          <div class="scw-img-badge"><span class="scw-num">01</span><span class="scw-img-label">SOURCING</span></div>
         </div>
         <div class="scw-body">
           <span class="scw-tag scw-tag-sourcing">全球寻源</span>
-          <h3>不是没有选择，是需要更有效的方式做筛选</h3>
-          <p class="scw-desc">全球供应商数量庞大，但信息分散、标准不一。平台聚合多源数据，根据你的采购需求自动匹配候选人，从产能规模、资质认证、出口经验、交付记录等维度综合评估，让筛选过程从"翻黄页"变成"看报告"。</p>
-          <ul>
-            <li>采购需求语义解析，自动提取关键规格与约束条件</li>
-            <li>多维度交叉评估，而非单一价格排序</li>
-            <li>每项推荐均附评分明细，了解推荐背后的逻辑</li>
-          </ul>
-          <div class="tags" style="margin-top:16px;"><span class="cap-tag cap-tag--blue">智能撮合</span><span class="cap-tag cap-tag--ghost">全球供应商库</span><span class="cap-tag cap-tag--ghost">多维评估</span></div>
+          <h3>供应商那么多，靠谱的到底在哪？</h3>
+          <p class="scw-desc">展会跑了不少、邮件发了一圈，合适的没找到几个。AI 按你的采购需求自动提取规格、资质和交付条件，从全球供应商池里筛出可比较的候选名单——不只告诉你谁合适，也告诉你为什么合适。</p>
+          <a class="scw-link" href="products.html#matching">了解智能撮合能力 →</a>
         </div>
       </article>
 
@@ -190,17 +344,13 @@
       <article class="solution-card-wide reveal" id="dd">
         <div class="scw-img">
           <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=1400&q=85" alt="" loading="lazy" onerror="this.style.display='none'">
+          <div class="scw-img-badge"><span class="scw-num">02</span><span class="scw-img-label">DUE DILIGENCE</span></div>
         </div>
         <div class="scw-body">
           <span class="scw-tag scw-tag-dd">供应商尽调</span>
-          <h3>合作前的了解越充分，合作后的意外越少</h3>
-          <p class="scw-desc">跨境合作的复杂性在于信息不对称——对方的资质、关联方、合规记录并不透明。平台引入验厂认证、制裁名单自动比对、多层股权穿透等工具，将原本数天的尽调工作压缩到几分钟，帮助双方在信息对等的基础上建立合作。</p>
-          <ul>
-            <li>实地或远程验厂，核查产能、设备与劳工条件</li>
-            <li>对接国际制裁名单，自动标记潜在合规风险</li>
-            <li>股权结构追溯，了解谁在背后运营这家企业</li>
-          </ul>
-          <div class="tags" style="margin-top:16px;"><span class="cap-tag cap-tag--gold">安全采购</span><span class="cap-tag cap-tag--ghost">制裁筛查</span><span class="cap-tag cap-tag--ghost">股权穿透</span></div>
+          <h3>合作之前，对方的底细你查清了吗？</h3>
+          <p class="scw-desc">制裁名单每月更新、股权结构可能已变更、资质证书真假难辨——靠人力翻查费时又容易漏。平台把验厂、制裁筛查、股权穿透和合规记录放到同一流程，数分钟完成初筛，让合作从信息对等开始。</p>
+          <a class="scw-link" href="products.html#procurement">了解安全合规能力 →</a>
         </div>
       </article>
 
@@ -208,35 +358,27 @@
       <article class="solution-card-wide reveal" id="resilience">
         <div class="scw-img">
           <img src="https://images.unsplash.com/photo-1616401784845-180882ba9ba8?auto=format&fit=crop&w=1400&q=85" alt="" loading="lazy" onerror="this.style.display='none'">
+          <div class="scw-img-badge"><span class="scw-num">03</span><span class="scw-img-label">RESILIENCE</span></div>
         </div>
         <div class="scw-body">
           <span class="scw-tag scw-tag-resilience">多源备份</span>
-          <h3>为关键品类多留一条路，是成本也是保障</h3>
-          <p class="scw-desc">外部环境变化时，单一供应来源的脆弱性会被放大。平台分析你的供应商集中度，识别哪些品类过度依赖个别来源，并基于同品类、同资质、不同区域的原则推荐替代选项。同时支持断链情景推演，帮助你提前评估影响范围、准备应对方案。</p>
-          <ul>
-            <li>供应集中度分析，定位采购结构中的薄弱环节</li>
-            <li>跨区域替代推荐，平衡成本与风险</li>
-            <li>断链情景模拟，预判影响并提前规划备用路径</li>
-          </ul>
-          <div class="tags" style="margin-top:16px;"><span class="cap-tag cap-tag--orange">智能撮合</span><span class="cap-tag cap-tag--red">全局风控</span><span class="cap-tag cap-tag--ghost">供应韧性</span></div>
+          <h3>唯一供应商出事，你的产线能撑几天？</h3>
+          <p class="scw-desc">核心品类只有一个来源，对方罢工、受灾、被制裁——你的产线就跟着停。平台先找出哪些品类集中度过高，再按同资质、不同区域匹配备选，提前评估切换成本和时间窗口。</p>
+          <a class="scw-link" href="products.html#risk">了解全局风控能力 →</a>
         </div>
       </article>
 
-      <!-- 场景4：实时风控预警 -->
-      <article class="solution-card-wide reveal" id="risk-alert">
+      <!-- 场景4：可信交付 -->
+      <article class="solution-card-wide reveal" id="delivery">
         <div class="scw-img">
-          <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1400&q=85" alt="" loading="lazy" onerror="this.style.display='none'">
+          <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1400&q=85" alt="" loading="lazy" onerror="this.style.display='none'">
+          <div class="scw-img-badge"><span class="scw-num">04</span><span class="scw-img-label">DELIVERY</span></div>
         </div>
         <div class="scw-body">
-          <span class="scw-tag scw-tag-risk">实时风控</span>
-          <h3>让外部变化在影响你之前，先被系统捕捉到</h3>
-          <p class="scw-desc">关税调整、航线中断、地区局势变化——这些事件不会提前通知你。平台接入全球信息源持续扫描与供应链相关的变化，按影响程度分级标记，并将预警与你的供应商网络关联起来：哪些订单可能受影响、有哪些替代方案，一目了然。</p>
-          <ul>
-            <li>覆盖关税政策、制裁更新、气象灾害、地缘动态</li>
-            <li>三级影响评估，不同等级触发不同响应流程</li>
-            <li>预警与订单链路关联，直接呈现受影响范围</li>
-          </ul>
-          <div class="tags" style="margin-top:16px;"><span class="cap-tag cap-tag--red">全局风控</span><span class="cap-tag cap-tag--ghost">实时预警</span><span class="cap-tag cap-tag--ghost">影响分析</span></div>
+          <span class="scw-tag scw-tag-delivery">可信交付</span>
+          <h3>货物出了门，你知道它现在在哪吗？</h3>
+          <p class="scw-desc">物流异常永远是事后才知道、关务卡住没人主动通知——货一出厂就像断了线。平台把订单、物流、关务统一到一张看板上，异常自动预警，从下单到签收全程可视。</p>
+          <a class="scw-link" href="products.html#delivery">了解可信交付能力 →</a>
         </div>
       </article>
 
@@ -244,75 +386,16 @@
       <article class="solution-card-wide reveal" id="perf">
         <div class="scw-img">
           <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1400&q=85" alt="" loading="lazy" onerror="this.style.display='none'">
+          <div class="scw-img-badge"><span class="scw-num">05</span><span class="scw-img-label">PERFORMANCE</span></div>
         </div>
         <div class="scw-body">
           <span class="scw-tag scw-tag-perf">绩效监控</span>
-          <h3>合作关系需要持续关注，而不是一年评估一次</h3>
-          <p class="scw-desc">供应商的表现不是静态的——产能会波动、交期会漂移、质量会起伏。平台为每家供应商建立动态绩效档案，跟踪交付准时率、质量一致性、响应速度、价格稳定性等维度，发现趋势性变化时主动提示，让管理动作跑在问题前面。</p>
-          <ul>
-            <li>四维动态画像：交付 · 质量 · 响应 · 价格</li>
-            <li>趋势监测替代节点抽查，捕捉渐进式变化</li>
-            <li>异常指标自动关联改善建议，推动持续优化</li>
-          </ul>
-          <div class="tags" style="margin-top:16px;"><span class="cap-tag cap-tag--purple">数据智脑</span><span class="cap-tag cap-tag--orange">可信交付</span><span class="cap-tag cap-tag--ghost">持续评估</span></div>
+          <h3>供应商表现在下滑，你多久才能发现？</h3>
+          <p class="scw-desc">交付准时率在降、响应速度在变慢——这些变化散落在不同 Excel 和邮件里，等年度评估才发现已经晚了。平台对交付、质量、响应、价格四维持续跟踪，异常趋势主动提示，让管理跑在问题前面。</p>
+          <a class="scw-link" href="products.html#brain">了解数据智脑能力 →</a>
         </div>
       </article>
 
-      <!-- 场景6：供需网络 -->
-      <article class="solution-card-wide reveal" id="network">
-        <div class="scw-img">
-          <img src="https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1400&q=85" alt="" loading="lazy" onerror="this.style.display='none'">
-        </div>
-        <div class="scw-body">
-          <span class="scw-tag scw-tag-network">供需网络</span>
-          <h3>让供需双方在同一个平台上彼此发现</h3>
-          <p class="scw-desc">供应商在平台上展示资质与产能，采购商发布需求后由系统自动匹配。匹配过程透明——不仅推荐"谁合适"，也展示"为什么合适"。随着交易数据的积累，平台的匹配精度持续提升，双方在合作前就能看到对方的信用记录与过往评价。</p>
-          <ul>
-            <li>供应商在平台沉淀资质、产能与履约记录</li>
-            <li>采购需求发布后自动匹配，推荐附带评估依据</li>
-            <li>信用体系随交易积累，降低首次合作的信任成本</li>
-          </ul>
-          <div class="tags" style="margin-top:16px;"><span class="cap-tag cap-tag--blue">智能撮合</span><span class="cap-tag cap-tag--purple">数据智脑</span><span class="cap-tag cap-tag--ghost">双边网络</span></div>
-        </div>
-      </article>
-
-    </div>
-  </div>
-</section>
-
-<!-- ===== 目标成效 ===== -->
-<section class="section">
-  <div class="container">
-    <div class="text-center reveal" style="margin-bottom:56px;">
-      <div class="eyebrow">TARGET OUTCOMES · 目标成效</div>
-      <h2 class="section-title">典型场景下的改善方向</h2>
-      <p class="section-sub">以下为基于平台能力的目标改善示意，用于了解各场景可能的提升方向。</p>
-    </div>
-    <div class="grid grid-4" style="grid-template-columns:repeat(4, 1fr);">
-      <div class="card reveal">
-        <h3 style="color:#2563EB;font-size:26px;">85% → 95%</h3>
-        <div class="sub-cn">供需匹配精准度</div>
-        <p>用多维评估模型替代人工筛选，推荐准确率随使用持续提升。</p>
-        <p style="color:var(--text-tertiary);margin-top:10px;">场景 · 全球寻源</p>
-      </div>
-      <div class="card reveal">
-        <h3 style="color:#C9973A;font-size:26px;">3–5天 → ＜3分钟</h3>
-        <div class="sub-cn">尽调报告生成时间</div>
-        <p>制裁筛查、股权穿透、诉讼排查一键完成，效率大幅提升。</p>
-        <p style="color:var(--text-tertiary);margin-top:10px;">场景 · 供应商尽调</p>
-      </div>
-      <div class="card reveal">
-        <h3 style="color:#FF3B30;font-size:26px;">＜5分钟</h3>
-        <div class="sub-cn">断供风险预警响应</div>
-        <p>全球信息源持续扫描，高风险事件快速推送并关联受影响订单。</p>
-        <p style="color:var(--text-tertiary);margin-top:10px;">场景 · 实时风控</p>
-      </div>
-      <div class="card reveal">
-        <h3 style="color:#5E5CE6;font-size:26px;">60% → 98%</h3>
-        <div class="sub-cn">供应商绩效可视化率</div>
-        <p>从分散记录到统一画像，所有供应商状态在一个视图中呈现。</p>
-        <p style="color:var(--text-tertiary);margin-top:10px;">场景 · 绩效监控</p>
-      </div>
     </div>
   </div>
 </section>
@@ -338,14 +421,14 @@
           <li><a href="solutions.html#sourcing">全球寻源</a></li>
           <li><a href="solutions.html#dd">供应商尽调</a></li>
           <li><a href="solutions.html#resilience">多源备份防断供</a></li>
-          <li><a href="solutions.html#network">供需网络撮合</a></li>
+          <li><a href="solutions.html#network">可信交付撮合</a></li>
         </ul>
       </div>
       <div>
         <h5>平台能力</h5>
         <ul>
           <li><a href="products.html#matching">智能撮合</a></li>
-          <li><a href="products.html#procurement">安全采购</a></li>
+          <li><a href="products.html#procurement">安全合规</a></li>
           <li><a href="products.html#delivery">可信交付</a></li>
           <li><a href="products.html#risk">全局风控</a></li>
           <li><a href="products.html#brain">数据智脑</a></li>
