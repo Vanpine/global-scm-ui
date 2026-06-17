@@ -19,37 +19,40 @@
   max-width: 1440px;
 }
 .solutions-featured {
-  margin: 0;
-  width: 100%;
-  gap: 120px;
+  gap: 80px;
 }
 
-/* ===== 交替图文卡片 — 放大增强 ===== */
+/* ===== 交替图文卡片 — 与首页危机卡统一风格 ===== */
 .solution-card-wide {
-  gap: 0;
+  gap: 24px;
 }
 .solution-card-wide .scw-img {
-  flex: 0 0 52%; min-height: 480px;
-  border-radius: 32px;
-  box-shadow: 0 12px 48px rgba(0,0,0,0.12);
+  flex: 0 0 48%; min-height: 380px;
+  border-radius: 28px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.12);
 }
 .solution-card-wide .scw-img:hover img {
   transform: scale(1.06);
 }
 .solution-card-wide .scw-body {
-  padding: 56px 64px;
+  padding: 72px 60px; justify-content: flex-start;
 }
 .solution-card-wide .scw-body h3 {
-  font-size: 32px; margin-bottom: 28px; line-height: 1.3;
+  font-size: 40px; letter-spacing: 0.05em; margin-bottom: 20px; line-height: 1.12;
 }
 .solution-card-wide .scw-desc {
-  font-size: 16px; line-height: 2.0; margin-bottom: 36px; max-width: 520px;
+  font-size: 18px; line-height: 1.8; margin-bottom: 28px; max-width: 540px;
 }
 .solution-card-wide .scw-body ul {
-  gap: 18px;
+  gap: 14px;
 }
 .solution-card-wide .scw-body li {
-  font-size: 15px; line-height: 1.8;
+  font-size: 17px; line-height: 1.65; align-items: center;
+}
+.solution-card-wide .scw-body li::before {
+  content: ""; flex: 0 0 auto; width: 5px; height: 5px; border-radius: 50%;
+  background: var(--brand-blue);
+  color: transparent; font-weight: normal; font-size: 0;
 }
 .solution-card-wide .scw-body .tags {
   margin-top: 24px;
@@ -57,43 +60,40 @@
 
 @media (max-width:1024px) {
   .solutions-featured { gap: 64px; }
-  .solution-card-wide { gap: 0; flex-direction: column; }
+  .solution-card-wide { flex-direction: column; }
   .solution-card-wide:nth-child(even) { flex-direction: column; }
-  .solution-card-wide .scw-img { flex: 0 0 auto; min-height: 300px; border-radius: 24px; }
-  .solution-card-wide .scw-body { padding: 36px 32px; }
+  .solution-card-wide .scw-img { flex: 0 0 auto; min-height: 260px; border-radius: 20px; }
+  .solution-card-wide .scw-body { padding: 28px 22px; }
   .solution-card-wide .scw-body h3 { font-size: 26px; }
+  .solution-card-wide .scw-desc { font-size: 15px; }
 }
 @media (max-width:768px) {
   .solutions-featured { gap: 48px; }
-  .solution-card-wide .scw-img { min-height: 240px; border-radius: 20px; }
-  .solution-card-wide .scw-body { padding: 28px 20px; }
+  .solution-card-wide .scw-img { min-height: 220px; border-radius: 18px; }
+  .solution-card-wide .scw-body { padding: 18px 18px 22px; }
   .solution-card-wide .scw-body h3 { font-size: 22px; }
-  .solution-card-wide .scw-desc { font-size: 15px; }
+  .solution-card-wide .scw-desc { font-size: 14px; }
 }
 
-/* ===== 方案页视觉增强 ===== */
-
-/* ---- 场景标签 (scw-tag) 覆盖 style.css ---- */
+/* ---- 场景标签 — 左线风格（对齐首页） ---- */
 .solution-card-wide .scw-tag {
-  display:inline-flex; align-items:center; gap:7px;
-  font-size:13px; font-weight:700; letter-spacing:0.06em;
-  padding:6px 16px; border-radius:999px;
-  margin-bottom:18px;
-  background:#F8FAFC; color:#64748B;
-  border:1px solid rgba(0,0,0,0.06);
-  transition:all 0.25s ease;
+  display: inline-flex; align-items: center; gap: 10px; align-self: flex-start;
+  font-size: 13px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase;
+  margin-bottom: 20px;
+  padding: 0; border-radius: 0;
+  background: none; border: none;
 }
 .solution-card-wide .scw-tag::before {
-  content:""; width:7px; height:7px; border-radius:50%;
-  flex:0 0 auto; opacity:0.8;
+  content: ""; width: 24px; height: 3px; border-radius: 2px;
+  flex: 0 0 auto; opacity: 1;
 }
-/* 六色变体 */
-.scw-tag-sourcing::before  { background:#2563EB; }
-.scw-tag-dd::before        { background:#C9973A; }
-.scw-tag-resilience::before{ background:#FF9500; }
-.scw-tag-risk::before      { background:#FF3B30; }
-.scw-tag-perf::before      { background:#5E5CE6; }
-.scw-tag-network::before   { background:#4F46E5; }
+/* 六色变体 — 左线颜色 */
+.scw-tag-sourcing              { color: #2563EB; } .scw-tag-sourcing::before  { background: #2563EB; }
+.scw-tag-dd                    { color: #C9973A; } .scw-tag-dd::before        { background: #C9973A; }
+.scw-tag-resilience            { color: #FF9500; } .scw-tag-resilience::before{ background: #FF9500; }
+.scw-tag-risk                  { color: #FF3B30; } .scw-tag-risk::before      { background: #FF3B30; }
+.scw-tag-perf                  { color: #5E5CE6; } .scw-tag-perf::before      { background: #5E5CE6; }
+.scw-tag-network               { color: #4F46E5; } .scw-tag-network::before   { background: #4F46E5; }
 
 /* ---- 能力标签 (cap-tag) ---- */
 .cap-tag {
@@ -124,12 +124,6 @@
 .outcome-red    { color:#FF3B30; }
 .outcome-purple { color:#5E5CE6; }
 
-/* 观点卡片图标底 */
-.persp-icon-amber { background:#FFF3E0; color:#FF9500; }
-.persp-icon-blue  { background:#EFF6FF; color:#2563EB; }
-.persp-icon-green { background:#ECFDF5; color:#10B981; }
-.persp-icon-purple{ background:#F0EDFF; color:#5E5CE6; }
-
 @media (max-width:768px) {
   .grid-4 { grid-template-columns:repeat(2, 1fr) !important; }
 }
@@ -148,7 +142,7 @@
       <a href="why-us.html">为什么选我们</a>
       <a href="intel.html">供应链新闻台</a>
     </nav>
-    <div class="nav-right"><button class="lang-toggle" id="lang-toggle" aria-label="切换语言 / Switch language"><span><svg class="icon-svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></span><span id="lang-current">EN</span></button><a class="nav-cta" href="contact.html">申请加入</a></div>
+    <div class="nav-right"><button class="lang-toggle" id="lang-toggle" aria-label="切换语言 / Switch language"><span><svg class="icon-svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></span><span id="lang-current">EN</span></button><a class="nav-cta" href="contact.html">申请加入</a></div>
     <button class="nav-toggle" aria-label="菜单"><span></span><span></span><span></span></button>
   </div>
 </header>
@@ -160,7 +154,7 @@
   <div class="hero-content">
     <h1>供需双方<span>AI驱动</span></h1>
     <p class="lead">一个平台，供需两边都受益</p>
-    <p class="hero-sub"><span><svg class="icon-svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#6CB2FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg> 全球寻源</span><span><svg class="icon-svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#34C759" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> 供应商尽调</span><span><svg class="icon-svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#FF9500" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 4 1 10 7 10"/><polyline points="23 20 23 14 17 14"/><path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10m22 4l-4.64 4.36A9 9 0 0 1 3.51 15"/></svg> 多源备份</span><span><svg class="icon-svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#FF3B30" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/></svg> 实时风控</span><span><svg class="icon-svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#A78BFA" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg> 绩效监控</span></p>
+    <p class="hero-sub"><span><svg class="icon-svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg> 全球寻源</span><span><svg class="icon-svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> 供应商尽调</span><span><svg class="icon-svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 4 1 10 7 10"/><polyline points="23 20 23 14 17 14"/><path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10m22 4l-4.64 4.36A9 9 0 0 1 3.51 15"/></svg> 多源备份</span><span><svg class="icon-svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/></svg> 实时风控</span><span><svg class="icon-svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg> 绩效监控</span></p>
   </div>
 </section>
 
@@ -286,39 +280,6 @@
   </div>
 </section>
 
-<!-- ===== 我们的供应链观点 ===== -->
-<section class="section" style="background:#F8FAFC;">
-  <div class="container">
-    <div class="text-center reveal" style="margin-bottom:56px;">
-      <div class="eyebrow">OUR PERSPECTIVE</div>
-      <h2 class="section-title">关于供需关系，<span class="gradient-text">我们有四个基本判断</span></h2>
-      <p class="section-sub">这些判断来自跨境供应链的一线实践，未必每条都符合直觉。</p>
-    </div>
-    <div class="grid grid-2">
-      <div class="card reveal">
-        <div class="icon" style="background:#FFF3E0; color:#FF9500;"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/></svg></div>
-        <h3>过度集中是隐形成本</h3>
-        <p>把鸡蛋放在一个篮子里，议价权也在那个篮子里。为核心品类培育备选来源，不是为了明天就换，而是让供应商知道——你有选择。</p>
-      </div>
-      <div class="card reveal">
-        <div class="icon" style="background:#EFF6FF; color:#2563EB;"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>
-        <h3>准入不是终点，是起点</h3>
-        <p>供应商的状况在持续变化——去年通过验厂的，今年未必。制裁名单每月更新，实控人可能已经变更。定期复查不是成本，是风险在累积之前被看见的前提。</p>
-      </div>
-      <div class="card reveal">
-        <div class="icon" style="background:#ECFDF5; color:#10B981;"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/></svg></div>
-        <h3>压价是最贵的降本方式</h3>
-        <p>一味压价换来的低成本很难持久——供应商会在你看不见的地方找回来。真正的降本来自稳定关系带来的信息透明、需求协同和风险共担。</p>
-      </div>
-      <div class="card reveal">
-        <div class="icon" style="background:#F0EDFF; color:#5E5CE6;"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
-        <h3>时间积累的，后来者追不上</h3>
-        <p>每笔交易、每次履约、每条风险预警都在训练平台对你的供应链的理解。采购偏好、品类网络、风控模型——这些不是靠资本或技术能一夜搭建的，只有时间能沉淀。</p>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- ===== 目标成效 ===== -->
 <section class="section">
   <div class="container">
@@ -356,18 +317,6 @@
   </div>
 </section>
 
-<!-- ===== CTA ===== -->
-<section class="section" style="background:#F8FAFC;">
-  <div class="container text-center reveal">
-    <h2 class="section-title">看看这些场景<span class="gradient-text">背后的平台能力</span></h2>
-    <p class="section-sub" style="margin-bottom:32px;">每个场景背后，都有对应的平台能力和AI引擎在支撑。</p>
-    <div style="display:flex; gap:16px; justify-content:center; flex-wrap:wrap;">
-      <a class="btn btn-primary btn-lg" href="products.html">查看平台能力 →</a>
-      <a class="btn btn-ghost btn-lg" href="pain-points.html">了解行业痛点 →</a>
-    </div>
-  </div>
-</section>
-
 <!-- ===== Footer ===== -->
 <footer class="footer">
   <div class="container">
@@ -379,8 +328,8 @@
         <div class="footer-social">
           <a href="#" aria-label="LinkedIn">in</a>
           <a href="#" aria-label="X">𝕏</a>
-          <a href="mailto:hello@globalscm.com" aria-label="Email"><svg class="icon-svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 4l-10 8L2 4"/></svg></a>
-          <a href="#" aria-label="Website"><svg class="icon-svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></a>
+          <a href="mailto:hello@globalscm.com" aria-label="Email"><svg class="icon-svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 4l-10 8L2 4"/></svg></a>
+          <a href="#" aria-label="Website"><svg class="icon-svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></a>
         </div>
       </div>
       <div>
