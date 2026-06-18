@@ -1,0 +1,17 @@
+{
+    "mcpServers": {
+        "visual-primitives": {
+            "type": "stdio",
+            "command": "npx",
+            "args": [
+                "visual-primitives-mcp"
+            ],
+            "env": {
+                "VISION_API_BASE_URL": "https://dashscope.aliyuncs.com/compatible-mode/v1",
+                "VISION_API_KEY": "sk-8b7230be78754eafb5c1150e442ce376",
+                "VISION_MODEL_NAME": "qwen3.6-plus",
+                "VISION_OCR_MODEL": "vanchin/deepseek-ocr"
+            }
+        }
+    }
+}
