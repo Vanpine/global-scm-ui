@@ -40,7 +40,7 @@ img { display: block; max-width: 100%; }
 ul { list-style: none; }
 
 /* ---------- 布局工具 ---------- */
-.container { max-width: var(--maxw); margin: 0 auto; padding: 0 32px; }
+.container { width: 90%; max-width: 1600px; margin: 0 auto; padding: 0; }
 .section { padding: 120px 0; }
 .section-sm { padding: 80px 0; }
 .bg-gray { background: var(--bg-gray); }
@@ -432,17 +432,17 @@ ul { list-style: none; }
 
 /* ---------- 供应链多重危机（全宽图文分离卡） ---------- */
 .crisis-featured {
-  display: flex; flex-direction: column; gap: 80px;
-  margin: 0 calc(-50vw + 50% + 40px);
-  width: calc(100vw - 80px);
+  display: flex; flex-direction: column; gap: 103px;
+  margin-bottom: 100px;
 }
 .crisis-card-wide {
-  display: flex; align-items: stretch; gap: 24px;
+  display: flex; align-items: stretch; gap: 40px;
 }
 .crisis-card-wide:nth-child(even) { flex-direction: row-reverse; }
+.crisis-card-wide:nth-child(even) .ccw-body { padding-left: 0; }
 /* 图片 — 独立圆角卡片 */
 .crisis-card-wide .ccw-img {
-  flex: 0 0 48%; position: relative; min-height: 380px;
+  flex: 0 0 50%; position: relative; min-height: 380px;
   border-radius: 28px; overflow: hidden;
   box-shadow: 0 8px 32px rgba(0,0,0,0.12);
 }
@@ -453,8 +453,8 @@ ul { list-style: none; }
 .crisis-card-wide .ccw-img:hover img { transform: scale(1.06); }
 /* 文字 — 与背景融为一体，无边框无阴影 */
 .crisis-card-wide .ccw-body {
-  flex: 1; display: flex; flex-direction: column; justify-content: flex-start;
-  padding: 72px 60px 72px; color: var(--text-primary);
+  flex: 1; display: flex; flex-direction: column; justify-content: center;
+  padding: 64px 72px; color: var(--text-primary); text-align: left;
   background: transparent; border-radius: 0;
   border: none;
   box-shadow: none;
@@ -472,28 +472,81 @@ ul { list-style: none; }
   background: var(--brand-gradient); flex: 0 0 auto;
 }
 .crisis-card-wide .ccw-body h3 {
-  font-size: 40px; font-weight: 700; letter-spacing: 0.05em;
-  margin-bottom: 20px; color: var(--text-primary); line-height: 1.12;
+  font-size: 42px; font-weight: 700; letter-spacing: 0.03em;
+  margin-bottom: 14px; color: var(--text-primary); line-height: 1.18;
+}
+.crisis-card-wide .ccw-sub {
+  font-size: 19px; color: var(--text-secondary); margin-bottom: 24px; line-height: 1.5;
 }
 .crisis-card-wide .ccw-desc {
   font-size: 18px; color: var(--text-secondary); line-height: 1.8;
   margin-bottom: 28px; max-width: 540px;
 }
 .crisis-card-wide .ccw-body ul {
-  display: flex; flex-direction: column; gap: 14px; list-style: none;
+  display: flex; flex-direction: column; gap: 18px; list-style: none;
 }
 .crisis-card-wide .ccw-body li {
-  font-size: 17px; color: var(--text-secondary); line-height: 1.65;
-  display: flex; gap: 10px; align-items: center;
+  font-size: 19px; color: var(--text-secondary); line-height: 1.7;
+  display: flex; gap: 12px; align-items: flex-start;
 }
 .crisis-card-wide .ccw-body li::before {
-  content: ""; flex: 0 0 auto; width: 5px; height: 5px; border-radius: 50%;
-  background: var(--brand-blue);
+  content: ""; flex: 0 0 auto; width: 7px; height: 7px; border-radius: 50%;
+  background: var(--brand-blue); margin-top: 11px;
 }
 .crisis-bridge { text-align: center; max-width: 780px; margin: 100px auto 0; padding-bottom: 20px; }
 .crisis-bridge .section-sub span { color: var(--brand-blue); font-weight: 600; }
 .bridge-arrow { display: block; margin-top: 24px; font-size: 22px; color: var(--brand-blue); animation: bridgeBounce 1.8s ease-in-out infinite; }
 @keyframes bridgeBounce { 0%, 100% { transform: translateY(0); opacity: 0.6; } 50% { transform: translateY(7px); opacity: 1; } }
+
+/* ---------- AI 重塑供应链 Hero ---------- */
+.answer-hero {
+  position: relative; min-height: 100vh; display: flex;
+  align-items: center; justify-content: center; overflow: hidden;
+  margin-top: -40px;
+}
+.answer-hero-bg {
+  position: absolute; inset: 0;
+  background: url('https://images.unsplash.com/photo-1639322537228-f710d846310a?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+  transform: scale(1.02);
+}
+.answer-hero-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,0.55) 0%, rgba(5,7,13,0.82) 100%);
+}
+.answer-hero-content {
+  position: relative; z-index: 2; text-align: center; max-width: 860px;
+  padding: 80px 32px 40px;
+}
+.answer-hero-content .eyebrow {
+  color: #2997ff; margin-bottom: 20px;
+}
+.answer-hero-title {
+  font-size: 72px; font-weight: 700; line-height: 1.12;
+  letter-spacing: -0.02em; color: #fff; margin-bottom: 28px;
+}
+.answer-hero-sub {
+  font-size: 20px; font-weight: 400; line-height: 1.6;
+  color: rgba(255,255,255,0.72); max-width: 640px; margin: 0 auto;
+}
+.answer-hero-content .bridge-arrow {
+  margin-top: 32px; font-size: 24px; color: #2997ff;
+}
+.answer-cta {
+  display: inline-flex; align-items: center; gap: 10px;
+  margin-top: 36px; padding: 13px 32px;
+  font-size: 16px; font-weight: 500; letter-spacing: 0.04em;
+  color: #fff; border: 1px solid rgba(255,255,255,0.35);
+  border-radius: 6px; transition: all 0.3s ease;
+  text-transform: uppercase;
+}
+.answer-cta span { font-size: 18px; transition: transform 0.3s ease; }
+.answer-cta:hover { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.6); }
+.answer-cta:hover span { transform: translateX(4px); }
+@media (max-width: 768px) {
+  .answer-hero { min-height: 420px; }
+  .answer-hero-title { font-size: 42px; }
+  .answer-hero-sub { font-size: 16px; }
+}
 
 /* ---------- 解决方案 · 场景宽卡（图文分离） ---------- */
 .solutions-featured {
@@ -1149,12 +1202,13 @@ ul { list-style: none; }
   .news-grid { grid-template-columns: repeat(2, 1fr); }
   .news-featured { grid-template-columns: 1fr 1fr; }
   .article-hero h1 { font-size: 38px; }
-  .crisis-featured { margin: 0 16px; width: calc(100% - 32px); gap: 24px; }
+  .crisis-featured { gap: 24px; }
   .crisis-card-wide { flex-direction: column; gap: 16px; }
   .crisis-card-wide:nth-child(even) { flex-direction: column; }
   .crisis-card-wide .ccw-img { flex: 0 0 auto; min-height: 260px; border-radius: 20px; }
-  .crisis-card-wide .ccw-body { padding: 28px 22px 28px; border-radius: 20px; }
-  .crisis-card-wide .ccw-body h3 { font-size: 26px; }
+  .crisis-card-wide .ccw-body { padding: 28px 22px; border-radius: 20px; }
+  .crisis-card-wide .ccw-body h3 { font-size: 24px; }
+  .crisis-card-wide .ccw-sub { font-size: 15px; }
   .crisis-card-wide .ccw-desc { font-size: 15px; }
   .solutions-featured { margin: 0 16px; width: calc(100% - 32px); gap: 20px; }
   .solution-card-wide { flex-direction: column; gap: 16px; }
@@ -1188,12 +1242,13 @@ ul { list-style: none; }
   .section-title { font-size: 30px; }
   .section-sub { font-size: 17px; }
   .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
-  .crisis-featured { margin: 0 12px; width: calc(100% - 24px); gap: 20px; }
+  .crisis-featured { gap: 20px; }
   .crisis-card-wide { flex-direction: column; gap: 12px; }
   .crisis-card-wide:nth-child(even) { flex-direction: column; }
   .crisis-card-wide .ccw-img { flex: 0 0 auto; min-height: 220px; border-radius: 18px; }
   .crisis-card-wide .ccw-body { padding: 18px 18px 22px; border-radius: 18px; }
-  .crisis-card-wide .ccw-body h3 { font-size: 22px; }
+  .crisis-card-wide .ccw-body h3 { font-size: 20px; }
+  .crisis-card-wide .ccw-sub { font-size: 14px; }
   .crisis-card-wide .ccw-desc { font-size: 14px; }
   .pain-list { margin: 0 12px; width: calc(100% - 24px); gap: 20px; }
   .solutions-featured { margin: 0 12px; width: calc(100% - 24px); gap: 16px; }
