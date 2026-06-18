@@ -548,6 +548,100 @@ ul { list-style: none; }
   .answer-hero-sub { font-size: 16px; }
 }
 
+/* ---------- 降本 · 增效 · 抗风险 ---------- */
+.pillars-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 80px;
+}
+.pillar-card {
+  text-align: center; padding: 60px 40px;
+}
+.pillar-icon {
+  display: inline-flex; align-items: center; justify-content: center;
+  color: var(--text-primary); margin-bottom: 32px;
+}
+.pillar-card h3 {
+  font-size: 36px; font-weight: 700; color: var(--text-primary); line-height: 1.2; margin-bottom: 16px;
+}
+.pillar-card h3 span {
+  display: block; font-size: 14px; font-weight: 400; color: var(--text-secondary);
+  letter-spacing: 0.06em; text-transform: uppercase; margin-top: 4px;
+}
+.pillar-card p {
+  font-size: 15px; color: var(--text-secondary); line-height: 1.7; max-width: 300px; margin: 0 auto;
+}
+@media (max-width: 768px) {
+  .pillars-grid { grid-template-columns: 1fr; gap: 32px; }
+  .pillar-card { padding: 32px 24px; }
+}
+
+/* ---------- 五大核心能力轮播 ---------- */
+.cap-carousel {
+  position: relative;
+}
+.cap-track-wrap {
+  overflow: hidden;
+}
+.cap-track {
+  display: flex; transition: transform 0.5s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+.cap-slide {
+  flex: 0 0 calc(100% / 3); padding: 0 12px; box-sizing: border-box;
+}
+a.cap-card, .cap-card {
+  border-radius: 16px; overflow: hidden; height: 540px; position: relative;
+  display: flex; align-items: flex-end; cursor: pointer;
+  text-decoration: none; color: inherit;
+}
+.cap-bg {
+  position: absolute; inset: 0; background-size: cover; background-position: center;
+  transition: transform 0.7s var(--ease); border-radius: inherit;
+}
+.cap-card:hover .cap-bg {
+  transform: scale(1.06);
+}
+.cap-card .cap-overlay {
+  position: relative; z-index: 1; width: 100%;
+}
+.cap-overlay {
+  width: 100%; padding: 32px 28px 28px;
+  background: rgba(0,0,0,0.45);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: #fff;
+}
+.cap-overlay h3 {
+  font-size: 26px; font-weight: 600; margin-bottom: 16px; color: #fff;
+  letter-spacing: 0.02em;
+}
+.cap-overlay ul {
+  list-style: none; display: flex; flex-direction: column; gap: 10px;
+}
+.cap-overlay li {
+  font-size: 15px; line-height: 1.6; opacity: 0.85; display: flex; gap: 10px; align-items: flex-start;
+}
+.cap-overlay li::before {
+  content: ""; flex: 0 0 auto; width: 5px; height: 5px; border-radius: 50%;
+  background: #fff; margin-top: 9px; opacity: 0.5;
+}
+.cap-nav {
+  display: flex; justify-content: flex-end; gap: 8px;
+  position: absolute; bottom: -48px; right: 0; z-index: 2;
+}
+.cap-btn {
+  width: 40px; height: 40px; border-radius: 50%; cursor: pointer;
+  border: 1px solid rgba(0,0,0,0.12); background: #fff;
+  display: flex; align-items: center; justify-content: center;
+  transition: all 0.2s ease; color: var(--text-primary);
+}
+.cap-btn:hover { background: var(--bg-gray); }
+@media (max-width: 1024px) {
+  .cap-slide { flex: 0 0 50%; }
+}
+@media (max-width: 768px) {
+  .cap-slide { flex: 0 0 100%; padding: 0 4px; }
+  .cap-nav { bottom: -44px; }
+}
+
 /* ---------- 解决方案 · 场景宽卡（图文分离） ---------- */
 .solutions-featured {
   display: flex; flex-direction: column; gap: 80px;
