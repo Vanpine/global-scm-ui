@@ -269,6 +269,55 @@
     });
   }
 
+  /* ---------- 下拉菜单 ---------- */
+  function initDropdowns() {
+    var timer = 0;
+    var navbar = document.querySelector('.navbar');
+
+    document.querySelectorAll('.nav-dropdown').forEach(function(dropdown) {
+      var toggle = dropdown.querySelector('.nav-dropdown-toggle');
+
+      dropdown.addEventListener('mouseenter', function() {
+        clearTimeout(timer);
+        // 关闭其他下拉 + 恢复导航栏圆角
+        document.querySelectorAll('.nav-dropdown.open').forEach(function(d) {
+          if (d !== dropdown) d.classList.remove('open');
+        });
+        dropdown.classList.add('open');
+        if (navbar) navbar.classList.add('dropdown-open');
+      });
+
+      dropdown.addEventListener('mouseleave', function() {
+        timer = setTimeout(function() {
+          dropdown.classList.remove('open');
+          if (navbar && !document.querySelector('.nav-dropdown.open')) {
+            navbar.classList.remove('dropdown-open');
+          }
+        }, 200);
+      });
+
+      // Mobile: click toggle
+      if (toggle) {
+        toggle.addEventListener('click', function(e) {
+          if (window.innerWidth > 768) return;
+          e.preventDefault();
+          var isOpen = dropdown.classList.toggle('open');
+          if (navbar) {
+            navbar.classList.toggle('dropdown-open', isOpen || document.querySelector('.nav-dropdown.open'));
+          }
+        });
+      }
+    });
+
+    // Click outside to close
+    document.addEventListener('click', function(e) {
+      if (!e.target.closest('.nav-dropdown')) {
+        document.querySelectorAll('.nav-dropdown.open').forEach(function(d) { d.classList.remove('open'); });
+        if (navbar) navbar.classList.remove('dropdown-open');
+      }
+    });
+  }
+
   document.addEventListener('DOMContentLoaded', function () {
     highlightNav();
     initMobileMenu();
@@ -280,5 +329,6 @@
     initNewsInteract();
     initArticleStats();
     initCrisisToggle();
+    initDropdowns();
   });
 })();
