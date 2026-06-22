@@ -77,8 +77,8 @@
       <h2 class="section-title" style="font-size:22px;color:#86868b;">供应链的多重危机</h2>
     </div>
     <div style="height:80px;"></div>
-    <!-- 前 2 张：铺满大卡 -->
-    <div class="crisis-featured">
+    <div class="crisis-featured" id="crisisFeatured">
+      <!-- 1. 地缘冲突与航运中断 -->
       <article class="crisis-card-wide reveal">
         <div class="ccw-img">
           <img src="https://images.unsplash.com/photo-1605745341112-85968b19335b?auto=format&fit=crop&w=1400&q=85" alt="" loading="lazy" onerror="this.style.display='none'">
@@ -89,6 +89,7 @@
           <ul><li>红海危机：胡塞武装袭击商船，主力班轮绕行好望角，每航次增加 10-14 天</li><li>霍尔木兹海峡：全球 20% 石油运输咽喉，美伊对峙持续升级</li><li>俄乌冲突：黑海航运保险费用飙升，全球谷物出口通道受阻</li></ul>
         </div>
       </article>
+      <!-- 2. 极端天气与自然灾害 -->
       <article class="crisis-card-wide reveal">
         <div class="ccw-img">
           <img src="https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&w=1400&q=85" alt="" loading="lazy" onerror="this.style.display='none'">
@@ -99,26 +100,7 @@
           <ul><li>泰国洪水（2011）：淹没全球 25% 硬盘产能，价格暴涨 180%，持续两年才恢复</li><li>美国德州暴雪（2021）：三星/恩智浦/英飞凌三大芯片厂停产，汽车产业再遭重击</li><li>全球极端天气频率较 1980 年代增加超 3 倍，每年造成供应链损失超 2,000 亿美元</li></ul>
         </div>
       </article>
-      <article class="crisis-card-wide reveal">
-        <div class="ccw-img">
-          <img src="https://images.unsplash.com/photo-1681505531034-8d67054e07f6?auto=format&fit=crop&w=1400&q=85" alt="" loading="lazy" onerror="this.style.display='none'">
-        </div>
-        <div class="ccw-body">
-          <h3>关税与贸易壁垒</h3>
-          <p class="ccw-sub">关税一日三变，到岸成本随时失控</p>
-          <ul><li>美国对华 301 关税覆盖约 3,700 亿美元商品，平均税率达 19.3%</li><li>欧盟 CBAM 碳边境机制 2026 年正式征收，钢铁铝制品首当其冲</li><li>芯片出口管制持续扩大：从光刻机延伸至半导体设备与 EDA 软件</li></ul>
-        </div>
-      </article>
-      <article class="crisis-card-wide reveal">
-        <div class="ccw-img">
-          <img src="https://images.unsplash.com/photo-1494412651409-8963ce7935a7?auto=format&fit=crop&w=1400&q=85" alt="" loading="lazy" onerror="this.style.display='none'">
-        </div>
-        <div class="ccw-body">
-          <h3>港口拥堵与物流瘫痪</h3>
-          <p class="ccw-sub">一个堵点，全球货物在海面漂着回不了家</p>
-          <ul><li>苏伊士运河"长赐号"搁浅（2021）：全球贸易每日损失 96 亿美元，422 艘船滞留</li><li>美国西海岸港口罢工：洛杉矶/长滩港积压超 100 艘，货值超 240 亿美元</li><li>巴拿马运河因干旱限行：日通行量从 36 艘骤降至 22 艘，运价应声暴涨</li></ul>
-        </div>
-      </article>
+      <!-- 3. 供应中断与单点依赖 -->
       <article class="crisis-card-wide reveal">
         <div class="ccw-img">
           <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1400&q=85" alt="" loading="lazy" onerror="this.style.display='none'">
@@ -129,7 +111,31 @@
           <ul><li>日本 311 地震（2011）：全球汽车 MCU 芯片断供，丰田/本田停产数月，波及全球</li><li>美国东海岸港口罢工（2024）：3 天损失超 15 亿美元，36 个港口同时瘫痪</li><li>台积电一家占全球先进芯片产能 90%，地震、缺水随时可能触发全球断供</li></ul>
         </div>
       </article>
-      <article class="crisis-card-wide reveal">
+
+      <!-- 4. 关税与贸易壁垒 -->
+      <article class="crisis-card-wide reveal crisis-collapse">
+        <div class="ccw-img">
+          <img src="https://images.unsplash.com/photo-1681505531034-8d67054e07f6?auto=format&fit=crop&w=1400&q=85" alt="" loading="lazy" onerror="this.style.display='none'">
+        </div>
+        <div class="ccw-body">
+          <h3>关税与贸易壁垒</h3>
+          <p class="ccw-sub">关税一日三变，到岸成本随时失控</p>
+          <ul><li>美国对华 301 关税覆盖约 3,700 亿美元商品，平均税率达 19.3%</li><li>欧盟 CBAM 碳边境机制 2026 年正式征收，钢铁铝制品首当其冲</li><li>芯片出口管制持续扩大：从光刻机延伸至半导体设备与 EDA 软件</li></ul>
+        </div>
+      </article>
+      <!-- 5. 港口拥堵与物流瘫痪 -->
+      <article class="crisis-card-wide reveal crisis-collapse">
+        <div class="ccw-img">
+          <img src="https://images.unsplash.com/photo-1494412651409-8963ce7935a7?auto=format&fit=crop&w=1400&q=85" alt="" loading="lazy" onerror="this.style.display='none'">
+        </div>
+        <div class="ccw-body">
+          <h3>港口拥堵与物流瘫痪</h3>
+          <p class="ccw-sub">一个堵点，全球货物在海面漂着回不了家</p>
+          <ul><li>苏伊士运河"长赐号"搁浅（2021）：全球贸易每日损失 96 亿美元，422 艘船滞留</li><li>美国西海岸港口罢工：洛杉矶/长滩港积压超 100 艘，货值超 240 亿美元</li><li>巴拿马运河因干旱限行：日通行量从 36 艘骤降至 22 艘，运价应声暴涨</li></ul>
+        </div>
+      </article>
+      <!-- 6. 需求剧烈波动 -->
+      <article class="crisis-card-wide reveal crisis-collapse">
         <div class="ccw-img">
           <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1400&q=85" alt="" loading="lazy" onerror="this.style.display='none'">
         </div>
@@ -139,16 +145,15 @@
           <ul><li>全球芯片短缺（2020-2022）：汽车产业损失超 2,100 亿美元，交货周期长达 52 周</li><li>疫情期间"牛鞭效应"：零售商恐慌囤货→制造商过度扩产→全链路库存崩盘</li><li>集装箱运价单周暴涨 300%（2024）：需求预测完全失准，现货舱位一票难求</li></ul>
         </div>
       </article>
-      <article class="crisis-card-wide reveal">
-        <div class="ccw-img">
-          <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1400&q=85" alt="" loading="lazy" onerror="this.style.display='none'">
-        </div>
-        <div class="ccw-body">
-          <h3>网络攻击与系统瘫痪</h3>
-          <p class="ccw-sub">一次攻击，全球物流瞬间失明</p>
-          <ul><li>Maersk 遭 NotPetya 攻击（2017）：全球 IT 系统瘫痪 10 天，直接损失超 3 亿美元</li><li>DP World 澳洲港口遭网络攻击（2023）：4 大港口停摆 3 天，3 万集装箱滞留</li><li>全球供应链勒索攻击同比增加 67%（2024 IBM 报告），单次赎金中位数达 80 万美元</li></ul>
-        </div>
-      </article>
+
+
+	      <!-- 展开按钮 -->
+	      <div class="crisis-toggle-wrap reveal">
+        <button class="crisis-toggle" id="crisisToggle" aria-expanded="false">
+          <span>查看全部危机</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+      </div>
     </div>
   </div>
 </section>

@@ -257,6 +257,18 @@
     });
   }
 
+  /* ---------- 危机卡片展开/收起 ---------- */
+  function initCrisisToggle() {
+    var btn = document.getElementById('crisisToggle');
+    var featured = document.getElementById('crisisFeatured');
+    if (!btn || !featured) return;
+    btn.addEventListener('click', function () {
+      var expanded = featured.classList.toggle('expanded');
+      btn.setAttribute('aria-expanded', expanded);
+      btn.querySelector('span').textContent = expanded ? '收起' : '查看全部危机';
+    });
+  }
+
   document.addEventListener('DOMContentLoaded', function () {
     highlightNav();
     initMobileMenu();
@@ -267,5 +279,6 @@
     initNewsletter();
     initNewsInteract();
     initArticleStats();
+    initCrisisToggle();
   });
 })();

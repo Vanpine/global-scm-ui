@@ -1055,17 +1055,59 @@ ul {
   margin-bottom: 100px;
 }
 
+/* 默认隐藏后 3 张 */
+.crisis-card-wide.crisis-collapse {
+  display: none;
+}
+
+.crisis-featured.expanded .crisis-card-wide.crisis-collapse {
+  display: flex;
+}
+
+/* 展开/收起按钮 */
+.crisis-toggle-wrap {
+  text-align: center;
+  padding: 0;
+  margin: -30px 0 -30px;
+  position: relative;
+  z-index: 2;
+}
+
+.crisis-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 24px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 24px;
+  background: #fff;
+  color: #86868b;
+  font-size: 14px;
+  font-family: inherit;
+  cursor: pointer;
+  transition: all 0.25s;
+}
+
+.crisis-toggle:hover {
+  color: #1d1d1f;
+  border-color: rgba(0, 0, 0, 0.2);
+}
+
+.crisis-featured.expanded .crisis-toggle svg {
+  transform: rotate(180deg);
+}
+
 .crisis-card-wide {
   display: flex;
   align-items: stretch;
   gap: 40px;
 }
 
-.crisis-card-wide:nth-child(even) {
+.crisis-card-wide:nth-of-type(even) {
   flex-direction: row-reverse;
 }
 
-.crisis-card-wide:nth-child(even) .ccw-body {
+.crisis-card-wide:nth-of-type(even) .ccw-body {
   padding-left: 0;
 }
 
@@ -3861,7 +3903,7 @@ a.cap-card,
     gap: 16px;
   }
 
-  .crisis-card-wide:nth-child(even) {
+  .crisis-card-wide:nth-of-type(even) {
     flex-direction: column;
   }
 
@@ -4021,7 +4063,7 @@ a.cap-card,
     gap: 12px;
   }
 
-  .crisis-card-wide:nth-child(even) {
+  .crisis-card-wide:nth-of-type(even) {
     flex-direction: column;
   }
 
