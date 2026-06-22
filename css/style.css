@@ -70,7 +70,7 @@ ul {
 }
 
 .section-sm {
-  padding: 0 0;
+  padding: 55px 0;
 }
 
 .bg-gray {
@@ -835,46 +835,14 @@ ul {
 .stats-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 0;
-  position: relative;
-  padding: 16px 0;
-}
-
-/* 顶部分隔渐变线 */
-.stats-grid::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 10%;
-  right: 10%;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(0, 0, 0, 0.08) 20%, rgba(0, 0, 0, 0.08) 80%, transparent);
+  gap: 24px;
 }
 
 .stat-item {
   text-align: center;
-  padding: 12px 28px;
-  position: relative;
 }
 
-/* 竖线分隔符 */
-.stat-item+.stat-item::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 10%;
-  height: 80%;
-  width: 1px;
-  background: linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.08) 20%, rgba(0, 0, 0, 0.08) 80%, transparent);
-}
-
-.stat-num {
-  font-size: 52px;
-  font-weight: 700;
-  letter-spacing: -0.02em;
-  line-height: 1;
-  color: #1d1d1f;
-}
+.stat-num { font-size: 52px; font-weight: 700; letter-spacing: -0.02em; line-height: 1; background: var(--brand-gradient); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
 
 .stat-num sup {
   font-size: 0.45em;
@@ -965,7 +933,7 @@ ul {
 
 /* Hero 标签行 SVG */
 .hero-sub .icon-svg {
-  color: #5e5ce6;
+  color: rgba(255,255,255,0.85);
 }
 
 /* 底栏社交图标 */
@@ -3648,8 +3616,10 @@ a.cap-card,
 .cta-band {
   position: relative;
   overflow: hidden;
-  border-radius: 28px;
-  padding: 84px 40px;
+  border-radius: 24px;
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 48px 40px;
   text-align: center;
   color: #fff;
   background:
@@ -3683,17 +3653,17 @@ a.cap-card,
 }
 
 .cta-band h2 {
-  font-size: 42px;
+  font-size: 32px;
   font-weight: 700;
   letter-spacing: -0.02em;
-  line-height: 1.15;
-  margin-bottom: 16px;
+  line-height: 1.2;
+  margin-bottom: 12px;
 }
 
 .cta-band p {
-  font-size: 19px;
-  color: rgba(255, 255, 255, 0.92);
-  margin-bottom: 32px;
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.85);
+  margin-bottom: 24px;
 }
 
 .cta-band .btn-primary {
@@ -3713,6 +3683,31 @@ a.cap-card,
   gap: 16px;
   justify-content: center;
   flex-wrap: wrap;
+}
+
+/* 简洁版 CTA（无背景卡片） */
+.cta-simple {
+  text-align: center;
+  padding: 80px 0;
+}
+
+.cta-simple h2 {
+  font-size: 42px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: #1d1d1f;
+  margin-bottom: 14px;
+}
+
+.cta-simple p {
+  font-size: 20px;
+  color: #86868b;
+  margin-bottom: 32px;
+}
+
+.cta-simple .btn-lg {
+  font-size: 18px;
+  padding: 14px 40px;
 }
 
 /* ============================================================
@@ -4128,20 +4123,6 @@ a.cap-card,
   .stats-grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 36px 20px;
-    padding: 12px 0;
-  }
-
-  .stats-grid::before {
-    left: 5%;
-    right: 5%;
-  }
-
-  .stat-item+.stat-item::after {
-    display: none;
-  }
-
-  .stat-item {
-    padding: 10px 16px;
   }
 
   .stat-num {
@@ -4346,7 +4327,16 @@ a.cap-card,
     font-size: 30px;
   }
 
+  .cta-band {
+    padding: 40px 28px;
+    border-radius: 20px;
+  }
+
   .cta-band h2 {
-    font-size: 28px;
+    font-size: 24px;
+  }
+
+  .cta-band p {
+    font-size: 15px;
   }
 }
