@@ -71,6 +71,11 @@ ul {
 
 .section-sm {
   padding: 55px 0;
+  padding-bottom: 100px;
+}
+
+button.btn.btn-primary.btn-lg {
+  margin-top: 30px;
 }
 
 .bg-gray {
@@ -311,16 +316,19 @@ ul {
   display: inline-flex;
   align-items: center;
 }
+
 .nav-dropdown-toggle {
   display: inline-flex;
   align-items: center;
   gap: 4px;
   cursor: default;
 }
+
 .nav-dropdown-arrow {
   font-size: 9px;
   transition: transform 0.35s ease;
 }
+
 .nav-dropdown:hover .nav-dropdown-arrow,
 .nav-dropdown.open .nav-dropdown-arrow {
   transform: rotate(180deg);
@@ -333,11 +341,11 @@ ul {
   top: 70px;
   width: 100%;
   max-width: 1420px;
-  background: rgba(10,14,26,0.97);
+  background: rgba(10, 14, 26, 0.97);
   backdrop-filter: saturate(180%) blur(28px);
   -webkit-backdrop-filter: saturate(180%) blur(28px);
   border-radius: 0 0 20px 20px;
-  border: 1px solid rgba(108,178,255,0.22);
+  border: 1px solid rgba(108, 178, 255, 0.22);
   border-top: none;
   max-height: 0;
   overflow: hidden;
@@ -347,6 +355,7 @@ ul {
   pointer-events: none;
   padding: 0 28px;
 }
+
 .nav-dropdown:hover .nav-dropdown-menu,
 .nav-dropdown.open .nav-dropdown-menu {
   max-height: 280px;
@@ -360,13 +369,19 @@ ul {
   padding: 11px 0;
   font-size: 16px;
   font-weight: 500;
-  color: rgba(255,255,255,0.7);
+  color: rgba(255, 255, 255, 0.7);
   white-space: nowrap;
   transition: color 0.2s;
-  border-bottom: 1px solid rgba(255,255,255,0.04);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
 }
-.nav-dropdown-menu a:last-child { border-bottom: none; }
-.nav-dropdown-menu a:hover { color: #fff; }
+
+.nav-dropdown-menu a:last-child {
+  border-bottom: none;
+}
+
+.nav-dropdown-menu a:hover {
+  color: #fff;
+}
 
 /* 下拉展开时导航栏底部变直 */
 .navbar.dropdown-open {
@@ -910,7 +925,16 @@ ul {
   text-align: center;
 }
 
-.stat-num { font-size: 52px; font-weight: 700; letter-spacing: -0.02em; line-height: 1; background: var(--brand-gradient); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+.stat-num {
+  font-size: 52px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1;
+  background: var(--brand-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
 
 .stat-num sup {
   font-size: 0.45em;
@@ -1001,7 +1025,7 @@ ul {
 
 /* Hero 标签行 SVG */
 .hero-sub .icon-svg {
-  color: rgba(255,255,255,0.85);
+  color: rgba(255, 255, 255, 0.85);
 }
 
 /* 底栏社交图标 */
@@ -3679,6 +3703,371 @@ a.cap-card,
 }
 
 /* ============================================================
+   申请加入 — 步骤流程
+   ============================================================ */
+
+/* 进度条 */
+.steps-progress {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 56px;
+  padding: 0 20px;
+}
+
+.sp-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #c0c4cc;
+  transition: color 0.35s var(--ease);
+}
+
+.sp-dot {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #f0f1f4;
+  color: #999;
+  font-size: 16px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.35s var(--ease);
+}
+
+.sp-step.active {
+  color: var(--brand-blue);
+}
+
+.sp-step.active .sp-dot {
+  background: var(--brand-blue);
+  color: #fff;
+  box-shadow: 0 6px 18px rgba(0, 113, 227, 0.3);
+}
+
+.sp-step.done {
+  color: var(--brand-blue);
+}
+
+.sp-step.done .sp-dot {
+  background: var(--brand-blue);
+  color: #fff;
+}
+
+.sp-line {
+  flex: 1;
+  height: 2px;
+  max-width: 100px;
+  background: #e8eaef;
+  margin: 0 12px;
+  margin-bottom: 28px;
+  border-radius: 2px;
+  transition: background 0.35s var(--ease);
+}
+
+/* 步骤面板 */
+.step-panel {
+  animation: fadeSlideIn 0.4s var(--ease);
+}
+
+.hidden { display: none !important; }
+.step-panel.hidden { display: none; }
+
+@keyframes fadeSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.step-title {
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-bottom: 10px;
+  color: var(--text-primary);
+}
+
+.step-sub {
+  font-size: 16px;
+  color: var(--text-secondary);
+  margin-bottom: 40px;
+}
+
+.step-back {
+  display: inline-block;
+  background: none;
+  border: none;
+  font-size: 14px;
+  color: var(--brand-blue);
+  cursor: pointer;
+  padding: 0;
+  margin-bottom: 24px;
+  font-family: inherit;
+}
+
+.step-back:hover {
+  opacity: 0.7;
+}
+
+/* 角色卡片 */
+.role-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+.role-card {
+  position: relative;
+  background: #fff;
+  border: 2px solid #e8eaef;
+  border-radius: 22px;
+  padding: 40px 36px;
+  cursor: pointer;
+  transition: all 0.35s var(--ease);
+}
+
+.role-card:hover {
+  border-color: var(--brand-blue);
+  box-shadow: 0 12px 40px rgba(0, 113, 227, 0.12);
+  transform: translateY(-3px);
+}
+
+.role-card.selected {
+  border-color: var(--brand-blue);
+  box-shadow: 0 12px 40px rgba(0, 113, 227, 0.16);
+  background: #f8faff;
+}
+
+/* 右上角选择框 */
+.role-checkbox {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 24px;
+  height: 24px;
+  border: 2px solid #c8ccd4;
+  border-radius: 6px;
+  background: #fff;
+  transition: all 0.35s var(--ease);
+}
+
+.role-card.selected .role-checkbox {
+  border-color: var(--brand-blue);
+  background: var(--brand-blue);
+}
+
+.role-card.selected .role-checkbox::after {
+  content: "";
+  position: absolute;
+  left: 6px;
+  top: 2px;
+  width: 8px;
+  height: 13px;
+  border: solid #fff;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+.role-icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 18px;
+  background: linear-gradient(135deg, #e8f0fe, #d4e4fc);
+  color: var(--brand-blue);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 22px;
+}
+
+.role-card h4 {
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  margin-bottom: 8px;
+  color: var(--text-primary);
+}
+
+.role-card>p {
+  font-size: 15px;
+  color: var(--text-secondary);
+  margin-bottom: 20px;
+  line-height: 1.5;
+}
+
+.role-card ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 24px 0;
+}
+
+.role-card ul li {
+  position: relative;
+  padding-left: 20px;
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 2;
+}
+
+.role-card ul li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 10px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--brand-blue);
+  opacity: 0.5;
+}
+
+.role-arrow {
+  display: inline-block;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--brand-blue);
+}
+
+/* 表单分组标签 */
+.form-section-label {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 28px 0 16px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #eef0f4;
+}
+
+.form-section-label:first-child {
+  margin-top: 0;
+}
+
+.apply-form .required {
+  color: #e74c3c;
+  margin-left: 2px;
+}
+
+/* 世界护照卡片 */
+.passport-card {
+  background: linear-gradient(165deg, #f8faff 0%, #f0f4fc 100%);
+  border: 1px solid #dde4f0;
+  border-radius: 22px;
+  padding: 44px 40px;
+  text-align: center;
+  margin-bottom: 28px;
+}
+
+.passport-icon {
+  width: 80px;
+  height: 80px;
+  border-radius: 22px;
+  background: #fff;
+  border: 1px solid var(--card-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 24px;
+  color: var(--brand-blue);
+}
+
+.passport-card h4 {
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  margin-bottom: 10px;
+  color: var(--text-primary);
+}
+
+.passport-card>p {
+  font-size: 15px;
+  color: var(--text-secondary);
+  max-width: 480px;
+  margin: 0 auto 28px;
+  line-height: 1.6;
+}
+
+.passport-items {
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+  margin-bottom: 32px;
+  flex-wrap: wrap;
+}
+
+.passport-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 15px;
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+.passport-item svg {
+  color: var(--brand-blue);
+  flex-shrink: 0;
+}
+
+.passport-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 16px;
+  padding: 15px 36px;
+  border-radius: 14px;
+  white-space: nowrap;
+}
+
+.passport-note {
+  text-align: center;
+  font-size: 14px;
+  color: var(--text-tertiary);
+  margin-bottom: 32px;
+  line-height: 1.7;
+}
+
+.passport-note a {
+  color: var(--brand-blue);
+  text-decoration: underline;
+}
+
+/* 响应式 */
+@media (max-width: 768px) {
+  .role-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .steps-progress {
+    margin-bottom: 36px;
+  }
+
+  .sp-line {
+    max-width: 40px;
+  }
+
+  .passport-items {
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  }
+}
+
+/* ============================================================
    CTA 区
    ============================================================ */
 .cta-band {
@@ -4083,14 +4472,21 @@ a.cap-card,
     opacity: 1;
     pointer-events: auto;
   }
+
   .nav-dropdown-menu a {
     padding: 10px 0;
-    color: rgba(255,255,255,0.55);
+    color: rgba(255, 255, 255, 0.55);
     font-size: 14px;
     border-bottom: none;
   }
-  .nav-dropdown-menu a:hover { color: #fff; }
-  .nav-dropdown-toggle .nav-dropdown-arrow { display: none; }
+
+  .nav-dropdown-menu a:hover {
+    color: #fff;
+  }
+
+  .nav-dropdown-toggle .nav-dropdown-arrow {
+    display: none;
+  }
 
   .hero {
     height: auto;
