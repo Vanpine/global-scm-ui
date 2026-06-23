@@ -4185,8 +4185,8 @@ a.cap-card,
   position: relative;
   background: #0a0d16;
   color: #8b93a3;
-  padding: 72px 0 32px;
-  font-size: 14px;
+  padding: 80px 0 36px;
+  font-size: 15px;
 }
 
 /* 顶部高光分界线：避免与上方深色区块（如风险地图/新闻区）撞色糊在一起 */
@@ -4203,8 +4203,8 @@ a.cap-card,
 .footer-top {
   display: grid;
   grid-template-columns: 1.9fr 1fr 1fr 1fr;
-  gap: 40px;
-  padding-bottom: 40px;
+  gap: 56px;
+  padding-bottom: 48px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
@@ -4224,10 +4224,10 @@ a.cap-card,
 }
 
 .footer-tagline {
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 600;
   color: #aab6cc;
-  margin-bottom: 16px;
+  margin-bottom: 20px;
 }
 
 .footer .brand-desc {
@@ -4263,16 +4263,17 @@ a.cap-card,
 
 .footer h5 {
   color: #fff;
-  font-size: 15px;
-  margin-bottom: 16px;
+  font-size: 18px;
+  margin-bottom: 20px;
 }
 
 .footer li {
-  padding: 6px 0;
+  padding: 9px 0;
 }
 
 .footer li a {
   color: #8b93a3;
+  font-size: 15px;
   transition: color 0.2s var(--ease);
 }
 
@@ -4284,8 +4285,8 @@ a.cap-card,
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-top: 26px;
-  font-size: 12.5px;
+  padding-top: 30px;
+  font-size: 14px;
   color: #6e6e73;
   flex-wrap: wrap;
   gap: 10px 18px;

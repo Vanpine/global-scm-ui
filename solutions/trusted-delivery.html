@@ -64,11 +64,10 @@
       z-index: 1;
     }
 
-    /* ===== Hero — 控制塔深色区 ===== */
+    /* ===== Hero — 控制塔满屏区 ===== */
     .td-hero-wrap {
-      background: var(--cockpit-bg);
       margin: 0 calc(-50vw + 50%);
-      padding: 130px 0 100px;
+      background: var(--cockpit-bg);
       position: relative;
       overflow: hidden;
     }
@@ -85,41 +84,16 @@
       pointer-events: none;
     }
 
-    /* 扫描线 */
-    .td-hero-wrap::after {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 2px;
-      background: linear-gradient(90deg, transparent, rgba(0, 113, 227, 0.35), transparent);
-      animation: tdScanDown 4s ease-in-out infinite;
-      pointer-events: none;
-      z-index: 0;
-    }
-
-    @keyframes tdScanDown {
-      0% {
-        top: 0;
-        opacity: 0;
-      }
-      20% {
-        opacity: 1;
-      }
-      80% {
-        opacity: 1;
-      }
-      100% {
-        top: 100%;
-        opacity: 0;
-      }
-    }
-
     .td-hero {
       display: flex;
       gap: 80px;
       align-items: center;
+      min-height: 90vh;
+      padding: 130px 0 80px;
+      max-width: 75%;
+      margin: 0 auto;
+      padding-left: 40px;
+      padding-right: 40px;
       position: relative;
       z-index: 1;
     }
@@ -272,49 +246,64 @@
     .td-hero-fade {
       height: 60px;
       background: linear-gradient(to bottom, var(--cockpit-bg), rgba(230,237,246,0.5), var(--bg));
-      margin: 0 calc(-50vw + 50%);
     }
 
-    /* ===== 信任指数条 ===== */
+    /* ===== 信任条 — pillars 风格 ===== */
     .td-trust-bar {
-      display: flex;
-      justify-content: center;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
       gap: 80px;
-      padding: 32px 0 20px;
+      padding: 48px 0;
       border-bottom: 1px solid var(--border);
       margin-bottom: 56px;
     }
 
     .td-trust-item {
       text-align: center;
+      padding: 40px 32px;
     }
 
-    .td-trust-num {
-      font-size: 36px;
-      font-weight: 700;
+    .td-trust-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
       color: var(--brand);
-      letter-spacing: -0.02em;
-      font-variant-numeric: tabular-nums;
-      font-family: "SF Mono", "JetBrains Mono", "Consolas", monospace;
+      margin-bottom: 24px;
     }
 
-    .td-trust-label {
-      font-size: 16px;
+    .td-trust-item h3 {
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 12px;
+    }
+
+    .td-trust-item p {
+      font-size: 15px;
       color: var(--text-sec);
-      margin-top: 4px;
+      line-height: 1.7;
+      max-width: 280px;
+      margin: 0 auto;
     }
 
-    /* ===== 区域标题 ===== */
+    /* ===== 区域标题 — POLYCRISIS 风格 ===== */
     .td-section-head {
       text-align: center;
       margin-bottom: 80px;
     }
 
-    .td-section-head h2 {
+    .td-section-head .eyebrow {
       font-size: 48px;
       font-weight: 700;
-      letter-spacing: -0.03em;
       color: var(--text);
+      letter-spacing: -0.02em;
+      margin-bottom: 12px;
+    }
+
+    .td-section-head h2 {
+      font-size: 22px;
+      font-weight: 400;
+      color: var(--text-sec);
       margin-bottom: 16px;
     }
 
@@ -766,14 +755,22 @@
 
     /* ===== KPI 环形进度条 ===== */
     .td-metrics {
-      padding: 60px 0 100px;
+      padding: 60px 0 160px;
+    }
+
+    .td-metrics .eyebrow {
+      font-size: 48px;
+      font-weight: 700;
+      color: var(--text);
+      letter-spacing: -0.02em;
+      text-align: center;
+      margin-bottom: 12px;
     }
 
     .td-metrics h2 {
-      font-size: 48px;
-      font-weight: 700;
-      letter-spacing: -0.03em;
-      color: var(--text);
+      font-size: 22px;
+      font-weight: 400;
+      color: var(--text-sec);
       text-align: center;
       margin-bottom: 16px;
     }
@@ -915,8 +912,11 @@
       }
 
       .td-hero {
+        max-width: 94%;
+        padding: 110px 20px 60px;
         flex-direction: column;
         gap: 48px;
+        min-height: auto;
       }
 
       .td-hero-left {
@@ -953,11 +953,15 @@
 
       .td-trust-bar {
         gap: 32px;
-        flex-wrap: wrap;
       }
 
       .td-section-head h2,
       .td-metrics h2 {
+        font-size: 20px;
+      }
+
+      .td-section-head .eyebrow,
+      .td-metrics .eyebrow {
         font-size: 36px;
       }
     }
@@ -968,8 +972,10 @@
         padding: 0 12px;
       }
 
-      .td-hero-wrap {
-        padding: 100px 0 60px;
+      .td-hero {
+        max-width: 96%;
+        padding: 100px 12px 60px;
+        min-height: auto;
       }
 
       .td-hero h1 {
@@ -990,8 +996,15 @@
         min-height: 220px;
       }
 
-      .td-trust-num {
-        font-size: 28px;
+      .td-trust-bar {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+      .td-trust-item {
+        padding: 24px 16px;
+      }
+      .td-trust-item h3 {
+        font-size: 20px;
       }
 
       .td-module-body h3 {
@@ -1047,14 +1060,16 @@
         font-size: 17px;
       }
 
-      .td-section-head h2,
-      .td-metrics h2 {
-        font-size: 30px;
+      .td-section-head .eyebrow,
+      .td-metrics .eyebrow {
+        font-size: 28px;
       }
 
-      .td-trust-bar {
-        gap: 20px;
+      .td-section-head h2,
+      .td-metrics h2 {
+        font-size: 18px;
       }
+
     }
   </style>
 </head>
@@ -1095,16 +1110,15 @@
 
   <!-- ===== Hero — 控制塔 ===== -->
   <div class="td-hero-wrap">
-    <div class="td-page">
       <div class="td-hero">
         <div class="td-hero-left">
           <div class="td-hero-eyebrow">Control Tower · 实时监控</div>
           <h1>可信交付</h1>
           <p class="td-hero-sub">从下单到签收<br>全程可视可追溯</p>
           <div class="td-live-indicators">
-            <span class="td-live-dot online">128 票海运在途</span>
-            <span class="td-live-dot transit">32 票清关中</span>
-            <span class="td-live-dot done">1,247 票已签收</span>
+            <span class="td-live-dot online">海运在途</span>
+            <span class="td-live-dot transit">清关中</span>
+            <span class="td-live-dot done">已签收</span>
           </div>
         </div>
         <div class="td-hero-right">
@@ -1154,7 +1168,6 @@
           </svg>
         </div>
       </div>
-    </div>
   </div>
   <!-- 渐变过渡 -->
   <div class="td-hero-fade"></div>
@@ -1162,26 +1175,35 @@
   <!-- ===== 正文区 ===== -->
   <div class="td-page">
 
-    <!-- 信任指数条 -->
+    <!-- 信任条 — pillars 风格 -->
     <div class="td-trust-bar">
       <div class="td-trust-item">
-        <div class="td-trust-num">99.8%</div>
-        <div class="td-trust-label">准时交付率</div>
+        <div class="td-trust-icon">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        </div>
+        <h3>全链路可视化</h3>
+        <p>从工厂到签收，每一个节点实时可查</p>
       </div>
       <div class="td-trust-item">
-        <div class="td-trust-num">200+</div>
-        <div class="td-trust-label">全球港口直连</div>
+        <div class="td-trust-icon">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        </div>
+        <h3>全球港口覆盖</h3>
+        <p>主要贸易航线港口直连，状态实时同步</p>
       </div>
       <div class="td-trust-item">
-        <div class="td-trust-num">185</div>
-        <div class="td-trust-label">个国家实时追踪</div>
+        <div class="td-trust-icon">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 21 3 21 16 16 11"/></svg>
+        </div>
+        <h3>多国实时追踪</h3>
+        <p>跨洲越洋，物流动态一目了然</p>
       </div>
     </div>
 
     <!-- 区域标题 -->
     <div class="td-section-head reveal">
+      <div class="eyebrow">CAPABILITIES</div>
       <h2>四大能力 · 交付全链路</h2>
-      <p>从订单到结算，每一步都看得见、算得清。</p>
     </div>
 
     <!-- 模块1：全链路追踪 — 时间轴 -->
@@ -1372,8 +1394,8 @@
 
     <!-- ===== KPI 环形进度条 ===== -->
     <div class="td-metrics reveal">
+      <div class="eyebrow">METRICS</div>
       <h2>交付核心指标</h2>
-      <p class="td-metrics-sub">四个维度，量化可信交付的真实价值。</p>
       <div class="td-kpi-grid">
         <div class="td-kpi-card">
           <div class="td-kpi-ring">
@@ -1463,21 +1485,28 @@
             <li><a href="risk-radar.html">风险雷达</a></li>
             <li><a href="decision-center.html">决策中枢</a></li>
           </ul>
-        </div>
-
-        <div>
-          <h5>了解更多</h5>
-          <ul>
-            <li><a href="../why-us.html">为什么选我们</a></li>
-            <li><a href="../pain-points.html">痛点与方案</a></li>
-            <li><a href="../intel.html">供应链新闻台</a>
-              <a href="../contact.html">申请加入</a>
-            </li>
-            <li><a href="../contact.html">联系我们</a></li>
-          </ul>
-        </div>
       </div>
-      <div class="footer-bottom">
+      <div>
+        <h5>平台能力</h5>
+        <ul>
+          <li><a href="solutions/precision-sourcing.html">智能寻源匹配</a></li>
+          <li><a href="solutions/smart-procurement.html">自动化采购</a></li>
+          <li><a href="solutions/trusted-delivery.html">全链路追踪</a></li>
+          <li><a href="solutions/risk-radar.html">风险预警监控</a></li>
+          <li><a href="solutions/decision-center.html">数据决策分析</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>公司</h5>
+        <ul>
+          <li><a href="about.html">关于我们</a></li>
+          <li><a href="contact.html">联系我们</a></li>
+          <li><a href="intel.html">新闻资讯</a></li>
+          <li><a href="careers.html">加入我们</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
         <span>&copy; 2026 全球供应链大平台. 保留所有权利. <a
             href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=44010602010128" target="_blank"
             rel="noreferrer">粤公网安备44010602010128号</a> | <a href="https://beian.miit.gov.cn/" target="_blank"

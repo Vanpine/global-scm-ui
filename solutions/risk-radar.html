@@ -15,264 +15,1119 @@
   <meta property="og:site_name" content="Global SCM">
   <link rel="stylesheet" href="../css/style.css">
   <style>
-    .sol-hero {
-      min-height: 80vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
+    :root {
+      --bg: #F8FAFC;
+      --card-bg: #fff;
+      --brand: #0071e3;
+      --brand-dark: #005bb5;
+      --text: #1d1d1f;
+      --text-sec: #86868b;
+      --border: #e8ecf0;
+      --shadow-sm: 0 2px 12px rgba(0, 0, 0, 0.04);
+      --shadow: 0 8px 32px rgba(0, 0, 0, 0.07);
+      --shadow-lg: 0 20px 60px rgba(0, 0, 0, 0.10);
+      --screen-bg: #e9eef5;
+      --alert-red: #ef4444;
+      --alert-amber: #f59e0b;
+      --alert-green: #16a34a;
+    }
+
+    body {
+      background: var(--bg);
+    }
+
+    /* ===== 外层容器 ===== */
+    .rr-page {
+      max-width: 75%;
+      margin: 0 auto;
+      padding: 0 40px;
       position: relative;
-      overflow: hidden;
-      color: #fff;
     }
 
-    .sol-hero-bg {
-      position: absolute;
+    .rr-page::before {
+      content: "";
+      position: fixed;
       inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
       pointer-events: none;
+      z-index: 0;
+      background-image: radial-gradient(circle, rgba(0, 113, 227, 0.06) 1px, transparent 1px);
+      background-size: 28px 28px;
+      mask-image: radial-gradient(ellipse at 50% 0%, black 40%, transparent 70%);
+      -webkit-mask-image: radial-gradient(ellipse at 50% 0%, black 40%, transparent 70%);
     }
 
-    .sol-hero-overlay {
-      position: absolute;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.45);
+    .rr-page>* {
+      position: relative;
       z-index: 1;
     }
 
-    .sol-hero-content {
+    /* ===== Hero 全宽雷达扫描屏 ===== */
+    .rr-hero-wrap {
+      margin: 0 calc(-50vw + 50%);
+      background: var(--screen-bg);
       position: relative;
+      overflow: hidden;
       z-index: 2;
-      padding: 0 32px;
     }
 
-    .sol-hero h1 {
-      font-size: 72px;
-      font-weight: 700;
-      letter-spacing: 0.04em;
-      margin-bottom: 24px;
-      line-height: 1.1;
+    /* 雷达网格线 */
+    .rr-hero-wrap::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(0, 113, 227, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 113, 227, 0.05) 1px, transparent 1px);
+      background-size: 50px 50px;
     }
 
-    .sol-hero p {
-      font-size: 24px;
-      opacity: 0.85;
-      line-height: 1.5;
-      max-width: 520px;
-      margin: 0 auto;
+    /* 扫描线 */
+    .rr-hero-wrap::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, rgba(0, 113, 227, 0.25), rgba(239, 68, 68, 0.15), transparent);
+      animation: rrScanDown 5s ease-in-out infinite;
+      pointer-events: none;
     }
 
-    .detail-section {
-      padding: 80px 0 40px;
+    @keyframes rrScanDown {
+      0% {
+        top: 0;
+        opacity: 0;
+      }
+      15% {
+        opacity: 1;
+      }
+      85% {
+        opacity: 1;
+      }
+      100% {
+        top: 100%;
+        opacity: 0;
+      }
     }
 
-    .detail-section .container {
-      max-width: 1600px;
-      width: 90%;
-    }
-
-    .section-head {
-      text-align: center;
-      margin: 40px 0 80px;
-    }
-
-    .section-head h2 {
-      font-size: 48px;
-      font-weight: 700;
-      letter-spacing: -0.03em;
-      color: #1d1d1f;
-      margin-bottom: 16px;
-    }
-
-    .section-head p {
-      font-size: 20px;
-      color: #86868b;
-    }
-
-    .tpl-card {
+    .rr-hero {
       display: flex;
       gap: 80px;
       align-items: center;
-      max-width: 1400px;
-      margin: 0 auto 80px;
-      transition: transform 0.4s var(--ease);
+      min-height: 88vh;
+      padding: 130px 0 80px;
+      max-width: 75%;
+      margin: 0 auto;
+      padding-left: 40px;
+      padding-right: 40px;
     }
 
-    .tpl-card:hover {
-      transform: translateY(-4px);
+    .rr-hero-left {
+      flex: 0 0 50%;
     }
 
-    .tpl-card:nth-child(even) {
-      flex-direction: row-reverse;
+    .rr-hero-right {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
-    .tpl-img {
-      flex: 0 0 45%;
-      aspect-ratio: 1;
-      border-radius: 32px;
-      overflow: hidden;
-      box-shadow: 0 24px 80px rgba(0, 0, 0, 0.10);
-      transition: box-shadow 0.4s var(--ease), transform 0.4s var(--ease);
+    .rr-hero-badge {
+      display: inline-block;
+      background: linear-gradient(135deg, rgba(239, 68, 68, 0.12), rgba(245, 158, 11, 0.10));
+      color: #dc2626;
+      font-size: 15px;
+      font-weight: 600;
+      padding: 8px 20px;
+      border-radius: 20px;
+      margin-bottom: 24px;
+      letter-spacing: 0.04em;
     }
 
-    .tpl-card:hover .tpl-img {
-      box-shadow: 0 32px 100px rgba(0, 0, 0, 0.15);
-      transform: scale(1.02);
+    .rr-hero-badge .dot {
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #ef4444;
+      margin-right: 8px;
+      animation: rrBlink 1.2s ease-in-out infinite;
     }
 
-    .tpl-img img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.6s var(--ease);
+    @keyframes rrBlink {
+      0%,
+      100% {
+        opacity: 1;
+      }
+      50% {
+        opacity: 0.25;
+      }
     }
 
-    .tpl-card:hover .tpl-img img {
-      transform: scale(1.06);
-    }
-
-    .tpl-body {
-      flex: 1 1 auto;
-    }
-
-    .tpl-body h3 {
-      font-size: 40px;
+    .rr-hero h1 {
+      font-size: 72px;
       font-weight: 700;
+      letter-spacing: -0.03em;
+      color: var(--text);
+      line-height: 1.08;
+      margin-bottom: 20px;
+    }
+
+    .rr-hero h1 .hl {
+      background: linear-gradient(135deg, #dc2626, #ef4444);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .rr-hero-sub {
+      font-size: 24px;
+      color: var(--text-sec);
+      line-height: 1.6;
+      margin-bottom: 48px;
+    }
+
+    /* 5个风险维度指示灯 */
+    .rr-threats {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .rr-threat-tag {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 18px;
+      border-radius: 22px;
+      background: #fff;
+      border: 1px solid var(--border);
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--text);
+      transition: all 0.3s ease;
+    }
+
+    .rr-threat-tag:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow);
+    }
+
+    .rr-threat-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .rr-threat-dot.red {
+      background: var(--alert-red);
+      box-shadow: 0 0 10px rgba(239, 68, 68, 0.5);
+      animation: rrBlink 1.2s ease-in-out infinite;
+    }
+
+    .rr-threat-dot.amber {
+      background: var(--alert-amber);
+      box-shadow: 0 0 10px rgba(245, 158, 11, 0.5);
+      animation: rrBlink 2s ease-in-out infinite;
+    }
+
+    .rr-threat-dot.green {
+      background: var(--alert-green);
+      box-shadow: 0 0 10px rgba(22, 163, 74, 0.4);
+    }
+
+    /* ===== Hero 雷达屏 ===== */
+    .rr-radar-screen {
+      width: 420px;
+      height: 420px;
+      border-radius: 50%;
+      position: relative;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.9) 0%, rgba(233, 238, 245, 0.6) 60%, rgba(209, 219, 235, 0.3) 100%);
+      border: 2px solid rgba(0, 113, 227, 0.12);
+      box-shadow:
+        0 0 0 1px rgba(0, 113, 227, 0.06),
+        0 0 80px rgba(0, 113, 227, 0.08),
+        inset 0 0 60px rgba(0, 113, 227, 0.04);
+    }
+
+    /* 同心刻度环 */
+    .rr-radar-ring {
+      position: absolute;
+      border-radius: 50%;
+      border: 1px solid rgba(0, 113, 227, 0.10);
+      pointer-events: none;
+    }
+
+    .rr-radar-ring:nth-child(1) {
+      inset: 15%;
+    }
+    .rr-radar-ring:nth-child(2) {
+      inset: 30%;
+    }
+    .rr-radar-ring:nth-child(3) {
+      inset: 45%;
+    }
+    .rr-radar-ring:nth-child(4) {
+      inset: 60%;
+    }
+    .rr-radar-ring:nth-child(5) {
+      inset: 75%;
+    }
+
+    /* 十字刻度线 */
+    .rr-radar-cross {
+      position: absolute;
+      pointer-events: none;
+      background: rgba(0, 113, 227, 0.08);
+    }
+
+    .rr-radar-cross-h {
+      top: 50%;
+      left: 0;
+      right: 0;
+      height: 1px;
+      transform: translateY(-50%);
+    }
+
+    .rr-radar-cross-v {
+      left: 50%;
+      top: 0;
+      bottom: 0;
+      width: 1px;
+      transform: translateX(-50%);
+    }
+
+    /* 旋转扫描臂 */
+    .rr-radar-sweep {
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      background: conic-gradient(from 0deg,
+          transparent 0deg,
+          rgba(0, 113, 227, 0.08) 15deg,
+          rgba(0, 113, 227, 0.18) 30deg,
+          rgba(0, 113, 227, 0.04) 45deg,
+          transparent 60deg,
+          transparent 360deg);
+      animation: rrSweep 4s linear infinite;
+      pointer-events: none;
+    }
+
+    @keyframes rrSweep {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    /* 风险热力点 */
+    .rr-hot-dot {
+      position: absolute;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .rr-hot-dot::after {
+      content: "";
+      position: absolute;
+      inset: -6px;
+      border-radius: 50%;
+      border: 2px solid currentColor;
+      opacity: 0;
+      animation: rrHotPulse 2.5s ease-out infinite;
+    }
+
+    @keyframes rrHotPulse {
+      0% {
+        transform: scale(0.6);
+        opacity: 0.8;
+      }
+      100% {
+        transform: scale(3.5);
+        opacity: 0;
+      }
+    }
+
+    .rr-hot-dot.critical {
+      background: #ef4444;
+      color: #ef4444;
+      box-shadow: 0 0 12px rgba(239, 68, 68, 0.7);
+    }
+
+    .rr-hot-dot.warning {
+      background: #f59e0b;
+      color: #f59e0b;
+      box-shadow: 0 0 10px rgba(245, 158, 11, 0.6);
+    }
+
+    .rr-hot-dot.monitor {
+      background: #0071e3;
+      color: #0071e3;
+      box-shadow: 0 0 8px rgba(0, 113, 227, 0.5);
+    }
+
+    /* 雷达中心 */
+    .rr-radar-center {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: #fff;
+      border: 3px solid var(--brand);
+      box-shadow: 0 0 32px rgba(0, 113, 227, 0.25);
+      z-index: 2;
+    }
+
+    .rr-radar-center::after {
+      content: "";
+      position: absolute;
+      inset: -14px;
+      border-radius: 50%;
+      border: 1px solid rgba(0, 113, 227, 0.18);
+      animation: rrHotPulse 3s ease-out infinite;
+    }
+
+    /* ===== 渐变过渡 ===== */
+    .rr-hero-fade {
+      height: 64px;
+      margin: 0 calc(-50vw + 50%);
+      background: linear-gradient(to bottom, var(--screen-bg) 0%, rgba(233, 238, 245, 0.5) 40%, var(--bg) 100%);
+    }
+
+    /* ===== 预警能力条 — pillars 风格 满屏 ===== */
+    .rr-stat-bar {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      padding: 48px 80px;
+      border-bottom: 1px solid var(--border);
+      margin: 0 calc(-50vw + 50%) 56px;
+    }
+
+    .rr-stat-item {
+      text-align: center;
+      padding: 32px 20px;
+    }
+
+    .rr-stat-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--brand);
+      margin-bottom: 20px;
+    }
+
+    .rr-stat-item h3 {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 10px;
+    }
+
+    .rr-stat-item p {
+      font-size: 14px;
+      color: var(--text-sec);
+      line-height: 1.6;
+      max-width: 240px;
+      margin: 0 auto;
+    }
+
+    /* ===== 区域标题 — POLYCRISIS 风格 ===== */
+    .rr-section-head {
+      text-align: center;
+      margin: 0 0 72px;
+    }
+
+    .rr-section-head .eyebrow {
+      font-size: 48px;
+      font-weight: 700;
+      color: var(--text);
       letter-spacing: -0.02em;
-      color: #1d1d1f;
       margin-bottom: 12px;
     }
 
-    .tpl-body>p {
-      font-size: 19px;
-      color: #86868b;
-      line-height: 1.6;
-      margin-bottom: 56px;
+    .rr-section-head h2 {
+      font-size: 22px;
+      font-weight: 400;
+      color: var(--text-sec);
+      margin-bottom: 16px;
     }
 
-    .tpl-steps {
+    .rr-section-head p {
+      font-size: 20px;
+      color: var(--text-sec);
+    }
+
+    /* ===== 模块卡片 ===== */
+    .rr-module {
+      background: var(--card-bg);
+      border-radius: 24px;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-sm);
+      overflow: hidden;
+      margin-bottom: 48px;
+      transition: all 0.35s ease;
+    }
+
+    .rr-module:hover {
+      box-shadow: var(--shadow-lg);
+      border-color: rgba(0, 113, 227, 0.2);
+    }
+
+    .rr-module-inner {
+      display: flex;
+      gap: 48px;
+      align-items: stretch;
+      min-height: 420px;
+    }
+
+    .rr-module-inner.reversed {
+      flex-direction: row-reverse;
+    }
+
+    /* 视觉区 */
+    .rr-module-visual {
+      flex: 0 0 42%;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 420px;
+    }
+
+    /* 文本区 */
+    .rr-module-body {
+      flex: 1;
+      padding: 48px 48px 48px 0;
       display: flex;
       flex-direction: column;
-      gap: 48px;
+      justify-content: center;
     }
 
-    .tpl-step {
+    .rr-module-inner.reversed .rr-module-body {
+      padding: 48px 0 48px 48px;
+    }
+
+    .rr-module-num {
+      font-family: "SF Mono", "JetBrains Mono", "Consolas", monospace;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--brand);
+      letter-spacing: 0.1em;
+      margin-bottom: 8px;
+    }
+
+    .rr-module-body h3 {
+      font-size: 36px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--text);
+      margin-bottom: 12px;
+    }
+
+    .rr-module-desc {
+      font-size: 19px;
+      color: var(--text-sec);
+      line-height: 1.6;
+      margin-bottom: 36px;
+    }
+
+    /* 子功能卡片 */
+    .rr-sub-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+
+    .rr-sub-card {
+      background: #f8f9fb;
+      border-radius: 14px;
+      padding: 20px;
+      border: 1px solid transparent;
+      transition: all 0.3s ease;
+    }
+
+    .rr-sub-card:hover {
+      background: #eef4ff;
+      border-color: rgba(0, 113, 227, 0.18);
+      transform: translateY(-2px);
+    }
+
+    .rr-sub-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      display: grid;
+      place-items: center;
+      margin-bottom: 10px;
+    }
+
+    .rr-sub-card h4 {
+      font-size: 17px;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+
+    .rr-sub-card p {
+      font-size: 14px;
+      color: var(--text-sec);
+      line-height: 1.5;
+    }
+
+    /* ========== 模块1 视觉：世界热力地图 ========== */
+    .rr-heatmap {
+      width: 100%;
+      height: 100%;
+      position: relative;
+    }
+
+    .rr-heatmap svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    .rr-heat-zone {
+      animation: rrHeatPulse 3s ease-in-out infinite;
+    }
+
+    @keyframes rrHeatPulse {
+      0%,
+      100% {
+        opacity: 0.5;
+      }
+      50% {
+        opacity: 0.85;
+      }
+    }
+
+    .rr-heat-zone:nth-child(2) {
+      animation-delay: 0.6s;
+    }
+    .rr-heat-zone:nth-child(3) {
+      animation-delay: 1.2s;
+    }
+    .rr-heat-zone:nth-child(4) {
+      animation-delay: 1.8s;
+    }
+
+    /* ========== 模块2 视觉：政策时间轴 ========== */
+    .rr-timeline {
       display: flex;
+      flex-direction: column;
       gap: 20px;
-      align-items: flex-start;
+      padding: 24px;
+      width: 100%;
     }
 
-    .tpl-badge {
+    .rr-tl-item {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      position: relative;
+    }
+
+    .rr-tl-item::before {
+      content: "";
+      position: absolute;
+      left: 15px;
+      top: 32px;
+      bottom: -20px;
+      width: 2px;
+      background: linear-gradient(to bottom, rgba(0, 113, 227, 0.3), rgba(0, 113, 227, 0.05));
+    }
+
+    .rr-tl-item:last-child::before {
+      display: none;
+    }
+
+    .rr-tl-dot {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
       flex-shrink: 0;
-      width: 40px;
-      height: 40px;
-      border-radius: 12px;
       display: grid;
       place-items: center;
       color: #fff;
+      font-size: 13px;
+      font-weight: 700;
+      position: relative;
+      z-index: 1;
     }
 
-    .tpl-badge--1 {
-      background: #2563EB;
+    .rr-tl-dot.red {
+      background: var(--alert-red);
+      box-shadow: 0 0 16px rgba(239, 68, 68, 0.3);
+    }
+    .rr-tl-dot.amber {
+      background: var(--alert-amber);
+      box-shadow: 0 0 16px rgba(245, 158, 11, 0.3);
+    }
+    .rr-tl-dot.blue {
+      background: var(--brand);
+      box-shadow: 0 0 16px rgba(0, 113, 227, 0.3);
     }
 
-    .tpl-badge--2 {
-      background: #16A34A;
-    }
-
-    .tpl-badge--3 {
-      background: #7C3AED;
-    }
-
-    .tpl-step h4 {
-      font-size: 21px;
+    .rr-tl-content h5 {
+      font-size: 17px;
       font-weight: 600;
-      color: #1d1d1f;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+
+    .rr-tl-content .rr-tl-date {
+      font-size: 13px;
+      color: var(--text-sec);
       margin-bottom: 6px;
     }
 
-    .tpl-step p {
-      font-size: 16px;
-      color: #86868b;
-      line-height: 1.65;
+    .rr-tl-content .rr-tl-impact {
+      font-size: 14px;
+      color: #dc2626;
+      font-weight: 500;
+    }
+
+    /* ========== 模块3 视觉：汇率仪表盘 ========== */
+    .rr-fx-dash {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      padding: 24px;
+      width: 100%;
+    }
+
+    .rr-fx-card {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 20px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: all 0.3s ease;
+    }
+
+    .rr-fx-card:hover {
+      box-shadow: var(--shadow);
+      transform: translateX(4px);
+    }
+
+    .rr-fx-pair {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .rr-fx-rate {
+      font-family: "SF Mono", "JetBrains Mono", "Consolas", monospace;
+      font-size: 22px;
+      font-weight: 600;
+      color: var(--text);
+      font-variant-numeric: tabular-nums;
+    }
+
+    .rr-fx-change {
+      font-size: 14px;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 8px;
+    }
+
+    .rr-fx-change.up {
+      color: #dc2626;
+      background: rgba(239, 68, 68, 0.08);
+    }
+
+    .rr-fx-change.down {
+      color: #16a34a;
+      background: rgba(22, 163, 74, 0.08);
+    }
+
+    /* ========== 模块4 视觉：航线中断图 ========== */
+    .rr-route-map {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      padding: 24px;
+    }
+
+    .rr-route-node {
+      position: absolute;
+      transform: translate(-50%, -50%);
+    }
+
+    .rr-route-dot {
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+    }
+
+    .rr-route-dot.clear {
+      background: var(--alert-green);
+      box-shadow: 0 0 12px rgba(22, 163, 74, 0.5);
+    }
+
+    .rr-route-dot.congested {
+      background: var(--alert-amber);
+      box-shadow: 0 0 12px rgba(245, 158, 11, 0.5);
+      animation: rrBlink 2s ease-in-out infinite;
+    }
+
+    .rr-route-dot.blocked {
+      background: var(--alert-red);
+      box-shadow: 0 0 18px rgba(239, 68, 68, 0.7);
+      animation: rrBlink 0.8s ease-in-out infinite;
+    }
+
+    .rr-route-label {
+      position: absolute;
+      transform: translate(-50%, 14px);
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--text);
+      white-space: nowrap;
+    }
+
+    .rr-route-line {
+      position: absolute;
+      height: 2px;
+      background: rgba(0, 113, 227, 0.2);
+      transform-origin: left center;
+      pointer-events: none;
+    }
+
+    .rr-route-line.broken {
+      background: repeating-linear-gradient(90deg,
+          rgba(239, 68, 68, 0.4) 0px,
+          rgba(239, 68, 68, 0.4) 8px,
+          transparent 8px,
+          transparent 16px);
+    }
+
+    /* ========== 模块5 视觉：供应商网络图 ========== */
+    .rr-network {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .rr-net-center {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: var(--brand);
+      box-shadow: 0 0 32px rgba(0, 113, 227, 0.35);
+      display: grid;
+      place-items: center;
+      color: #fff;
+      font-size: 13px;
+      font-weight: 700;
+      z-index: 2;
+    }
+
+    .rr-net-node {
+      position: absolute;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: #fff;
+      border: 2px solid var(--border);
+      display: grid;
+      place-items: center;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text);
+      transition: all 0.3s ease;
+    }
+
+    .rr-net-node.risk-high {
+      border-color: var(--alert-red);
+      box-shadow: 0 0 20px rgba(239, 68, 68, 0.4);
+      animation: rrBlink 1s ease-in-out infinite;
+    }
+
+    .rr-net-node.risk-med {
+      border-color: var(--alert-amber);
+      box-shadow: 0 0 14px rgba(245, 158, 11, 0.3);
+    }
+
+    .rr-net-node.risk-low {
+      border-color: var(--alert-green);
+    }
+
+    .rr-net-line {
+      position: absolute;
+      height: 1.5px;
+      background: rgba(0, 113, 227, 0.15);
+      transform-origin: left center;
+      pointer-events: none;
+    }
+
+    .rr-net-line.thick {
+      height: 3px;
+      background: rgba(0, 113, 227, 0.3);
+    }
+
+    /* ===== KPI 区 ===== */
+    .rr-metrics {
+      padding: 80px 0 160px;
+    }
+
+    .rr-kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 32px;
+    }
+
+    .rr-kpi-card {
+      background: var(--card-bg);
+      border-radius: 20px;
+      border: 1px solid var(--border);
+      padding: 32px 28px;
+      transition: all 0.35s ease;
+    }
+
+    .rr-kpi-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .rr-kpi-num {
+      font-family: "SF Mono", "JetBrains Mono", "Consolas", monospace;
+      font-size: 44px;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      color: var(--brand);
+      margin-bottom: 8px;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .rr-kpi-label {
+      font-size: 19px;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 16px;
+    }
+
+    /* 横向填充条 */
+    .rr-kpi-bar {
+      height: 6px;
+      border-radius: 3px;
+      background: #e8ecf0;
+      overflow: hidden;
+    }
+
+    .rr-kpi-bar-fill {
+      height: 100%;
+      border-radius: 3px;
+      transition: width 1.2s cubic-bezier(0.25, 0.1, 0.25, 1);
+    }
+
+    .rr-kpi-bar-fill.blue {
+      background: linear-gradient(90deg, var(--brand), #3b82f6);
+    }
+    .rr-kpi-bar-fill.green {
+      background: linear-gradient(90deg, #16a34a, #22c55e);
+    }
+    .rr-kpi-bar-fill.amber {
+      background: linear-gradient(90deg, #f59e0b, #fbbf24);
+    }
+    .rr-kpi-bar-fill.purple {
+      background: linear-gradient(90deg, #7c3aed, #a78bfa);
+    }
+
+    /* ===== 响应式 ===== */
+    @media (max-width: 1200px) {
+      .rr-kpi-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .rr-stat-bar {
+        padding: 40px 40px;
+      }
+
+      .rr-hero {
+        gap: 48px;
+      }
+
+      .rr-radar-screen {
+        width: 340px;
+        height: 340px;
+      }
     }
 
     @media (max-width: 1024px) {
+      .rr-page {
+        max-width: 94%;
+        padding: 0 20px;
+      }
 
-      .tpl-card,
-      .tpl-card:nth-child(even) {
+      .rr-hero {
+        max-width: 94%;
+        padding-left: 20px;
+        padding-right: 20px;
         flex-direction: column;
-        gap: 40px;
+        min-height: auto;
+        padding-top: 110px;
+        padding-bottom: 40px;
       }
 
-      .tpl-img {
-        flex: 0 0 auto;
-        width: 100%;
-        max-width: 500px;
+      .rr-hero-left {
+        flex: auto;
+        text-align: center;
       }
 
-      .tpl-body h3 {
-        font-size: 32px;
-      }
-    }
-
-    @media (max-width: 768px) {
-      .sol-hero {
-        min-height: 60vh;
+      .rr-threats {
+        justify-content: center;
       }
 
-      .sol-hero h1 {
+      .rr-hero-right {
+        min-height: 340px;
+      }
+
+      .rr-radar-screen {
+        width: 300px;
+        height: 300px;
+      }
+
+      .rr-module-inner,
+      .rr-module-inner.reversed {
+        flex-direction: column;
+      }
+
+      .rr-module-visual {
+        flex: auto;
+        min-height: 300px;
+      }
+
+      .rr-module-body {
+        padding: 0 40px 40px;
+      }
+
+      .rr-module-inner.reversed .rr-module-body {
+        padding: 0 40px 40px;
+      }
+
+      .rr-sub-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .rr-stat-bar {
+        grid-template-columns: repeat(2, 1fr);
+        padding: 40px 40px;
+      }
+
+      .rr-section-head .eyebrow {
         font-size: 36px;
       }
 
-      .sol-hero p {
+      .rr-section-head h2 {
+        font-size: 20px;
+      }
+
+      .rr-hero h1 {
+        font-size: 48px;
+      }
+
+      .rr-hero-sub {
+        font-size: 20px;
+      }
+
+    }
+
+    @media (max-width: 768px) {
+      .rr-page {
+        max-width: 96%;
+        padding: 0 12px;
+      }
+
+      .rr-hero {
+        max-width: 96%;
+        padding-left: 12px;
+        padding-right: 12px;
+      }
+
+      .rr-hero h1 {
+        font-size: 36px;
+      }
+
+      .rr-hero-sub {
         font-size: 17px;
       }
 
-      .tpl-card {
-        margin-bottom: 48px;
+      .rr-radar-screen {
+        width: 240px;
+        height: 240px;
       }
 
-      .tpl-img {
-        border-radius: 24px;
+      .rr-stat-bar {
+        grid-template-columns: repeat(2, 1fr);
+        padding: 32px 24px;
       }
 
-      .tpl-body h3 {
-        font-size: 26px;
+      .rr-stat-item {
+        padding: 20px 8px;
       }
 
-      .tpl-body>p {
-        font-size: 16px;
-        margin-bottom: 40px;
-      }
-
-      .tpl-steps {
-        gap: 32px;
-      }
-
-      .tpl-badge {
-        width: 36px;
-        height: 36px;
-        border-radius: 10px;
-      }
-
-      .tpl-step h4 {
+      .rr-stat-item h3 {
         font-size: 18px;
       }
 
-      .section-head {
-        margin: 20px 0 48px;
+      .rr-stat-item p {
+        font-size: 13px;
       }
 
-      .section-head h2 {
-        font-size: 30px;
+      .rr-module-body {
+        padding: 0 24px 32px;
       }
 
-      .section-head p {
+      .rr-module-inner.reversed .rr-module-body {
+        padding: 0 24px 32px;
+      }
+
+      .rr-module-visual {
+        min-height: 240px;
+      }
+
+      .rr-module-body h3 {
+        font-size: 26px;
+      }
+
+      .rr-module-desc {
         font-size: 16px;
       }
+
+      .rr-section-head .eyebrow {
+        font-size: 28px;
+      }
+
+      .rr-section-head h2 {
+        font-size: 18px;
+      }
+
+      .rr-section-head p {
+        font-size: 15px;
+      }
+
+      .rr-kpi-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+      }
+
+      .rr-kpi-num {
+        font-size: 32px;
+      }
+
     }
   </style>
 </head>
@@ -311,276 +1166,419 @@
     </div>
   </header>
 
-  <section class="sol-hero">
-    <img class="sol-hero-bg"
-      src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1920&q=85" alt=""
-      loading="eager" onerror="this.style.display='none'">
-    <div class="sol-hero-overlay"></div>
-    <div class="sol-hero-content">
-      <h1>风险雷达</h1>
-      <p>在冲击到来之前<br>你已经知道该做什么</p>
-    </div>
-  </section>
-
-  <section class="detail-section">
-    <div class="container">
-
-      <div class="section-head reveal">
-        <h2>风控全维度</h2>
-        <p>从地缘到供应，五个维度全天候扫描你的供应链。</p>
-      </div>
-
-      <!-- 1 -->
-      <div class="tpl-card reveal">
-        <div class="tpl-img">
-          <img src="https://images.unsplash.com/photo-1605745341112-85968b19335b?auto=format&fit=crop&w=1200&q=85"
-            alt="" loading="lazy" onerror="this.style.display='none'">
+  <!-- ===== Hero: 雷达扫描屏 ===== -->
+  <div class="rr-hero-wrap">
+    <section class="rr-hero">
+      <div class="rr-hero-left">
+        <div class="rr-hero-badge"><span class="dot"></span>实时监测中 · LIVE</div>
+        <h1>风险<span class="hl">雷达</span></h1>
+        <p class="rr-hero-sub">在冲击到来之前<br>你已经知道该做什么</p>
+        <div class="rr-threats">
+          <span class="rr-threat-tag"><span class="rr-threat-dot red"></span>地缘冲突</span>
+          <span class="rr-threat-tag"><span class="rr-threat-dot amber"></span>关税变动</span>
+          <span class="rr-threat-tag"><span class="rr-threat-dot amber"></span>汇率波动</span>
+          <span class="rr-threat-tag"><span class="rr-threat-dot red"></span>物流中断</span>
+          <span class="rr-threat-tag"><span class="rr-threat-dot green"></span>供应预测</span>
         </div>
-        <div class="tpl-body">
+      </div>
+      <div class="rr-hero-right">
+        <!-- 雷达扫描屏 -->
+        <div class="rr-radar-screen">
+          <div class="rr-radar-ring"></div>
+          <div class="rr-radar-ring"></div>
+          <div class="rr-radar-ring"></div>
+          <div class="rr-radar-ring"></div>
+          <div class="rr-radar-ring"></div>
+          <div class="rr-radar-cross rr-radar-cross-h"></div>
+          <div class="rr-radar-cross rr-radar-cross-v"></div>
+          <div class="rr-radar-sweep"></div>
+          <!-- 风险热力点 -->
+          <div class="rr-hot-dot critical" style="top:22%;left:65%;"></div>
+          <div class="rr-hot-dot critical" style="top:58%;left:28%;"></div>
+          <div class="rr-hot-dot warning" style="top:35%;left:38%; animation-delay:0.8s;"></div>
+          <div class="rr-hot-dot warning" style="top:70%;left:62%; animation-delay:1.5s;"></div>
+          <div class="rr-hot-dot monitor" style="top:28%;left:52%; animation-delay:0.4s;"></div>
+          <div class="rr-hot-dot monitor" style="top:48%;left:72%; animation-delay:1.2s;"></div>
+          <div class="rr-hot-dot monitor" style="top:75%;left:42%; animation-delay:2s;"></div>
+          <div class="rr-radar-center"></div>
+        </div>
+      </div>
+    </section>
+  </div>
+  <div class="rr-hero-fade"></div>
+
+  <!-- ===== 页面内容 ===== -->
+  <div class="rr-page">
+
+    <!-- 预警能力条 — pillars 风格 -->
+    <div class="rr-stat-bar reveal">
+      <div class="rr-stat-item">
+        <div class="rr-stat-icon">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        </div>
+        <h3>全天候监测</h3>
+        <p>五大维度不间断扫描，异常事件秒级入库</p>
+      </div>
+      <div class="rr-stat-item">
+        <div class="rr-stat-icon">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        </div>
+        <h3>智能预警分级</h3>
+        <p>红/橙/绿三级预警，精准推送决策建议</p>
+      </div>
+      <div class="rr-stat-item">
+        <div class="rr-stat-icon">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+        </div>
+        <h3>风险自动关联</h3>
+        <p>事件自动匹配供应商、航线与在途订单</p>
+      </div>
+      <div class="rr-stat-item">
+        <div class="rr-stat-icon">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <h3>替代方案推荐</h3>
+        <p>同步推送备选供应商，不等停产再应对</p>
+      </div>
+    </div>
+
+    <!-- 区域标题 -->
+    <div class="rr-section-head reveal">
+      <div class="eyebrow">DIMENSIONS</div>
+      <h2>风控五维 · 全时扫描</h2>
+    </div>
+
+    <!-- ===== 模块1: 地缘风险监测 (正常布局) ===== -->
+    <div class="rr-module reveal">
+      <div class="rr-module-inner">
+        <div class="rr-module-visual" style="background:linear-gradient(135deg,#fef2f2,#fff7ed);">
+          <!-- 世界热力地图 -->
+          <div class="rr-heatmap">
+            <svg viewBox="0 0 400 260" xmlns="http://www.w3.org/2000/svg">
+              <!-- 简化大陆轮廓 -->
+              <path d="M30,60 Q80,30 140,50 Q180,60 170,100 Q175,140 200,160 Q220,170 230,145 Q250,120 280,130 Q320,145 330,180 Q335,210 310,230 L50,230 Q20,210 25,170 Q15,120 30,60Z"
+                fill="none" stroke="rgba(0,113,227,0.15)" stroke-width="1.5" />
+              <path d="M55,85 Q80,70 110,80 Q130,90 125,130 Q128,160 150,175 Q170,185 185,165 Q200,145 230,155 Q260,165 270,190 Q275,210 260,220 L55,220 Q45,200 48,165 Q40,120 55,85Z"
+                fill="none" stroke="rgba(0,113,227,0.10)" stroke-width="1" />
+              <!-- 热力区域 -->
+              <circle class="rr-heat-zone" cx="295" cy="145" r="22" fill="rgba(239,68,68,0.25)" />
+              <circle class="rr-heat-zone" cx="100" cy="95" r="18" fill="rgba(239,68,68,0.20)" />
+              <circle class="rr-heat-zone" cx="195" cy="130" r="20" fill="rgba(245,158,11,0.22)" />
+              <circle class="rr-heat-zone" cx="250" cy="180" r="16" fill="rgba(245,158,11,0.18)" />
+              <!-- 热力中心点 -->
+              <circle cx="295" cy="145" r="5" fill="#ef4444" opacity="0.8"><animate attributeName="r" values="4;7;4" dur="2s" repeatCount="indefinite" /></circle>
+              <circle cx="100" cy="95" r="4" fill="#ef4444" opacity="0.7"><animate attributeName="r" values="3;6;3" dur="2.5s" repeatCount="indefinite" /></circle>
+              <circle cx="195" cy="130" r="4" fill="#f59e0b" opacity="0.7"><animate attributeName="r" values="3;5;3" dur="3s" repeatCount="indefinite" /></circle>
+              <circle cx="250" cy="180" r="3" fill="#f59e0b" opacity="0.6"><animate attributeName="r" values="2;4;2" dur="2.8s" repeatCount="indefinite" /></circle>
+            </svg>
+          </div>
+        </div>
+        <div class="rr-module-body">
+          <div class="rr-module-num">01</div>
           <h3>地缘风险监测</h3>
-          <p>冲突、制裁、海峡封锁——全球事件自动关联到你的供应商和运输航线。</p>
-          <div class="tpl-steps">
-            <div class="tpl-step">
-              <div class="tpl-badge tpl-badge--1"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"
-                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <circle cx="12" cy="12" r="10" />
-                  <line x1="2" y1="12" x2="22" y2="12" />
-                  <path
-                    d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
-                </svg></div>
-              <div>
-                <h4>全球扫描</h4>
-                <p>24h 监测全球冲突区域、制裁升级、海峡通行状态，重大事件秒级入库。</p>
+          <p class="rr-module-desc">冲突、制裁、海峡封锁——全球事件自动关联到你的供应商和运输航线。</p>
+          <div class="rr-sub-grid">
+            <div class="rr-sub-card">
+              <div class="rr-sub-icon" style="background:linear-gradient(135deg,#fef2f2,#fee2e2);color:#ef4444;">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
               </div>
+              <h4>全球扫描</h4>
+              <p>24h监测全球冲突区域、制裁升级、海峡通行状态</p>
             </div>
-            <div class="tpl-step">
-              <div class="tpl-badge tpl-badge--2"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"
-                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
-                  <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
-                </svg></div>
-              <div>
-                <h4>自动关联</h4>
-                <p>事件自动匹配你的供应商所在国、运输航线、中转港口，标记受影响范围。</p>
+            <div class="rr-sub-card">
+              <div class="rr-sub-icon" style="background:linear-gradient(135deg,#fef2f2,#fee2e2);color:#ef4444;">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
               </div>
+              <h4>自动关联</h4>
+              <p>事件自动匹配你的供应商、航线、港口</p>
             </div>
-            <div class="tpl-step">
-              <div class="tpl-badge tpl-badge--3"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"
-                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <polyline points="22 17 13.5 8.5 8.5 13.5 2 7" />
-                  <polyline points="16 17 22 17 22 11" />
-                </svg></div>
-              <div>
-                <h4>影响评估</h4>
-                <p>量化受影响采购金额、替代来源可用性和切换时间窗口，推送分级预警。</p>
+            <div class="rr-sub-card">
+              <div class="rr-sub-icon" style="background:linear-gradient(135deg,#fef2f2,#fee2e2);color:#ef4444;">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 17 13.5 8.5 8.5 13.5 2 7"/><polyline points="16 17 22 17 22 11"/></svg>
               </div>
+              <h4>影响评估</h4>
+              <p>量化受影响金额、替代来源和切换时间窗口</p>
             </div>
           </div>
         </div>
       </div>
+    </div>
 
-      <!-- 2 -->
-      <div class="tpl-card reveal">
-        <div class="tpl-img">
-          <img src="https://images.unsplash.com/photo-1681505531034-8d67054e07f6?auto=format&fit=crop&w=1200&q=85"
-            alt="" loading="lazy" onerror="this.style.display='none'">
+    <!-- ===== 模块2: 关税政策追踪 (翻转布局) ===== -->
+    <div class="rr-module reveal">
+      <div class="rr-module-inner reversed">
+        <div class="rr-module-visual" style="background:linear-gradient(135deg,#eff6ff,#f0f4ff);">
+          <!-- 政策时间轴 -->
+          <div class="rr-timeline">
+            <div class="rr-tl-item">
+              <div class="rr-tl-dot red">!</div>
+              <div class="rr-tl-content">
+                <h5>美国 301 关税复审</h5>
+                <div class="rr-tl-date">2026-06-20</div>
+                <div class="rr-tl-impact">影响品类：电子元件 · 税率上调至 25%</div>
+              </div>
+            </div>
+            <div class="rr-tl-item">
+              <div class="rr-tl-dot amber">!</div>
+              <div class="rr-tl-content">
+                <h5>EU CBAM 碳边境第二阶段</h5>
+                <div class="rr-tl-date">2026-06-15</div>
+                <div class="rr-tl-impact">影响品类：钢铁/铝 · 新增碳税申报</div>
+              </div>
+            </div>
+            <div class="rr-tl-item">
+              <div class="rr-tl-dot blue">i</div>
+              <div class="rr-tl-content">
+                <h5>RCEP 新一轮降税生效</h5>
+                <div class="rr-tl-date">2026-05-28</div>
+                <div class="rr-tl-impact" style="color:#16a34a;">利好：纺织/农产品 · 关税降至 0</div>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="tpl-body">
+        <div class="rr-module-body">
+          <div class="rr-module-num">02</div>
           <h3>关税政策追踪</h3>
-          <p>301 关税、232 关税、CBAM 碳边境——政策三天一变，平台 24h 追踪。</p>
-          <div class="tpl-steps">
-            <div class="tpl-step">
-              <div class="tpl-badge tpl-badge--1"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"
-                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <circle cx="11" cy="11" r="8" />
-                  <line x1="21" y1="21" x2="16.65" y2="16.65" />
-                </svg></div>
-              <div>
-                <h4>政策抓取</h4>
-                <p>实时追踪全球主要经济体关税政策变化，自动抓取官方公告和法规更新。</p>
+          <p class="rr-module-desc">301关税、232关税、CBAM碳边境——政策三天一变，平台24h追踪。</p>
+          <div class="rr-sub-grid">
+            <div class="rr-sub-card">
+              <div class="rr-sub-icon" style="background:linear-gradient(135deg,#eff6ff,#dbeafe);color:#0071e3;">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
               </div>
+              <h4>政策抓取</h4>
+              <p>实时追踪全球关税政策变化与法规更新</p>
             </div>
-            <div class="tpl-step">
-              <div class="tpl-badge tpl-badge--2"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"
-                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z" />
-                  <line x1="7" y1="7" x2="7.01" y2="7" />
-                </svg></div>
-              <div>
-                <h4>品类匹配</h4>
-                <p>新政自动匹配你的采购品类和 HS 编码，标记受影响商品及税率变化。</p>
+            <div class="rr-sub-card">
+              <div class="rr-sub-icon" style="background:linear-gradient(135deg,#eff6ff,#dbeafe);color:#0071e3;">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
               </div>
+              <h4>品类匹配</h4>
+              <p>新政自动匹配HS编码，标记受影响商品</p>
             </div>
-            <div class="tpl-step">
-              <div class="tpl-badge tpl-badge--3"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"
-                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <line x1="12" y1="1" x2="12" y2="23" />
-                  <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
-                </svg></div>
-              <div>
-                <h4>成本重算</h4>
-                <p>税率变化自动更新到采购成本模型，推送替代产地建议和新增成本预估。</p>
+            <div class="rr-sub-card">
+              <div class="rr-sub-icon" style="background:linear-gradient(135deg,#eff6ff,#dbeafe);color:#0071e3;">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
               </div>
+              <h4>成本重算</h4>
+              <p>税率变化自动更新到采购成本模型</p>
             </div>
           </div>
         </div>
       </div>
+    </div>
 
-      <!-- 3 -->
-      <div class="tpl-card reveal">
-        <div class="tpl-img">
-          <img src="https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&w=1200&q=85"
-            alt="" loading="lazy" onerror="this.style.display='none'">
+    <!-- ===== 模块3: 汇率波动监控 (正常布局) ===== -->
+    <div class="rr-module reveal">
+      <div class="rr-module-inner">
+        <div class="rr-module-visual" style="background:linear-gradient(135deg,#f5f3ff,#faf5ff);">
+          <!-- 汇率仪表盘 -->
+          <div class="rr-fx-dash">
+            <div class="rr-fx-card">
+              <div>
+                <div class="rr-fx-pair">USD / CNY</div>
+                <div style="font-size:13px;color:var(--text-sec);">美元 · 人民币</div>
+              </div>
+              <div style="text-align:right;">
+                <div class="rr-fx-rate">7.2836</div>
+                <div class="rr-fx-change up">↑ 0.32%</div>
+              </div>
+            </div>
+            <div class="rr-fx-card">
+              <div>
+                <div class="rr-fx-pair">EUR / CNY</div>
+                <div style="font-size:13px;color:var(--text-sec);">欧元 · 人民币</div>
+              </div>
+              <div style="text-align:right;">
+                <div class="rr-fx-rate">7.9521</div>
+                <div class="rr-fx-change down">↓ 0.15%</div>
+              </div>
+            </div>
+            <div class="rr-fx-card">
+              <div>
+                <div class="rr-fx-pair">CNY / JPY</div>
+                <div style="font-size:13px;color:var(--text-sec);">人民币 · 日元</div>
+              </div>
+              <div style="text-align:right;">
+                <div class="rr-fx-rate">20.184</div>
+                <div class="rr-fx-change up">↑ 0.58%</div>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="tpl-body">
+        <div class="rr-module-body">
+          <div class="rr-module-num">03</div>
           <h3>汇率波动监控</h3>
-          <p>CNY/USD/EUR 一天一个价——平台实时接入，帮你锁定最优结算窗口。</p>
-          <div class="tpl-steps">
-            <div class="tpl-step">
-              <div class="tpl-badge tpl-badge--1"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"
-                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <polyline points="23 4 23 10 17 10" />
-                  <polyline points="1 20 1 14 7 14" />
-                  <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15" />
-                </svg></div>
-              <div>
-                <h4>实时接入</h4>
-                <p>接入全球主要央行汇率数据，覆盖 CNY、USD、EUR 等主要结算货币。</p>
+          <p class="rr-module-desc">CNY/USD/EUR一天一个价——平台实时接入，帮你锁定最优结算窗口。</p>
+          <div class="rr-sub-grid">
+            <div class="rr-sub-card">
+              <div class="rr-sub-icon" style="background:linear-gradient(135deg,#f5f3ff,#ede9fe);color:#7c3aed;">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>
               </div>
+              <h4>实时接入</h4>
+              <p>接入全球央行汇率数据，覆盖主要结算货币</p>
             </div>
-            <div class="tpl-step">
-              <div class="tpl-badge tpl-badge--2"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"
-                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <polyline points="22 17 13.5 8.5 8.5 13.5 2 7" />
-                  <polyline points="16 17 22 17 22 11" />
-                </svg></div>
-              <div>
-                <h4>趋势预测</h4>
-                <p>结合历史波动和央行政策信号，对即将结算的订单发出汇率风险提示。</p>
+            <div class="rr-sub-card">
+              <div class="rr-sub-icon" style="background:linear-gradient(135deg,#f5f3ff,#ede9fe);color:#7c3aed;">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 17 13.5 8.5 8.5 13.5 2 7"/><polyline points="16 17 22 17 22 11"/></svg>
               </div>
+              <h4>趋势预测</h4>
+              <p>结合历史波动和央行信号发出风险提示</p>
             </div>
-            <div class="tpl-step">
-              <div class="tpl-badge tpl-badge--3"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"
-                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-                </svg></div>
-              <div>
-                <h4>锁汇建议</h4>
-                <p>自动推荐最优锁汇时点和比例，单笔订单汇率损失可预估、可对冲。</p>
+            <div class="rr-sub-card">
+              <div class="rr-sub-icon" style="background:linear-gradient(135deg,#f5f3ff,#ede9fe);color:#7c3aed;">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
               </div>
+              <h4>锁汇建议</h4>
+              <p>自动推荐最优锁汇时点和比例</p>
             </div>
           </div>
         </div>
       </div>
+    </div>
 
-      <!-- 4 -->
-      <div class="tpl-card reveal">
-        <div class="tpl-img">
-          <img src="https://images.unsplash.com/photo-1494412651409-8963ce7935a7?auto=format&fit=crop&w=1200&q=85"
-            alt="" loading="lazy" onerror="this.style.display='none'">
+    <!-- ===== 模块4: 物流中断预警 (翻转布局) ===== -->
+    <div class="rr-module reveal">
+      <div class="rr-module-inner reversed">
+        <div class="rr-module-visual" style="background:linear-gradient(135deg,#fefce8,#fffbeb);">
+          <!-- 航线中断图 -->
+          <div class="rr-route-map" style="position:relative;">
+            <svg viewBox="0 0 400 300" style="position:absolute;inset:0;width:100%;height:100%;">
+              <!-- 航线 -->
+              <line x1="60" y1="180" x2="180" y2="80" stroke="rgba(0,113,227,0.15)" stroke-width="2"/>
+              <line x1="180" y1="80" x2="280" y2="60" stroke="rgba(239,68,68,0.25)" stroke-width="2" stroke-dasharray="8 6"/>
+              <line x1="180" y1="80" x2="310" y2="200" stroke="rgba(0,113,227,0.15)" stroke-width="2"/>
+              <line x1="310" y1="200" x2="200" y2="260" stroke="rgba(245,158,11,0.25)" stroke-width="2" stroke-dasharray="8 6"/>
+              <!-- 节点 -->
+              <circle cx="60" cy="180" r="10" fill="#16a34a" opacity="0.8"><animate attributeName="r" values="8;12;8" dur="3s" repeatCount="indefinite"/></circle>
+              <circle cx="180" cy="80" r="10" fill="#16a34a" opacity="0.8"/>
+              <circle cx="280" cy="60" r="10" fill="#ef4444" opacity="0.8"><animate attributeName="r" values="8;14;8" dur="1s" repeatCount="indefinite"/></circle>
+              <circle cx="310" cy="200" r="9" fill="#f59e0b" opacity="0.8"><animate attributeName="r" values="7;11;7" dur="2s" repeatCount="indefinite"/></circle>
+              <circle cx="200" cy="260" r="10" fill="#16a34a" opacity="0.8"/>
+              <!-- 标签 -->
+              <text x="60" y="205" text-anchor="middle" font-size="11" fill="#1d1d1f">上海港</text>
+              <text x="180" y="68" text-anchor="middle" font-size="11" fill="#1d1d1f">新加坡</text>
+              <text x="280" y="45" text-anchor="middle" font-size="11" fill="#ef4444" font-weight="600">苏伊士运河 ✕</text>
+              <text x="310" y="225" text-anchor="middle" font-size="11" fill="#f59e0b" font-weight="600">鹿特丹 ⚠</text>
+              <text x="200" y="280" text-anchor="middle" font-size="11" fill="#1d1d1f">汉堡港</text>
+            </svg>
+          </div>
         </div>
-        <div class="tpl-body">
+        <div class="rr-module-body">
+          <div class="rr-module-num">04</div>
           <h3>物流中断预警</h3>
-          <p>港口罢工、运河限行、台风封港——你的货柜在哪个环节卡住了？</p>
-          <div class="tpl-steps">
-            <div class="tpl-step">
-              <div class="tpl-badge tpl-badge--1"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"
-                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <circle cx="12" cy="12" r="10" />
-                  <polygon points="12 6 12 12 16 14" />
-                </svg></div>
-              <div>
-                <h4>港口监控</h4>
-                <p>全球主要港口实时状态：等待时间、堆场利用率、天气影响，异常自动标记。</p>
+          <p class="rr-module-desc">港口罢工、运河限行、台风封港——你的货柜在哪个环节卡住了？</p>
+          <div class="rr-sub-grid">
+            <div class="rr-sub-card">
+              <div class="rr-sub-icon" style="background:linear-gradient(135deg,#fefce8,#fef9c3);color:#f59e0b;">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polygon points="12 6 12 12 16 14"/></svg>
               </div>
+              <h4>港口监控</h4>
+              <p>全球港口实时状态：等待时间、天气影响</p>
             </div>
-            <div class="tpl-step">
-              <div class="tpl-badge tpl-badge--2"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"
-                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <polyline points="1 4 1 10 7 10" />
-                  <polyline points="23 20 23 14 17 14" />
-                  <path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10m22 4l-4.64 4.36A9 9 0 0 1 3.51 15" />
-                </svg></div>
-              <div>
-                <h4>路线推荐</h4>
-                <p>自动匹配受影响在途订单，推荐替代路线和中转方案，不等到港才发现问题。</p>
+            <div class="rr-sub-card">
+              <div class="rr-sub-icon" style="background:linear-gradient(135deg,#fefce8,#fef9c3);color:#f59e0b;">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="1 4 1 10 7 10"/><polyline points="23 20 23 14 17 14"/><path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10m22 4l-4.64 4.36A9 9 0 0 1 3.51 15"/></svg>
               </div>
+              <h4>路线推荐</h4>
+              <p>自动匹配受影响订单，推荐替代路线</p>
             </div>
-            <div class="tpl-step">
-              <div class="tpl-badge tpl-badge--3"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"
-                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <line x1="22" y1="2" x2="11" y2="13" />
-                  <polygon points="22 2 15 22 11 13 2 9 22 2" />
-                </svg></div>
-              <div>
-                <h4>时效预估</h4>
-                <p>中断影响量化：延迟天数、额外成本、客户订单影响范围——推送决策建议。</p>
+            <div class="rr-sub-card">
+              <div class="rr-sub-icon" style="background:linear-gradient(135deg,#fefce8,#fef9c3);color:#f59e0b;">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
               </div>
+              <h4>时效预估</h4>
+              <p>延迟天数、额外成本、客户影响范围量化</p>
             </div>
           </div>
         </div>
       </div>
+    </div>
 
-      <!-- 5 -->
-      <div class="tpl-card reveal">
-        <div class="tpl-img">
-          <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=85"
-            alt="" loading="lazy" onerror="this.style.display='none'">
+    <!-- ===== 模块5: 供应中断预测 (正常布局) ===== -->
+    <div class="rr-module reveal">
+      <div class="rr-module-inner">
+        <div class="rr-module-visual" style="background:linear-gradient(135deg,#f0fdf4,#f0fdf8);">
+          <!-- 供应商网络图 -->
+          <div class="rr-network">
+            <div class="rr-net-center">你</div>
+            <!-- 连接线用SVG -->
+            <svg style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none;">
+              <line x1="50%" y1="50%" x2="28%" y2="18%" stroke="rgba(239,68,68,0.35)" stroke-width="3"/>
+              <line x1="50%" y1="50%" x2="75%" y2="22%" stroke="rgba(245,158,11,0.25)" stroke-width="2"/>
+              <line x1="50%" y1="50%" x2="70%" y2="68%" stroke="rgba(0,113,227,0.15)" stroke-width="1.5"/>
+              <line x1="50%" y1="50%" x2="22%" y2="72%" stroke="rgba(0,113,227,0.15)" stroke-width="1.5"/>
+              <line x1="50%" y1="50%" x2="18%" y2="42%" stroke="rgba(239,68,68,0.30)" stroke-width="2.5"/>
+            </svg>
+            <div class="rr-net-node risk-high" style="top:10%;left:20%;">A</div>
+            <div class="rr-net-node risk-med" style="top:14%;left:68%;">B</div>
+            <div class="rr-net-node risk-low" style="top:60%;left:63%;">C</div>
+            <div class="rr-net-node risk-low" style="top:64%;left:15%;">D</div>
+            <div class="rr-net-node risk-high" style="top:35%;left:10%;">E</div>
+          </div>
         </div>
-        <div class="tpl-body">
+        <div class="rr-module-body">
+          <div class="rr-module-num">05</div>
           <h3>供应中断预测</h3>
-          <p>核心供应商看起来一切正常，但可能三个月后交不出货——AI 提前告诉你。</p>
-          <div class="tpl-steps">
-            <div class="tpl-step">
-              <div class="tpl-badge tpl-badge--1"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"
-                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <ellipse cx="12" cy="5" rx="9" ry="3" />
-                  <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3" />
-                  <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5" />
-                </svg></div>
-              <div>
-                <h4>多维信号</h4>
-                <p>综合供应商财务健康、订单饱和度、所在区域风险、行业动态等信号建模。</p>
+          <p class="rr-module-desc">核心供应商看起来一切正常，但可能三个月后交不出货——AI提前告诉你。</p>
+          <div class="rr-sub-grid">
+            <div class="rr-sub-card">
+              <div class="rr-sub-icon" style="background:linear-gradient(135deg,#f0fdf4,#dcfce7);color:#16a34a;">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
               </div>
+              <h4>多维信号</h4>
+              <p>综合财务健康、订单饱和度、区域风险建模</p>
             </div>
-            <div class="tpl-step">
-              <div class="tpl-badge tpl-badge--2"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"
-                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" />
-                  <line x1="12" y1="9" x2="12" y2="13" />
-                  <line x1="12" y1="17" x2="12.01" y2="17" />
-                </svg></div>
-              <div>
-                <h4>风险评估</h4>
-                <p>AI 预测可能的断供风险等级和时间窗口，标记高风险供应商清单。</p>
+            <div class="rr-sub-card">
+              <div class="rr-sub-icon" style="background:linear-gradient(135deg,#f0fdf4,#dcfce7);color:#16a34a;">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
               </div>
+              <h4>风险评估</h4>
+              <p>AI预测断供风险等级和时间窗口</p>
             </div>
-            <div class="tpl-step">
-              <div class="tpl-badge tpl-badge--3"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"
-                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-                </svg></div>
-              <div>
-                <h4>替代方案</h4>
-                <p>同步推送同品类替代供应商名单，含切换成本和启动时间，不等到停产再去找备选。</p>
+            <div class="rr-sub-card">
+              <div class="rr-sub-icon" style="background:linear-gradient(135deg,#f0fdf4,#dcfce7);color:#16a34a;">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
               </div>
+              <h4>替代方案</h4>
+              <p>同步推送替代供应商名单和切换成本</p>
             </div>
           </div>
         </div>
       </div>
-
     </div>
-  </section>
 
-  <section class="section-sm">
-    <div class="container">
-      <div class="cta-simple reveal">
-        <h2>加入全球供应链大平台</h2>
-        <p>赋能地方资源 · 连接全球市场</p>
-        <a class="btn btn-primary btn-lg" href="../contact.html">申请加入 →</a>
+    <!-- ===== KPI 区 ===== -->
+    <div class="rr-metrics reveal">
+      <div class="rr-section-head">
+        <div class="eyebrow">METRICS</div>
+        <h2>风险量化 · 可衡量</h2>
+      </div>
+      <div class="rr-kpi-grid">
+        <div class="rr-kpi-card">
+          <div class="rr-kpi-num">94%</div>
+          <div class="rr-kpi-label">预警准确率</div>
+          <div class="rr-kpi-bar"><div class="rr-kpi-bar-fill blue" style="width:94%;"></div></div>
+        </div>
+        <div class="rr-kpi-card">
+          <div class="rr-kpi-num">72h</div>
+          <div class="rr-kpi-label">平均提前预警</div>
+          <div class="rr-kpi-bar"><div class="rr-kpi-bar-fill green" style="width:72%;"></div></div>
+        </div>
+        <div class="rr-kpi-card">
+          <div class="rr-kpi-num">89%</div>
+          <div class="rr-kpi-label">风险规避率</div>
+          <div class="rr-kpi-bar"><div class="rr-kpi-bar-fill amber" style="width:89%;"></div></div>
+        </div>
+        <div class="rr-kpi-card">
+          <div class="rr-kpi-num">500+</div>
+          <div class="rr-kpi-label">全球监控节点</div>
+          <div class="rr-kpi-bar"><div class="rr-kpi-bar-fill purple" style="width:83%;"></div></div>
+        </div>
       </div>
     </div>
-  </section>
+
+
+  </div>
 
   <footer class="footer">
     <div class="container">
@@ -614,21 +1612,28 @@
             <li><a href="risk-radar.html">风险雷达</a></li>
             <li><a href="decision-center.html">决策中枢</a></li>
           </ul>
-        </div>
-
-        <div>
-          <h5>了解更多</h5>
-          <ul>
-            <li><a href="../why-us.html">为什么选我们</a></li>
-            <li><a href="../pain-points.html">痛点与方案</a></li>
-            <li><a href="../intel.html">供应链新闻台</a>
-              <a href="../contact.html">申请加入</a>
-            </li>
-            <li><a href="../contact.html">联系我们</a></li>
-          </ul>
-        </div>
       </div>
-      <div class="footer-bottom">
+      <div>
+        <h5>平台能力</h5>
+        <ul>
+          <li><a href="solutions/precision-sourcing.html">智能寻源匹配</a></li>
+          <li><a href="solutions/smart-procurement.html">自动化采购</a></li>
+          <li><a href="solutions/trusted-delivery.html">全链路追踪</a></li>
+          <li><a href="solutions/risk-radar.html">风险预警监控</a></li>
+          <li><a href="solutions/decision-center.html">数据决策分析</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>公司</h5>
+        <ul>
+          <li><a href="about.html">关于我们</a></li>
+          <li><a href="contact.html">联系我们</a></li>
+          <li><a href="intel.html">新闻资讯</a></li>
+          <li><a href="careers.html">加入我们</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
         <span>&copy; 2026 全球供应链大平台. 保留所有权利. <a
             href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=44010602010128" target="_blank"
             rel="noreferrer">粤公网安备44010602010128号</a> | <a href="https://beian.miit.gov.cn/" target="_blank"

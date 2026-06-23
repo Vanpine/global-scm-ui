@@ -15,263 +15,660 @@
   <meta property="og:site_name" content="Global SCM">
   <link rel="stylesheet" href="../css/style.css">
   <style>
-    .sol-hero {
-      min-height: 80vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
+    :root {
+      --bg: #F8FAFC;
+      --card-bg: #fff;
+      --brand: #0071e3;
+      --brand-dark: #005bb5;
+      --text: #1d1d1f;
+      --text-sec: #86868b;
+      --border: #e8ecf0;
+      --shadow-sm: 0 2px 12px rgba(0, 0, 0, 0.04);
+      --shadow: 0 8px 32px rgba(0, 0, 0, 0.07);
+      --shadow-lg: 0 20px 60px rgba(0, 0, 0, 0.10);
+      --dash-bg: #edf0f6;
+    }
+
+    body {
+      background: var(--bg);
+    }
+
+    /* ===== 外层容器 ===== */
+    .dc-page {
+      max-width: 75%;
+      margin: 0 auto;
+      padding: 0 40px;
       position: relative;
-      overflow: hidden;
-      color: #fff;
     }
 
-    .sol-hero-bg {
-      position: absolute;
+    .dc-page::before {
+      content: "";
+      position: fixed;
       inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
       pointer-events: none;
+      z-index: 0;
+      background-image: radial-gradient(circle, rgba(0, 113, 227, 0.06) 1px, transparent 1px);
+      background-size: 28px 28px;
+      mask-image: radial-gradient(ellipse at 50% 0%, black 40%, transparent 70%);
+      -webkit-mask-image: radial-gradient(ellipse at 50% 0%, black 40%, transparent 70%);
     }
 
-    .sol-hero-overlay {
-      position: absolute;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.45);
+    .dc-page>* {
+      position: relative;
       z-index: 1;
     }
 
-    .sol-hero-content {
+    /* ===== Hero 数据看板 ===== */
+    .dc-hero-wrap {
+      margin: 0 calc(-50vw + 50%);
+      background: var(--dash-bg);
       position: relative;
-      z-index: 2;
-      padding: 0 32px;
+      overflow: hidden;
     }
 
-    .sol-hero h1 {
-      font-size: 72px;
-      font-weight: 700;
-      letter-spacing: 0.04em;
-      margin-bottom: 24px;
-      line-height: 1.1;
+    .dc-hero-wrap::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(0, 113, 227, 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 113, 227, 0.04) 1px, transparent 1px);
+      background-size: 48px 48px;
+      pointer-events: none;
     }
 
-    .sol-hero p {
-      font-size: 24px;
-      opacity: 0.85;
-      line-height: 1.5;
-      max-width: 520px;
-      margin: 0 auto;
-    }
-
-    .detail-section {
-      padding: 80px 0 40px;
-    }
-
-    .detail-section .container {
-      max-width: 1600px;
-      width: 90%;
-    }
-
-    .section-head {
-      text-align: center;
-      margin: 40px 0 80px;
-    }
-
-    .section-head h2 {
-      font-size: 48px;
-      font-weight: 700;
-      letter-spacing: -0.03em;
-      color: #1d1d1f;
-      margin-bottom: 16px;
-    }
-
-    .section-head p {
-      font-size: 20px;
-      color: #86868b;
-    }
-
-    .tpl-card {
+    .dc-hero {
       display: flex;
       gap: 80px;
       align-items: center;
-      max-width: 1400px;
-      margin: 0 auto 80px;
-      transition: transform 0.4s var(--ease);
+      min-height: 88vh;
+      padding: 130px 0 80px;
+      max-width: 75%;
+      margin: 0 auto;
+      padding-left: 40px;
+      padding-right: 40px;
+      position: relative;
+      z-index: 1;
     }
 
-    .tpl-card:hover {
-      transform: translateY(-4px);
+    .dc-hero-left {
+      flex: 0 0 50%;
     }
 
-    .tpl-card:nth-child(even) {
-      flex-direction: row-reverse;
+    .dc-hero-badge {
+      display: inline-block;
+      background: rgba(0, 113, 227, 0.10);
+      color: var(--brand);
+      font-size: 14px;
+      font-weight: 600;
+      padding: 8px 20px;
+      border-radius: 20px;
+      margin-bottom: 24px;
+      letter-spacing: 0.06em;
     }
 
-    .tpl-img {
-      flex: 0 0 45%;
-      aspect-ratio: 1;
-      border-radius: 32px;
-      overflow: hidden;
-      box-shadow: 0 24px 80px rgba(0, 0, 0, 0.10);
-      transition: box-shadow 0.4s var(--ease), transform 0.4s var(--ease);
-    }
-
-    .tpl-card:hover .tpl-img {
-      box-shadow: 0 32px 100px rgba(0, 0, 0, 0.15);
-      transform: scale(1.02);
-    }
-
-    .tpl-img img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.6s var(--ease);
-    }
-
-    .tpl-card:hover .tpl-img img {
-      transform: scale(1.06);
-    }
-
-    .tpl-body {
-      flex: 1 1 auto;
-    }
-
-    .tpl-body h3 {
-      font-size: 40px;
+    .dc-hero h1 {
+      font-size: 72px;
       font-weight: 700;
+      letter-spacing: -0.03em;
+      color: var(--text);
+      line-height: 1.08;
+      margin-bottom: 20px;
+    }
+
+    .dc-hero-sub {
+      font-size: 24px;
+      color: var(--text-sec);
+      line-height: 1.6;
+    }
+
+    .dc-hero-right {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* 数据看板卡片 */
+    .dc-dash {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: repeat(2, 1fr);
+      gap: 16px;
+      width: 100%;
+      max-width: 440px;
+    }
+
+    .dc-dash-card {
+      background: #fff;
+      border-radius: 18px;
+      padding: 24px;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-sm);
+      transition: all 0.3s ease;
+    }
+
+    .dc-dash-card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow);
+    }
+
+    .dc-dash-label {
+      font-size: 13px;
+      color: var(--text-sec);
+      margin-bottom: 8px;
+    }
+
+    .dc-dash-value {
+      font-family: "SF Mono", "JetBrains Mono", "Consolas", monospace;
+      font-size: 36px;
+      font-weight: 700;
+      color: var(--brand);
       letter-spacing: -0.02em;
-      color: #1d1d1f;
+    }
+
+    /* 微型走势线 */
+    .dc-mini-chart {
+      margin-top: 14px;
+      height: 40px;
+      display: flex;
+      align-items: flex-end;
+      gap: 4px;
+      opacity: 0.6;
+    }
+
+    .dc-mini-bar {
+      flex: 1;
+      background: var(--brand);
+      border-radius: 2px 2px 0 0;
+      transition: height 0.6s ease;
+    }
+
+    .dc-dash-dot {
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      margin-right: 6px;
+    }
+
+    .dc-dash-dot.green {
+      background: #16a34a;
+      box-shadow: 0 0 8px rgba(22, 163, 74, 0.5);
+    }
+
+    .dc-dash-dot.blue {
+      background: #0071e3;
+      box-shadow: 0 0 8px rgba(0, 113, 227, 0.5);
+      animation: dcPulse 2s ease-in-out infinite;
+    }
+
+    @keyframes dcPulse {
+      0%,
+      100% {
+        opacity: 1;
+      }
+      50% {
+        opacity: 0.4;
+      }
+    }
+
+    /* ===== 渐变过渡 ===== */
+    .dc-hero-fade {
+      height: 64px;
+      margin: 0 calc(-50vw + 50%);
+      background: linear-gradient(to bottom, var(--dash-bg) 0%, rgba(237, 240, 246, 0.5) 40%, var(--bg) 100%);
+    }
+
+    /* ===== 能力条 — pillars 风格 ===== */
+    .dc-stat-bar {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      padding: 48px 80px;
+      border-bottom: 1px solid var(--border);
+      margin: 0 calc(-50vw + 50%) 56px;
+    }
+
+    .dc-stat-item {
+      text-align: center;
+      padding: 32px 20px;
+    }
+
+    .dc-stat-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--brand);
+      margin-bottom: 20px;
+    }
+
+    .dc-stat-item h3 {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 10px;
+    }
+
+    .dc-stat-item p {
+      font-size: 14px;
+      color: var(--text-sec);
+      line-height: 1.6;
+      max-width: 240px;
+      margin: 0 auto;
+    }
+
+    /* ===== 区域标题 — POLYCRISIS 风格 ===== */
+    .dc-section-head {
+      text-align: center;
+      margin: 0 0 72px;
+    }
+
+    .dc-section-head .eyebrow {
+      font-size: 48px;
+      font-weight: 700;
+      color: var(--text);
+      letter-spacing: -0.02em;
       margin-bottom: 12px;
     }
 
-    .tpl-body>p {
-      font-size: 19px;
-      color: #86868b;
-      line-height: 1.6;
-      margin-bottom: 56px;
+    .dc-section-head h2 {
+      font-size: 22px;
+      font-weight: 400;
+      color: var(--text-sec);
     }
 
-    .tpl-steps {
+    /* ===== tpl-card 模块（保留原样式） ===== */
+    .dc-module {
+      display: flex;
+      gap: 80px;
+      align-items: center;
+      margin: 0 auto 80px;
+      background: var(--card-bg);
+      border-radius: 24px;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-sm);
+      overflow: hidden;
+      transition: all 0.35s ease;
+    }
+
+    .dc-module:hover {
+      box-shadow: var(--shadow-lg);
+      transform: translateY(-4px);
+    }
+
+    .dc-module:nth-child(even) {
+      flex-direction: row-reverse;
+    }
+
+    .dc-module-img {
+      flex: 0 0 45%;
+      aspect-ratio: 1;
+      overflow: hidden;
+      transition: box-shadow 0.4s ease, transform 0.4s ease;
+    }
+
+    .dc-module:hover .dc-module-img {
+      transform: scale(1.02);
+    }
+
+    .dc-module-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+
+    .dc-module:hover .dc-module-img img {
+      transform: scale(1.06);
+    }
+
+    .dc-module-body {
+      flex: 1;
+      padding: 48px 48px 48px 0;
+    }
+
+    .dc-module:nth-child(even) .dc-module-body {
+      padding: 48px 0 48px 48px;
+    }
+
+    .dc-module-num {
+      font-family: "SF Mono", "JetBrains Mono", "Consolas", monospace;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--brand);
+      letter-spacing: 0.1em;
+      margin-bottom: 8px;
+    }
+
+    .dc-module-body h3 {
+      font-size: 36px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--text);
+      margin-bottom: 12px;
+    }
+
+    .dc-module-desc {
+      font-size: 19px;
+      color: var(--text-sec);
+      line-height: 1.6;
+      margin-bottom: 40px;
+    }
+
+    .dc-steps {
       display: flex;
       flex-direction: column;
-      gap: 48px;
+      gap: 36px;
     }
 
-    .tpl-step {
+    .dc-step {
       display: flex;
-      gap: 20px;
+      gap: 16px;
       align-items: flex-start;
     }
 
-    .tpl-badge {
+    .dc-step-badge {
       flex-shrink: 0;
-      width: 40px;
-      height: 40px;
+      width: 38px;
+      height: 38px;
       border-radius: 12px;
       display: grid;
       place-items: center;
       color: #fff;
     }
 
-    .tpl-badge--1 {
-      background: #2563EB;
-    }
-
-    .tpl-badge--2 {
-      background: #16A34A;
-    }
-
-    .tpl-badge--3 {
-      background: #7C3AED;
-    }
-
-    .tpl-step h4 {
-      font-size: 21px;
+    .dc-step h4 {
+      font-size: 19px;
       font-weight: 600;
-      color: #1d1d1f;
-      margin-bottom: 6px;
+      color: var(--text);
+      margin-bottom: 4px;
     }
 
-    .tpl-step p {
-      font-size: 16px;
-      color: #86868b;
-      line-height: 1.65;
+    .dc-step p {
+      font-size: 15px;
+      color: var(--text-sec);
+      line-height: 1.6;
+    }
+
+    /* ===== KPI 区 ===== */
+    .dc-metrics {
+      padding: 60px 0 160px;
+    }
+
+    .dc-metrics .eyebrow {
+      font-size: 48px;
+      font-weight: 700;
+      color: var(--text);
+      letter-spacing: -0.02em;
+      text-align: center;
+      margin-bottom: 12px;
+    }
+
+    .dc-metrics h2 {
+      font-size: 22px;
+      font-weight: 400;
+      color: var(--text-sec);
+      text-align: center;
+      margin-bottom: 48px;
+    }
+
+    .dc-kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 32px;
+    }
+
+    .dc-kpi-card {
+      background: var(--card-bg);
+      border-radius: 20px;
+      border: 1px solid var(--border);
+      padding: 32px 28px;
+      text-align: center;
+      transition: all 0.35s ease;
+    }
+
+    .dc-kpi-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .dc-kpi-num {
+      font-family: "SF Mono", "JetBrains Mono", "Consolas", monospace;
+      font-size: 44px;
+      font-weight: 700;
+      color: var(--brand);
+      margin-bottom: 8px;
+    }
+
+    .dc-kpi-label {
+      font-size: 19px;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 14px;
+    }
+
+    .dc-kpi-bar {
+      height: 6px;
+      border-radius: 3px;
+      background: #e8ecf0;
+      overflow: hidden;
+    }
+
+    .dc-kpi-fill {
+      height: 100%;
+      border-radius: 3px;
+      transition: width 1.2s cubic-bezier(0.25, 0.1, 0.25, 1);
+    }
+
+    .dc-kpi-fill.blue {
+      background: linear-gradient(90deg, #0071e3, #3b82f6);
+    }
+    .dc-kpi-fill.green {
+      background: linear-gradient(90deg, #16a34a, #22c55e);
+    }
+    .dc-kpi-fill.amber {
+      background: linear-gradient(90deg, #f59e0b, #fbbf24);
+    }
+    .dc-kpi-fill.purple {
+      background: linear-gradient(90deg, #7c3aed, #a78bfa);
+    }
+
+    /* ===== CTA ===== */
+    .dc-cta {
+      text-align: center;
+      padding: 80px 40px 120px;
+    }
+
+    .dc-cta h2 {
+      font-size: 36px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 16px;
+    }
+
+    .dc-cta p {
+      font-size: 19px;
+      color: var(--text-sec);
+      margin-bottom: 40px;
+    }
+
+    /* ===== 响应式 ===== */
+    @media (max-width: 1200px) {
+      .dc-kpi-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .dc-stat-bar {
+        padding: 40px 40px;
+      }
+
+      .dc-hero {
+        gap: 48px;
+      }
+
+      .dc-module {
+        gap: 48px;
+      }
     }
 
     @media (max-width: 1024px) {
+      .dc-page {
+        max-width: 94%;
+        padding: 0 20px;
+      }
 
-      .tpl-card,
-      .tpl-card:nth-child(even) {
+      .dc-hero {
+        max-width: 94%;
+        padding: 110px 20px 60px;
         flex-direction: column;
-        gap: 40px;
+        min-height: auto;
       }
 
-      .tpl-img {
-        flex: 0 0 auto;
+      .dc-hero-left {
+        flex: auto;
+        text-align: center;
+      }
+
+      .dc-hero-right {
+        min-height: 300px;
+      }
+
+      .dc-dash {
+        max-width: 360px;
+      }
+
+      .dc-module,
+      .dc-module:nth-child(even) {
+        flex-direction: column;
+      }
+
+      .dc-module-img {
+        flex: auto;
         width: 100%;
-        max-width: 500px;
+        aspect-ratio: 16/9;
       }
 
-      .tpl-body h3 {
-        font-size: 32px;
+      .dc-module-body,
+      .dc-module:nth-child(even) .dc-module-body {
+        padding: 0 40px 40px;
+      }
+
+      .dc-stat-bar {
+        grid-template-columns: repeat(2, 1fr);
+        padding: 40px 40px;
+      }
+
+      .dc-section-head .eyebrow,
+      .dc-metrics .eyebrow {
+        font-size: 36px;
+      }
+
+      .dc-section-head h2,
+      .dc-metrics h2 {
+        font-size: 20px;
+      }
+
+      .dc-hero h1 {
+        font-size: 48px;
+      }
+
+      .dc-hero-sub {
+        font-size: 20px;
       }
     }
 
     @media (max-width: 768px) {
-      .sol-hero {
-        min-height: 60vh;
+      .dc-page {
+        max-width: 96%;
+        padding: 0 12px;
       }
 
-      .sol-hero h1 {
+      .dc-hero {
+        max-width: 96%;
+        padding: 100px 12px 60px;
+        min-height: auto;
+      }
+
+      .dc-hero h1 {
         font-size: 36px;
       }
 
-      .sol-hero p {
+      .dc-hero-sub {
         font-size: 17px;
       }
 
-      .tpl-card {
-        margin-bottom: 48px;
+      .dc-dash {
+        max-width: 280px;
       }
 
-      .tpl-img {
-        border-radius: 24px;
-      }
-
-      .tpl-body h3 {
+      .dc-dash-value {
         font-size: 26px;
       }
 
-      .tpl-body>p {
-        font-size: 16px;
-        margin-bottom: 40px;
+      .dc-stat-bar {
+        grid-template-columns: repeat(2, 1fr);
+        padding: 32px 24px;
       }
 
-      .tpl-steps {
-        gap: 32px;
+      .dc-stat-item {
+        padding: 20px 8px;
       }
 
-      .tpl-badge {
-        width: 36px;
-        height: 36px;
-        border-radius: 10px;
-      }
-
-      .tpl-step h4 {
+      .dc-stat-item h3 {
         font-size: 18px;
       }
 
-      .section-head {
-        margin: 20px 0 48px;
+      .dc-stat-item p {
+        font-size: 13px;
       }
 
-      .section-head h2 {
-        font-size: 30px;
+      .dc-module {
+        margin-bottom: 48px;
       }
 
-      .section-head p {
+      .dc-module-body,
+      .dc-module:nth-child(even) .dc-module-body {
+        padding: 0 24px 32px;
+      }
+
+      .dc-module-body h3 {
+        font-size: 26px;
+      }
+
+      .dc-module-desc {
         font-size: 16px;
+        margin-bottom: 32px;
+      }
+
+      .dc-steps {
+        gap: 28px;
+      }
+
+      .dc-step h4 {
+        font-size: 17px;
+      }
+
+      .dc-section-head .eyebrow,
+      .dc-metrics .eyebrow {
+        font-size: 28px;
+      }
+
+      .dc-section-head h2,
+      .dc-metrics h2 {
+        font-size: 18px;
+      }
+
+      .dc-kpi-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+      }
+
+      .dc-kpi-num {
+        font-size: 32px;
+      }
+
+      .dc-kpi-label {
+        font-size: 17px;
       }
     }
   </style>
@@ -311,241 +708,303 @@
     </div>
   </header>
 
-  <section class="sol-hero">
-    <img class="sol-hero-bg"
-      src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1920&q=85" alt=""
-      loading="eager" onerror="this.style.display='none'">
-    <div class="sol-hero-overlay"></div>
-    <div class="sol-hero-content">
-      <h1>决策中枢</h1>
-      <p>数据驱动每一单<br>不再是凭经验拍板</p>
-    </div>
-  </section>
-
-  <section class="detail-section">
-    <div class="container">
-
-      <div class="section-head reveal">
-        <h2>决策全链路</h2>
-        <p>从预测到执行，让每一单都有数据支撑。</p>
+  <!-- ===== Hero: 数据看板 ===== -->
+  <div class="dc-hero-wrap">
+    <div class="dc-hero">
+      <div class="dc-hero-left">
+        <div class="dc-hero-badge">Decision Center · 决策中枢</div>
+        <h1>决策中枢</h1>
+        <p class="dc-hero-sub">数据驱动每一个决策<br>不再是凭经验拍板</p>
       </div>
-
-      <!-- 1 -->
-      <div class="tpl-card reveal">
-        <div class="tpl-img">
-          <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1200&q=85"
-            alt="" loading="lazy" onerror="this.style.display='none'">
-        </div>
-        <div class="tpl-body">
-          <h3>库存预测</h3>
-          <p>仓库里堆了三个月卖不掉的货，热销款却永远缺货——AI 让库存刚刚好。</p>
-          <div class="tpl-steps">
-            <div class="tpl-step">
-              <div class="tpl-badge tpl-badge--1"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"
-                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <ellipse cx="12" cy="5" rx="9" ry="3" />
-                  <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3" />
-                  <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5" />
-                </svg></div>
-              <div>
-                <h4>需求感知</h4>
-                <p>综合历史销量、季节性、促销计划、市场趋势，输出 SKU 级别库存需求预测。</p>
-              </div>
-            </div>
-            <div class="tpl-step">
-              <div class="tpl-badge tpl-badge--2"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"
-                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-                </svg></div>
-              <div>
-                <h4>安全库存</h4>
-                <p>AI 动态计算各 SKU 安全库存水位，考虑交货周期、需求波动和服务水平目标。</p>
-              </div>
-            </div>
-            <div class="tpl-step">
-              <div class="tpl-badge tpl-badge--3"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"
-                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <polyline points="22 17 13.5 8.5 8.5 13.5 2 7" />
-                  <polyline points="16 17 22 17 22 11" />
-                </svg></div>
-              <div>
-                <h4>自动建议</h4>
-                <p>库存异常自动预警：积压提醒促销、缺货建议补货，库存周转不再依赖人工判断。</p>
-              </div>
+      <div class="dc-hero-right">
+        <div class="dc-dash">
+          <div class="dc-dash-card">
+            <div class="dc-dash-label">库存健康度</div>
+            <div class="dc-dash-value">A</div>
+            <div class="dc-mini-chart">
+              <div class="dc-mini-bar" style="height:60%"></div>
+              <div class="dc-mini-bar" style="height:75%"></div>
+              <div class="dc-mini-bar" style="height:55%"></div>
+              <div class="dc-mini-bar" style="height:80%"></div>
+              <div class="dc-mini-bar" style="height:70%"></div>
+              <div class="dc-mini-bar" style="height:90%"></div>
+              <div class="dc-mini-bar" style="height:85%"></div>
+              <div class="dc-mini-bar" style="height:95%"></div>
             </div>
           </div>
-        </div>
-      </div>
-
-      <!-- 2 -->
-      <div class="tpl-card reveal">
-        <div class="tpl-img">
-          <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=85" alt=""
-            loading="lazy" onerror="this.style.display='none'">
-        </div>
-        <div class="tpl-body">
-          <h3>销量预测</h3>
-          <p>下个月能卖多少？这个数字决定了采购计划和现金流——AI 帮你算准。</p>
-          <div class="tpl-steps">
-            <div class="tpl-step">
-              <div class="tpl-badge tpl-badge--1"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"
-                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <circle cx="12" cy="12" r="10" />
-                  <line x1="2" y1="12" x2="22" y2="12" />
-                  <path
-                    d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
-                </svg></div>
-              <div>
-                <h4>多维融合</h4>
-                <p>融合历史销售、宏观指标、竞品动态、社交媒体情绪等多维信号建模。</p>
-              </div>
-            </div>
-            <div class="tpl-step">
-              <div class="tpl-badge tpl-badge--2"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"
-                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <polyline points="23 4 23 10 17 10" />
-                  <polyline points="1 20 1 14 7 14" />
-                  <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15" />
-                </svg></div>
-              <div>
-                <h4>滚动预测</h4>
-                <p>输出滚动 12 周销量预测，周周更新，预测越靠近执行越精准。</p>
-              </div>
-            </div>
-            <div class="tpl-step">
-              <div class="tpl-badge tpl-badge--3"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"
-                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <circle cx="11" cy="11" r="8" />
-                  <line x1="21" y1="21" x2="16.65" y2="16.65" />
-                </svg></div>
-              <div>
-                <h4>偏差校正</h4>
-                <p>预测与实际持续比对，模型自动学习偏差模式，越用越准。</p>
-              </div>
+          <div class="dc-dash-card">
+            <div class="dc-dash-label">需求预测</div>
+            <div class="dc-dash-value" style="color:#16a34a;">+12%</div>
+            <div class="dc-mini-chart">
+              <div class="dc-mini-bar" style="height:40%;background:#16a34a;"></div>
+              <div class="dc-mini-bar" style="height:55%;background:#16a34a;"></div>
+              <div class="dc-mini-bar" style="height:50%;background:#16a34a;"></div>
+              <div class="dc-mini-bar" style="height:65%;background:#16a34a;"></div>
+              <div class="dc-mini-bar" style="height:60%;background:#16a34a;"></div>
+              <div class="dc-mini-bar" style="height:78%;background:#16a34a;"></div>
+              <div class="dc-mini-bar" style="height:72%;background:#16a34a;"></div>
+              <div class="dc-mini-bar" style="height:90%;background:#16a34a;"></div>
             </div>
           </div>
-        </div>
-      </div>
-
-      <!-- 3 -->
-      <div class="tpl-card reveal">
-        <div class="tpl-img">
-          <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=1200&q=85"
-            alt="" loading="lazy" onerror="this.style.display='none'">
-        </div>
-        <div class="tpl-body">
-          <h3>补货建议</h3>
-          <p>每次补货都要算安全库存、在途库存、订货提前期——AI 帮你算好，你只需审核。</p>
-          <div class="tpl-steps">
-            <div class="tpl-step">
-              <div class="tpl-badge tpl-badge--1"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"
-                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <circle cx="12" cy="12" r="10" />
-                  <polygon points="12 6 12 12 16 14" />
-                </svg></div>
-              <div>
-                <h4>库存监控</h4>
-                <p>实时追踪各 SKU 库存水位、在途库存、已承诺库存，低于安全线自动标记。</p>
-              </div>
-            </div>
-            <div class="tpl-step">
-              <div class="tpl-badge tpl-badge--2"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"
-                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <line x1="12" y1="1" x2="12" y2="23" />
-                  <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
-                </svg></div>
-              <div>
-                <h4>最优计算</h4>
-                <p>考虑交货周期、价格波动、最小起订量、运费阶梯，自动生成最优补货计划。</p>
-              </div>
-            </div>
-            <div class="tpl-step">
-              <div class="tpl-badge tpl-badge--3"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"
-                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <line x1="22" y1="2" x2="11" y2="13" />
-                  <polygon points="22 2 15 22 11 13 2 9 22 2" />
-                </svg></div>
-              <div>
-                <h4>自动下单</h4>
-                <p>补货计划经审核后可自动生成采购订单，减少手工操作和录入错误。</p>
-              </div>
-            </div>
+          <div class="dc-dash-card">
+            <div class="dc-dash-label"><span class="dc-dash-dot green"></span>库存预测</div>
+            <div class="dc-dash-value">运行中</div>
+          </div>
+          <div class="dc-dash-card">
+            <div class="dc-dash-label"><span class="dc-dash-dot blue"></span>补货建议</div>
+            <div class="dc-dash-value">就绪</div>
           </div>
         </div>
-      </div>
-
-      <!-- 4 -->
-      <div class="tpl-card reveal">
-        <div class="tpl-img">
-          <img src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&w=1200&q=85"
-            alt="" loading="lazy" onerror="this.style.display='none'">
-        </div>
-        <div class="tpl-body">
-          <h3>生产计划优化</h3>
-          <p>产线切换频繁、换模成本高、工人排班乱——AI 让排产不再靠 Excel。</p>
-          <div class="tpl-steps">
-            <div class="tpl-step">
-              <div class="tpl-badge tpl-badge--1"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"
-                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <line x1="8" y1="6" x2="21" y2="6" />
-                  <line x1="8" y1="12" x2="21" y2="12" />
-                  <line x1="8" y1="18" x2="21" y2="18" />
-                  <line x1="3" y1="6" x2="3.01" y2="6" />
-                  <line x1="3" y1="12" x2="3.01" y2="12" />
-                  <line x1="3" y1="18" x2="3.01" y2="18" />
-                </svg></div>
-              <div>
-                <h4>订单排程</h4>
-                <p>综合订单优先级、交期要求、物料齐套率，自动生成最优生产排程方案。</p>
-              </div>
-            </div>
-            <div class="tpl-step">
-              <div class="tpl-badge tpl-badge--2"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"
-                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <rect x="4" y="4" width="16" height="16" rx="2" />
-                  <rect x="9" y="9" width="6" height="6" />
-                  <line x1="9" y1="1" x2="9" y2="4" />
-                  <line x1="15" y1="1" x2="15" y2="4" />
-                  <line x1="9" y1="20" x2="9" y2="23" />
-                  <line x1="15" y1="20" x2="15" y2="23" />
-                  <line x1="20" y1="9" x2="23" y2="9" />
-                  <line x1="20" y1="14" x2="23" y2="14" />
-                  <line x1="1" y1="9" x2="4" y2="9" />
-                  <line x1="1" y1="14" x2="4" y2="14" />
-                </svg></div>
-              <div>
-                <h4>产能约束</h4>
-                <p>产线产能、模具限制、工人班次——所有约束条件一次纳入，算力替代手工推演。</p>
-              </div>
-            </div>
-            <div class="tpl-step">
-              <div class="tpl-badge tpl-badge--3"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"
-                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <polyline points="23 4 23 10 17 10" />
-                  <polyline points="1 20 1 14 7 14" />
-                  <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15" />
-                </svg></div>
-              <div>
-                <h4>动态调整</h4>
-                <p>插单、物料延迟、设备故障——异常事件自动触发重排，减少产线空闲和赶工成本。</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <section class="section-sm">
-    <div class="container">
-      <div class="cta-simple reveal">
-        <h2>加入全球供应链大平台</h2>
-        <p>赋能地方资源 · 连接全球市场</p>
-        <a class="btn btn-primary btn-lg" href="../contact.html">申请加入 →</a>
       </div>
     </div>
-  </section>
+  </div>
+  <div class="dc-hero-fade"></div>
+
+  <!-- ===== 正文区 ===== -->
+  <div class="dc-page">
+
+    <!-- 能力条 -->
+    <div class="dc-stat-bar reveal">
+      <div class="dc-stat-item">
+        <div class="dc-stat-icon">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
+        </div>
+        <h3>库存决策</h3>
+        <p>SKU级别需求感知与安全库存动态计算</p>
+      </div>
+      <div class="dc-stat-item">
+        <div class="dc-stat-icon">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>
+        </div>
+        <h3>销量预测</h3>
+        <p>滚动12周多维融合预测，越靠近越精准</p>
+      </div>
+      <div class="dc-stat-item">
+        <div class="dc-stat-icon">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+        </div>
+        <h3>补货建议</h3>
+        <p>考虑交期、价格、MOQ的最优补货计划</p>
+      </div>
+      <div class="dc-stat-item">
+        <div class="dc-stat-icon">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><line x1="9" y1="2" x2="9" y2="4"/><line x1="15" y1="2" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="22"/><line x1="15" y1="20" x2="15" y2="22"/><line x1="2" y1="9" x2="4" y2="9"/><line x1="20" y1="9" x2="22" y2="9"/><line x1="2" y1="15" x2="4" y2="15"/><line x1="20" y1="15" x2="22" y2="15"/></svg>
+        </div>
+        <h3>生产排程</h3>
+        <p>产能约束下自动排程，异常事件触发重排</p>
+      </div>
+    </div>
+
+    <!-- 区域标题 -->
+    <div class="dc-section-head reveal">
+      <div class="eyebrow">CAPABILITIES</div>
+      <h2>决策全链路</h2>
+    </div>
+
+    <!-- 模块1: 库存预测 -->
+    <div class="dc-module reveal">
+      <div class="dc-module-img">
+        <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1200&q=85"
+          alt="" loading="lazy" onerror="this.style.display='none'">
+      </div>
+      <div class="dc-module-body">
+        <div class="dc-module-num">01</div>
+        <h3>库存预测</h3>
+        <p class="dc-module-desc">仓库里堆了三个月卖不掉的货，热销款却永远缺货——AI 让库存刚刚好。</p>
+        <div class="dc-steps">
+          <div class="dc-step">
+            <div class="dc-step-badge" style="background:#2563EB;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
+            </div>
+            <div>
+              <h4>需求感知</h4>
+              <p>综合历史销量、季节性、促销计划、市场趋势，输出 SKU 级别库存需求预测。</p>
+            </div>
+          </div>
+          <div class="dc-step">
+            <div class="dc-step-badge" style="background:#16A34A;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
+            <div>
+              <h4>安全库存</h4>
+              <p>AI 动态计算各 SKU 安全库存水位，考虑交货周期、需求波动和服务水平目标。</p>
+            </div>
+          </div>
+          <div class="dc-step">
+            <div class="dc-step-badge" style="background:#7C3AED;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 17 13.5 8.5 8.5 13.5 2 7"/><polyline points="16 17 22 17 22 11"/></svg>
+            </div>
+            <div>
+              <h4>自动建议</h4>
+              <p>库存异常自动预警：积压提醒促销、缺货建议补货，库存周转不再依赖人工判断。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 模块2: 销量预测 -->
+    <div class="dc-module reveal">
+      <div class="dc-module-img">
+        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=85" alt=""
+          loading="lazy" onerror="this.style.display='none'">
+      </div>
+      <div class="dc-module-body">
+        <div class="dc-module-num">02</div>
+        <h3>销量预测</h3>
+        <p class="dc-module-desc">下个月能卖多少？这个数字决定了采购计划和现金流——AI 帮你算准。</p>
+        <div class="dc-steps">
+          <div class="dc-step">
+            <div class="dc-step-badge" style="background:#2563EB;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+            </div>
+            <div>
+              <h4>多维融合</h4>
+              <p>融合历史销售、宏观指标、竞品动态、社交媒体情绪等多维信号建模。</p>
+            </div>
+          </div>
+          <div class="dc-step">
+            <div class="dc-step-badge" style="background:#16A34A;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>
+            </div>
+            <div>
+              <h4>滚动预测</h4>
+              <p>输出滚动 12 周销量预测，周周更新，预测越靠近执行越精准。</p>
+            </div>
+          </div>
+          <div class="dc-step">
+            <div class="dc-step-badge" style="background:#7C3AED;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            </div>
+            <div>
+              <h4>偏差校正</h4>
+              <p>预测与实际持续比对，模型自动学习偏差模式，越用越准。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 模块3: 补货建议 -->
+    <div class="dc-module reveal">
+      <div class="dc-module-img">
+        <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=1200&q=85"
+          alt="" loading="lazy" onerror="this.style.display='none'">
+      </div>
+      <div class="dc-module-body">
+        <div class="dc-module-num">03</div>
+        <h3>补货建议</h3>
+        <p class="dc-module-desc">每次补货都要算安全库存、在途库存、订货提前期——AI 帮你算好，你只需审核。</p>
+        <div class="dc-steps">
+          <div class="dc-step">
+            <div class="dc-step-badge" style="background:#2563EB;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polygon points="12 6 12 12 16 14"/></svg>
+            </div>
+            <div>
+              <h4>库存监控</h4>
+              <p>实时追踪各 SKU 库存水位、在途库存、已承诺库存，低于安全线自动标记。</p>
+            </div>
+          </div>
+          <div class="dc-step">
+            <div class="dc-step-badge" style="background:#16A34A;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+            </div>
+            <div>
+              <h4>最优计算</h4>
+              <p>考虑交货周期、价格波动、最小起订量、运费阶梯，自动生成最优补货计划。</p>
+            </div>
+          </div>
+          <div class="dc-step">
+            <div class="dc-step-badge" style="background:#7C3AED;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+            </div>
+            <div>
+              <h4>自动下单</h4>
+              <p>补货计划经审核后可自动生成采购订单，减少手工操作和录入错误。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 模块4: 生产计划优化 -->
+    <div class="dc-module reveal">
+      <div class="dc-module-img">
+        <img src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&w=1200&q=85"
+          alt="" loading="lazy" onerror="this.style.display='none'">
+      </div>
+      <div class="dc-module-body">
+        <div class="dc-module-num">04</div>
+        <h3>生产计划优化</h3>
+        <p class="dc-module-desc">产线切换频繁、换模成本高、工人排班乱——AI 让排产不再靠 Excel。</p>
+        <div class="dc-steps">
+          <div class="dc-step">
+            <div class="dc-step-badge" style="background:#2563EB;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+            </div>
+            <div>
+              <h4>订单排程</h4>
+              <p>综合订单优先级、交期要求、物料齐套率，自动生成最优生产排程方案。</p>
+            </div>
+          </div>
+          <div class="dc-step">
+            <div class="dc-step-badge" style="background:#16A34A;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/><line x1="20" y1="9" x2="23" y2="9"/><line x1="20" y1="14" x2="23" y2="14"/><line x1="1" y1="9" x2="4" y2="9"/><line x1="1" y1="14" x2="4" y2="14"/></svg>
+            </div>
+            <div>
+              <h4>产能约束</h4>
+              <p>产线产能、模具限制、工人班次——所有约束条件一次纳入，算力替代手工推演。</p>
+            </div>
+          </div>
+          <div class="dc-step">
+            <div class="dc-step-badge" style="background:#7C3AED;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>
+            </div>
+            <div>
+              <h4>动态调整</h4>
+              <p>插单、物料延迟、设备故障——异常事件自动触发重排，减少产线空闲和赶工成本。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== KPI 区 ===== -->
+    <div class="dc-metrics reveal">
+      <div class="eyebrow">METRICS</div>
+      <h2>决策量化 · 可衡量</h2>
+      <div class="dc-kpi-grid">
+        <div class="dc-kpi-card">
+          <div class="dc-kpi-num">库存周转</div>
+          <div class="dc-kpi-label">需求感知驱动</div>
+          <div class="dc-kpi-bar"><div class="dc-kpi-fill blue" style="width:88%;"></div></div>
+        </div>
+        <div class="dc-kpi-card">
+          <div class="dc-kpi-num">预测精度</div>
+          <div class="dc-kpi-label">滚动12周持续优化</div>
+          <div class="dc-kpi-bar"><div class="dc-kpi-fill green" style="width:85%;"></div></div>
+        </div>
+        <div class="dc-kpi-card">
+          <div class="dc-kpi-num">补货效率</div>
+          <div class="dc-kpi-label">AI计算替代手工推演</div>
+          <div class="dc-kpi-bar"><div class="dc-kpi-fill amber" style="width:82%;"></div></div>
+        </div>
+        <div class="dc-kpi-card">
+          <div class="dc-kpi-num">排产优化</div>
+          <div class="dc-kpi-label">产能利用率最大化</div>
+          <div class="dc-kpi-bar"><div class="dc-kpi-fill purple" style="width:90%;"></div></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ===== CTA ===== -->
+  <div class="dc-cta">
+    <h2>准备好让数据驱动每一个决策了吗？</h2>
+    <p>从库存到排产，AI 帮你算好每一步。</p>
+    <a class="btn btn-primary btn-lg" href="../contact.html">申请加入 →</a>
+  </div>
 
   <footer class="footer">
     <div class="container">
@@ -579,21 +1038,28 @@
             <li><a href="risk-radar.html">风险雷达</a></li>
             <li><a href="decision-center.html">决策中枢</a></li>
           </ul>
-        </div>
-
-        <div>
-          <h5>了解更多</h5>
-          <ul>
-            <li><a href="../why-us.html">为什么选我们</a></li>
-            <li><a href="../pain-points.html">痛点与方案</a></li>
-            <li><a href="../intel.html">供应链新闻台</a>
-              <a href="../contact.html">申请加入</a>
-            </li>
-            <li><a href="../contact.html">联系我们</a></li>
-          </ul>
-        </div>
       </div>
-      <div class="footer-bottom">
+      <div>
+        <h5>平台能力</h5>
+        <ul>
+          <li><a href="solutions/precision-sourcing.html">智能寻源匹配</a></li>
+          <li><a href="solutions/smart-procurement.html">自动化采购</a></li>
+          <li><a href="solutions/trusted-delivery.html">全链路追踪</a></li>
+          <li><a href="solutions/risk-radar.html">风险预警监控</a></li>
+          <li><a href="solutions/decision-center.html">数据决策分析</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>公司</h5>
+        <ul>
+          <li><a href="about.html">关于我们</a></li>
+          <li><a href="contact.html">联系我们</a></li>
+          <li><a href="intel.html">新闻资讯</a></li>
+          <li><a href="careers.html">加入我们</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
         <span>&copy; 2026 全球供应链大平台. 保留所有权利. <a
             href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=44010602010128" target="_blank"
             rel="noreferrer">粤公网安备44010602010128号</a> | <a href="https://beian.miit.gov.cn/" target="_blank"
