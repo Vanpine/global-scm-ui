@@ -12,11 +12,11 @@
     if (/^news-/.test(path)) path = 'intel.html';
     // 痛点与方案已并入「解决方案」，访问时高亮解决方案
     if (path === 'pain-points.html') path = 'solutions.html';
-    document.querySelectorAll('.nav-links a').forEach(function (a) {
-      var href = a.getAttribute('href');
+    document.querySelectorAll('.nav-links [data-href]').forEach(function (el) {
+      var href = el.getAttribute('data-href');
       if (!href) return;
       if (href === path || (path === '' && href === 'index.html')) {
-        a.classList.add('active');
+        el.classList.add('active');
       }
     });
   }
@@ -26,11 +26,25 @@
     var toggle = document.querySelector('.nav-toggle');
     var navbar = document.querySelector('.navbar');
     if (!toggle || !navbar) return;
-    toggle.addEventListener('click', function () {
+    function closeMenu() {
+      navbar.classList.remove('open');
+      navbar.classList.remove('dropdown-open');
+      navbar.querySelectorAll('.nav-dropdown.open').forEach(function (dropdown) {
+        dropdown.classList.remove('open');
+      });
+    }
+    toggle.addEventListener('click', function (e) {
+      e.stopPropagation();
       navbar.classList.toggle('open');
     });
-    navbar.querySelectorAll('.nav-links a').forEach(function (a) {
-      a.addEventListener('click', function () { navbar.classList.remove('open'); });
+    navbar.querySelectorAll('.nav-links > .nav-item, .nav-links .nav-dropdown-menu [data-href]').forEach(function (el) {
+      el.addEventListener('click', closeMenu);
+    });
+    // 点击导航栏外部 → 关闭移动端菜单
+    document.addEventListener('click', function (e) {
+      if (navbar.classList.contains('open') && !navbar.contains(e.target)) {
+        closeMenu();
+      }
     });
   }
 
@@ -278,6 +292,7 @@
       var toggle = dropdown.querySelector('.nav-dropdown-toggle');
 
       dropdown.addEventListener('mouseenter', function() {
+        if (window.innerWidth <= 768) return;
         clearTimeout(timer);
         // 关闭其他下拉 + 恢复导航栏圆角
         document.querySelectorAll('.nav-dropdown.open').forEach(function(d) {
@@ -288,6 +303,7 @@
       });
 
       dropdown.addEventListener('mouseleave', function() {
+        if (window.innerWidth <= 768) return;
         timer = setTimeout(function() {
           dropdown.classList.remove('open');
           if (navbar && !document.querySelector('.nav-dropdown.open')) {
@@ -301,9 +317,13 @@
         toggle.addEventListener('click', function(e) {
           if (window.innerWidth > 768) return;
           e.preventDefault();
-          var isOpen = dropdown.classList.toggle('open');
+          e.stopPropagation();
+          document.querySelectorAll('.nav-dropdown.open').forEach(function(d) {
+            if (d !== dropdown) d.classList.remove('open');
+          });
+          dropdown.classList.toggle('open');
           if (navbar) {
-            navbar.classList.toggle('dropdown-open', isOpen || document.querySelector('.nav-dropdown.open'));
+            navbar.classList.toggle('dropdown-open', !!document.querySelector('.nav-dropdown.open'));
           }
         });
       }
@@ -318,7 +338,39 @@
     });
   }
 
+  /* ---------- 0. 导航栏 a 转 div ---------- */
+  function initNavDivs() {
+    var navLinks = document.querySelector('.nav-links');
+    if (!navLinks) return;
+
+    navLinks.querySelectorAll('a').forEach(function (a) {
+      var div = document.createElement('div');
+      if (a.className) div.className = a.className;
+      if (a.parentNode === navLinks) div.classList.add('nav-item');
+      if (a.closest('.nav-dropdown-menu')) div.classList.add('nav-sub-item');
+      div.innerHTML = a.innerHTML;
+      if (a.getAttribute('href')) {
+        div.setAttribute('data-href', a.getAttribute('href'));
+      }
+
+      // 直接在 div 上绑定点击
+      div.addEventListener('click', function (e) {
+        if (div.classList.contains('nav-dropdown-toggle')) {
+          // 仅桌面端跳转，移动端由 initDropdowns 控制手风琴
+          if (window.innerWidth > 768) {
+            location.href = div.getAttribute('data-href');
+          }
+          return;
+        }
+        location.href = div.getAttribute('data-href');
+      });
+
+      a.parentNode.replaceChild(div, a);
+    });
+  }
+
   document.addEventListener('DOMContentLoaded', function () {
+    initNavDivs();
     highlightNav();
     initMobileMenu();
     initReveal();

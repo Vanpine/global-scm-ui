@@ -6,274 +6,902 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>智慧采购 · 全球供应链大平台</title>
   <link rel="icon" type="image/png" href="../assets/logo-icon.png">
-  <meta name="description" content="AI驱动的自动询盘、智能比价与采购方案生成——让采购从手动变成自动，每一单都算得明明白白。">
+  <meta name="description" content="AI驱动的自动询盘、智能比价、合同管理与采购方案生成——让采购从手动变成自动，每一单都算得明明白白。">
   <meta property="og:title" content="智慧采购 · 全球供应链大平台">
-  <meta property="og:description" content="AI驱动的自动询盘、智能比价与采购方案生成——让采购从手动变成自动，每一单都算得明明白白。">
+  <meta property="og:description" content="AI驱动的自动询盘、智能比价、合同管理与采购方案生成——让采购从手动变成自动，每一单都算得明明白白。">
   <meta property="og:image" content="https://www.globalscm.com/assets/og-solutions.png">
   <meta property="og:url" content="https://www.globalscm.com/solutions/smart-procurement.html">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Global SCM">
   <link rel="stylesheet" href="../css/style.css">
   <style>
-    .sol-hero {
-      min-height: 80vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
+    :root {
+      --bg: #F8FAFC;
+      --card-bg: #fff;
+      --brand: #0071e3;
+      --brand-dark: #005bb5;
+      --text: #1d1d1f;
+      --text-sec: #86868b;
+      --border: #e8ecf0;
+      --shadow-sm: 0 2px 12px rgba(0, 0, 0, 0.04);
+      --shadow: 0 8px 32px rgba(0, 0, 0, 0.07);
+      --shadow-lg: 0 20px 60px rgba(0, 0, 0, 0.10);
+    }
+
+    body {
+      background: var(--bg);
+    }
+
+    .sp-page {
+      max-width: 75%;
+      margin: 0 auto;
+      padding: 0 40px;
       position: relative;
-      overflow: hidden;
-      color: #fff;
     }
 
-    .sol-hero-bg {
-      position: absolute;
+    .sp-page::before {
+      content: "";
+      position: fixed;
       inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
       pointer-events: none;
+      z-index: 0;
+      background-image: radial-gradient(circle, rgba(0, 113, 227, 0.06) 1px, transparent 1px);
+      background-size: 28px 28px;
+      mask-image: radial-gradient(ellipse at 50% 0%, black 40%, transparent 70%);
+      -webkit-mask-image: radial-gradient(ellipse at 50% 0%, black 40%, transparent 70%);
     }
 
-    .sol-hero-overlay {
-      position: absolute;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.45);
+    .sp-page>* {
+      position: relative;
       z-index: 1;
     }
 
-    .sol-hero-content {
-      position: relative;
-      z-index: 2;
-      padding: 0 32px;
-    }
-
-    .sol-hero h1 {
-      font-size: 72px;
-      font-weight: 700;
-      letter-spacing: 0.04em;
-      margin-bottom: 24px;
-      line-height: 1.1;
-    }
-
-    .sol-hero p {
-      font-size: 24px;
-      opacity: 0.85;
-      line-height: 1.5;
-      max-width: 520px;
-      margin: 0 auto;
-    }
-
-    .detail-section {
-      padding: 80px 0 40px;
-    }
-
-    .detail-section .container {
-      max-width: 1600px;
-      width: 90%;
-    }
-
-    .section-head {
-      text-align: center;
-      margin: 40px 0 80px;
-    }
-
-    .section-head h2 {
-      font-size: 48px;
-      font-weight: 700;
-      letter-spacing: -0.03em;
-      color: #1d1d1f;
-      margin-bottom: 16px;
-    }
-
-    .section-head p {
-      font-size: 20px;
-      color: #86868b;
-    }
-
-    .tpl-card {
+    /* ===== Hero 55:45 ===== */
+    .sp-hero {
       display: flex;
       gap: 80px;
       align-items: center;
-      max-width: 1400px;
-      margin: 0 auto 80px;
-      transition: transform 0.4s var(--ease);
+      min-height: 90vh;
+      padding: 130px 0 80px;
     }
 
-    .tpl-card:hover {
+    .sp-hero-left {
+      flex: 0 0 55%;
+    }
+
+    .sp-hero-right {
+      flex: 1;
+      position: relative;
+    }
+
+    .sp-hero h1 {
+      font-size: 72px;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      color: var(--text);
+      line-height: 1.08;
+      margin-bottom: 20px;
+    }
+
+    .sp-hero .sp-hero-sub {
+      font-size: 24px;
+      color: var(--text-sec);
+      line-height: 1.6;
+      margin-bottom: 48px;
+    }
+
+    /* 4个能力卡片 */
+    .sp-cap-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+
+    .sp-cap-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 24px 18px 20px;
+      text-align: center;
+      transition: all 0.35s ease;
+      cursor: default;
+    }
+
+    .sp-cap-card:hover {
       transform: translateY(-4px);
+      box-shadow: var(--shadow);
+      border-color: var(--brand);
     }
 
-    .tpl-card:nth-child(even) {
-      flex-direction: row-reverse;
+    .sp-cap-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: #eef4ff;
+      color: var(--brand);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 14px;
     }
 
-    .tpl-img {
-      flex: 0 0 45%;
+    .sp-cap-card h4 {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+
+    .sp-cap-card p {
+      font-size: 16px;
+      color: var(--text-sec);
+      line-height: 1.4;
+    }
+
+    /* 右侧：采购数据看板 */
+    .sp-hub-wrap {
+      position: relative;
+      width: 100%;
       aspect-ratio: 1;
-      border-radius: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* 中央大卡片 */
+    .sp-hub-card {
+      width: 240px;
+      background: var(--card-bg);
+      border-radius: 24px;
+      padding: 36px 32px;
+      box-shadow: var(--shadow-lg);
+      border: 1px solid var(--border);
+      text-align: center;
+      z-index: 2;
+      position: relative;
+    }
+
+    .sp-hub-badge {
+      width: 64px;
+      height: 64px;
+      border-radius: 18px;
+      margin: 0 auto 20px;
+      background: linear-gradient(135deg, var(--brand), #3b82f6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 8px 28px rgba(0, 113, 227, 0.25);
+    }
+
+    .sp-hub-card h3 {
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+
+    .sp-hub-card p {
+      font-size: 16px;
+      color: var(--text-sec);
+      line-height: 1.5;
+    }
+
+    .sp-hub-stat {
+      display: flex;
+      gap: 32px;
+      justify-content: center;
+      margin-top: 20px;
+      padding-top: 20px;
+      border-top: 1px solid var(--border);
+    }
+
+    .sp-hub-stat-item {
+      text-align: center;
+    }
+
+    .sp-hub-stat-num {
+      font-size: 26px;
+      font-weight: 700;
+      color: var(--brand);
+    }
+
+    .sp-hub-stat-label {
+      font-size: 13px;
+      color: var(--text-sec);
+    }
+
+    /* 四角小卡片 */
+    .sp-mini-card {
+      position: absolute;
+      background: var(--card-bg);
+      border-radius: 14px;
+      padding: 14px 18px;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      z-index: 1;
+      transition: all 0.35s ease;
+    }
+
+    .sp-mini-card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow);
+      border-color: var(--brand);
+    }
+
+    .sp-mini-card.tl {
+      top: 5%;
+      left: 0;
+    }
+
+    .sp-mini-card.tr {
+      top: 5%;
+      right: 0;
+    }
+
+    .sp-mini-card.bl {
+      bottom: 5%;
+      left: 0;
+    }
+
+    .sp-mini-card.br {
+      bottom: 5%;
+      right: 0;
+    }
+
+    .sp-mini-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .sp-mini-dot.dot1 {
+      background: #0071e3;
+      box-shadow: 0 0 8px rgba(0, 113, 227, 0.4);
+    }
+
+    .sp-mini-dot.dot2 {
+      background: #2563eb;
+      box-shadow: 0 0 8px rgba(37, 99, 235, 0.4);
+    }
+
+    .sp-mini-dot.dot3 {
+      background: #3b82f6;
+      box-shadow: 0 0 8px rgba(59, 130, 246, 0.4);
+    }
+
+    .sp-mini-dot.dot4 {
+      background: #60a5fa;
+      box-shadow: 0 0 8px rgba(96, 165, 250, 0.4);
+    }
+
+    .sp-mini-card span {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--text);
+      white-space: nowrap;
+    }
+
+    /* 四角到中心的虚线连接 */
+    .sp-conn-lines {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      background:
+        linear-gradient(135deg, transparent calc(35% - 1px), rgba(0, 113, 227, 0.12) 35%, transparent calc(35% + 1px)),
+        linear-gradient(45deg, transparent calc(35% - 1px), rgba(0, 113, 227, 0.12) 35%, transparent calc(35% + 1px)),
+        linear-gradient(225deg, transparent calc(35% - 1px), rgba(0, 113, 227, 0.12) 35%, transparent calc(35% + 1px)),
+        linear-gradient(315deg, transparent calc(35% - 1px), rgba(0, 113, 227, 0.12) 35%, transparent calc(35% + 1px));
+    }
+
+    /* ===== 痛点区 ===== */
+    .sp-pain {
+      padding: 80px 0 100px;
+    }
+
+    .sp-pain-intro {
+      text-align: center;
+      margin-bottom: 64px;
+    }
+
+    .sp-pain-intro h2 {
+      font-size: 48px;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      color: var(--text);
+      margin-bottom: 20px;
+    }
+
+    .sp-pain-intro p {
+      font-size: 20px;
+      color: var(--text-sec);
+      line-height: 1.7;
+      max-width: 640px;
+      margin: 0 auto;
+    }
+
+    .sp-pain-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .sp-pain-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 40px 32px;
+      transition: all 0.35s ease;
+      position: relative;
       overflow: hidden;
-      box-shadow: 0 24px 80px rgba(0, 0, 0, 0.10);
-      transition: box-shadow 0.4s var(--ease), transform 0.4s var(--ease);
     }
 
-    .tpl-card:hover .tpl-img {
-      box-shadow: 0 32px 100px rgba(0, 0, 0, 0.15);
-      transform: scale(1.02);
+    .sp-pain-card::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: var(--brand);
+      opacity: 0;
+      transition: opacity 0.35s ease;
     }
 
-    .tpl-img img {
+    .sp-pain-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
+      border-color: var(--brand);
+    }
+
+    .sp-pain-card:hover::after {
+      opacity: 1;
+    }
+
+    .sp-pain-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 16px;
+      background: linear-gradient(135deg, #eef4ff, #dbeafe);
+      color: var(--brand);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 24px;
+      font-size: 24px;
+    }
+
+    .sp-pain-card h3 {
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 16px;
+    }
+
+    .sp-pain-card ul {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 16px;
+    }
+
+    .sp-pain-card ul li {
+      position: relative;
+      padding-left: 20px;
+      font-size: 17px;
+      color: #555;
+      line-height: 1.7;
+      margin-bottom: 8px;
+    }
+
+    .sp-pain-card ul li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 9px;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--brand);
+      opacity: 0.4;
+    }
+
+    .sp-pain-quote {
+      font-size: 16px;
+      color: var(--text-sec);
+      line-height: 1.6;
+      background: #f8f9fb;
+      border-radius: 10px;
+      padding: 14px 18px;
+      border-left: 3px solid var(--brand);
+    }
+
+    /* ===== 管道详情区 ===== */
+    .sp-flow {
+      padding: 20px 0;
+    }
+
+    .sp-flow-section-title {
+      text-align: center;
+      margin-bottom: 80px;
+    }
+
+    .sp-flow-section-title h2 {
+      font-size: 48px;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      color: var(--text);
+      margin-bottom: 16px;
+    }
+
+    .sp-flow-section-title p {
+      font-size: 20px;
+      color: var(--text-sec);
+    }
+
+    /* 单个阶段 */
+    .sp-stage {
+      margin-bottom: 80px;
+    }
+
+    .sp-stage-header {
+      display: flex;
+      align-items: center;
+      gap: 48px;
+      margin-bottom: 48px;
+      padding: 40px 48px;
+      background: var(--card-bg);
+      border-radius: 24px;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .sp-stage-illus {
+      flex: 0 0 40%;
+      min-height: 320px;
+      border-radius: 16px;
+      overflow: hidden;
+    }
+
+    .sp-stage-illus img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      transition: transform 0.6s var(--ease);
+      display: block;
+      transition: transform 0.6s cubic-bezier(0.25, 0.1, 0.25, 1);
     }
 
-    .tpl-card:hover .tpl-img img {
+    .sp-stage-illus:hover img {
       transform: scale(1.06);
     }
 
-    .tpl-body {
-      flex: 1 1 auto;
+    .sp-stage-header-content {
+      flex: 1;
+      min-width: 0;
+      padding-right: 16px;
     }
 
-    .tpl-body h3 {
-      font-size: 40px;
+    .sp-stage-num-badge {
+      flex-shrink: 0;
+      width: 56px;
+      height: 56px;
+      border-radius: 16px;
+      background: linear-gradient(135deg, var(--brand), #3b82f6);
+      color: #fff;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+
+    .sp-stage-header-content h3 {
+      font-size: 42px;
       font-weight: 700;
       letter-spacing: -0.02em;
-      color: #1d1d1f;
-      margin-bottom: 12px;
+      color: var(--text);
+      margin-bottom: 14px;
     }
 
-    .tpl-body>p {
-      font-size: 19px;
-      color: #86868b;
-      line-height: 1.6;
-      margin-bottom: 56px;
+    .sp-stage-header-content .sp-stage-tagline {
+      font-size: 21px;
+      color: #6b7280;
+      font-weight: 500;
+      margin-bottom: 14px;
     }
 
-    .tpl-steps {
-      display: flex;
-      flex-direction: column;
-      gap: 48px;
+    .sp-stage-header-content .sp-stage-desc {
+      font-size: 20px;
+      color: var(--text-sec);
+      line-height: 1.85;
     }
 
-    .tpl-step {
+    /* 子步骤卡片：左图标 + 右内容 */
+    .sp-step-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .sp-step-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 36px 28px;
+      transition: all 0.35s ease;
       display: flex;
       gap: 20px;
       align-items: flex-start;
     }
 
-    .tpl-badge {
+    .sp-step-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-lg);
+      border-color: var(--brand);
+    }
+
+    .sp-step-icon {
       flex-shrink: 0;
-      width: 40px;
-      height: 40px;
-      border-radius: 12px;
-      display: grid;
-      place-items: center;
-      font-size: 17px;
+      width: 48px;
+      height: 48px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, #eef4ff, #dbeafe);
+      color: var(--brand);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .sp-step-body h4 {
+      font-size: 20px;
       font-weight: 700;
-      color: #fff;
-    }
-
-    .tpl-badge--1 {
-      background: #2563EB;
-    }
-
-    .tpl-badge--2 {
-      background: #16A34A;
-    }
-
-    .tpl-badge--3 {
-      background: #7C3AED;
-    }
-
-    .tpl-step h4 {
-      font-size: 21px;
-      font-weight: 600;
-      color: #1d1d1f;
+      color: var(--text);
       margin-bottom: 6px;
     }
 
-    .tpl-step p {
+    .sp-step-body .sp-step-one {
       font-size: 16px;
-      color: #86868b;
+      color: var(--text-sec);
+      line-height: 1.6;
+      margin-bottom: 14px;
+    }
+
+    .sp-step-body ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .sp-step-body ul li {
+      position: relative;
+      padding-left: 18px;
+      font-size: 16px;
+      color: #555;
       line-height: 1.65;
+      margin-bottom: 7px;
+    }
+
+    .sp-step-body ul li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 9px;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--brand);
+      opacity: 0.45;
+    }
+
+    /* 阶段间连接 */
+    .sp-stage-connector {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 80px;
+      color: rgba(0, 113, 227, 0.35);
+      font-size: 12px;
+    }
+
+    .sp-stage-connector::before,
+    .sp-stage-connector::after {
+      content: "";
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(0, 113, 227, 0.25), transparent);
+    }
+
+    /* ===== KPI ===== */
+    .sp-metrics {
+      padding: 80px 0 100px;
+    }
+
+    .sp-metrics h2 {
+      font-size: 48px;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      color: var(--text);
+      text-align: center;
+      margin-bottom: 16px;
+    }
+
+    .sp-metrics-sub {
+      font-size: 20px;
+      color: var(--text-sec);
+      text-align: center;
+      margin-bottom: 64px;
+    }
+
+    .sp-kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+    }
+
+    .sp-kpi-card {
+      background: var(--card-bg);
+      border-radius: 20px;
+      padding: 40px 28px;
+      text-align: center;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-sm);
+      transition: all 0.35s ease;
+    }
+
+    .sp-kpi-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .sp-kpi-num {
+      font-size: 48px;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      color: var(--brand);
+      margin-bottom: 8px;
+      line-height: 1.1;
+    }
+
+    .sp-kpi-unit {
+      font-size: 18px;
+      font-weight: 400;
+      color: var(--brand);
+      opacity: 0.7;
+    }
+
+    .sp-kpi-label {
+      font-size: 20px;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+
+    .sp-kpi-desc {
+      font-size: 16px;
+      color: var(--text-sec);
+      line-height: 1.6;
+    }
+
+    /* ===== 收尾 ===== */
+    .sp-closing {
+      padding: 80px 0 120px;
+      text-align: center;
+      max-width: 680px;
+      margin: 0 auto;
+    }
+
+    .sp-closing-divider {
+      width: 60px;
+      height: 3px;
+      background: var(--brand);
+      border-radius: 2px;
+      margin: 0 auto 48px;
+    }
+
+    .sp-closing h2 {
+      font-size: 40px;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      color: var(--text);
+      margin-bottom: 24px;
+    }
+
+    .sp-closing p {
+      font-size: 20px;
+      color: var(--text-sec);
+      line-height: 1.8;
+      margin-bottom: 16px;
+    }
+
+    .sp-closing .sp-closing-final {
+      font-size: 22px;
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    /* ===== 响应式 ===== */
+    @media (max-width: 1200px) {
+      .sp-kpi-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
     }
 
     @media (max-width: 1024px) {
+      .sp-page {
+        max-width: 94%;
+        padding: 0 20px;
+      }
 
-      .tpl-card,
-      .tpl-card:nth-child(even) {
+      .sp-hero {
         flex-direction: column;
-        gap: 40px;
+        gap: 48px;
+        min-height: auto;
+        padding: 120px 0 60px;
       }
 
-      .tpl-img {
-        flex: 0 0 auto;
-        width: 100%;
-        max-width: 500px;
+      .sp-hero-left {
+        flex: auto;
+        text-align: center;
       }
 
-      .tpl-body h3 {
-        font-size: 32px;
+      .sp-hero-right {
+        max-width: 400px;
+        margin: 0 auto;
+      }
+
+      .sp-cap-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .sp-pain-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+
+      .sp-step-row {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+
+      .sp-stage-header {
+        flex-direction: column;
+        gap: 24px;
+        padding: 32px 28px;
+      }
+
+      .sp-stage-illus {
+        flex: 0 0 38%;
+        min-height: 240px;
+      }
+
+      .sp-stage-header-content h3 {
+        font-size: 34px;
+      }
+
+      .sp-pain-intro h2,
+      .sp-flow-section-title h2,
+      .sp-metrics h2 {
+        font-size: 36px;
+      }
+
+      .sp-closing h2 {
+        font-size: 30px;
       }
     }
 
     @media (max-width: 768px) {
-      .sol-hero {
-        min-height: 60vh;
+      .sp-page {
+        max-width: 96%;
+        padding: 0 12px;
       }
 
-      .sol-hero h1 {
+      .sp-hero {
+        padding: 100px 0 64px;
+      }
+
+      .sp-hero h1 {
         font-size: 36px;
       }
 
-      .sol-hero p {
+      .sp-hero .sp-hero-sub {
+        font-size: 17px;
+        margin-bottom: 32px;
+      }
+
+      .sp-cap-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+      }
+
+      .sp-cap-card {
+        padding: 16px 12px;
+      }
+
+      .sp-hub-card {
+        width: 200px;
+        padding: 28px 24px;
+      }
+
+      .sp-hub-badge {
+        width: 52px;
+        height: 52px;
+        border-radius: 14px;
+      }
+
+      .sp-hub-card h3 {
+        font-size: 20px;
+      }
+
+      .sp-mini-card {
+        padding: 10px 14px;
+      }
+
+      .sp-mini-card span {
+        font-size: 14px;
+      }
+
+      .sp-stage-header {
+        padding: 24px 20px;
+        border-radius: 18px;
+        gap: 20px;
+      }
+
+      .sp-stage-illus {
+        flex: 0 0 100%;
+        min-height: 200px;
+      }
+
+      .sp-stage-header-content h3 {
+        font-size: 28px;
+      }
+
+      .sp-stage-header-content .sp-stage-desc {
         font-size: 17px;
       }
 
-      .tpl-card {
-        margin-bottom: 48px;
+      .sp-step-card {
+        padding: 28px 20px;
+        flex-direction: column;
+        gap: 14px;
       }
 
-      .tpl-img {
-        border-radius: 24px;
+      .sp-step-body h4 {
+        font-size: 19px;
       }
 
-      .tpl-body h3 {
-        font-size: 26px;
+      .sp-kpi-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
       }
 
-      .tpl-body>p {
-        font-size: 16px;
-        margin-bottom: 40px;
+      .sp-kpi-card {
+        padding: 28px 20px;
       }
 
-      .tpl-steps {
-        gap: 32px;
+      .sp-kpi-num {
+        font-size: 36px;
       }
 
-      .tpl-badge {
-        width: 36px;
-        height: 36px;
-        border-radius: 10px;
+      .sp-closing {
+        padding: 48px 0 80px;
       }
 
-      .tpl-step h4 {
-        font-size: 18px;
+      .sp-closing h2 {
+        font-size: 24px;
       }
 
-      .section-head {
-        margin: 20px 0 48px;
+      .sp-closing p {
+        font-size: 17px;
       }
 
-      .section-head h2 {
-        font-size: 30px;
-      }
-
-      .section-head p {
-        font-size: 16px;
+      .sp-stage {
+        margin-bottom: 56px;
       }
     }
   </style>
@@ -288,7 +916,11 @@
       <nav class="nav-links">
         <a href="../index.html">首页</a>
         <div class="nav-dropdown">
-          <a href="../solutions.html" class="nav-dropdown-toggle">解决方案 <span class="nav-dropdown-arrow">▼</span></a>
+          <a href="../solutions.html" class="nav-dropdown-toggle">解决方案 <span class="nav-dropdown-arrow"><svg width="10"
+                height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="6 9 12 15 18 9" />
+              </svg></span></a>
           <div class="nav-dropdown-menu">
             <div class="nav-dropdown-menu-inner">
               <a href="precision-sourcing.html">精准寻源</a>
@@ -313,237 +945,486 @@
     </div>
   </header>
 
-  <section class="sol-hero">
-    <img class="sol-hero-bg"
-      src="https://images.unsplash.com/photo-1553877522-43269d4ea984?auto=format&fit=crop&w=1920&q=85" alt=""
-      loading="eager" onerror="this.style.display='none'">
-    <div class="sol-hero-overlay"></div>
-    <div class="sol-hero-content">
-      <h1>智慧采购</h1>
-      <p>从手工操作到 AI 驱动<br>询盘比价，自动搞定</p>
-    </div>
-  </section>
+  <div class="sp-page">
 
-  <section class="detail-section">
-    <div class="container">
+    <!-- ===== Hero 55:45 ===== -->
+    <section class="sp-hero">
+      <div class="sp-hero-left">
+        <h1>智慧采购</h1>
+        <p class="sp-hero-sub">AI 驱动的采购全链路——从询盘到方案，让每一单都算得明明白白。</p>
+        <div class="sp-cap-grid">
+          <div class="sp-cap-card">
+            <div class="sp-cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="3" width="20" height="14" rx="2" />
+                <line x1="8" y1="21" x2="16" y2="21" />
+                <line x1="12" y1="17" x2="12" y2="21" />
+              </svg></div>
+            <h4>自动询盘</h4>
+            <p>需求自动分发</p>
+          </div>
+          <div class="sp-cap-card">
+            <div class="sp-cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="18" y1="20" x2="18" y2="10" />
+                <line x1="12" y1="20" x2="12" y2="4" />
+                <line x1="6" y1="20" x2="6" y2="14" />
+              </svg></div>
+            <h4>智能比价</h4>
+            <p>全成本透明对比</p>
+          </div>
+          <div class="sp-cap-card">
+            <div class="sp-cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                <polyline points="14 2 14 8 20 8" />
+              </svg></div>
+            <h4>合同管理</h4>
+            <p>AI 秒级审阅</p>
+          </div>
+          <div class="sp-cap-card">
+            <div class="sp-cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <ellipse cx="12" cy="5" rx="9" ry="3" />
+                <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3" />
+                <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5" />
+              </svg></div>
+            <h4>方案生成</h4>
+            <p>数据驱动决策</p>
+          </div>
+        </div>
+      </div>
+      <div class="sp-hero-right">
+        <div class="sp-hub-wrap">
+          <!-- 中央大卡片 -->
+          <div class="sp-hub-card">
+            <div class="sp-hub-badge">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+                <polyline points="22 4 12 14.01 9 11.01" />
+              </svg>
+            </div>
+            <h3>AI 采购引擎</h3>
+            <p>询盘 · 比价 · 合同 · 方案<br>一条管道贯穿</p>
+            <div class="sp-hub-stat">
+              <div class="sp-hub-stat-item">
+                <div class="sp-hub-stat-num">4×</div>
+                <div class="sp-hub-stat-label">全链路阶段</div>
+              </div>
+              <div class="sp-hub-stat-item">
+                <div class="sp-hub-stat-num">12</div>
+                <div class="sp-hub-stat-label">关键节点</div>
+              </div>
+            </div>
+          </div>
+          <!-- 四角小卡片 -->
+          <div class="sp-mini-card tl">
+            <div class="sp-mini-dot dot1"></div><span>自动询盘</span>
+          </div>
+          <div class="sp-mini-card tr">
+            <div class="sp-mini-dot dot2"></div><span>智能比价</span>
+          </div>
+          <div class="sp-mini-card bl">
+            <div class="sp-mini-dot dot3"></div><span>合同管理</span>
+          </div>
+          <div class="sp-mini-card br">
+            <div class="sp-mini-dot dot4"></div><span>方案生成</span>
+          </div>
+          <!-- 虚线连接 -->
+          <div class="sp-conn-lines"></div>
+        </div>
+      </div>
+    </section>
 
-      <div class="section-head reveal">
-        <h2>采购全链路</h2>
-        <p>从询盘到方案，每一步都自动化。</p>
+    <!-- ===== 痛点区 ===== -->
+    <section class="sp-pain">
+      <div class="sp-pain-intro">
+        <h2>采购中的常见问题</h2>
+        <p>不是采购人不专业，是工具没跟上。询盘靠邮件群发、比价靠 Excel 手工、合同靠人眼逐行比对——这套流程几十年没有进化过。</p>
+      </div>
+      <div class="sp-pain-grid">
+        <div class="sp-pain-card">
+          <div class="sp-pain-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="3" width="20" height="14" rx="2" />
+              <line x1="8" y1="21" x2="16" y2="21" />
+              <line x1="12" y1="17" x2="12" y2="21" />
+            </svg>
+          </div>
+          <h3>手工低效</h3>
+          <ul>
+            <li>一封邮件抄送 8 个供应商，回复格式各异——PDF、微信、邮件正文</li>
+            <li>每天花 3 小时录入报价，再花 2 小时核对规格和交期</li>
+            <li>真正用来做判断的时间不到 20%</li>
+          </ul>
+          <p class="sp-pain-quote">"我每天不是在采购，是在当数据录入员。"</p>
+        </div>
+        <div class="sp-pain-card">
+          <div class="sp-pain-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <line x1="18" y1="20" x2="18" y2="10" />
+              <line x1="12" y1="20" x2="12" y2="4" />
+              <line x1="6" y1="20" x2="6" y2="14" />
+            </svg>
+          </div>
+          <h3>比价片面</h3>
+          <ul>
+            <li>只比单价：A 报 $12.5 FOB，B 报 $13.2 CIF——基准不同无法直接比</li>
+            <li>运费、关税、保险、汇率、付款账期——隐性成本全部被忽略</li>
+            <li>算上全成本后 A 反而比 B 贵 18%，只比单价等于闭眼决策</li>
+          </ul>
+          <p class="sp-pain-quote">FOB、CIF、DDP——每个字母背后都是钱。</p>
+        </div>
+        <div class="sp-pain-card">
+          <div class="sp-pain-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" />
+              <line x1="12" y1="9" x2="12" y2="13" />
+              <line x1="12" y1="17" x2="12.01" y2="17" />
+            </svg>
+          </div>
+          <h3>合同风险</h3>
+          <ul>
+            <li>跨境合同 40 页英文，涉及两国法律、十几种贸易术语交叉定义</li>
+            <li>多数中小企业没有专职法务，合同靠采购员"感觉没问题"</li>
+            <li>等你发现"无限责任条款"和"卖方所在地仲裁"，货已卡在港口</li>
+          </ul>
+          <p class="sp-pain-quote">HS 编码偏差扣关 3 周，滞港费比货值还高——这不是故事，是日常。</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 管道详情 ===== -->
+    <section class="sp-flow">
+      <div class="sp-flow-section-title">
+        <h2>采购全链路，逐环打通</h2>
+        <p>四个阶段，十二个关键节点，从询盘到方案一条管道贯穿。</p>
       </div>
 
-      <!-- 1 -->
-      <div class="tpl-card reveal">
-        <div class="tpl-img">
-          <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1200&q=85"
-            alt="" loading="lazy" onerror="this.style.display='none'">
+      <!-- 阶段1 -->
+      <div class="sp-stage">
+        <div class="sp-stage-header">
+          <div class="sp-stage-header-content">
+            <div class="sp-stage-num-badge">01</div>
+            <h3>自动询盘</h3>
+            <p class="sp-stage-tagline">从"人找供应商"到"需求自动分发"</p>
+            <p class="sp-stage-desc">把需求描述自动转化为标准询价单，精准匹配供应商池并一键分发，回复自动汇总到统一看板。采购员从"追邮件、对 Excel"中解放出来。</p>
+          </div>
+          <div class="sp-stage-illus">
+            <img src="../assets/procurement-inquiry.jpg" alt="自动询盘">
+          </div>
         </div>
-        <div class="tpl-body">
-          <h3>自动询盘</h3>
-          <p>不再一封封抄送，不再一个个追问——AI 把询盘变成一条自动流转的管道。</p>
-          <div class="tpl-steps">
-            <div class="tpl-step">
-              <div class="tpl-badge tpl-badge--1"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"
-                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <rect x="2" y="3" width="20" height="14" rx="2" />
-                  <line x1="8" y1="21" x2="16" y2="21" />
-                  <line x1="12" y1="17" x2="12" y2="21" />
-                </svg></div>
-              <div>
-                <h4>需求解析</h4>
-                <p>上传采购需求，AI 自动解析规格参数与交付条件，拆解为结构化筛选维度。</p>
-              </div>
+        <div class="sp-step-row">
+          <div class="sp-step-card">
+            <div class="sp-step-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="11" cy="11" r="8" />
+                <line x1="21" y1="21" x2="16.65" y2="16.65" />
+              </svg></div>
+            <div class="sp-step-body">
+              <h4>需求解析</h4>
+              <p class="sp-step-one">上传文档、粘贴邮件或口述需求，AI 自动提取结构化采购参数。</p>
+              <ul>
+                <li>自动识别：品名、规格、数量、交期、贸易术语、预算</li>
+                <li>解析为筛选维度：材质、公差、认证、包装方式</li>
+                <li>每条维度直接对应供应商能力标签，无需人工翻译</li>
+              </ul>
             </div>
-            <div class="tpl-step">
-              <div class="tpl-badge tpl-badge--2"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"
-                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
-                  <polyline points="22 4 12 14.01 9 11.01" />
-                </svg></div>
-              <div>
-                <h4>一键群发</h4>
-                <p>匹配候选供应商池，一键群发标准询价单，不再逐封粘贴发送。</p>
-              </div>
+          </div>
+          <div class="sp-step-card">
+            <div class="sp-step-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+                <polyline points="22 4 12 14.01 9 11.01" />
+              </svg></div>
+            <div class="sp-step-body">
+              <h4>一键群发</h4>
+              <p class="sp-step-one">基于品类、产能、认证、交付区域四维匹配，自动生成标准 RFQ 模板。</p>
+              <ul>
+                <li>精准匹配候选供应商池，非撒网式盲发</li>
+                <li>自动翻译为供应商偏好语言，附带标准化响应格式</li>
+                <li>供应商按模板填写，数据直接回流传入比价引擎</li>
+              </ul>
             </div>
-            <div class="tpl-step">
-              <div class="tpl-badge tpl-badge--3"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"
-                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <line x1="8" y1="6" x2="21" y2="6" />
-                  <line x1="8" y1="12" x2="21" y2="12" />
-                  <line x1="8" y1="18" x2="21" y2="18" />
-                  <line x1="3" y1="6" x2="3.01" y2="6" />
-                  <line x1="3" y1="12" x2="3.01" y2="12" />
-                  <line x1="3" y1="18" x2="3.01" y2="18" />
-                </svg></div>
-              <div>
-                <h4>汇总排序</h4>
-                <p>自动汇总回复到统一看板，按报价、交期、合规状态排序，一眼看清。</p>
-              </div>
+          </div>
+          <div class="sp-step-card">
+            <div class="sp-step-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="8" y1="6" x2="21" y2="6" />
+                <line x1="8" y1="12" x2="21" y2="12" />
+                <line x1="8" y1="18" x2="21" y2="18" />
+                <line x1="3" y1="6" x2="3.01" y2="6" />
+                <line x1="3" y1="12" x2="3.01" y2="12" />
+                <line x1="3" y1="18" x2="3.01" y2="18" />
+              </svg></div>
+            <div class="sp-step-body">
+              <h4>汇总排序</h4>
+              <p class="sp-step-one">回复自动流入统一看板，按预设权重自动排序。</p>
+              <ul>
+                <li>报价、交期、合规、历史履约四维度各占权重</li>
+                <li>未回复自动提醒，逾期失活标记并降权</li>
+                <li>采购员从"录入员"变成真正的"决策者"</li>
+              </ul>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- 2 -->
-      <div class="tpl-card reveal">
-        <div class="tpl-img">
-          <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=85" alt=""
-            loading="lazy" onerror="this.style.display='none'">
+      <div class="sp-stage-connector"><svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor">
+          <circle cx="12" cy="12" r="6" />
+        </svg></div>
+
+      <!-- 阶段2 -->
+      <div class="sp-stage">
+        <div class="sp-stage-header">
+          <div class="sp-stage-header-content">
+            <div class="sp-stage-num-badge">02</div>
+            <h3>智能比价</h3>
+            <p class="sp-stage-tagline">从"只比单价"到"全成本透明"</p>
+            <p class="sp-stage-desc">把运费、关税、保险、汇率全部拉到台面上，用统一模型将每个报价换算为"到岸总成本"，在同一基准上比较。12 个维度横向展开，异常项自动标亮。</p>
+          </div>
+          <div class="sp-stage-illus">
+            <img src="../assets/procurement-compare.jpg" alt="智能比价">
+          </div>
         </div>
-        <div class="tpl-body">
-          <h3>智能比价</h3>
-          <p>不止比单价，比的是含税含运到岸总成本——AI 帮你把每一笔隐性成本摊到桌面上。</p>
-          <div class="tpl-steps">
-            <div class="tpl-step">
-              <div class="tpl-badge tpl-badge--1"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"
-                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <circle cx="12" cy="12" r="10" />
-                  <line x1="2" y1="12" x2="22" y2="12" />
-                  <path
-                    d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
-                </svg></div>
-              <div>
-                <h4>成本换算</h4>
-                <p>自动拉取贸易术语、HS编码、实时运费和汇率，统一换算为含税含运到岸总成本。</p>
-              </div>
+        <div class="sp-step-row">
+          <div class="sp-step-card">
+            <div class="sp-step-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10" />
+                <line x1="2" y1="12" x2="22" y2="12" />
+                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+              </svg></div>
+            <div class="sp-step-body">
+              <h4>成本换算</h4>
+              <p class="sp-step-one">拉取贸易术语、运费基准、关税税率和实时汇率，统一换算。</p>
+              <ul>
+                <li>FOB → 加海运费+保险+THC+报关费</li>
+                <li>CIF → 加关税+VAT+内陆运输</li>
+                <li>AI 自动估算合理区间，异常费用标黄提醒</li>
+              </ul>
             </div>
-            <div class="tpl-step">
-              <div class="tpl-badge tpl-badge--2"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"
-                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <line x1="18" y1="20" x2="18" y2="10" />
-                  <line x1="12" y1="20" x2="12" y2="4" />
-                  <line x1="6" y1="20" x2="6" y2="14" />
-                </svg></div>
-              <div>
-                <h4>多维对比</h4>
-                <p>单价、关税、运费、保险、交期、付款条件、MOQ——12 个维度横向对比。</p>
-              </div>
+          </div>
+          <div class="sp-step-card">
+            <div class="sp-step-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="3" width="18" height="18" rx="2" />
+                <line x1="3" y1="9" x2="21" y2="9" />
+                <line x1="9" y1="3" x2="9" y2="21" />
+              </svg></div>
+            <div class="sp-step-body">
+              <h4>多维对比</h4>
+              <p class="sp-step-one">12 个维度横向展开，支持自定义权重和 AI 推荐权重。</p>
+              <ul>
+                <li>到岸总成本、交期、MOQ、付款条件、质保期</li>
+                <li>历史履约率、区域风险等级、产能饱和度</li>
+                <li>按品类自动推荐最优权重，可排序可筛选可下钻</li>
+              </ul>
             </div>
-            <div class="tpl-step">
-              <div class="tpl-badge tpl-badge--3"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"
-                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" />
-                  <line x1="12" y1="9" x2="12" y2="13" />
-                  <line x1="12" y1="17" x2="12.01" y2="17" />
-                </svg></div>
-              <div>
-                <h4>异常标注</h4>
-                <p>自动标注异常低价、偏离均价、条件不对等风险项，不再被"低价陷阱"坑。</p>
-              </div>
+          </div>
+          <div class="sp-step-card">
+            <div class="sp-step-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" />
+                <line x1="12" y1="9" x2="12" y2="13" />
+                <line x1="12" y1="17" x2="12.01" y2="17" />
+              </svg></div>
+            <div class="sp-step-body">
+              <h4>异常标注</h4>
+              <p class="sp-step-one">自动检测五类异常，每项附带说明和建议处理方式。</p>
+              <ul>
+                <li>异常低价：低于均价15%以上，可能用交期填坑</li>
+                <li>交期偏离：超出品类平均50%，条件不对等</li>
+                <li>报价波动、隐性条款陷阱——逐项标亮提醒</li>
+              </ul>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- 3 -->
-      <div class="tpl-card reveal">
-        <div class="tpl-img">
-          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=1200&q=85"
-            alt="" loading="lazy" onerror="this.style.display='none'">
+      <div class="sp-stage-connector"><svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor">
+          <circle cx="12" cy="12" r="6" />
+        </svg></div>
+
+      <!-- 阶段3 -->
+      <div class="sp-stage">
+        <div class="sp-stage-header">
+          <div class="sp-stage-header-content">
+            <div class="sp-stage-num-badge">03</div>
+            <h3>合同管理</h3>
+            <p class="sp-stage-tagline">从"人眼逐行比对"到"AI 秒级审阅"</p>
+            <p class="sp-stage-desc">合同是风险最集中的环节——一份合同涉及多国法律、双语条款。AI 在签署前对每份合同进行系统化结构审查：比你快，比你细，永远不会累。</p>
+          </div>
+          <div class="sp-stage-illus">
+            <img src="../assets/procurement-contract.jpg" alt="合同管理">
+          </div>
         </div>
-        <div class="tpl-body">
-          <h3>合同管理</h3>
-          <p>跨境合同动辄几十页——AI 帮你审条款、标风险、生成草稿，不再靠人眼逐行比对。</p>
-          <div class="tpl-steps">
-            <div class="tpl-step">
-              <div class="tpl-badge tpl-badge--1"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"
-                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
-                  <polyline points="14 2 14 8 20 8" />
-                </svg></div>
-              <div>
-                <h4>OCR 识别</h4>
-                <p>扫描件自动识别条款文本，结构化提取关键字段，不再手动录入。</p>
-              </div>
+        <div class="sp-step-row">
+          <div class="sp-step-card">
+            <div class="sp-step-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                <polyline points="14 2 14 8 20 8" />
+              </svg></div>
+            <div class="sp-step-body">
+              <h4>OCR 识别</h4>
+              <p class="sp-step-one">处理 PDF 扫描件、图片、传真翻拍等非标准格式输入。</p>
+              <ul>
+                <li>自动识别并按条款类型分段标注</li>
+                <li>价格、交期、质量、违约、知产、保密、管辖——逐区块分类</li>
+                <li>低置信度区域高亮提示人工复核</li>
+              </ul>
             </div>
-            <div class="tpl-step">
-              <div class="tpl-badge tpl-badge--2"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"
-                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <circle cx="11" cy="11" r="8" />
-                  <line x1="21" y1="21" x2="16.65" y2="16.65" />
-                </svg></div>
-              <div>
-                <h4>条款比对</h4>
-                <p>NLP 智能比对合同条款与标准模板，秒级标注差异项和缺失条款。</p>
-              </div>
+          </div>
+          <div class="sp-step-card">
+            <div class="sp-step-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="11" cy="11" r="8" />
+                <line x1="21" y1="21" x2="16.65" y2="16.65" />
+              </svg></div>
+            <div class="sp-step-body">
+              <h4>条款比对</h4>
+              <p class="sp-step-one">供应商版本与标准模板逐段比对，秒级输出差异清单。</p>
+              <ul>
+                <li>新增标绿、删减标红、修改标黄——一目了然</li>
+                <li>每条差异附带影响评级：轻微措辞 vs 实质风险变化</li>
+                <li>无需法务背景，一眼看清对方改了什么</li>
+              </ul>
             </div>
-            <div class="tpl-step">
-              <div class="tpl-badge tpl-badge--3"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"
-                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-                </svg></div>
-              <div>
-                <h4>风险高亮</h4>
-                <p>自动高亮无限责任、不利管辖、模糊交期、异常罚则等风险条款。</p>
-              </div>
+          </div>
+          <div class="sp-step-card">
+            <div class="sp-step-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+              </svg></div>
+            <div class="sp-step-body">
+              <h4>风险高亮</h4>
+              <p class="sp-step-one">内置 30+ 类国际贸易风险条款知识库，自动扫描标注。</p>
+              <ul>
+                <li>无限责任、对方管辖地、模糊交期、单方终止权</li>
+                <li>知产归属不清、不可抗力过宽、违约金失当</li>
+                <li>高风险项阻止进入下一环节——这是一道防火墙</li>
+              </ul>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- 4 -->
-      <div class="tpl-card reveal">
-        <div class="tpl-img">
-          <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=1200&q=85"
-            alt="" loading="lazy" onerror="this.style.display='none'">
+      <div class="sp-stage-connector"><svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor">
+          <circle cx="12" cy="12" r="6" />
+        </svg></div>
+
+      <!-- 阶段4 -->
+      <div class="sp-stage">
+        <div class="sp-stage-header">
+          <div class="sp-stage-header-content">
+            <div class="sp-stage-num-badge">04</div>
+            <h3>采购方案生成</h3>
+            <p class="sp-stage-tagline">从"Excel 手工拼凑"到"AI 一键生成"</p>
+            <p class="sp-stage-desc">既然前面所有数据已经在管道里了，为什么还要人手从头写方案？系统根据完整数据链自动生成方案草稿，采购员只需审核微调，不再从零开始。</p>
+          </div>
+          <div class="sp-stage-illus">
+            <img src="../assets/procurement-plan.jpg" alt="采购方案生成">
+          </div>
         </div>
-        <div class="tpl-body">
-          <h3>采购方案生成</h3>
-          <p>方案不是写出来的，是算出来的——AI 基于历史数据和当前需求，自动生成可执行的采购方案。</p>
-          <div class="tpl-steps">
-            <div class="tpl-step">
-              <div class="tpl-badge tpl-badge--1"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"
-                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <ellipse cx="12" cy="5" rx="9" ry="3" />
-                  <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3" />
-                  <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5" />
-                </svg></div>
-              <div>
-                <h4>数据读取</h4>
-                <p>AI 读取历史采购数据和当前需求，自动识别采购模式和偏好。</p>
-              </div>
+        <div class="sp-step-row">
+          <div class="sp-step-card">
+            <div class="sp-step-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <ellipse cx="12" cy="5" rx="9" ry="3" />
+                <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3" />
+                <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5" />
+              </svg></div>
+            <div class="sp-step-body">
+              <h4>数据读取</h4>
+              <p class="sp-step-one">自动归集本次采购的全部上下文数据，无需翻找历史文件。</p>
+              <ul>
+                <li>需求解析结果、供应商响应状态、12 维比价矩阵</li>
+                <li>历史履约记录：准时交货率、质量合格率、客诉次数</li>
+                <li>同品类历史价格走势——所有数据实时完整归集</li>
+              </ul>
             </div>
-            <div class="tpl-step">
-              <div class="tpl-badge tpl-badge--2"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"
-                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
-                  <polyline points="14 2 14 8 20 8" />
-                  <line x1="16" y1="13" x2="8" y2="13" />
-                  <line x1="16" y1="17" x2="8" y2="17" />
-                </svg></div>
-              <div>
-                <h4>自动生成</h4>
-                <p>生成含推荐供应商排序、总预算拆解、交期预估、风险提示的完整方案草稿。</p>
-              </div>
+          </div>
+          <div class="sp-step-card">
+            <div class="sp-step-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                <polyline points="14 2 14 8 20 8" />
+                <line x1="16" y1="13" x2="8" y2="13" />
+                <line x1="16" y1="17" x2="8" y2="17" />
+              </svg></div>
+            <div class="sp-step-body">
+              <h4>自动生成</h4>
+              <p class="sp-step-one">生成结构化方案草稿，每个结论关联可追溯的数据来源。</p>
+              <ul>
+                <li>推荐供应商排序及理由、总预算分项拆解</li>
+                <li>交期预估+关键里程碑、风险提示+备选方案</li>
+                <li>采购员审阅数据完备的草稿，在此基础上做判断</li>
+              </ul>
             </div>
-            <div class="tpl-step">
-              <div class="tpl-badge tpl-badge--3"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"
-                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-                  <polyline points="7 10 12 15 17 10" />
-                  <line x1="12" y1="15" x2="12" y2="3" />
-                </svg></div>
-              <div>
-                <h4>一键导出</h4>
-                <p>审核调整后一键导出为标准审批格式，支持版本对比和审批流程。</p>
-              </div>
+          </div>
+          <div class="sp-step-card">
+            <div class="sp-step-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                <polyline points="7 10 12 15 17 10" />
+                <line x1="12" y1="15" x2="12" y2="3" />
+              </svg></div>
+            <div class="sp-step-body">
+              <h4>一键导出</h4>
+              <p class="sp-step-one">审核后导出为标准审批格式，保留完整审计追溯。</p>
+              <ul>
+                <li>支持 PDF、Word、直接推送企业 OA/审批流</li>
+                <li>审批人可下钻查看每层数据来源</li>
+                <li>版本历史完整记录：谁、什么时间、改了哪里</li>
+              </ul>
             </div>
           </div>
         </div>
       </div>
+    </section>
 
-    </div>
-  </section>
-
-  <section class="section-sm">
-    <div class="container">
-      <div class="cta-simple reveal">
-        <h2>加入全球供应链大平台</h2>
-        <p>赋能地方资源 · 连接全球市场</p>
-        <a class="btn btn-primary btn-lg" href="../contact.html">申请加入 →</a>
+    <!-- ===== KPI ===== -->
+    <section class="sp-metrics">
+      <h2>采购全链路指标</h2>
+      <p class="sp-metrics-sub">四个阶段各自带来的效率变化。</p>
+      <div class="sp-kpi-grid">
+        <div class="sp-kpi-card">
+          <div class="sp-kpi-num">85<span class="sp-kpi-unit">%</span></div>
+          <div class="sp-kpi-label">询盘耗时降低</div>
+          <div class="sp-kpi-desc">需求提出到报价汇总，周期从 5 个工作日缩至 1 个工作日。</div>
+        </div>
+        <div class="sp-kpi-card">
+          <div class="sp-kpi-num">12<span class="sp-kpi-unit"> 维</span></div>
+          <div class="sp-kpi-label">比价维度覆盖</div>
+          <div class="sp-kpi-desc">到岸成本、交期、MOQ、付款条件、质保、履约率等维度一次性展开。</div>
+        </div>
+        <div class="sp-kpi-card">
+          <div class="sp-kpi-num">10<span class="sp-kpi-unit">×</span></div>
+          <div class="sp-kpi-label">合同审阅提速</div>
+          <div class="sp-kpi-desc">条款比对与风险扫描，从人工 4 小时缩至 20 秒。</div>
+        </div>
+        <div class="sp-kpi-card">
+          <div class="sp-kpi-num">1<span class="sp-kpi-unit"> 小时</span></div>
+          <div class="sp-kpi-label">方案生成耗时</div>
+          <div class="sp-kpi-desc">数据归集到方案草稿完成，人工只需审核与微调。</div>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
+
+    <!-- ===== 收尾 ===== -->
+    <section class="sp-closing">
+      <div class="sp-closing-divider"></div>
+      <h2>四个阶段，一条管道</h2>
+      <p>自动询盘把需求精准分发到匹配的供应商池；智能比价把隐性成本拉到同一基准上比较；合同管理在签署之前完成条款比对和风险扫描；方案生成基于完整数据链自动输出草稿。</p>
+      <p>每个阶段产生的数据自动流入下一个阶段，不需要重复录入、不需要跨平台切换、不需要凭记忆追溯——采购全链路在一条管道里闭环。</p>
+    </section>
+
+  </div>
 
   <footer class="footer">
     <div class="container">
@@ -578,27 +1459,23 @@
             <li><a href="decision-center.html">决策中枢</a></li>
           </ul>
         </div>
-
         <div>
           <h5>了解更多</h5>
           <ul>
             <li><a href="../why-us.html">为什么选我们</a></li>
             <li><a href="../pain-points.html">痛点与方案</a></li>
-            <li><a href="../intel.html">供应链新闻台</a>
-              <a href="../contact.html">申请加入</a>
-            </li>
+            <li><a href="../intel.html">供应链新闻台</a><a href="../contact.html">申请加入</a></li>
             <li><a href="../contact.html">联系我们</a></li>
           </ul>
         </div>
       </div>
-    </div>
-    <div class="footer-bottom">
-      <span>&copy; 2026 全球供应链大平台. 保留所有权利. <a
-          href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=44010602010128" target="_blank"
-          rel="noreferrer">粤公网安备44010602010128号</a> | <a href="https://beian.miit.gov.cn/" target="_blank"
-          rel="noreferrer">粤ICP备17142036号-7</a></span>
-      <span class="foot-policy"><a href="#">信息保护政策</a><a href="#">用户协议</a><a href="#">用户行为管理规范</a></span>
-    </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 全球供应链大平台. 保留所有权利. <a
+            href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=44010602010128" target="_blank"
+            rel="noreferrer">粤公网安备44010602010128号</a> | <a href="https://beian.miit.gov.cn/" target="_blank"
+            rel="noreferrer">粤ICP备17142036号-7</a></span>
+        <span class="foot-policy"><a href="#">信息保护政策</a><a href="#">用户协议</a><a href="#">用户行为管理规范</a></span>
+      </div>
     </div>
   </footer>
 

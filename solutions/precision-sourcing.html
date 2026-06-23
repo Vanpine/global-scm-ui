@@ -48,20 +48,29 @@
       min-height: 90vh;
       padding: 130px 0 80px;
     }
+
     .ps-page {
       position: relative;
     }
+
     /* 全局网格波点背景 */
     .ps-page::before {
       content: "";
-      position: fixed; inset: 0; pointer-events: none; z-index: 0;
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
       background-image:
-        radial-gradient(circle, rgba(0,113,227,0.06) 1px, transparent 1px);
+        radial-gradient(circle, rgba(0, 113, 227, 0.06) 1px, transparent 1px);
       background-size: 28px 28px;
       mask-image: radial-gradient(ellipse at 50% 0%, black 40%, transparent 70%);
       -webkit-mask-image: radial-gradient(ellipse at 50% 0%, black 40%, transparent 70%);
     }
-    .ps-page > * { position: relative; z-index: 1; }
+
+    .ps-page>* {
+      position: relative;
+      z-index: 1;
+    }
 
     .ps-hero-left {
       flex: 0 0 55%;
@@ -144,6 +153,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      overflow: hidden;
     }
 
     .ps-globe {
@@ -903,7 +913,7 @@
         flex-direction: column;
         gap: 48px;
         min-height: auto;
-        padding: 40px 0 60px;
+        padding: 120px 0 60px;
       }
 
       .ps-hero-left {
@@ -953,7 +963,8 @@
       }
 
       .ps-page {
-        max-width: 94%; padding: 0 20px;
+        max-width: 94%;
+        padding: 0 20px;
       }
     }
 
@@ -1031,11 +1042,12 @@
       }
 
       .ps-page {
-        max-width: 96%; padding: 0 12px;
+        max-width: 96%;
+        padding: 0 12px;
       }
 
       .ps-hero {
-        padding: 24px 0 48px;
+        padding: 110px 0 48px;
       }
 
       .ps-data-card {

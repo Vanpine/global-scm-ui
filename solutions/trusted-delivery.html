@@ -15,266 +15,1045 @@
   <meta property="og:site_name" content="Global SCM">
   <link rel="stylesheet" href="../css/style.css">
   <style>
-    .sol-hero {
-      min-height: 80vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
+    /* ===== 可信交付 — 全球物流控制塔 ===== */
+    :root {
+      --bg: #F8FAFC;
+      --card-bg: #fff;
+      --brand: #0071e3;
+      --brand-dark: #005bb5;
+      --text: #1d1d1f;
+      --text-sec: #86868b;
+      --border: #e8ecf0;
+      --shadow-sm: 0 2px 12px rgba(0, 0, 0, 0.04);
+      --shadow: 0 8px 32px rgba(0, 0, 0, 0.07);
+      --shadow-lg: 0 20px 60px rgba(0, 0, 0, 0.10);
+      --cockpit-bg: #e6edf6;
+      --cockpit-card: #fff;
+      --cockpit-border: rgba(0, 113, 227, 0.12);
+      --accent-green: #16a34a;
+      --accent-amber: #f59e0b;
+      --accent-red: #ef4444;
+    }
+
+    body {
+      background: var(--bg);
+    }
+
+    .td-page {
+      max-width: 75%;
+      margin: 0 auto;
+      padding: 0 40px;
       position: relative;
-      overflow: hidden;
-      color: #fff;
     }
 
-    .sol-hero-bg {
-      position: absolute;
+    /* 网格波点背景 */
+    .td-page::before {
+      content: "";
+      position: fixed;
       inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
       pointer-events: none;
+      z-index: 0;
+      background-image: radial-gradient(circle, rgba(0, 113, 227, 0.05) 1px, transparent 1px);
+      background-size: 28px 28px;
+      mask-image: radial-gradient(ellipse at 50% 0%, black 40%, transparent 70%);
+      -webkit-mask-image: radial-gradient(ellipse at 50% 0%, black 40%, transparent 70%);
     }
 
-    .sol-hero-overlay {
-      position: absolute;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.45);
+    .td-page>* {
+      position: relative;
       z-index: 1;
     }
 
-    .sol-hero-content {
+    /* ===== Hero — 控制塔深色区 ===== */
+    .td-hero-wrap {
+      background: var(--cockpit-bg);
+      margin: 0 calc(-50vw + 50%);
+      padding: 130px 0 100px;
       position: relative;
-      z-index: 2;
-      padding: 0 32px;
+      overflow: hidden;
     }
 
-    .sol-hero h1 {
-      font-size: 72px;
-      font-weight: 700;
-      letter-spacing: 0.04em;
-      margin-bottom: 24px;
-      line-height: 1.1;
+    /* 背景网格线 */
+    .td-hero-wrap::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(0, 113, 227, 0.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 113, 227, 0.06) 1px, transparent 1px);
+      background-size: 60px 60px;
+      pointer-events: none;
     }
 
-    .sol-hero p {
-      font-size: 24px;
-      opacity: 0.85;
-      line-height: 1.5;
-      max-width: 520px;
-      margin: 0 auto;
+    /* 扫描线 */
+    .td-hero-wrap::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, rgba(0, 113, 227, 0.35), transparent);
+      animation: tdScanDown 4s ease-in-out infinite;
+      pointer-events: none;
+      z-index: 0;
     }
 
-    .detail-section {
-      padding: 80px 0 40px;
+    @keyframes tdScanDown {
+      0% {
+        top: 0;
+        opacity: 0;
+      }
+      20% {
+        opacity: 1;
+      }
+      80% {
+        opacity: 1;
+      }
+      100% {
+        top: 100%;
+        opacity: 0;
+      }
     }
 
-    .detail-section .container {
-      max-width: 1600px;
-      width: 90%;
-    }
-
-    .section-head {
-      text-align: center;
-      margin: 40px 0 80px;
-    }
-
-    .section-head h2 {
-      font-size: 48px;
-      font-weight: 700;
-      letter-spacing: -0.03em;
-      color: #1d1d1f;
-      margin-bottom: 16px;
-    }
-
-    .section-head p {
-      font-size: 20px;
-      color: #86868b;
-    }
-
-    .tpl-card {
+    .td-hero {
       display: flex;
       gap: 80px;
       align-items: center;
-      max-width: 1400px;
-      margin: 0 auto 80px;
-      transition: transform 0.4s var(--ease);
+      position: relative;
+      z-index: 1;
     }
 
-    .tpl-card:hover {
-      transform: translateY(-4px);
+    .td-hero-left {
+      flex: 0 0 50%;
     }
 
-    .tpl-card:nth-child(even) {
-      flex-direction: row-reverse;
+    .td-hero-eyebrow {
+      display: inline-block;
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      color: var(--brand);
+      text-transform: uppercase;
+      margin-bottom: 20px;
+      border: 1px solid rgba(0, 113, 227, 0.25);
+      padding: 6px 16px;
+      border-radius: 20px;
     }
 
-    .tpl-img {
-      flex: 0 0 45%;
-      aspect-ratio: 1;
-      border-radius: 32px;
-      overflow: hidden;
-      box-shadow: 0 24px 80px rgba(0, 0, 0, 0.10);
-      transition: box-shadow 0.4s var(--ease), transform 0.4s var(--ease);
+    .td-hero h1 {
+      font-size: 72px;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      color: var(--text);
+      line-height: 1.08;
+      margin-bottom: 20px;
     }
 
-    .tpl-card:hover .tpl-img {
-      box-shadow: 0 32px 100px rgba(0, 0, 0, 0.15);
-      transform: scale(1.02);
+    .td-hero .td-hero-sub {
+      font-size: 24px;
+      color: var(--text-sec);
+      line-height: 1.6;
+      margin-bottom: 48px;
     }
 
-    .tpl-img img {
+    /* 实时状态指示灯 */
+    .td-live-indicators {
+      display: flex;
+      gap: 32px;
+    }
+
+    .td-live-dot {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 15px;
+      color: var(--text-sec);
+    }
+
+    .td-live-dot::before {
+      content: "";
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .td-live-dot.online::before {
+      background: var(--accent-green);
+      box-shadow: 0 0 8px var(--accent-green);
+      animation: tdPulse 2s ease-in-out infinite;
+    }
+
+    .td-live-dot.transit::before {
+      background: var(--accent-amber);
+      box-shadow: 0 0 8px var(--accent-amber);
+      animation: tdPulse 1.5s ease-in-out infinite;
+    }
+
+    .td-live-dot.done::before {
+      background: var(--brand);
+      box-shadow: 0 0 6px var(--brand);
+    }
+
+    @keyframes tdPulse {
+      0%,
+      100% {
+        opacity: 1;
+        transform: scale(1);
+      }
+      50% {
+        opacity: 0.4;
+        transform: scale(1.8);
+      }
+    }
+
+    /* 右侧：世界地图SVG */
+    .td-hero-right {
+      flex: 1;
+      position: relative;
+      min-height: 420px;
+    }
+
+    .td-world-map {
       width: 100%;
       height: 100%;
-      object-fit: cover;
-      transition: transform 0.6s var(--ease);
     }
 
-    .tpl-card:hover .tpl-img img {
-      transform: scale(1.06);
+    .td-route {
+      fill: none;
+      stroke: rgba(0, 113, 227, 0.2);
+      stroke-width: 1.5;
+      stroke-dasharray: 8 6;
     }
 
-    .tpl-body {
-      flex: 1 1 auto;
+    .td-route-dot {
+      fill: var(--brand);
+      filter: drop-shadow(0 0 4px rgba(0, 113, 227, 0.5));
     }
 
-    .tpl-body h3 {
-      font-size: 40px;
-      font-weight: 700;
-      letter-spacing: -0.02em;
-      color: #1d1d1f;
-      margin-bottom: 12px;
+    @keyframes tdDotMove1 {
+      0% {
+        offset-distance: 0%;
+      }
+      100% {
+        offset-distance: 100%;
+      }
     }
 
-    .tpl-body>p {
-      font-size: 19px;
-      color: #86868b;
-      line-height: 1.6;
+    @keyframes tdDotMove2 {
+      0% {
+        offset-distance: 0%;
+      }
+      100% {
+        offset-distance: 100%;
+      }
+    }
+
+    .td-map-pulse {
+      fill: none;
+      stroke: rgba(0, 113, 227, 0.3);
+      stroke-width: 2;
+      animation: tdMapPulse 3s ease-out infinite;
+    }
+
+    @keyframes tdMapPulse {
+      0% {
+        r: 4;
+        opacity: 0.8;
+      }
+      100% {
+        r: 30;
+        opacity: 0;
+      }
+    }
+
+    /* ===== 渐变过渡到白色区 ===== */
+    .td-hero-fade {
+      height: 60px;
+      background: linear-gradient(to bottom, var(--cockpit-bg), rgba(230,237,246,0.5), var(--bg));
+      margin: 0 calc(-50vw + 50%);
+    }
+
+    /* ===== 信任指数条 ===== */
+    .td-trust-bar {
+      display: flex;
+      justify-content: center;
+      gap: 80px;
+      padding: 32px 0 20px;
+      border-bottom: 1px solid var(--border);
       margin-bottom: 56px;
     }
 
-    .tpl-steps {
+    .td-trust-item {
+      text-align: center;
+    }
+
+    .td-trust-num {
+      font-size: 36px;
+      font-weight: 700;
+      color: var(--brand);
+      letter-spacing: -0.02em;
+      font-variant-numeric: tabular-nums;
+      font-family: "SF Mono", "JetBrains Mono", "Consolas", monospace;
+    }
+
+    .td-trust-label {
+      font-size: 16px;
+      color: var(--text-sec);
+      margin-top: 4px;
+    }
+
+    /* ===== 区域标题 ===== */
+    .td-section-head {
+      text-align: center;
+      margin-bottom: 80px;
+    }
+
+    .td-section-head h2 {
+      font-size: 48px;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      color: var(--text);
+      margin-bottom: 16px;
+    }
+
+    .td-section-head p {
+      font-size: 20px;
+      color: var(--text-sec);
+      line-height: 1.7;
+      max-width: 680px;
+      margin: 0 auto;
+    }
+
+    /* ===== 能力模块通用 ===== */
+    .td-module {
+      margin-bottom: 80px;
+      background: var(--card-bg);
+      border-radius: 24px;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-sm);
+      overflow: hidden;
+      transition: all 0.35s ease;
+    }
+
+    .td-module:hover {
+      box-shadow: var(--shadow-lg);
+      border-color: var(--brand);
+    }
+
+    .td-module-inner {
+      display: flex;
+      gap: 48px;
+      align-items: stretch;
+      min-height: 400px;
+    }
+
+    .td-module-inner.reversed {
+      flex-direction: row-reverse;
+    }
+
+    .td-module-visual {
+      flex: 0 0 42%;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .td-module-body {
+      flex: 1;
+      padding: 48px 48px 48px 0;
       display: flex;
       flex-direction: column;
-      gap: 48px;
+      justify-content: center;
     }
 
-    .tpl-step {
-      display: flex;
-      gap: 20px;
-      align-items: flex-start;
+    .td-module-inner.reversed .td-module-body {
+      padding: 48px 0 48px 48px;
     }
 
-    .tpl-badge {
-      flex-shrink: 0;
-      width: 40px;
-      height: 40px;
-      border-radius: 12px;
-      display: grid;
-      place-items: center;
-      font-size: 17px;
+    .td-module-num {
+      font-size: 13px;
       font-weight: 700;
-      color: #fff;
+      letter-spacing: 0.08em;
+      color: var(--brand);
+      margin-bottom: 8px;
     }
 
-    .tpl-badge--1 {
-      background: #2563EB;
+    .td-module-body h3 {
+      font-size: 36px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--text);
+      margin-bottom: 12px;
     }
 
-    .tpl-badge--2 {
-      background: #16A34A;
+    .td-module-body>.td-module-desc {
+      font-size: 18px;
+      color: var(--text-sec);
+      line-height: 1.7;
+      margin-bottom: 32px;
     }
 
-    .tpl-badge--3 {
-      background: #7C3AED;
+    /* 子功能卡片 */
+    .td-sub-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
     }
 
-    .tpl-step h4 {
-      font-size: 21px;
+    .td-sub-card {
+      background: #f8f9fb;
+      border-radius: 14px;
+      padding: 20px 18px;
+      border: 1px solid transparent;
+      transition: all 0.3s ease;
+    }
+
+    .td-sub-card:hover {
+      background: #eef4ff;
+      border-color: rgba(0, 113, 227, 0.2);
+    }
+
+    .td-sub-icon {
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, #eef4ff, #dbeafe);
+      color: var(--brand);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 12px;
+    }
+
+    .td-sub-card h4 {
+      font-size: 18px;
       font-weight: 600;
-      color: #1d1d1f;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+
+    .td-sub-card p {
+      font-size: 15px;
+      color: var(--text-sec);
+      line-height: 1.55;
+    }
+
+    /* ===== 模块1：全链路追踪 — 时间轴 ===== */
+    .td-timeline {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0;
+      padding: 40px 20px;
+      width: 100%;
+    }
+
+    .td-timeline-track {
+      display: flex;
+      align-items: center;
+      position: relative;
+    }
+
+    .td-tl-node {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      position: relative;
+    }
+
+    .td-tl-dot {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      border: 3px solid var(--border);
+      background: #fff;
+      position: relative;
+      z-index: 1;
+      transition: all 0.4s ease;
+    }
+
+    .td-tl-node.active .td-tl-dot {
+      border-color: var(--brand);
+      background: var(--brand);
+      box-shadow: 0 0 16px rgba(0, 113, 227, 0.4);
+    }
+
+    .td-tl-node.pulse .td-tl-dot {
+      border-color: var(--accent-amber);
+      background: var(--accent-amber);
+      animation: tdPulse 2s ease-in-out infinite;
+    }
+
+    .td-tl-line {
+      width: 50px;
+      height: 2px;
+      background: var(--border);
+      position: relative;
+      z-index: 0;
+    }
+
+    .td-tl-line.done {
+      background: var(--brand);
+    }
+
+    .td-tl-label {
+      font-size: 12px;
+      color: var(--text-sec);
+      white-space: nowrap;
+      position: absolute;
+      top: 36px;
+    }
+
+    .td-tl-node.active .td-tl-label {
+      color: var(--brand);
+      font-weight: 600;
+    }
+
+    /* ===== 模块2：异常预警 — 雷达扫描 ===== */
+    .td-radar {
+      width: 280px;
+      height: 280px;
+      position: relative;
+    }
+
+    .td-radar-ring {
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      border: 1px solid rgba(0, 113, 227, 0.12);
+    }
+
+    .td-radar-ring:nth-child(2) {
+      inset: 20%;
+      border-color: rgba(0, 113, 227, 0.18);
+    }
+
+    .td-radar-ring:nth-child(3) {
+      inset: 40%;
+      border-color: rgba(0, 113, 227, 0.25);
+    }
+
+    .td-radar-ring:nth-child(4) {
+      inset: 60%;
+      border-color: rgba(0, 113, 227, 0.3);
+    }
+
+    .td-radar-ring:nth-child(5) {
+      inset: 78%;
+      border-color: rgba(0, 113, 227, 0.4);
+    }
+
+    .td-radar-sweep {
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      background: conic-gradient(from 0deg, rgba(0, 113, 227, 0.2) 0deg, transparent 60deg);
+      animation: tdRadarSweep 3s linear infinite;
+    }
+
+    @keyframes tdRadarSweep {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+    .td-radar-dot {
+      position: absolute;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent-red);
+      box-shadow: 0 0 10px var(--accent-red);
+      animation: tdBlink 1.5s ease-in-out infinite;
+    }
+
+    @keyframes tdBlink {
+      0%,
+      100% {
+        opacity: 1;
+      }
+      50% {
+        opacity: 0.2;
+      }
+    }
+
+    .td-radar-dot:nth-child(7) {
+      top: 22%;
+      left: 58%;
+    }
+    .td-radar-dot:nth-child(8) {
+      top: 65%;
+      left: 28%;
+    }
+    .td-radar-dot:nth-child(9) {
+      top: 42%;
+      left: 72%;
+    }
+
+    .td-radar-center {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: var(--brand);
+      box-shadow: 0 0 20px rgba(0, 113, 227, 0.6);
+    }
+
+    /* ===== 模块3：关务通关 — 文档层叠 ===== */
+    .td-doc-stack {
+      position: relative;
+      width: 240px;
+      height: 320px;
+    }
+
+    .td-doc-card {
+      position: absolute;
+      inset: 0;
+      background: #fff;
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+      padding: 24px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      transition: all 0.4s cubic-bezier(0.25, 0.1, 0.25, 1);
+      cursor: default;
+    }
+
+    .td-doc-card:nth-child(1) {
+      transform: rotate(-6deg) translateX(-12px);
+      z-index: 1;
+    }
+    .td-doc-card:nth-child(2) {
+      transform: rotate(1deg);
+      z-index: 2;
+    }
+    .td-doc-card:nth-child(3) {
+      transform: rotate(7deg) translateX(12px);
+      z-index: 3;
+    }
+
+    .td-doc-stack:hover .td-doc-card:nth-child(1) {
+      transform: rotate(-6deg) translateX(-52px);
+    }
+    .td-doc-stack:hover .td-doc-card:nth-child(3) {
+      transform: rotate(7deg) translateX(52px);
+    }
+
+    .td-doc-line {
+      height: 8px;
+      border-radius: 4px;
+      background: #e8ecf0;
+    }
+
+    .td-doc-line.short {
+      width: 60%;
+    }
+    .td-doc-line.mid {
+      width: 85%;
+    }
+    .td-doc-line.blue {
+      background: rgba(0, 113, 227, 0.3);
+      width: 70%;
+    }
+
+    .td-doc-badge {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--brand);
+      background: #eef4ff;
+      padding: 3px 10px;
+      border-radius: 6px;
+      margin-top: 8px;
+      width: fit-content;
+    }
+
+    /* ===== 模块4：结算对账 — 数据看板 ===== */
+    .td-ledger {
+      width: 100%;
+      padding: 20px;
+    }
+
+    .td-ledger-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+    }
+
+    .td-ledger-table th {
+      text-align: left;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text-sec);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      padding-bottom: 14px;
+      border-bottom: 2px solid var(--border);
+    }
+
+    .td-ledger-table td {
+      padding: 12px 0;
+      border-bottom: 1px solid #f0f0f2;
+      color: var(--text);
+    }
+
+    .td-ledger-table td.amount {
+      font-variant-numeric: tabular-nums;
+      font-family: "SF Mono", "JetBrains Mono", "Consolas", monospace;
+      font-weight: 600;
+    }
+
+    .td-ledger-table td.status {
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    .td-status-match {
+      color: #16a34a;
+      background: #f0fdf4;
+      padding: 4px 10px;
+      border-radius: 12px;
+    }
+
+    .td-status-pending {
+      color: #d97706;
+      background: #fffbeb;
+      padding: 4px 10px;
+      border-radius: 12px;
+    }
+
+    /* 多币种图标行 */
+    .td-currency-row {
+      display: flex;
+      gap: 12px;
+      margin-top: 20px;
+    }
+
+    .td-currency-badge {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: #f8f9fb;
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text);
+      transition: all 0.3s ease;
+    }
+
+    .td-currency-badge:hover {
+      background: var(--brand);
+      color: #fff;
+      border-color: var(--brand);
+      transform: translateY(-3px);
+    }
+
+    /* ===== KPI 环形进度条 ===== */
+    .td-metrics {
+      padding: 60px 0 100px;
+    }
+
+    .td-metrics h2 {
+      font-size: 48px;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      color: var(--text);
+      text-align: center;
+      margin-bottom: 16px;
+    }
+
+    .td-metrics-sub {
+      font-size: 20px;
+      color: var(--text-sec);
+      text-align: center;
+      margin-bottom: 64px;
+    }
+
+    .td-kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 32px;
+    }
+
+    .td-kpi-card {
+      text-align: center;
+      padding: 20px;
+    }
+
+    .td-kpi-ring {
+      position: relative;
+      width: 140px;
+      height: 140px;
+      margin: 0 auto 24px;
+    }
+
+    .td-kpi-ring svg {
+      transform: rotate(-90deg);
+    }
+
+    .td-kpi-ring .bg-circle {
+      fill: none;
+      stroke: #e8ecf0;
+      stroke-width: 8;
+    }
+
+    .td-kpi-ring .fg-circle {
+      fill: none;
+      stroke: var(--brand);
+      stroke-width: 8;
+      stroke-linecap: round;
+      transition: stroke-dashoffset 1.2s cubic-bezier(0.25, 0.1, 0.25, 1);
+    }
+
+    .td-kpi-ring .fg-circle.green {
+      stroke: #16a34a;
+    }
+
+    .td-kpi-ring .fg-circle.amber {
+      stroke: #f59e0b;
+    }
+
+    .td-kpi-ring .fg-circle.purple {
+      stroke: #7c3aed;
+    }
+
+    .td-kpi-ring-num {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .td-kpi-ring-num .num {
+      font-size: 32px;
+      font-weight: 700;
+      color: var(--text);
+      letter-spacing: -0.02em;
+      line-height: 1;
+    }
+
+    .td-kpi-ring-num .unit {
+      font-size: 14px;
+      color: var(--text-sec);
+    }
+
+    .td-kpi-label {
+      font-size: 20px;
+      font-weight: 600;
+      color: var(--text);
       margin-bottom: 6px;
     }
 
-    .tpl-step p {
+    .td-kpi-desc {
       font-size: 16px;
-      color: #86868b;
-      line-height: 1.65;
+      color: var(--text-sec);
+      line-height: 1.5;
+    }
+
+    /* ===== 收尾 ===== */
+    .td-closing {
+      padding: 40px 0 120px;
+      text-align: center;
+      max-width: 680px;
+      margin: 0 auto;
+    }
+
+    .td-closing-divider {
+      width: 60px;
+      height: 3px;
+      background: var(--brand);
+      border-radius: 2px;
+      margin: 0 auto 48px;
+    }
+
+    .td-closing h2 {
+      font-size: 40px;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      color: var(--text);
+      margin-bottom: 24px;
+    }
+
+    .td-closing p {
+      font-size: 20px;
+      color: var(--text-sec);
+      line-height: 1.8;
+    }
+
+    /* ===== 响应式 ===== */
+    @media (max-width: 1200px) {
+      .td-kpi-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .td-trust-bar {
+        gap: 48px;
+      }
     }
 
     @media (max-width: 1024px) {
+      .td-page {
+        max-width: 94%;
+        padding: 0 20px;
+      }
 
-      .tpl-card,
-      .tpl-card:nth-child(even) {
+      .td-hero {
         flex-direction: column;
-        gap: 40px;
+        gap: 48px;
       }
 
-      .tpl-img {
-        flex: 0 0 auto;
-        width: 100%;
-        max-width: 500px;
+      .td-hero-left {
+        flex: auto;
+        text-align: center;
       }
 
-      .tpl-body h3 {
-        font-size: 32px;
+      .td-live-indicators {
+        justify-content: center;
+      }
+
+      .td-hero-right {
+        min-height: 300px;
+      }
+
+      .td-module-inner,
+      .td-module-inner.reversed {
+        flex-direction: column;
+      }
+
+      .td-module-visual {
+        flex: auto;
+        min-height: 280px;
+      }
+
+      .td-module-body,
+      .td-module-inner.reversed .td-module-body {
+        padding: 0 40px 40px;
+      }
+
+      .td-sub-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .td-trust-bar {
+        gap: 32px;
+        flex-wrap: wrap;
+      }
+
+      .td-section-head h2,
+      .td-metrics h2 {
+        font-size: 36px;
       }
     }
 
     @media (max-width: 768px) {
-      .sol-hero {
-        min-height: 60vh;
+      .td-page {
+        max-width: 96%;
+        padding: 0 12px;
       }
 
-      .sol-hero h1 {
-        font-size: 36px;
+      .td-hero-wrap {
+        padding: 100px 0 60px;
       }
 
-      .sol-hero p {
-        font-size: 17px;
+      .td-hero h1 {
+        font-size: 40px;
       }
 
-      .tpl-card {
-        margin-bottom: 48px;
-      }
-
-      .tpl-img {
-        border-radius: 24px;
-      }
-
-      .tpl-body h3 {
-        font-size: 26px;
-      }
-
-      .tpl-body>p {
-        font-size: 16px;
-        margin-bottom: 40px;
-      }
-
-      .tpl-steps {
-        gap: 32px;
-      }
-
-      .tpl-badge {
-        width: 36px;
-        height: 36px;
-        font-size: 15px;
-        border-radius: 10px;
-      }
-
-      .tpl-step h4 {
+      .td-hero .td-hero-sub {
         font-size: 18px;
       }
 
-      .section-head {
-        margin: 20px 0 48px;
+      .td-live-indicators {
+        flex-direction: column;
+        align-items: center;
+        gap: 16px;
       }
 
-      .section-head h2 {
+      .td-hero-right {
+        min-height: 220px;
+      }
+
+      .td-trust-num {
+        font-size: 28px;
+      }
+
+      .td-module-body h3 {
+        font-size: 28px;
+      }
+
+      .td-module-body,
+      .td-module-inner.reversed .td-module-body {
+        padding: 0 24px 32px;
+      }
+
+      .td-module-visual {
+        min-height: 220px;
+      }
+
+      .td-timeline {
+        padding: 24px 8px;
+      }
+
+      .td-tl-line {
+        width: 24px;
+      }
+
+      .td-radar {
+        width: 200px;
+        height: 200px;
+      }
+
+      .td-doc-stack {
+        width: 180px;
+        height: 260px;
+      }
+
+      .td-kpi-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
+      }
+
+      .td-kpi-ring {
+        width: 110px;
+        height: 110px;
+      }
+
+      .td-kpi-ring-num .num {
+        font-size: 26px;
+      }
+
+      .td-closing h2 {
+        font-size: 28px;
+      }
+
+      .td-closing p {
+        font-size: 17px;
+      }
+
+      .td-section-head h2,
+      .td-metrics h2 {
         font-size: 30px;
       }
 
-      .section-head p {
-        font-size: 16px;
+      .td-trust-bar {
+        gap: 20px;
       }
     }
   </style>
@@ -314,227 +1093,343 @@
     </div>
   </header>
 
-  <section class="sol-hero">
-    <img class="sol-hero-bg"
-      src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1920&q=85" alt=""
-      loading="eager" onerror="this.style.display='none'">
-    <div class="sol-hero-overlay"></div>
-    <div class="sol-hero-content">
-      <h1>可信交付</h1>
-      <p>从下单到签收<br>全程可视可追溯</p>
-    </div>
-  </section>
-
-  <section class="detail-section">
-    <div class="container">
-
-      <div class="section-head reveal">
-        <h2>交付全链路</h2>
-        <p>从下单到结算，每一步都看得见、算得清。</p>
-      </div>
-
-      <!-- 1 -->
-      <div class="tpl-card reveal">
-        <div class="tpl-img">
-          <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1200&q=85"
-            alt="" loading="lazy" onerror="this.style.display='none'">
+  <!-- ===== Hero — 控制塔 ===== -->
+  <div class="td-hero-wrap">
+    <div class="td-page">
+      <div class="td-hero">
+        <div class="td-hero-left">
+          <div class="td-hero-eyebrow">Control Tower · 实时监控</div>
+          <h1>可信交付</h1>
+          <p class="td-hero-sub">从下单到签收<br>全程可视可追溯</p>
+          <div class="td-live-indicators">
+            <span class="td-live-dot online">128 票海运在途</span>
+            <span class="td-live-dot transit">32 票清关中</span>
+            <span class="td-live-dot done">1,247 票已签收</span>
+          </div>
         </div>
-        <div class="tpl-body">
+        <div class="td-hero-right">
+          <svg class="td-world-map" viewBox="0 0 600 380" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- 世界地图简化轮廓 -->
+            <g opacity="0.18" fill="none" stroke="#0071e3" stroke-width="1.2">
+              <!-- 东亚 -->
+              <path d="M420 120 Q440 100 470 105 Q490 110 500 130 Q510 150 500 170 Q485 190 460 185 Q440 180 430 160 Z"/>
+              <path d="M300 100 Q330 80 370 85 Q400 90 420 110 Q430 140 410 165 Q380 180 340 175 Q310 165 295 140 Z"/>
+              <!-- 东南亚群岛 -->
+              <ellipse cx="440" cy="210" rx="25" ry="10"/>
+              <ellipse cx="465" cy="225" rx="18" ry="8"/>
+              <ellipse cx="420" cy="235" rx="15" ry="6"/>
+              <!-- 南亚 -->
+              <path d="M280 140 Q300 130 320 145 Q335 170 320 200 Q300 220 275 215 Q260 195 260 170 Z"/>
+              <!-- 中东 -->
+              <path d="M240 155 Q260 148 270 160 Q272 175 260 185 Q248 180 240 168 Z"/>
+              <!-- 欧洲 -->
+              <path d="M180 80 Q210 65 240 70 Q260 78 265 95 Q260 115 240 125 Q210 130 185 120 Q168 105 170 90 Z"/>
+              <!-- 非洲 -->
+              <path d="M200 150 Q230 130 260 145 Q280 160 275 200 Q260 250 230 280 Q200 300 185 270 Q175 230 180 190 Z"/>
+              <!-- 北美 -->
+              <path d="M80 50 Q140 30 180 40 Q220 50 230 80 Q225 110 195 125 Q150 130 100 120 Q65 105 60 75 Z"/>
+              <!-- 南美 -->
+              <path d="M130 180 Q160 170 180 185 Q195 210 185 250 Q170 280 145 290 Q125 275 120 245 Q118 210 125 190 Z"/>
+              <!-- 澳大利亚 -->
+              <ellipse cx="470" cy="290" rx="35" ry="20"/>
+            </g>
+            <!-- 航线弧线 -->
+            <path d="M160 80 Q300 30 420 120" class="td-route"/>
+            <path d="M230 80 Q350 160 440 210" class="td-route"/>
+            <path d="M100 120 Q200 240 280 215" class="td-route"/>
+            <path d="M230 280 Q350 200 465 225" class="td-route"/>
+            <!-- 关键港口脉冲 -->
+            <circle cx="420" cy="120" r="5" class="td-map-pulse" style="animation-delay:0s"/>
+            <circle cx="420" cy="120" r="3" fill="#0071e3"/>
+            <circle cx="230" cy="80" r="5" class="td-map-pulse" style="animation-delay:0.5s"/>
+            <circle cx="230" cy="80" r="3" fill="#0071e3"/>
+            <circle cx="100" cy="120" r="5" class="td-map-pulse" style="animation-delay:1s"/>
+            <circle cx="100" cy="120" r="3" fill="#0071e3"/>
+            <circle cx="280" cy="215" r="5" class="td-map-pulse" style="animation-delay:1.5s"/>
+            <circle cx="280" cy="215" r="3" fill="#0071e3"/>
+            <circle cx="440" cy="210" r="5" class="td-map-pulse" style="animation-delay:2s"/>
+            <circle cx="440" cy="210" r="3" fill="#0071e3"/>
+            <circle cx="465" cy="225" r="5" class="td-map-pulse" style="animation-delay:2.5s"/>
+            <circle cx="465" cy="225" r="3" fill="#0071e3"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- 渐变过渡 -->
+  <div class="td-hero-fade"></div>
+
+  <!-- ===== 正文区 ===== -->
+  <div class="td-page">
+
+    <!-- 信任指数条 -->
+    <div class="td-trust-bar">
+      <div class="td-trust-item">
+        <div class="td-trust-num">99.8%</div>
+        <div class="td-trust-label">准时交付率</div>
+      </div>
+      <div class="td-trust-item">
+        <div class="td-trust-num">200+</div>
+        <div class="td-trust-label">全球港口直连</div>
+      </div>
+      <div class="td-trust-item">
+        <div class="td-trust-num">185</div>
+        <div class="td-trust-label">个国家实时追踪</div>
+      </div>
+    </div>
+
+    <!-- 区域标题 -->
+    <div class="td-section-head reveal">
+      <h2>四大能力 · 交付全链路</h2>
+      <p>从订单到结算，每一步都看得见、算得清。</p>
+    </div>
+
+    <!-- 模块1：全链路追踪 — 时间轴 -->
+    <div class="td-module reveal">
+      <div class="td-module-inner">
+        <div class="td-module-visual" style="background:linear-gradient(135deg,#eaf6f0,#f0f9f4);">
+          <div class="td-timeline">
+            <div class="td-timeline-track">
+              <div class="td-tl-node active"><div class="td-tl-dot"></div><span class="td-tl-label">工厂</span></div>
+              <div class="td-tl-line done"></div>
+              <div class="td-tl-node active"><div class="td-tl-dot"></div><span class="td-tl-label">港口</span></div>
+              <div class="td-tl-line done"></div>
+              <div class="td-tl-node pulse"><div class="td-tl-dot"></div><span class="td-tl-label">海运中</span></div>
+              <div class="td-tl-line"></div>
+              <div class="td-tl-node"><div class="td-tl-dot"></div><span class="td-tl-label">清关</span></div>
+              <div class="td-tl-line"></div>
+              <div class="td-tl-node"><div class="td-tl-dot"></div><span class="td-tl-label">签收</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="td-module-body">
+          <div class="td-module-num">01</div>
           <h3>全链路追踪</h3>
-          <p>订单、工厂、货代、船公司、报关行——多方数据统一接入，串到一张看板上。</p>
-          <div class="tpl-steps">
-            <div class="tpl-step">
-              <div class="tpl-badge tpl-badge--1"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"
-                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
-                  <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
-                </svg></div>
-              <div>
-                <h4>数据串联</h4>
-                <p>打通工厂生产、货代订舱、船公司航行、报关行清关各环节数据，不再是信息孤岛。</p>
-              </div>
+          <p class="td-module-desc">订单、工厂、货代、船公司、报关行——多方数据统一接入，串到一张看板上。</p>
+          <div class="td-sub-grid">
+            <div class="td-sub-card">
+              <div class="td-sub-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg></div>
+              <h4>数据串联</h4>
+              <p>打通各环节数据，不再是信息孤岛。</p>
             </div>
-            <div class="tpl-step">
-              <div class="tpl-badge tpl-badge--2"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"
-                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
-                  <circle cx="12" cy="12" r="3" />
-                </svg></div>
-              <div>
-                <h4>节点可视</h4>
-                <p>从生产进度到装船离港、中转到达、目的地清关，每个节点状态实时可见。</p>
-              </div>
+            <div class="td-sub-card">
+              <div class="td-sub-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></div>
+              <h4>节点可视</h4>
+              <p>每个节点状态实时可见、一目了然。</p>
             </div>
-            <div class="tpl-step">
-              <div class="tpl-badge tpl-badge--3"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"
-                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" />
-                  <path d="M13.73 21a2 2 0 0 1-3.46 0" />
-                </svg></div>
-              <div>
-                <h4>主动通知</h4>
-                <p>关键节点变更自动推送，不用逐环节打电话追问"货在哪了"。</p>
-              </div>
+            <div class="td-sub-card">
+              <div class="td-sub-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg></div>
+              <h4>主动通知</h4>
+              <p>关键节点变更自动推送，不等追问。</p>
             </div>
           </div>
         </div>
       </div>
+    </div>
 
-      <!-- 2 -->
-      <div class="tpl-card reveal">
-        <div class="tpl-img">
-          <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=85" alt=""
-            loading="lazy" onerror="this.style.display='none'">
+    <!-- 模块2：异常预警 — 雷达扫描 -->
+    <div class="td-module reveal">
+      <div class="td-module-inner reversed">
+        <div class="td-module-visual" style="background:radial-gradient(circle at 55% 45%,#e8eff7,#dce5f0);">
+          <div class="td-radar">
+            <div class="td-radar-ring"></div>
+            <div class="td-radar-ring"></div>
+            <div class="td-radar-ring"></div>
+            <div class="td-radar-ring"></div>
+            <div class="td-radar-ring"></div>
+            <div class="td-radar-sweep"></div>
+            <div class="td-radar-dot" style="top:22%;left:58%;"></div>
+            <div class="td-radar-dot" style="top:65%;left:28%;"></div>
+            <div class="td-radar-dot" style="top:42%;left:72%;"></div>
+            <div class="td-radar-center"></div>
+          </div>
         </div>
-        <div class="tpl-body">
+        <div class="td-module-body">
+          <div class="td-module-num">02</div>
           <h3>异常预警</h3>
-          <p>AI 24 小时比对计划与实际进度，不等问题变大才处理。</p>
-          <div class="tpl-steps">
-            <div class="tpl-step">
-              <div class="tpl-badge tpl-badge--1"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"
-                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <polyline points="23 4 23 10 17 10" />
-                  <polyline points="1 20 1 14 7 14" />
-                  <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15" />
-                </svg></div>
-              <div>
-                <h4>实时比对</h4>
-                <p>船期、中转、清关——每个节点的计划时间与实际进度自动比对，偏差秒级可见。</p>
-              </div>
+          <p class="td-module-desc">AI 24小时比对计划与实际进度，不等问题变大才处理。</p>
+          <div class="td-sub-grid">
+            <div class="td-sub-card">
+              <div class="td-sub-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg></div>
+              <h4>实时比对</h4>
+              <p>计划vs实际进度自动比对，秒级感知偏差。</p>
             </div>
-            <div class="tpl-step">
-              <div class="tpl-badge tpl-badge--2"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"
-                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <line x1="22" y1="2" x2="11" y2="13" />
-                  <polygon points="22 2 15 22 11 13 2 9 22 2" />
-                </svg></div>
-              <div>
-                <h4>智能推送</h4>
-                <p>偏差超过阈值自动推送预警，附带受影响订单范围、预计延迟时间和影响等级。</p>
-              </div>
+            <div class="td-sub-card">
+              <div class="td-sub-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg></div>
+              <h4>智能推送</h4>
+              <p>超阈值自动预警，附带影响范围和等级。</p>
             </div>
-            <div class="tpl-step">
-              <div class="tpl-badge tpl-badge--3"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"
-                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <circle cx="12" cy="12" r="10" />
-                  <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76" />
-                </svg></div>
-              <div>
-                <h4>应对建议</h4>
-                <p>同步推荐替代路线或加速方案，不等人工排查就能先行动。</p>
-              </div>
+            <div class="td-sub-card">
+              <div class="td-sub-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg></div>
+              <h4>应对建议</h4>
+              <p>推荐替代路线或加速方案，不等人工排查。</p>
             </div>
           </div>
         </div>
       </div>
+    </div>
 
-      <!-- 3 -->
-      <div class="tpl-card reveal">
-        <div class="tpl-img">
-          <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=1200&q=85"
-            alt="" loading="lazy" onerror="this.style.display='none'">
+    <!-- 模块3：关务通关 — 文档层叠 -->
+    <div class="td-module reveal">
+      <div class="td-module-inner">
+        <div class="td-module-visual" style="background:linear-gradient(135deg,#faf7f2,#f5efe4);">
+          <div class="td-doc-stack">
+            <div class="td-doc-card">
+              <div class="td-doc-line" style="width:45%;"></div>
+              <div class="td-doc-line mid"></div>
+              <div class="td-doc-line blue"></div>
+              <div class="td-doc-line short"></div>
+              <span class="td-doc-badge">HS 编码</span>
+            </div>
+            <div class="td-doc-card">
+              <div class="td-doc-line short"></div>
+              <div class="td-doc-line" style="width:55%;"></div>
+              <div class="td-doc-line mid"></div>
+              <div class="td-doc-line" style="width:40%;"></div>
+              <span class="td-doc-badge">FTA 税率</span>
+            </div>
+            <div class="td-doc-card">
+              <div class="td-doc-line mid"></div>
+              <div class="td-doc-line short"></div>
+              <div class="td-doc-line blue"></div>
+              <div class="td-doc-line" style="width:50%;"></div>
+              <span class="td-doc-badge">单证预审</span>
+            </div>
+          </div>
         </div>
-        <div class="tpl-body">
+        <div class="td-module-body">
+          <div class="td-module-num">03</div>
           <h3>关务通关</h3>
-          <p>一个编码填错就可能被扣关——平台帮你前置解决合规问题。</p>
-          <div class="tpl-steps">
-            <div class="tpl-step">
-              <div class="tpl-badge tpl-badge--1"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"
-                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z" />
-                  <line x1="7" y1="7" x2="7.01" y2="7" />
-                </svg></div>
-              <div>
-                <h4>HS 编码辅助</h4>
-                <p>AI 根据品名和规格自动推荐 HS 编码归类，降低人工误报风险。</p>
-              </div>
+          <p class="td-module-desc">一个编码填错就可能被扣关——平台帮你前置解决合规问题。</p>
+          <div class="td-sub-grid">
+            <div class="td-sub-card">
+              <div class="td-sub-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg></div>
+              <h4>HS 编码辅助</h4>
+              <p>AI 自动推荐编码归类，降低误报风险。</p>
             </div>
-            <div class="tpl-step">
-              <div class="tpl-badge tpl-badge--2"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"
-                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <line x1="12" y1="1" x2="12" y2="23" />
-                  <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
-                </svg></div>
-              <div>
-                <h4>FTA 税率匹配</h4>
-                <p>自动识别可用的自由贸易协定优惠税率，避免多缴关税。</p>
-              </div>
+            <div class="td-sub-card">
+              <div class="td-sub-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
+              <h4>FTA 税率匹配</h4>
+              <p>自动识别可用优惠税率，避免多缴关税。</p>
             </div>
-            <div class="tpl-step">
-              <div class="tpl-badge tpl-badge--3"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"
-                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
-                  <polyline points="22 4 12 14.01 9 11.01" />
-                </svg></div>
-              <div>
-                <h4>单证预审</h4>
-                <p>合规性前置检查，提前发现申报问题，降低查验率和滞港风险。</p>
-              </div>
+            <div class="td-sub-card">
+              <div class="td-sub-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
+              <h4>单证预审</h4>
+              <p>合规前置检查，降低查验率和滞港风险。</p>
             </div>
           </div>
         </div>
       </div>
+    </div>
 
-      <!-- 4 -->
-      <div class="tpl-card reveal">
-        <div class="tpl-img">
-          <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=85"
-            alt="" loading="lazy" onerror="this.style.display='none'">
+    <!-- 模块4：结算对账 — 数据看板 -->
+    <div class="td-module reveal">
+      <div class="td-module-inner reversed">
+        <div class="td-module-visual" style="background:linear-gradient(135deg,#eef1f7,#e4e8f2);">
+          <div class="td-ledger">
+            <table class="td-ledger-table">
+              <thead><tr><th>订单号</th><th>金额</th><th>状态</th></tr></thead>
+              <tbody>
+                <tr><td>PO-2406-001</td><td class="amount">$48,320.00</td><td><span class="td-status-match">✓ 已匹配</span></td></tr>
+                <tr><td>PO-2406-002</td><td class="amount">€23,150.50</td><td><span class="td-status-match">✓ 已匹配</span></td></tr>
+                <tr><td>PO-2406-003</td><td class="amount">¥156,800.00</td><td><span class="td-status-pending">⋯ 待确认</span></td></tr>
+                <tr><td>PO-2406-004</td><td class="amount">$12,490.00</td><td><span class="td-status-match">✓ 已匹配</span></td></tr>
+              </tbody>
+            </table>
+            <div class="td-currency-row">
+              <div class="td-currency-badge">$</div>
+              <div class="td-currency-badge">€</div>
+              <div class="td-currency-badge">¥</div>
+              <div class="td-currency-badge">£</div>
+              <div class="td-currency-badge">₩</div>
+            </div>
+          </div>
         </div>
-        <div class="tpl-body">
+        <div class="td-module-body">
+          <div class="td-module-num">04</div>
           <h3>结算对账</h3>
-          <p>多币种、多账期、多付款方式——平台自动归集，智能对账。</p>
-          <div class="tpl-steps">
-            <div class="tpl-step">
-              <div class="tpl-badge tpl-badge--1"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"
-                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <ellipse cx="12" cy="5" rx="9" ry="3" />
-                  <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3" />
-                  <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5" />
-                </svg></div>
-              <div>
-                <h4>数据归集</h4>
-                <p>订单金额、收货数量、发票信息、付款记录自动汇总到一张对账表。</p>
-              </div>
+          <p class="td-module-desc">多币种、多账期、多付款方式——平台自动归集，智能对账。</p>
+          <div class="td-sub-grid">
+            <div class="td-sub-card">
+              <div class="td-sub-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg></div>
+              <h4>数据归集</h4>
+              <p>多源数据自动汇总到一张对账表。</p>
             </div>
-            <div class="tpl-step">
-              <div class="tpl-badge tpl-badge--2"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"
-                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <circle cx="11" cy="11" r="8" />
-                  <line x1="21" y1="21" x2="16.65" y2="16.65" />
-                </svg></div>
-              <div>
-                <h4>差异匹配</h4>
-                <p>AI 智能识别金额差异、数量不符、漏付重付等异常项。</p>
-              </div>
+            <div class="td-sub-card">
+              <div class="td-sub-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
+              <h4>差异匹配</h4>
+              <p>AI识别金额差异、漏付重付等异常项。</p>
             </div>
-            <div class="tpl-step">
-              <div class="tpl-badge tpl-badge--3"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"
-                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <line x1="12" y1="1" x2="12" y2="23" />
-                  <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
-                </svg></div>
-              <div>
-                <h4>多币种换算</h4>
-                <p>实时汇率自动换算，生成多币种对账报告，一键导出。</p>
-              </div>
+            <div class="td-sub-card">
+              <div class="td-sub-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
+              <h4>多币种换算</h4>
+              <p>实时汇率自动换算，一键导出报告。</p>
             </div>
           </div>
         </div>
       </div>
-
     </div>
-  </section>
 
-  <section class="section-sm">
-    <div class="container">
-      <div class="cta-simple reveal">
-        <h2>加入全球供应链大平台</h2>
-        <p>赋能地方资源 · 连接全球市场</p>
-        <a class="btn btn-primary btn-lg" href="../contact.html">申请加入 →</a>
+    <!-- ===== KPI 环形进度条 ===== -->
+    <div class="td-metrics reveal">
+      <h2>交付核心指标</h2>
+      <p class="td-metrics-sub">四个维度，量化可信交付的真实价值。</p>
+      <div class="td-kpi-grid">
+        <div class="td-kpi-card">
+          <div class="td-kpi-ring">
+            <svg width="140" height="140" viewBox="0 0 140 140">
+              <circle class="bg-circle" cx="70" cy="70" r="58"/>
+              <circle class="fg-circle green" cx="70" cy="70" r="58" stroke-dasharray="364.4" stroke-dashoffset="17"/>
+            </svg>
+            <div class="td-kpi-ring-num"><span class="num">95%</span><span class="unit">节点可视</span></div>
+          </div>
+          <div class="td-kpi-label">物流节点可视率</div>
+          <div class="td-kpi-desc">从工厂到签收，每个节点数据实时可见</div>
+        </div>
+        <div class="td-kpi-card">
+          <div class="td-kpi-ring">
+            <svg width="140" height="140" viewBox="0 0 140 140">
+              <circle class="bg-circle" cx="70" cy="70" r="58"/>
+              <circle class="fg-circle amber" cx="70" cy="70" r="58" stroke-dasharray="364.4" stroke-dashoffset="45"/>
+            </svg>
+            <div class="td-kpi-ring-num"><span class="num">48h</span><span class="unit">提前预警</span></div>
+          </div>
+          <div class="td-kpi-label">异常提前预警</div>
+          <div class="td-kpi-desc">平均提前48小时发出异常预警</div>
+        </div>
+        <div class="td-kpi-card">
+          <div class="td-kpi-ring">
+            <svg width="140" height="140" viewBox="0 0 140 140">
+              <circle class="bg-circle" cx="70" cy="70" r="58"/>
+              <circle class="fg-circle" cx="70" cy="70" r="58" stroke-dasharray="364.4" stroke-dashoffset="10"/>
+            </svg>
+            <div class="td-kpi-ring-num"><span class="num">99.2%</span><span class="unit">合规率</span></div>
+          </div>
+          <div class="td-kpi-label">清关合规率</div>
+          <div class="td-kpi-desc">单证预审把关，大幅降低查验风险</div>
+        </div>
+        <div class="td-kpi-card">
+          <div class="td-kpi-ring">
+            <svg width="140" height="140" viewBox="0 0 140 140">
+              <circle class="bg-circle" cx="70" cy="70" r="58"/>
+              <circle class="fg-circle purple" cx="70" cy="70" r="58" stroke-dasharray="364.4" stroke-dashoffset="50"/>
+            </svg>
+            <div class="td-kpi-ring-num"><span class="num">8x</span><span class="unit">效率</span></div>
+          </div>
+          <div class="td-kpi-label">对账效率提升</div>
+          <div class="td-kpi-desc">AI自动匹配，对账效率提升8倍</div>
+        </div>
       </div>
     </div>
-  </section>
+
+    <!-- ===== 收尾 ===== -->
+    <div class="td-closing reveal">
+      <div class="td-closing-divider"></div>
+      <h2>从下单到签收，全程可信</h2>
+      <p>当每一票货物都有数字孪生，当每一次异常都在发生前被预见，交付就不再是"等通知"的被动状态——而是实时掌控、主动管理的日常运营。这就是全球供应链大平台的可信交付。</p>
+    </div>
+
+  </div><!-- /.td-page -->
 
   <footer class="footer">
     <div class="container">
@@ -582,14 +1477,13 @@
           </ul>
         </div>
       </div>
-    </div>
-    <div class="footer-bottom">
-      <span>&copy; 2026 全球供应链大平台. 保留所有权利. <a
-          href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=44010602010128" target="_blank"
-          rel="noreferrer">粤公网安备44010602010128号</a> | <a href="https://beian.miit.gov.cn/" target="_blank"
-          rel="noreferrer">粤ICP备17142036号-7</a></span>
-      <span class="foot-policy"><a href="#">信息保护政策</a><a href="#">用户协议</a><a href="#">用户行为管理规范</a></span>
-    </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 全球供应链大平台. 保留所有权利. <a
+            href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=44010602010128" target="_blank"
+            rel="noreferrer">粤公网安备44010602010128号</a> | <a href="https://beian.miit.gov.cn/" target="_blank"
+            rel="noreferrer">粤ICP备17142036号-7</a></span>
+        <span class="foot-policy"><a href="#">信息保护政策</a><a href="#">用户协议</a><a href="#">用户行为管理规范</a></span>
+      </div>
     </div>
   </footer>
 
