@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>智慧采购 · 全球供应链大平台</title>
+  <link rel="icon" type="image/png" href="../assets/logo-icon.png">
+  <meta name="description" content="AI驱动的自动询盘、智能比价与采购方案生成——让采购从手动变成自动，每一单都算得明明白白。">
+  <meta property="og:title" content="智慧采购 · 全球供应链大平台">
+  <meta property="og:description" content="AI驱动的自动询盘、智能比价与采购方案生成——让采购从手动变成自动，每一单都算得明明白白。">
+  <meta property="og:image" content="https://www.globalscm.com/assets/og-solutions.png">
+  <meta property="og:url" content="https://www.globalscm.com/solutions/smart-procurement.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Global SCM">
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    .sol-hero {
+      min-height: 80vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      color: #fff;
+    }
+
+    .sol-hero-bg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      pointer-events: none;
+    }
+
+    .sol-hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.45);
+      z-index: 1;
+    }
+
+    .sol-hero-content {
+      position: relative;
+      z-index: 2;
+      padding: 0 32px;
+    }
+
+    .sol-hero h1 {
+      font-size: 72px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      margin-bottom: 24px;
+      line-height: 1.1;
+    }
+
+    .sol-hero p {
+      font-size: 24px;
+      opacity: 0.85;
+      line-height: 1.5;
+      max-width: 520px;
+      margin: 0 auto;
+    }
+
+    .detail-section {
+      padding: 80px 0 40px;
+    }
+
+    .detail-section .container {
+      max-width: 1600px;
+      width: 90%;
+    }
+
+    .section-head {
+      text-align: center;
+      margin: 40px 0 80px;
+    }
+
+    .section-head h2 {
+      font-size: 48px;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      color: #1d1d1f;
+      margin-bottom: 16px;
+    }
+
+    .section-head p {
+      font-size: 20px;
+      color: #86868b;
+    }
+
+    .tpl-card {
+      display: flex;
+      gap: 80px;
+      align-items: center;
+      max-width: 1400px;
+      margin: 0 auto 80px;
+      transition: transform 0.4s var(--ease);
+    }
+
+    .tpl-card:hover {
+      transform: translateY(-4px);
+    }
+
+    .tpl-card:nth-child(even) {
+      flex-direction: row-reverse;
+    }
+
+    .tpl-img {
+      flex: 0 0 45%;
+      aspect-ratio: 1;
+      border-radius: 32px;
+      overflow: hidden;
+      box-shadow: 0 24px 80px rgba(0, 0, 0, 0.10);
+      transition: box-shadow 0.4s var(--ease), transform 0.4s var(--ease);
+    }
+
+    .tpl-card:hover .tpl-img {
+      box-shadow: 0 32px 100px rgba(0, 0, 0, 0.15);
+      transform: scale(1.02);
+    }
+
+    .tpl-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s var(--ease);
+    }
+
+    .tpl-card:hover .tpl-img img {
+      transform: scale(1.06);
+    }
+
+    .tpl-body {
+      flex: 1 1 auto;
+    }
+
+    .tpl-body h3 {
+      font-size: 40px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: #1d1d1f;
+      margin-bottom: 12px;
+    }
+
+    .tpl-body>p {
+      font-size: 19px;
+      color: #86868b;
+      line-height: 1.6;
+      margin-bottom: 56px;
+    }
+
+    .tpl-steps {
+      display: flex;
+      flex-direction: column;
+      gap: 48px;
+    }
+
+    .tpl-step {
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+    }
+
+    .tpl-badge {
+      flex-shrink: 0;
+      width: 40px;
+      height: 40px;
+      border-radius: 12px;
+      display: grid;
+      place-items: center;
+      font-size: 17px;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .tpl-badge--1 {
+      background: #2563EB;
+    }
+
+    .tpl-badge--2 {
+      background: #16A34A;
+    }
+
+    .tpl-badge--3 {
+      background: #7C3AED;
+    }
+
+    .tpl-step h4 {
+      font-size: 21px;
+      font-weight: 600;
+      color: #1d1d1f;
+      margin-bottom: 6px;
+    }
+
+    .tpl-step p {
+      font-size: 16px;
+      color: #86868b;
+      line-height: 1.65;
+    }
+
+    @media (max-width: 1024px) {
+
+      .tpl-card,
+      .tpl-card:nth-child(even) {
+        flex-direction: column;
+        gap: 40px;
+      }
+
+      .tpl-img {
+        flex: 0 0 auto;
+        width: 100%;
+        max-width: 500px;
+      }
+
+      .tpl-body h3 {
+        font-size: 32px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .sol-hero {
+        min-height: 60vh;
+      }
+
+      .sol-hero h1 {
+        font-size: 36px;
+      }
+
+      .sol-hero p {
+        font-size: 17px;
+      }
+
+      .tpl-card {
+        margin-bottom: 48px;
+      }
+
+      .tpl-img {
+        border-radius: 24px;
+      }
+
+      .tpl-body h3 {
+        font-size: 26px;
+      }
+
+      .tpl-body>p {
+        font-size: 16px;
+        margin-bottom: 40px;
+      }
+
+      .tpl-steps {
+        gap: 32px;
+      }
+
+      .tpl-badge {
+        width: 36px;
+        height: 36px;
+        border-radius: 10px;
+      }
+
+      .tpl-step h4 {
+        font-size: 18px;
+      }
+
+      .section-head {
+        margin: 20px 0 48px;
+      }
+
+      .section-head h2 {
+        font-size: 30px;
+      }
+
+      .section-head p {
+        font-size: 16px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header class="navbar">
+    <div class="navbar-inner">
+      <a class="nav-logo" href="../index.html"><img class="logo-img" src="../assets/logo.png"
+          alt="Global Supply Chain"></a>
+      <nav class="nav-links">
+        <a href="../index.html">首页</a>
+        <div class="nav-dropdown">
+          <a href="../solutions.html" class="nav-dropdown-toggle">解决方案 <span class="nav-dropdown-arrow">▼</span></a>
+          <div class="nav-dropdown-menu">
+            <div class="nav-dropdown-menu-inner">
+              <a href="precision-sourcing.html">精准寻源</a>
+              <a href="smart-procurement.html">智慧采购</a>
+              <a href="trusted-delivery.html">可信交付</a>
+              <a href="risk-radar.html">风险雷达</a>
+              <a href="decision-center.html">决策中枢</a>
+            </div>
+          </div>
+        </div>
+        <a href="../intel.html">供应链新闻台</a>
+        <a href="../contact.html">申请加入</a>
+      </nav>
+      <div class="nav-right"><button class="lang-toggle" id="lang-toggle" aria-label="切换语言 / Switch language"><span><svg
+              class="icon-svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10" />
+              <line x1="2" y1="12" x2="22" y2="12" />
+              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+            </svg></span><span id="lang-current">EN</span></button></div>
+      <button class="nav-toggle" aria-label="菜单"><span></span><span></span><span></span></button>
+    </div>
+  </header>
+
+  <section class="sol-hero">
+    <img class="sol-hero-bg"
+      src="https://images.unsplash.com/photo-1553877522-43269d4ea984?auto=format&fit=crop&w=1920&q=85" alt=""
+      loading="eager" onerror="this.style.display='none'">
+    <div class="sol-hero-overlay"></div>
+    <div class="sol-hero-content">
+      <h1>智慧采购</h1>
+      <p>从手工操作到 AI 驱动<br>询盘比价，自动搞定</p>
+    </div>
+  </section>
+
+  <section class="detail-section">
+    <div class="container">
+
+      <div class="section-head reveal">
+        <h2>采购全链路</h2>
+        <p>从询盘到方案，每一步都自动化。</p>
+      </div>
+
+      <!-- 1 -->
+      <div class="tpl-card reveal">
+        <div class="tpl-img">
+          <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1200&q=85"
+            alt="" loading="lazy" onerror="this.style.display='none'">
+        </div>
+        <div class="tpl-body">
+          <h3>自动询盘</h3>
+          <p>不再一封封抄送，不再一个个追问——AI 把询盘变成一条自动流转的管道。</p>
+          <div class="tpl-steps">
+            <div class="tpl-step">
+              <div class="tpl-badge tpl-badge--1"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="2" y="3" width="20" height="14" rx="2" />
+                  <line x1="8" y1="21" x2="16" y2="21" />
+                  <line x1="12" y1="17" x2="12" y2="21" />
+                </svg></div>
+              <div>
+                <h4>需求解析</h4>
+                <p>上传采购需求，AI 自动解析规格参数与交付条件，拆解为结构化筛选维度。</p>
+              </div>
+            </div>
+            <div class="tpl-step">
+              <div class="tpl-badge tpl-badge--2"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+                  <polyline points="22 4 12 14.01 9 11.01" />
+                </svg></div>
+              <div>
+                <h4>一键群发</h4>
+                <p>匹配候选供应商池，一键群发标准询价单，不再逐封粘贴发送。</p>
+              </div>
+            </div>
+            <div class="tpl-step">
+              <div class="tpl-badge tpl-badge--3"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="8" y1="6" x2="21" y2="6" />
+                  <line x1="8" y1="12" x2="21" y2="12" />
+                  <line x1="8" y1="18" x2="21" y2="18" />
+                  <line x1="3" y1="6" x2="3.01" y2="6" />
+                  <line x1="3" y1="12" x2="3.01" y2="12" />
+                  <line x1="3" y1="18" x2="3.01" y2="18" />
+                </svg></div>
+              <div>
+                <h4>汇总排序</h4>
+                <p>自动汇总回复到统一看板，按报价、交期、合规状态排序，一眼看清。</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2 -->
+      <div class="tpl-card reveal">
+        <div class="tpl-img">
+          <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=85" alt=""
+            loading="lazy" onerror="this.style.display='none'">
+        </div>
+        <div class="tpl-body">
+          <h3>智能比价</h3>
+          <p>不止比单价，比的是含税含运到岸总成本——AI 帮你把每一笔隐性成本摊到桌面上。</p>
+          <div class="tpl-steps">
+            <div class="tpl-step">
+              <div class="tpl-badge tpl-badge--1"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="10" />
+                  <line x1="2" y1="12" x2="22" y2="12" />
+                  <path
+                    d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+                </svg></div>
+              <div>
+                <h4>成本换算</h4>
+                <p>自动拉取贸易术语、HS编码、实时运费和汇率，统一换算为含税含运到岸总成本。</p>
+              </div>
+            </div>
+            <div class="tpl-step">
+              <div class="tpl-badge tpl-badge--2"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="18" y1="20" x2="18" y2="10" />
+                  <line x1="12" y1="20" x2="12" y2="4" />
+                  <line x1="6" y1="20" x2="6" y2="14" />
+                </svg></div>
+              <div>
+                <h4>多维对比</h4>
+                <p>单价、关税、运费、保险、交期、付款条件、MOQ——12 个维度横向对比。</p>
+              </div>
+            </div>
+            <div class="tpl-step">
+              <div class="tpl-badge tpl-badge--3"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" />
+                  <line x1="12" y1="9" x2="12" y2="13" />
+                  <line x1="12" y1="17" x2="12.01" y2="17" />
+                </svg></div>
+              <div>
+                <h4>异常标注</h4>
+                <p>自动标注异常低价、偏离均价、条件不对等风险项，不再被"低价陷阱"坑。</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3 -->
+      <div class="tpl-card reveal">
+        <div class="tpl-img">
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=1200&q=85"
+            alt="" loading="lazy" onerror="this.style.display='none'">
+        </div>
+        <div class="tpl-body">
+          <h3>合同管理</h3>
+          <p>跨境合同动辄几十页——AI 帮你审条款、标风险、生成草稿，不再靠人眼逐行比对。</p>
+          <div class="tpl-steps">
+            <div class="tpl-step">
+              <div class="tpl-badge tpl-badge--1"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                  <polyline points="14 2 14 8 20 8" />
+                </svg></div>
+              <div>
+                <h4>OCR 识别</h4>
+                <p>扫描件自动识别条款文本，结构化提取关键字段，不再手动录入。</p>
+              </div>
+            </div>
+            <div class="tpl-step">
+              <div class="tpl-badge tpl-badge--2"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="11" cy="11" r="8" />
+                  <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                </svg></div>
+              <div>
+                <h4>条款比对</h4>
+                <p>NLP 智能比对合同条款与标准模板，秒级标注差异项和缺失条款。</p>
+              </div>
+            </div>
+            <div class="tpl-step">
+              <div class="tpl-badge tpl-badge--3"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                </svg></div>
+              <div>
+                <h4>风险高亮</h4>
+                <p>自动高亮无限责任、不利管辖、模糊交期、异常罚则等风险条款。</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4 -->
+      <div class="tpl-card reveal">
+        <div class="tpl-img">
+          <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=1200&q=85"
+            alt="" loading="lazy" onerror="this.style.display='none'">
+        </div>
+        <div class="tpl-body">
+          <h3>采购方案生成</h3>
+          <p>方案不是写出来的，是算出来的——AI 基于历史数据和当前需求，自动生成可执行的采购方案。</p>
+          <div class="tpl-steps">
+            <div class="tpl-step">
+              <div class="tpl-badge tpl-badge--1"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <ellipse cx="12" cy="5" rx="9" ry="3" />
+                  <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3" />
+                  <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5" />
+                </svg></div>
+              <div>
+                <h4>数据读取</h4>
+                <p>AI 读取历史采购数据和当前需求，自动识别采购模式和偏好。</p>
+              </div>
+            </div>
+            <div class="tpl-step">
+              <div class="tpl-badge tpl-badge--2"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                  <polyline points="14 2 14 8 20 8" />
+                  <line x1="16" y1="13" x2="8" y2="13" />
+                  <line x1="16" y1="17" x2="8" y2="17" />
+                </svg></div>
+              <div>
+                <h4>自动生成</h4>
+                <p>生成含推荐供应商排序、总预算拆解、交期预估、风险提示的完整方案草稿。</p>
+              </div>
+            </div>
+            <div class="tpl-step">
+              <div class="tpl-badge tpl-badge--3"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                  <polyline points="7 10 12 15 17 10" />
+                  <line x1="12" y1="15" x2="12" y2="3" />
+                </svg></div>
+              <div>
+                <h4>一键导出</h4>
+                <p>审核调整后一键导出为标准审批格式，支持版本对比和审批流程。</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="section-sm">
+    <div class="container">
+      <div class="cta-simple reveal">
+        <h2>加入全球供应链大平台</h2>
+        <p>赋能地方资源 · 连接全球市场</p>
+        <a class="btn btn-primary btn-lg" href="../contact.html">申请加入 →</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="brand-name"><img class="logo-img" src="../assets/logo.png" alt="Global Supply Chain"></div>
+          <div class="footer-tagline">让全球供应链，没有断链之忧</div>
+          <p class="brand-desc">从采购寻源到末端配送，从关税波动到航线中断——帮企业把供应链的不确定性，变成可量化、可管理、可优化的日常运营。</p>
+          <div class="footer-social">
+            <a href="#">in</a>
+            <a href="#">&#120143;</a>
+            <a href="mailto:hello@globalscm.com"><svg class="icon-svg" width="17" height="17" viewBox="0 0 24 24"
+                fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="4" width="20" height="16" rx="2" />
+                <path d="M22 4l-10 8L2 4" />
+              </svg></a>
+            <a href="#"><svg class="icon-svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#fff"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10" />
+                <line x1="2" y1="12" x2="22" y2="12" />
+                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+              </svg></a>
+          </div>
+        </div>
+        <div>
+          <h5>解决方案</h5>
+          <ul>
+            <li><a href="precision-sourcing.html">精准寻源</a></li>
+            <li><a href="smart-procurement.html">智慧采购</a></li>
+            <li><a href="trusted-delivery.html">可信交付</a></li>
+            <li><a href="risk-radar.html">风险雷达</a></li>
+            <li><a href="decision-center.html">决策中枢</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h5>了解更多</h5>
+          <ul>
+            <li><a href="../why-us.html">为什么选我们</a></li>
+            <li><a href="../pain-points.html">痛点与方案</a></li>
+            <li><a href="../intel.html">供应链新闻台</a>
+              <a href="../contact.html">申请加入</a>
+            </li>
+            <li><a href="../contact.html">联系我们</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 全球供应链大平台. 保留所有权利. <a
+          href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=44010602010128" target="_blank"
+          rel="noreferrer">粤公网安备44010602010128号</a> | <a href="https://beian.miit.gov.cn/" target="_blank"
+          rel="noreferrer">粤ICP备17142036号-7</a></span>
+      <span class="foot-policy"><a href="#">信息保护政策</a><a href="#">用户协议</a><a href="#">用户行为管理规范</a></span>
+    </div>
+    </div>
+  </footer>
+
+  <script src="../js/i18n.js?v=2"></script>
+  <script src="../js/main.js"></script>
+</body>
+
+</html>

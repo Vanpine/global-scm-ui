@@ -1,0 +1,1673 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>精准寻源 · 全球供应链大平台</title>
+  <link rel="icon" type="image/png" href="../assets/logo-icon.png">
+  <meta name="description" content="供应商智能推荐、尽职调查、质量评分、交付评估与信用评级——找到最对的那一家。">
+  <meta property="og:title" content="精准寻源 · 全球供应链大平台">
+  <meta property="og:description" content="供应商智能推荐、尽职调查、质量评分、交付评估与信用评级——找到最对的那一家。">
+  <meta property="og:image" content="https://www.globalscm.com/assets/og-solutions.png">
+  <meta property="og:url" content="https://www.globalscm.com/solutions/precision-sourcing.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Global SCM">
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    :root {
+      --bg: #F8FAFC;
+      --card-bg: #fff;
+      --brand: #0071e3;
+      --brand-dark: #005bb5;
+      --text: #1d1d1f;
+      --text-sec: #86868b;
+      --border: #e8ecf0;
+      --shadow-sm: 0 2px 12px rgba(0, 0, 0, 0.04);
+      --shadow: 0 8px 32px rgba(0, 0, 0, 0.07);
+      --shadow-lg: 0 20px 60px rgba(0, 0, 0, 0.10);
+      --radius: 24px;
+    }
+
+    body {
+      background: var(--bg);
+    }
+
+    /* ===== 外层容器 ===== */
+    .ps-page {
+      max-width: 75%;
+      margin: 0 auto;
+      padding: 0 40px;
+    }
+
+    /* ===== Hero 55:45 ===== */
+    .ps-hero {
+      display: flex;
+      gap: 80px;
+      align-items: center;
+      min-height: 90vh;
+      padding: 130px 0 80px;
+    }
+    .ps-page {
+      position: relative;
+    }
+    /* 全局网格波点背景 */
+    .ps-page::before {
+      content: "";
+      position: fixed; inset: 0; pointer-events: none; z-index: 0;
+      background-image:
+        radial-gradient(circle, rgba(0,113,227,0.06) 1px, transparent 1px);
+      background-size: 28px 28px;
+      mask-image: radial-gradient(ellipse at 50% 0%, black 40%, transparent 70%);
+      -webkit-mask-image: radial-gradient(ellipse at 50% 0%, black 40%, transparent 70%);
+    }
+    .ps-page > * { position: relative; z-index: 1; }
+
+    .ps-hero-left {
+      flex: 0 0 55%;
+    }
+
+    .ps-hero-right {
+      flex: 1;
+      position: relative;
+    }
+
+    .ps-hero h1 {
+      font-size: 72px;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      color: var(--text);
+      line-height: 1.08;
+      margin-bottom: 20px;
+    }
+
+    .ps-hero .ps-hero-sub {
+      font-size: 24px;
+      color: var(--text-sec);
+      line-height: 1.6;
+      margin-bottom: 48px;
+    }
+
+    /* 4个能力图标卡片 */
+    .ps-cap-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+
+    .ps-cap-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 24px 18px 20px;
+      text-align: center;
+      transition: all 0.35s ease;
+      cursor: default;
+    }
+
+    .ps-cap-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow);
+      border-color: var(--brand);
+    }
+
+    .ps-cap-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: #eef4ff;
+      color: var(--brand);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 14px;
+    }
+
+    .ps-cap-card h4 {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+
+    .ps-cap-card p {
+      font-size: 16px;
+      color: var(--text-sec);
+      line-height: 1.4;
+    }
+
+    /* 右侧：3D地球 + 数据卡片 + 粒子 */
+    .ps-globe-wrap {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .ps-globe {
+      width: 320px;
+      height: 320px;
+      position: relative;
+      background: transparent;
+    }
+
+    .ps-globe canvas {
+      display: block;
+      width: 100% !important;
+      height: 100% !important;
+      background: transparent !important;
+    }
+
+    /* 轨道环 */
+    .ps-orbit {
+      position: absolute;
+      inset: -40px;
+      border-radius: 50%;
+      border: 1px solid rgba(0, 113, 227, 0.15);
+      animation: orbitSpin 25s linear infinite;
+    }
+
+    @keyframes orbitSpin {
+      from {
+        transform: rotate(0deg);
+      }
+
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    .ps-orbit::after {
+      content: "";
+      position: absolute;
+      top: -5px;
+      left: 48%;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #fff;
+      box-shadow: 0 0 16px rgba(0, 113, 227, 0.8), 0 0 32px rgba(0, 113, 227, 0.4);
+    }
+
+    /* 第二条轨道 */
+    .ps-orbit2 {
+      position: absolute;
+      inset: -60px;
+      border-radius: 50%;
+      border: 1px solid rgba(0, 113, 227, 0.08);
+      animation: orbitSpin 35s linear infinite reverse;
+      transform: rotateX(20deg);
+    }
+
+    .ps-orbit2::after {
+      content: "";
+      position: absolute;
+      bottom: -4px;
+      left: 65%;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.8);
+      box-shadow: 0 0 10px rgba(0, 113, 227, 0.5);
+    }
+
+    /* 数据卡片浮在右侧 */
+    .ps-data-card {
+      position: absolute;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(12px);
+      border-radius: 16px;
+      padding: 16px 20px;
+      box-shadow: var(--shadow);
+      font-size: 16px;
+    }
+
+    .ps-data-card.top {
+      top: 0;
+      right: 0;
+    }
+
+    .ps-data-card.bottom {
+      bottom: 10%;
+      left: 0;
+    }
+
+    .ps-data-num {
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--brand);
+    }
+
+    .ps-data-label {
+      font-size: 16px;
+      color: var(--text-sec);
+    }
+
+    /* 悬浮粒子 */
+    .ps-particles {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .ps-particle {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: var(--brand);
+      opacity: 0.4;
+      animation: floatUp 6s ease-in-out infinite;
+    }
+
+    .ps-particle:nth-child(1) {
+      left: 10%;
+      animation-delay: 0s;
+    }
+
+    .ps-particle:nth-child(2) {
+      left: 30%;
+      animation-delay: 1.5s;
+    }
+
+    .ps-particle:nth-child(3) {
+      left: 55%;
+      animation-delay: 3s;
+    }
+
+    .ps-particle:nth-child(4) {
+      left: 70%;
+      animation-delay: 4.5s;
+    }
+
+    .ps-particle:nth-child(5) {
+      left: 85%;
+      animation-delay: 2s;
+    }
+
+    @keyframes floatUp {
+      0% {
+        bottom: -10px;
+        opacity: 0;
+        transform: translateX(0);
+      }
+
+      20% {
+        opacity: 0.5;
+      }
+
+      80% {
+        opacity: 0.3;
+      }
+
+      100% {
+        bottom: 100%;
+        opacity: 0;
+        transform: translateX(30px);
+      }
+    }
+
+    /* ===== 流程模块 ===== */
+    .ps-flow-section {
+      padding: 80px 0;
+    }
+
+    .ps-flow-section h2 {
+      font-size: 48px;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      color: var(--text);
+      text-align: center;
+      margin-bottom: 16px;
+    }
+
+    .ps-flow-sub {
+      font-size: 20px;
+      color: var(--text-sec);
+      text-align: center;
+      margin-bottom: 72px;
+    }
+
+    /* 时间轴布局 */
+    .ps-timeline {
+      position: relative;
+      padding-left: 80px;
+    }
+
+    /* 蓝色渐变竖线 */
+    .ps-timeline::before {
+      content: "";
+      position: absolute;
+      left: 27px;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: linear-gradient(180deg, var(--brand) 0%, #60a5fa 40%, #93c5fd 80%, transparent 100%);
+    }
+
+    .ps-tl-step {
+      position: relative;
+      margin-bottom: 80px;
+    }
+
+    .ps-tl-step:last-child {
+      margin-bottom: 0;
+    }
+
+    /* 数字徽章 */
+    .ps-tl-badge {
+      position: absolute;
+      left: -80px;
+      top: 0;
+      width: 56px;
+      height: 56px;
+      border-radius: 16px;
+      background: var(--brand);
+      color: #fff;
+      font-size: 24px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1;
+      box-shadow: 0 8px 24px rgba(0, 113, 227, 0.3);
+    }
+
+    /* 步骤卡片 */
+    .ps-tl-card {
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      padding: 40px;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--border);
+      transition: all 0.4s ease;
+    }
+
+    .ps-tl-card:hover {
+      box-shadow: var(--shadow-lg);
+      border-color: #d0d8e4;
+    }
+
+    .ps-tl-card h3 {
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--text);
+      letter-spacing: 0.03em;
+      margin-bottom: 14px;
+    }
+
+    .ps-tl-card>p {
+      font-size: 20px;
+      color: var(--text-sec);
+      letter-spacing: 0.02em;
+      line-height: 1.9;
+      line-height: 1.6;
+      margin-bottom: 28px;
+    }
+
+    /* 需求解析：输入/输出面板 */
+    .ps-io-panel {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+
+    .ps-io-box {
+      background: var(--card-bg);
+      border-radius: 16px;
+      padding: 24px 28px;
+      border: 1px solid var(--border);
+      transition: all 0.35s ease;
+    }
+
+    .ps-io-box:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow);
+      border-color: #d0d8e4;
+    }
+
+    .ps-io-label {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 10px;
+    }
+
+    .ps-io-text {
+      font-size: 16px;
+      color: #555;
+      line-height: 1.7;
+    }
+
+    .ps-io-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 14px;
+    }
+
+    .ps-io-tag {
+      padding: 4px 12px;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: 500;
+      background: #f5f6f8;
+      color: #555;
+    }
+
+    /* 多维匹配：5列 */
+    .ps-match-5 {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 16px;
+    }
+
+    .ps-match-col {
+      background: #f8f9fb;
+      border-radius: 16px;
+      padding: 24px 18px;
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+
+    .ps-match-col:hover {
+      background: #eef4ff;
+      transform: translateY(-3px);
+    }
+
+    .ps-match-col .ps-mc-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background: #eef4ff;
+      color: var(--brand);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 12px;
+    }
+
+    .ps-match-col h4 {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 6px;
+    }
+
+    .ps-match-col p {
+      font-size: 16px;
+      color: var(--text-sec);
+      line-height: 1.5;
+    }
+
+    /* 依据透明：供应商评分卡片 */
+    .ps-score-panel {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .ps-score-item {
+      background: #fff;
+      border: 1px solid #eef0f4;
+      border-radius: 16px;
+      padding: 28px 24px;
+      transition: all 0.35s ease;
+    }
+
+    .ps-score-item:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 28px rgba(0, 0, 0, 0.06);
+    }
+
+    .ps-score-header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+
+    .ps-score-name {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--text);
+      letter-spacing: 0.03em;
+    }
+
+    .ps-score-val {
+      font-size: 42px;
+      font-weight: 700;
+      color: var(--brand);
+      letter-spacing: -0.01em;
+      line-height: 1;
+    }
+
+    .ps-score-dims {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .ps-score-dim {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 16px;
+      letter-spacing: 0.02em;
+    }
+
+    .ps-score-dim span:first-child {
+      color: var(--text-sec);
+    }
+
+    .ps-score-dim span:last-child {
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .ps-score-dim .dim-high {
+      color: #16a34a !important;
+    }
+
+    .ps-score-dim .dim-mid {
+      color: var(--brand) !important;
+    }
+
+    .ps-score-dim .dim-low {
+      color: #b45309 !important;
+    }
+
+    @media (max-width: 768px) {
+      .ps-score-panel {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* 深度尽调：2×2 */
+    .ps-dd-4 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .ps-dd-item {
+      background: #f8f9fb;
+      border-radius: 18px;
+      padding: 28px 26px;
+      transition: all 0.3s ease;
+    }
+
+    .ps-dd-item:hover {
+      background: #eef4ff;
+    }
+
+    .ps-dd-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      background: #eef4ff;
+      color: var(--brand);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 14px;
+    }
+
+    .ps-dd-item h4 {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 10px;
+      letter-spacing: 0.02em;
+    }
+
+    .ps-dd-item p {
+      font-size: 16px;
+      color: var(--text-sec);
+      line-height: 1.8;
+      letter-spacing: 0.02em;
+    }
+
+    /* 风险评级结果卡 */
+    .ps-risk-card {
+      margin-top: 24px;
+      background: linear-gradient(135deg, #f0fdf4, #ecfdf5);
+      border: 1px solid #bbf7d0;
+      border-radius: 18px;
+      padding: 24px 28px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .ps-risk-badge {
+      width: 64px;
+      height: 64px;
+      border-radius: 16px;
+      background: #16a34a;
+      color: #fff;
+      font-size: 28px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .ps-risk-info h4 {
+      font-size: 20px;
+      font-weight: 700;
+      color: #16a34a;
+      margin-bottom: 4px;
+    }
+
+    .ps-risk-info p {
+      font-size: 16px;
+      color: #555;
+      margin: 0;
+    }
+
+    /* ===== 数据价值区 ===== */
+    .ps-value {
+      padding: 100px 0;
+    }
+
+    .ps-value h2 {
+      font-size: 48px;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      color: var(--text);
+      text-align: center;
+      margin-bottom: 16px;
+    }
+
+    .ps-value-sub {
+      font-size: 20px;
+      color: var(--text-sec);
+      text-align: center;
+      margin-bottom: 64px;
+    }
+
+    .ps-kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 20px;
+    }
+
+    .ps-kpi-card {
+      background: var(--card-bg);
+      border-radius: 20px;
+      padding: 36px 28px;
+      text-align: center;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-sm);
+      transition: all 0.35s ease;
+    }
+
+    .ps-kpi-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .ps-kpi-num {
+      font-size: 44px;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      color: var(--brand);
+      margin-bottom: 8px;
+    }
+
+    .ps-kpi-label {
+      font-size: 20px;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 6px;
+    }
+
+    .ps-kpi-desc {
+      font-size: 16px;
+      color: var(--text-sec);
+      line-height: 1.5;
+    }
+
+    /* ===== CTA 区 ===== */
+    .ps-cta {
+      position: relative;
+      overflow: hidden;
+      border-radius: 32px;
+      padding: 80px 64px;
+      margin: 0 0 100px;
+      background:
+        radial-gradient(circle at 80% -10%, rgba(255, 255, 255, 0.18), transparent 50%),
+        radial-gradient(circle at 20% 110%, rgba(94, 92, 230, 0.35), transparent 50%),
+        linear-gradient(135deg, #0a57d6 0%, #0071e3 48%, #3b82f6 100%);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 80px;
+    }
+
+    .ps-cta::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image:
+        radial-gradient(circle at 15% 40%, rgba(255, 255, 255, 0.12) 0%, transparent 3%),
+        radial-gradient(circle at 30% 60%, rgba(255, 255, 255, 0.10) 0%, transparent 2%),
+        radial-gradient(circle at 55% 25%, rgba(255, 255, 255, 0.14) 0%, transparent 4%),
+        radial-gradient(circle at 70% 55%, rgba(255, 255, 255, 0.08) 0%, transparent 3%),
+        radial-gradient(circle at 80% 35%, rgba(255, 255, 255, 0.11) 0%, transparent 2%),
+        radial-gradient(circle at 45% 75%, rgba(255, 255, 255, 0.06) 0%, transparent 5%);
+      pointer-events: none;
+    }
+
+    /* 粒子连线模拟 */
+    .ps-cta::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+        linear-gradient(0deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+      background-size: 60px 60px;
+      mask-image: radial-gradient(ellipse at 70% 30%, black 30%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .ps-cta-left {
+      flex: 1;
+      position: relative;
+      z-index: 1;
+    }
+
+    .ps-cta h2 {
+      font-size: 44px;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      margin-bottom: 16px;
+      line-height: 1.15;
+    }
+
+    .ps-cta p {
+      font-size: 20px;
+      opacity: 0.88;
+      line-height: 1.6;
+      margin-bottom: 36px;
+    }
+
+    .ps-cta .btn {
+      font-size: 20px;
+      padding: 16px 48px;
+      border-radius: 14px;
+      background: #fff;
+      color: var(--brand);
+      font-weight: 700;
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .ps-cta .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(0, 0, 0, 0.2);
+    }
+
+    /* CTA 右侧：世界地图模拟 */
+    .ps-cta-right {
+      flex: 0 0 380px;
+      height: 300px;
+      position: relative;
+      z-index: 1;
+      opacity: 0.6;
+    }
+
+    .ps-cta-map {
+      width: 100%;
+      height: 100%;
+      background:
+        radial-gradient(ellipse at 20% 40%, rgba(255, 255, 255, 0.3) 0%, transparent 50%),
+        radial-gradient(ellipse at 50% 30%, rgba(255, 255, 255, 0.25) 0%, transparent 45%),
+        radial-gradient(ellipse at 70% 50%, rgba(255, 255, 255, 0.2) 0%, transparent 48%),
+        radial-gradient(ellipse at 35% 65%, rgba(255, 255, 255, 0.22) 0%, transparent 42%);
+      border-radius: 50%;
+      position: relative;
+    }
+
+    /* 连接节点 */
+    .ps-cta-node {
+      position: absolute;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #fff;
+      box-shadow: 0 0 12px rgba(255, 255, 255, 0.7);
+      animation: nodeBlink 2s ease-in-out infinite;
+    }
+
+    .ps-cta-node:nth-child(1) {
+      top: 25%;
+      left: 25%;
+      animation-delay: 0s;
+    }
+
+    .ps-cta-node:nth-child(2) {
+      top: 30%;
+      left: 55%;
+      animation-delay: 0.5s;
+    }
+
+    .ps-cta-node:nth-child(3) {
+      top: 50%;
+      left: 70%;
+      animation-delay: 1s;
+    }
+
+    .ps-cta-node:nth-child(4) {
+      top: 60%;
+      left: 40%;
+      animation-delay: 1.5s;
+    }
+
+    @keyframes nodeBlink {
+
+      0%,
+      100% {
+        opacity: 0.5;
+        transform: scale(1);
+      }
+
+      50% {
+        opacity: 1;
+        transform: scale(1.8);
+      }
+    }
+
+    /* ===== 响应式 ===== */
+    @media (max-width: 1200px) {
+      .ps-match-5 {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .ps-kpi-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    @media (max-width: 1024px) {
+      .ps-hero {
+        flex-direction: column;
+        gap: 48px;
+        min-height: auto;
+        padding: 40px 0 60px;
+      }
+
+      .ps-hero-left {
+        flex: auto;
+        text-align: center;
+      }
+
+      .ps-hero-right {
+        max-width: 400px;
+        margin: 0 auto;
+      }
+
+      .ps-cap-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .ps-cta {
+        flex-direction: column;
+        padding: 56px 32px;
+        gap: 40px;
+        border-radius: 24px;
+      }
+
+      .ps-cta-right {
+        flex: auto;
+        width: 100%;
+        height: 200px;
+      }
+
+      .ps-timeline {
+        padding-left: 64px;
+      }
+
+      .ps-tl-badge {
+        left: -64px;
+        width: 44px;
+        height: 44px;
+        font-size: 20px;
+      }
+
+      .ps-io-panel {
+        grid-template-columns: 1fr;
+      }
+
+      .ps-dd-4 {
+        grid-template-columns: 1fr;
+      }
+
+      .ps-page {
+        max-width: 94%; padding: 0 20px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .ps-hero h1 {
+        font-size: 42px;
+      }
+
+      .ps-hero .ps-hero-sub {
+        font-size: 20px;
+      }
+
+      .ps-cap-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+      }
+
+      .ps-cap-card {
+        padding: 16px 12px;
+      }
+
+      .ps-globe {
+        width: 220px;
+        height: 220px;
+      }
+
+      .ps-timeline {
+        padding-left: 48px;
+      }
+
+      .ps-tl-badge {
+        left: -48px;
+        width: 36px;
+        height: 36px;
+        font-size: 16px;
+        border-radius: 10px;
+      }
+
+      .ps-tl-card {
+        padding: 24px 20px;
+      }
+
+      .ps-tl-card h3 {
+        font-size: 24px;
+      }
+
+      .ps-tl-card>p {
+        font-size: 16px;
+      }
+
+      .ps-match-5 {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .ps-kpi-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .ps-flow-section h2,
+      .ps-value h2 {
+        font-size: 30px;
+      }
+
+      .ps-cta h2 {
+        font-size: 28px;
+      }
+
+      .ps-cta {
+        padding: 48px 24px;
+        border-radius: 20px;
+      }
+
+      .ps-cta-right {
+        height: 160px;
+      }
+
+      .ps-page {
+        max-width: 96%; padding: 0 12px;
+      }
+
+      .ps-hero {
+        padding: 24px 0 48px;
+      }
+
+      .ps-data-card {
+        display: none;
+      }
+
+      .ps-score-item {
+        padding: 20px 16px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header class="navbar">
+    <div class="navbar-inner">
+      <a class="nav-logo" href="../index.html"><img class="logo-img" src="../assets/logo.png"
+          alt="Global Supply Chain"></a>
+      <nav class="nav-links">
+        <a href="../index.html">首页</a>
+        <div class="nav-dropdown">
+          <a href="../solutions.html" class="nav-dropdown-toggle">解决方案 <span class="nav-dropdown-arrow">▼</span></a>
+          <div class="nav-dropdown-menu">
+            <div class="nav-dropdown-menu-inner">
+              <a href="precision-sourcing.html">精准寻源</a>
+              <a href="smart-procurement.html">智慧采购</a>
+              <a href="trusted-delivery.html">可信交付</a>
+              <a href="risk-radar.html">风险雷达</a>
+              <a href="decision-center.html">决策中枢</a>
+            </div>
+          </div>
+        </div>
+        <a href="../intel.html">供应链新闻台</a>
+        <a href="../contact.html">申请加入</a>
+      </nav>
+      <div class="nav-right"><button class="lang-toggle" id="lang-toggle" aria-label="切换语言 / Switch language"><span><svg
+              class="icon-svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10" />
+              <line x1="2" y1="12" x2="22" y2="12" />
+              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+            </svg></span><span id="lang-current">EN</span></button></div>
+      <button class="nav-toggle" aria-label="菜单"><span></span><span></span><span></span></button>
+    </div>
+  </header>
+
+  <div class="ps-page">
+
+    <!-- ===== Hero 55:45 ===== -->
+    <section class="ps-hero">
+      <div class="ps-hero-left">
+        <h1>精准寻源</h1>
+        <p class="ps-hero-sub">从需求解析到尽调交付，AI 驱动全球供应商智能匹配——让每一次寻源都有据可依。</p>
+        <div class="ps-cap-grid">
+          <div class="ps-cap-card">
+            <div class="ps-cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10" />
+                <line x1="2" y1="12" x2="22" y2="12" />
+                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+              </svg></div>
+            <h4>全球供应商</h4>
+            <p>覆盖50万+企业</p>
+          </div>
+          <div class="ps-cap-card">
+            <div class="ps-cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 2L2 7l10 5 10-5-10-5z" />
+                <path d="M2 17l10 5 10-5" />
+                <path d="M2 12l10 5 10-5" />
+              </svg></div>
+            <h4>AI 智能匹配</h4>
+            <p>多维评分排序</p>
+          </div>
+          <div class="ps-cap-card">
+            <div class="ps-cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="3" width="18" height="18" rx="3" />
+                <line x1="3" y1="9" x2="21" y2="9" />
+                <line x1="9" y1="21" x2="9" y2="9" />
+              </svg></div>
+            <h4>全流程可视化</h4>
+            <p>寻源进度可追踪</p>
+          </div>
+          <div class="ps-cap-card">
+            <div class="ps-cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="18" y1="20" x2="18" y2="10" />
+                <line x1="12" y1="20" x2="12" y2="4" />
+                <line x1="6" y1="20" x2="6" y2="14" />
+              </svg></div>
+            <h4>数据驱动决策</h4>
+            <p>每步都有量化依据</p>
+          </div>
+        </div>
+      </div>
+      <div class="ps-hero-right">
+        <div class="ps-globe-wrap">
+          <div class="ps-globe" id="globe-container"></div>
+          <div class="ps-orbit"></div>
+          <div class="ps-orbit2"></div>
+          <div class="ps-data-card top">
+            <div class="ps-data-num">500,000+</div>
+            <div class="ps-data-label">全球供应商池</div>
+          </div>
+          <div class="ps-data-card bottom">
+            <div class="ps-data-num">92%</div>
+            <div class="ps-data-label">推荐匹配命中率</div>
+          </div>
+          <div class="ps-particles">
+            <div class="ps-particle"></div>
+            <div class="ps-particle"></div>
+            <div class="ps-particle"></div>
+            <div class="ps-particle"></div>
+            <div class="ps-particle"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== AI 寻源流程 ===== -->
+    <section class="ps-flow-section">
+      <h2>AI 寻源全链路</h2>
+      <p class="ps-flow-sub">从需求到尽调，四步完成全球供应商精准匹配</p>
+
+      <div class="ps-timeline">
+
+        <!-- 步骤1 -->
+        <div class="ps-tl-step">
+          <div class="ps-tl-badge">1</div>
+          <div class="ps-tl-card">
+            <h3>需求解析</h3>
+            <p>你只需要描述采购需求 —— 品类、规格、数量、交期、预算，系统自动完成筛选条件的结构化匹配，告别繁琐的手动填表和跨平台搜索。</p>
+            <div class="ps-io-panel">
+              <div class="ps-io-box">
+                <div class="ps-io-label">采购需求描述</div>
+                <div class="ps-io-text">"5000件不锈钢法兰，DN50口径，ASME B16.5标准，30天内交付，预算5万美元以内"</div>
+              </div>
+              <div class="ps-io-box output">
+                <div class="ps-io-label">自动解析为筛选维度</div>
+                <div class="ps-io-tags">
+                  <span class="ps-io-tag">品类：不锈钢法兰</span>
+                  <span class="ps-io-tag">规格：DN50</span>
+                  <span class="ps-io-tag">标准：ASME B16.5</span>
+                  <span class="ps-io-tag">数量：5,000件</span>
+                  <span class="ps-io-tag">交期：≤30天</span>
+                  <span class="ps-io-tag">预算：≤$50,000</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 步骤2 -->
+        <div class="ps-tl-step">
+          <div class="ps-tl-badge">2</div>
+          <div class="ps-tl-card">
+            <h3>多维匹配</h3>
+            <p>五维交叉匹配引擎，从全球供应商池中按评分排序精准召回候选名单，匹配结果实时统计。</p>
+            <div class="ps-match-5">
+              <div class="ps-match-col">
+                <div class="ps-mc-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2">
+                    <rect x="3" y="3" width="18" height="18" rx="2" />
+                    <line x1="3" y1="9" x2="21" y2="9" />
+                  </svg></div>
+                <h4>产品规格</h4>
+                <p>品类、尺寸、材质与需求精确对齐</p>
+              </div>
+              <div class="ps-match-col">
+                <div class="ps-mc-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                  </svg></div>
+                <h4>资质认证</h4>
+                <p>ISO、行业许可、出口资质逐项核验</p>
+              </div>
+              <div class="ps-match-col">
+                <div class="ps-mc-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2">
+                    <rect x="2" y="3" width="20" height="14" rx="2" />
+                    <line x1="8" y1="21" x2="16" y2="21" />
+                    <line x1="12" y1="17" x2="12" y2="21" />
+                  </svg></div>
+                <h4>产能规模</h4>
+                <p>年产能、在手订单评估真实承接力</p>
+              </div>
+              <div class="ps-match-col">
+                <div class="ps-mc-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10" />
+                    <polyline points="12 6 12 12 16 14" />
+                  </svg></div>
+                <h4>物流时效</h4>
+                <p>工厂位置、港口距离、运输时间综合计算</p>
+              </div>
+              <div class="ps-match-col">
+                <div class="ps-mc-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2">
+                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+                    <polyline points="22 4 12 14.01 9 11.01" />
+                  </svg></div>
+                <h4>交付历史</h4>
+                <p>准时率、退货率、客户评价纳入模型</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 步骤3 -->
+        <div class="ps-tl-step">
+          <div class="ps-tl-badge">3</div>
+          <div class="ps-tl-card">
+            <h3>依据透明</h3>
+            <p>每条推荐附评分明细与匹配理由——品类匹配度、资质达标项、产能适配度、交付历史评分。不只告诉你谁合适，也告诉你为什么合适。</p>
+            <div class="ps-score-panel">
+              <div class="ps-score-item">
+                <div class="ps-score-header">
+                  <span class="ps-score-name">供应商 A</span>
+                  <span class="ps-score-val">92</span>
+                </div>
+                <div class="ps-score-dims">
+                  <div class="ps-score-dim"><span>品类匹配</span><span class="dim-high">完全匹配</span></div>
+                  <div class="ps-score-dim"><span>资质认证</span><span class="dim-high">ASME B16.5</span></div>
+                  <div class="ps-score-dim"><span>产能适配</span><span class="dim-mid">月产 8 万件</span></div>
+                  <div class="ps-score-dim"><span>物流距离</span><span class="dim-high">距港 80km</span></div>
+                  <div class="ps-score-dim"><span>交付历史</span><span class="dim-high">准时率 97%</span></div>
+                </div>
+              </div>
+              <div class="ps-score-item">
+                <div class="ps-score-header">
+                  <span class="ps-score-name">供应商 B</span>
+                  <span class="ps-score-val">85</span>
+                </div>
+                <div class="ps-score-dims">
+                  <div class="ps-score-dim"><span>品类匹配</span><span class="dim-mid">规格匹配</span></div>
+                  <div class="ps-score-dim"><span>资质认证</span><span class="dim-high">ISO 9001</span></div>
+                  <div class="ps-score-dim"><span>产能适配</span><span class="dim-mid">月产 5 万件</span></div>
+                  <div class="ps-score-dim"><span>物流距离</span><span class="dim-mid">距港 210km</span></div>
+                  <div class="ps-score-dim"><span>交付历史</span><span class="dim-high">交期 15 天</span></div>
+                </div>
+              </div>
+              <div class="ps-score-item">
+                <div class="ps-score-header">
+                  <span class="ps-score-name">供应商 C</span>
+                  <span class="ps-score-val">71</span>
+                </div>
+                <div class="ps-score-dims">
+                  <div class="ps-score-dim"><span>品类匹配</span><span class="dim-mid">基本匹配</span></div>
+                  <div class="ps-score-dim"><span>资质认证</span><span class="dim-low">无出口资质</span></div>
+                  <div class="ps-score-dim"><span>产能适配</span><span class="dim-high">月产 12 万件</span></div>
+                  <div class="ps-score-dim"><span>物流距离</span><span class="dim-mid">距港 350km</span></div>
+                  <div class="ps-score-dim"><span>交付历史</span><span class="dim-low">出口经验少</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 步骤4 -->
+        <div class="ps-tl-step">
+          <div class="ps-tl-badge">4</div>
+          <div class="ps-tl-card">
+            <h3>深度尽调</h3>
+            <p>平台自营尽调引擎——制裁筛查、股权穿透、资质核验、诉讼舆情，分钟级输出结构化尽调报告。</p>
+            <div class="ps-dd-4">
+              <div class="ps-dd-item">
+                <div class="ps-dd-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10" />
+                    <line x1="12" y1="8" x2="12" y2="12" />
+                    <line x1="12" y1="16" x2="12.01" y2="16" />
+                  </svg></div>
+                <h4>制裁筛查</h4>
+                <p>实时比对全球 200+ 制裁清单，交易对手风险秒级可见</p>
+              </div>
+              <div class="ps-dd-item">
+                <div class="ps-dd-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2">
+                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                    <circle cx="9" cy="7" r="4" />
+                    <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+                    <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                  </svg></div>
+                <h4>股权穿透</h4>
+                <p>多层追溯识别实际控制人、受益所有人及隐性关联方</p>
+              </div>
+              <div class="ps-dd-item">
+                <div class="ps-dd-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2">
+                    <rect x="3" y="3" width="18" height="18" rx="3" />
+                    <line x1="3" y1="9" x2="21" y2="9" />
+                  </svg></div>
+                <h4>资质核验</h4>
+                <p>证书真伪自动查验，有效期监控，过期前主动提醒</p>
+              </div>
+              <div class="ps-dd-item">
+                <div class="ps-dd-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                    <polyline points="14 2 14 8 20 8" />
+                  </svg></div>
+                <h4>诉讼舆情</h4>
+                <p>行政处罚、法律诉讼、负面舆情一键纳入尽调报告</p>
+              </div>
+            </div>
+            <!-- 风险评级结果 -->
+            <div class="ps-risk-card">
+              <div class="ps-risk-badge">A</div>
+              <div class="ps-risk-info">
+                <h4>综合风险评级：低风险</h4>
+                <p>无制裁记录 · 股权结构清晰 · 资质齐全有效 · 近3年无重大诉讼 · 建议进入询盘阶段</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===== AI 做了什么，提升了什么 ===== -->
+    <section class="ps-value">
+      <h2>AI 做了什么，提升了什么</h2>
+      <p class="ps-value-sub">五个维度，从发现到评估，每一步都有量化改变</p>
+      <div class="ps-kpi-grid">
+        <div class="ps-kpi-card">
+          <div class="ps-kpi-num">80%</div>
+          <div class="ps-kpi-label">寻源效率提升</div>
+          <div class="ps-kpi-desc">从多渠道撒网到精准匹配，推荐命中率 90%+</div>
+        </div>
+        <div class="ps-kpi-card">
+          <div class="ps-kpi-num">数分钟</div>
+          <div class="ps-kpi-label">尽调周期</div>
+          <div class="ps-kpi-desc">制裁筛查 + 股权穿透 + 资质核验分钟级完成</div>
+        </div>
+        <div class="ps-kpi-card">
+          <div class="ps-kpi-num">30天</div>
+          <div class="ps-kpi-label">质量风险提前预警</div>
+          <div class="ps-kpi-desc">质量波动持续追踪，异常下滑主动推送</div>
+        </div>
+        <div class="ps-kpi-card">
+          <div class="ps-kpi-num">60天</div>
+          <div class="ps-kpi-label">延期风险提前预判</div>
+          <div class="ps-kpi-desc">产能与在手订单实时建模，交付可预判</div>
+        </div>
+        <div class="ps-kpi-card">
+          <div class="ps-kpi-num">&asymp; 0</div>
+          <div class="ps-kpi-label">高风险交易过滤</div>
+          <div class="ps-kpi-desc">多因子信用模型自动拦截不合格交易对手</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CTA ===== -->
+    <section class="ps-cta">
+      <div class="ps-cta-left">
+        <h2>准备好找到最对的供应商了吗？</h2>
+        <p>完成身份预审，让全球优质供应商主动找到你。</p>
+        <a class="btn" href="../contact.html">申请加入 →</a>
+      </div>
+      <div class="ps-cta-right">
+        <div class="ps-cta-map">
+          <div class="ps-cta-node" style="top:25%;left:25%;"></div>
+          <div class="ps-cta-node" style="top:30%;left:55%;"></div>
+          <div class="ps-cta-node" style="top:50%;left:70%;"></div>
+          <div class="ps-cta-node" style="top:60%;left:40%;"></div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="brand-name"><img class="logo-img" src="../assets/logo.png" alt="Global Supply Chain"></div>
+          <div class="footer-tagline">让全球供应链，没有断链之忧</div>
+          <p class="brand-desc">从采购寻源到末端配送，从关税波动到航线中断——帮企业把供应链的不确定性，变成可量化、可管理、可优化的日常运营。</p>
+          <div class="footer-social">
+            <a href="#">in</a><a href="#">&#120143;</a>
+            <a href="mailto:hello@globalscm.com"><svg class="icon-svg" width="17" height="17" viewBox="0 0 24 24"
+                fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="4" width="20" height="16" rx="2" />
+                <path d="M22 4l-10 8L2 4" />
+              </svg></a>
+            <a href="#"><svg class="icon-svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#fff"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10" />
+                <line x1="2" y1="12" x2="22" y2="12" />
+                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+              </svg></a>
+          </div>
+        </div>
+        <div>
+          <h5>解决方案</h5>
+          <ul>
+            <li><a href="precision-sourcing.html">精准寻源</a></li>
+            <li><a href="smart-procurement.html">智慧采购</a></li>
+            <li><a href="trusted-delivery.html">可信交付</a></li>
+            <li><a href="risk-radar.html">风险雷达</a></li>
+            <li><a href="decision-center.html">决策中枢</a></li>
+          </ul>
+        </div>
+        <div>
+          <h5>了解更多</h5>
+          <ul>
+            <li><a href="../why-us.html">为什么选我们</a></li>
+            <li><a href="../pain-points.html">痛点与方案</a></li>
+            <li><a href="../intel.html">供应链新闻台</a></li>
+            <li><a href="../contact.html">申请加入</a></li>
+            <li><a href="../contact.html">联系我们</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 全球供应链大平台. 保留所有权利. <a
+            href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=44010602010128" target="_blank"
+            rel="noreferrer">粤公网安备44010602010128号</a> | <a href="https://beian.miit.gov.cn/" target="_blank"
+            rel="noreferrer">粤ICP备17142036号-7</a></span>
+        <span class="foot-policy"><a href="#">信息保护政策</a><a href="#">用户协议</a><a href="#">用户行为管理规范</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <script type="importmap">
+{
+  "imports": {
+    "three": "https://unpkg.com/three@0.160.0/build/three.module.js"
+  }
+}
+</script>
+  <script type="module">
+    import * as THREE from 'three';
+
+    const container = document.getElementById('globe-container');
+    const W = 320, H = 320;
+
+    // Scene
+    const scene = new THREE.Scene();
+
+    // Camera
+    const camera = new THREE.PerspectiveCamera(45, 1, 0.1, 100);
+    camera.position.z = 3.2;
+
+    // Renderer
+    const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true, premultipliedAlpha: true });
+    renderer.setSize(W, H);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    renderer.setClearColor(0x000000, 0);
+    renderer.domElement.style.background = 'transparent';
+    container.appendChild(renderer.domElement);
+
+    // --- 线框地球 ---
+    const earthGeom = new THREE.SphereGeometry(1, 48, 48);
+
+    // 半透明球体基底
+    const baseMat = new THREE.MeshPhongMaterial({
+      color: 0x0a1e3d,
+      emissive: 0x041020,
+      shininess: 30,
+      transparent: true,
+      opacity: 0.7
+    });
+    const baseSphere = new THREE.Mesh(earthGeom, baseMat);
+    scene.add(baseSphere);
+
+    // 线框层
+    const wireGeom = new THREE.SphereGeometry(1.008, 48, 48);
+    const wireMat = new THREE.MeshBasicMaterial({
+      color: 0x3399ff,
+      wireframe: true,
+      transparent: true,
+      opacity: 0.25
+    });
+    const wireframe = new THREE.Mesh(wireGeom, wireMat);
+    scene.add(wireframe);
+
+    // 第二层线框 - 细线，更密集
+    const wireGeom2 = new THREE.SphereGeometry(1.012, 24, 48);
+    const wireMat2 = new THREE.MeshBasicMaterial({
+      color: 0x66bbff,
+      wireframe: true,
+      transparent: true,
+      opacity: 0.1
+    });
+    const wireframe2 = new THREE.Mesh(wireGeom2, wireMat2);
+    scene.add(wireframe2);
+
+    // 大气光晕
+    const glowGeom = new THREE.SphereGeometry(1.08, 64, 64);
+    const glowMat = new THREE.ShaderMaterial({
+      vertexShader: `
+    varying vec3 vNormal;
+    varying vec3 vPosition;
+    void main() {
+      vNormal = normalize(normalMatrix * normal);
+      vPosition = (modelViewMatrix * vec4(position, 1.0)).xyz;
+      gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+    }
+  `,
+      fragmentShader: `
+    varying vec3 vNormal;
+    varying vec3 vPosition;
+    void main() {
+      vec3 viewDir = normalize(-vPosition);
+      float rim = 1.0 - abs(dot(viewDir, vNormal));
+      float glow = pow(rim, 2.8) * 0.7;
+      gl_FragColor = vec4(0.2, 0.6, 1.0, glow);
+    }
+  `,
+      transparent: true,
+      blending: THREE.AdditiveBlending,
+      depthWrite: false
+    });
+    const glow = new THREE.Mesh(glowGeom, glowMat);
+    scene.add(glow);
+
+    // 外层光环
+    const ringGeom = new THREE.TorusGeometry(1.28, 0.003, 16, 200);
+    const ringMat = new THREE.MeshBasicMaterial({
+      color: 0x3399ff,
+      transparent: true,
+      opacity: 0.45
+    });
+    const ring = new THREE.Mesh(ringGeom, ringMat);
+    ring.rotation.x = Math.PI * 0.5;
+    ring.rotation.y = Math.PI * 0.15;
+    scene.add(ring);
+
+    const ring2Geom = new THREE.TorusGeometry(1.36, 0.002, 16, 180);
+    const ring2Mat = new THREE.MeshBasicMaterial({
+      color: 0x66aadd,
+      transparent: true,
+      opacity: 0.3
+    });
+    const ring2 = new THREE.Mesh(ring2Geom, ring2Mat);
+    ring2.rotation.x = Math.PI * 0.38;
+    ring2.rotation.y = -Math.PI * 0.25;
+    scene.add(ring2);
+
+    // 表面数据点（发光）
+    const dotsGroup = new THREE.Group();
+    const dotGeom = new THREE.SphereGeometry(0.025, 8, 8);
+    for (let i = 0; i < 30; i++) {
+      const brightness = 0.5 + Math.random() * 0.5;
+      const dotMat = new THREE.MeshBasicMaterial({
+        color: new THREE.Color().setHSL(0.58, 0.9, brightness)
+      });
+      const dot = new THREE.Mesh(dotGeom, dotMat);
+      const phi = Math.acos(2 * Math.random() - 1);
+      const theta = Math.random() * Math.PI * 2;
+      const r = 1.02;
+      dot.position.set(
+        r * Math.sin(phi) * Math.cos(theta),
+        r * Math.cos(phi),
+        r * Math.sin(phi) * Math.sin(theta)
+      );
+      dot.userData = { phi, theta, r, speed: 0.3 + Math.random() * 0.7 };
+      dotsGroup.add(dot);
+    }
+    scene.add(dotsGroup);
+
+    // 外围悬浮粒子
+    const particlesGeom = new THREE.BufferGeometry();
+    const particlesCount = 120;
+    const positions = new Float32Array(particlesCount * 3);
+    for (let i = 0; i < particlesCount; i++) {
+      const angle = Math.random() * Math.PI * 2;
+      const radius = 1.4 + Math.random() * 0.8;
+      const height = (Math.random() - 0.5) * 2.5;
+      positions[i * 3] = Math.cos(angle) * radius;
+      positions[i * 3 + 1] = height;
+      positions[i * 3 + 2] = Math.sin(angle) * radius;
+    }
+    particlesGeom.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+    const particlesMat = new THREE.PointsMaterial({
+      color: 0x55aaff,
+      size: 0.02,
+      blending: THREE.AdditiveBlending,
+      depthWrite: false,
+      transparent: true,
+      opacity: 0.7
+    });
+    const particles = new THREE.Points(particlesGeom, particlesMat);
+    scene.add(particles);
+
+    // --- 光照 ---
+    const ambient = new THREE.AmbientLight(0x224466, 2);
+    scene.add(ambient);
+    const point1 = new THREE.PointLight(0x4488cc, 30, 5);
+    point1.position.set(2, 1, 2);
+    scene.add(point1);
+    const point2 = new THREE.PointLight(0x2266aa, 15, 4);
+    point2.position.set(-2, -1, -1);
+    scene.add(point2);
+
+    // --- 动画 ---
+    const clock = new THREE.Clock();
+    function animate() {
+      requestAnimationFrame(animate);
+      const t = clock.getElapsedTime();
+
+      baseSphere.rotation.y += 0.003;
+      wireframe.rotation.y += 0.003;
+      wireframe2.rotation.y -= 0.002;
+      glow.rotation.y += 0.003;
+      ring.rotation.z += 0.0015;
+      ring2.rotation.z -= 0.001;
+      dotsGroup.rotation.y += 0.002;
+      particles.rotation.y += 0.001;
+      particles.rotation.x = Math.sin(t * 0.3) * 0.1;
+
+      // 数据点脉动
+      dotsGroup.children.forEach((dot, i) => {
+        const s = 1 + Math.sin(t * 3 + i) * 0.3;
+        dot.scale.setScalar(s);
+      });
+
+      renderer.render(scene, camera);
+    }
+    animate();
+
+    // resize
+    window.addEventListener('resize', () => {
+      const w = container.clientWidth;
+      renderer.setSize(w, w);
+    });
+  </script>
+  <script src="../js/i18n.js?v=2"></script>
+  <script src="../js/main.js"></script>
+</body>
+
+</html>
